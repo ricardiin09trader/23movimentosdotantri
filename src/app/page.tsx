@@ -32,21 +32,20 @@ export default function HomePage() {
 
   const heroVideoRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
-  const particlesRef = useRef<HTMLDivElement>(null);
 
   /* ═══ INTRO SEQUENCE ═══ */
   useEffect(() => {
-    const text = 'O Toque Que Faz Ela Pensar em Você';
+    const text = 'Existe um motivo pelo qual alguns homens permanecem na mente dela por dias.';
     let chars = '';
     for (let i = 0; i < text.length; i++) {
       const ch = text[i] === ' ' ? '\u00A0' : text[i];
-      const delay = i * 60;
+      const delay = i * 45;
       chars += `<span class="letter" style="animation-delay:${delay}ms">${ch}</span>`;
     }
     const el = document.getElementById('intro-headline');
     if (el) el.innerHTML = chars;
 
-    const totalDelay = text.length * 60 + 800;
+    const totalDelay = text.length * 45 + 800;
     setTimeout(() => {
       const sub = document.getElementById('intro-subtitle');
       if (sub) sub.classList.add('show');
@@ -79,55 +78,6 @@ export default function HomePage() {
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, [introDone]);
-
-  /* ═══ PARALLAX ═══ */
-  useEffect(() => {
-    const sections = document.querySelectorAll('[data-parallax]');
-    let ticking = false;
-    function updateParallax() {
-      const scrollY = window.pageYOffset;
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        const speed = parseFloat(section.getAttribute('data-parallax') || '0');
-        const offset = rect.top * speed * -1;
-        const inner =
-          section.querySelector('.offer-content') ||
-          section.querySelector('.container-sm') ||
-          section.querySelector('.container');
-        if (inner && rect.top < window.innerHeight && rect.bottom > 0) {
-          (inner as HTMLElement).style.transform = `translateY(${offset}px)`;
-        }
-      });
-      ticking = false;
-    }
-    function onScroll() {
-      if (!ticking) {
-        requestAnimationFrame(updateParallax);
-        ticking = true;
-      }
-    }
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [introDone]);
-
-  /* ═══ PARTICLES ═══ */
-  useEffect(() => {
-    if (!particlesRef.current) return;
-    const isMobile = window.innerWidth < 768;
-    const count = isMobile ? 12 : 25;
-    const container = particlesRef.current;
-    for (let i = 0; i < count; i++) {
-      const p = document.createElement('div');
-      p.className = 'gold-particle';
-      const size = Math.random() * 3 + 1;
-      p.style.setProperty('--size', size + 'px');
-      p.style.setProperty('--x', Math.random() * 100 + '%');
-      p.style.setProperty('--duration', (Math.random() * 20 + 12) + 's');
-      p.style.setProperty('--delay', (Math.random() * 20) + 's');
-      p.style.setProperty('--drift-x', (Math.random() * 60 - 30) + 'px');
-      container.appendChild(p);
-    }
-  }, []);
 
   /* ═══ COUNTDOWN TIMER ═══ */
   useEffect(() => {
@@ -180,21 +130,22 @@ export default function HomePage() {
     return () => { clearTimeout(t1); clearInterval(t2); };
   }, []);
 
-  /* ═══ LAZY LOAD VIDEOS ═══ */
+  /* ═══ LAZY LOAD IMAGES ═══ */
   useEffect(() => {
-    const videos = document.querySelectorAll('video[data-lazy]');
-    const videoObserver = new IntersectionObserver((entries) => {
+    const images = document.querySelectorAll('img[data-lazy]');
+    const imgObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const v = entry.target as HTMLVideoElement;
-          v.setAttribute('preload', 'auto');
-          v.load();
-          videoObserver.unobserve(v);
+          const img = entry.target as HTMLImageElement;
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+          }
+          imgObserver.unobserve(img);
         }
       });
     }, { threshold: 0.25 });
-    videos.forEach((v) => videoObserver.observe(v));
-    return () => videoObserver.disconnect();
+    images.forEach((img) => imgObserver.observe(img));
+    return () => imgObserver.disconnect();
   }, []);
 
   /* ═══ CHECKOUT HANDLER ═══ */
@@ -210,9 +161,6 @@ export default function HomePage() {
         <div id="intro-subtitle" className="intro-subtitle">Código do Toque</div>
       </div>
 
-      {/* ═══ PARTICLES ═══ */}
-      <div id="particles-container" ref={particlesRef} className="particles-container" />
-
       {/* ═══ TOAST ═══ */}
       <div className={`toast ${toastVisible ? 'show' : ''}`}>
         <div className="toast-dot" />
@@ -227,7 +175,6 @@ export default function HomePage() {
           <video autoPlay muted loop playsInline preload="auto" poster="/lovable-uploads/hero-bg.jpg">
             <source src="/videos/hero.mp4" type="video/mp4" />
           </video>
-          <img src="/lovable-uploads/hero-bg.jpg" alt="" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
         <div className="hero-overlay" />
         <div className="hero-vignette" />
@@ -237,16 +184,17 @@ export default function HomePage() {
             <span>Experiência Exclusiva</span>
           </div>
           <h1 className="hero-headline">
-            O Toque Que Faz Ela<br /><span className="gold">Pensar em Você</span>
+            Existe um motivo pelo qual alguns homens{' '}
+            <span className="gold">permanecem na mente dela por dias.</span>
           </h1>
           <p className="hero-sub">
-            Descubra os <strong>23 movimentos tântricos</strong> que criam uma conexão tão profunda que ela <strong>nunca vai esquecer</strong> da experiência ao seu lado
+            Descubra os princípios que despertam conexão, criam impacto emocional e fazem sua presença ser lembrada muito depois que o encontro termina.
           </p>
           <div className="hero-cta-wrap">
             <button className="btn-cta" onClick={goCheckout}>
-              <span>QUERO DESPERTAR O PODER DO TOQUE — R$ 24,90</span>
+              <span>QUERO ACESSO IMEDIATO</span>
             </button>
-            <p className="hero-trust">Acesso imediato · Garantia incondicional de 30 dias</p>
+            <p className="hero-trust">Acesso imediato · Garantia blindada de 30 dias</p>
           </div>
           <div style={{ marginTop: 32 }}>
             <div className="hero-stars">
@@ -266,16 +214,16 @@ export default function HomePage() {
         <div className="container-sm">
           <div className="divider reveal"><span>O Que Ninguém Te Contou</span></div>
           <h2 className="reveal" style={{ fontSize: 'clamp(30px,6.5vw,48px)', marginBottom: 20 }}>
-            A Linguagem Secreta Que <span style={{ color: 'var(--gold)' }}>Poucos Dominam</span>
+            A Linguagem Que <span style={{ color: 'var(--gold)' }}>Poucos Dominam</span>
           </h2>
           <div className="reveal reveal-delay-1" style={{ marginBottom: 8 }}>
             <p style={{ fontSize: 16, color: 'var(--text-secondary)', lineHeight: 1.8, fontWeight: 300, maxWidth: 640 }}>
-              A maioria dos homens nunca desenvolve confiança, presença e atração de forma natural porque desconhece o poder oculto do toque consciente. Existe um conhecimento milenar, guardado por terapeutas e mestres, que transforma completamente a forma como uma mulher percebe e reage à sua presença.
+              A maioria dos homens nunca desenvolve presença magnética de forma natural porque desconhece o poder da conexão consciente. Existe um conhecimento que transforma completamente a forma como uma mulher percebe e reage à sua presença.
             </p>
           </div>
           <div className="reveal reveal-delay-2" style={{ marginBottom: 40 }}>
             <p style={{ fontSize: 16, color: 'var(--text-secondary)', lineHeight: 1.8, fontWeight: 300, maxWidth: 640 }}>
-              O <strong style={{ color: 'var(--gold-light)', fontWeight: 500 }}>Código do Toque</strong> revela os <strong style={{ color: 'var(--gold-light)', fontWeight: 500 }}>23 movimentos tântricos</strong> que ativam pontos de prazer e relaxamento profundo — uma experiência que vai muito além do físico e cria uma conexão emocional inquebrável.
+              O <strong style={{ color: 'var(--gold-light)', fontWeight: 500 }}>Código do Toque</strong> revela <strong style={{ color: 'var(--gold-light)', fontWeight: 500 }}>23 princípios</strong> que ativam confiança, presença e atração — uma experiência que vai muito além do físico e cria uma conexão emocional inquebrável.
             </p>
           </div>
 
@@ -285,7 +233,7 @@ export default function HomePage() {
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" /></svg>
               </div>
               <h3>Conexão Profunda</h3>
-              <p>Cada movimento cria intimidade verdadeira e confiança absoluta — uma experiência que ela vai querer repetir</p>
+              <p>Cada gesto cria intimidade verdadeira e confiança — uma experiência que ela vai querer repetir</p>
             </div>
             <div className="glass curiosity-card reveal reveal-delay-1">
               <div className="curiosity-icon">
@@ -306,7 +254,7 @@ export default function HomePage() {
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
               </div>
               <h3>Resultados Imediatos</h3>
-              <p>Você vai perceber a diferença na primeira vez que aplicar os movimentos — garantia de impacto</p>
+              <p>Você vai perceber a diferença na primeira vez que aplicar — impacto garantido</p>
             </div>
           </div>
         </div>
@@ -315,19 +263,16 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
            SECTION 3 — TRANSFORMATION
            ═══════════════════════════════════════════════════════════ */}
-      <section className="section-bg-dark section-pad-xl transform-section" data-parallax="0.2">
+      <section className="section-bg-dark section-pad-xl transform-section">
         <div className="container-sm">
           <div className="divider reveal"><span>A Transformação</span></div>
           <h2 className="reveal" style={{ fontSize: 'clamp(30px,6.5vw,48px)', marginBottom: 32, textAlign: 'center' }}>
             O Que Você Vai <span style={{ color: 'var(--gold)' }}>Despertar</span>
           </h2>
 
-          <div className="glass-strong reveal" style={{ marginBottom: 48, borderRadius: 20, overflow: 'hidden' }}>
-            <div className="transform-video-wrapper" style={{ borderRadius: 0, marginBottom: 0, boxShadow: 'none' }}>
-              <video autoPlay muted loop playsInline data-lazy preload="none" poster="/lovable-uploads/hands-shoulder.jpg">
-                <source src="/videos/transformation.mp4" type="video/mp4" />
-              </video>
-              <img src="/lovable-uploads/hands-shoulder.jpg" alt="Transformação" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+          <div className="reveal" style={{ marginBottom: 48, borderRadius: 20, overflow: 'hidden' }}>
+            <div className="transform-image-wrapper">
+              <img data-lazy data-src="/lovable-uploads/hands-shoulder.jpg" alt="Transformação" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" loading="lazy" />
               <div className="transform-video-overlay" />
             </div>
           </div>
@@ -366,7 +311,7 @@ export default function HomePage() {
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
               </div>
               <h4>Poder Pessoal</h4>
-              <p>Energia interior que transforma sua realidade e seus relacionamentos</p>
+              <p>Energia interior que transforma seus relacionamentos</p>
             </div>
             <div className="glass transform-attr reveal reveal-delay-4">
               <div className="transform-attr-icon">
@@ -380,16 +325,49 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           SECTION 4 — PRODUCT PRESENTATION
+           SECTION 3.5 — WHY SOME MEN ARE UNFORGETTABLE (NEW)
            ═══════════════════════════════════════════════════════════ */}
       <section className="section-bg-mid section-pad-lg">
+        <div className="container-sm">
+          <div className="divider reveal"><span>O Diferencial</span></div>
+          <h2 className="reveal" style={{ fontSize: 'clamp(28px,6.5vw,48px)', marginBottom: 16, textAlign: 'center' }}>
+            Por Que Alguns Homens São <span style={{ color: 'var(--gold)' }}>Inesquecíveis?</span>
+          </h2>
+          <p className="reveal" style={{ textAlign: 'center', color: 'var(--text-secondary)', fontSize: 15, fontWeight: 300, marginBottom: 48, maxWidth: 600, marginLeft: 'auto', marginRight: 'auto' }}>
+            Existem três pilares que separam o homem comum daquele que deixa marca. Você está prestes a dominar todos eles.
+          </p>
+
+          <div className="unforgettable-grid">
+            <div className="glass unforgettable-card reveal">
+              <div className="unforgettable-card-number">01</div>
+              <h3>Presença</h3>
+              <p>Eles não tentam impressionar.<br />Chamam atenção naturalmente porque transmitem segurança e autenticidade.</p>
+            </div>
+            <div className="glass unforgettable-card reveal reveal-delay-1">
+              <div className="unforgettable-card-number">02</div>
+              <h3>Conexão</h3>
+              <p>Sabem criar emoções que permanecem na memória.<br />Não dependem apenas de palavras.</p>
+            </div>
+            <div className="glass unforgettable-card reveal reveal-delay-2">
+              <div className="unforgettable-card-number">03</div>
+              <h3>Confiança</h3>
+              <p>Não buscam aprovação.<br />Sua postura, atitude e energia falam por eles.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+           SECTION 4 — PRODUCT PRESENTATION
+           ═══════════════════════════════════════════════════════════ */}
+      <section className="section-bg-dark section-pad-lg">
         <div className="container-sm">
           <div className="divider reveal"><span>O Que Você Recebe</span></div>
           <h2 className="reveal" style={{ fontSize: 'clamp(30px,6.5vw,48px)', marginBottom: 16, textAlign: 'center' }}>
             Os <span style={{ color: 'var(--gold)' }}>23 Códigos</span> Completo
           </h2>
           <p className="reveal" style={{ textAlign: 'center', color: 'var(--text-secondary)', fontSize: 15, fontWeight: 300, marginBottom: 48, maxWidth: 600, marginLeft: 'auto', marginRight: 'auto' }}>
-            Tudo o que você precisa para transformar a experiência íntima e criar uma conexão inesquecível
+            Tudo o que você precisa para se tornar um homem inesquecível e criar conexões que ela nunca vai esquecer
           </p>
 
           <div className="product-grid">
@@ -398,8 +376,8 @@ export default function HomePage() {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></svg>
               </div>
               <div className="product-card-number">01</div>
-              <h3>7 Movimentos de Preparação</h3>
-              <p>Crie o ambiente perfeito e prepare o corpo dela para receber toques profundos e relaxar completamente</p>
+              <h3>7 Princípios de Preparação</h3>
+              <p>Transforme o ambiente e prepare o corpo dela para receber uma experiência de conexão profunda e relaxamento total</p>
             </div>
             <div className="glass product-card reveal reveal-delay-1">
               <div className="product-card-icon">
@@ -407,15 +385,15 @@ export default function HomePage() {
               </div>
               <div className="product-card-number">02</div>
               <h3>12 Pontos de Ativação</h3>
-              <p>Descubra exatamente onde, como e quando tocar para ativar zonas de prazer profundo que a maioria desconhece</p>
+              <p>Descubra exatamente onde e como ativar zonas de prazer e confiança que a maioria dos homens desconhece completamente</p>
             </div>
             <div className="glass product-card reveal reveal-delay-2">
               <div className="product-card-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
               </div>
               <div className="product-card-number">03</div>
-              <h3>4 Movimentos de Finalização</h3>
-              <p>A sequência exata para criar o clímax perfeito e deixar ela em estado de relaxamento e conexão total</p>
+              <h3>4 Princípios de Finalização</h3>
+              <p>A sequência exata para criar um momento inesquecível e deixar ela em estado de conexão total e desejo por mais</p>
             </div>
             <div className="glass product-card reveal reveal-delay-3">
               <div className="product-card-icon">
@@ -423,7 +401,7 @@ export default function HomePage() {
               </div>
               <div className="product-card-number">04</div>
               <h3>Mapas Visuais Ilustrados</h3>
-              <p>Guias visuais detalhados mostrando cada movimento, pressão e ritmo — impossível errar</p>
+              <p>Guias visuais detalhados mostrando cada princípio, pressão e ritmo — impossível errar</p>
             </div>
           </div>
 
@@ -431,14 +409,14 @@ export default function HomePage() {
           <div className="reveal" style={{ textAlign: 'center', marginTop: 48 }}>
             <div className="product-mockup">
               <div className="product-mockup-book">
-                <img src="/lovable-uploads/book-cover.jpg" alt="Código do Toque" />
+                <img data-lazy data-src="/lovable-uploads/book-cover.jpg" alt="Código do Toque" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" loading="lazy" />
                 <div className="product-mockup-spine" />
               </div>
               <div className="product-mockup-phone">
                 <div className="product-mockup-phone-inner">
                   <div style={{ width: 24, height: 3, background: '#1a1a1a', borderRadius: 6, margin: '0 auto 4px', border: '1px solid rgba(212,175,55,.1)' }} />
                   <div style={{ borderRadius: 8, overflow: 'hidden', aspectRatio: '9/16', background: '#050505', position: 'relative' }}>
-                    <img src="/lovable-uploads/book-cover.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img data-lazy data-src="/lovable-uploads/book-cover.jpg" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(to top,rgba(5,5,5,.9),transparent)', padding: '4px 3px', textAlign: 'center' }}>
                       <p style={{ color: 'var(--gold)', fontSize: 5, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase' }}>ACESSO IMEDIATO</p>
                     </div>
@@ -455,19 +433,22 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
            SECTION 5 — BONUSES
            ═══════════════════════════════════════════════════════════ */}
-      <section className="section-bg-dark section-pad-lg">
+      <section className="section-bg-mid section-pad-lg">
         <div className="container-sm">
           <div className="divider reveal"><span>Bônus Exclusivos</span></div>
-          <h2 className="reveal" style={{ fontSize: 'clamp(30px,6.5vw,48px)', marginBottom: 40, textAlign: 'center' }}>
-            3 Bônus <span style={{ color: 'var(--gold)' }}>Premium</span> Incluídos
+          <h2 className="reveal" style={{ fontSize: 'clamp(30px,6.5vw,48px)', marginBottom: 16, textAlign: 'center' }}>
+            3 Recursos <span style={{ color: 'var(--gold)' }}>Premium</span> Para Acelerar Sua Transformação
           </h2>
+          <p className="reveal" style={{ textAlign: 'center', color: 'var(--text-secondary)', fontSize: 15, fontWeight: 300, marginBottom: 40, maxWidth: 580, marginLeft: 'auto', marginRight: 'auto' }}>
+            Conteúdos exclusivos desenvolvidos para acelerar sua confiança e presença em qualquer situação
+          </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 32 }}>
             <div className="glass bonus-card reveal">
               <div className="bonus-number">01</div>
               <div style={{ flex: 1 }}>
                 <h3>Sexo Tântrico para Iniciantes</h3>
-                <p>Guia completo para transformar a experiência íntima usando os princípios do tantra — mesmo se você nunca estudou sobre o assunto</p>
+                <p>Guia completo para transformar a intimidade usando princípios milenares — mesmo sem nenhuma experiência prévia. Sua confiança vai crescer desde o primeiro contato.</p>
                 <div className="bonus-value">VALOR: R$ 59,90 · <span className="free">GRÁTIS HOJE</span></div>
               </div>
             </div>
@@ -475,7 +456,7 @@ export default function HomePage() {
               <div className="bonus-number">02</div>
               <div style={{ flex: 1 }}>
                 <h3>Guia dos 7 Sussurros</h3>
-                <p>As palavras exatas para usar durante os toques que amplificam a conexão e o prazer em até 300%</p>
+                <p>As palavras exatas que amplificam a conexão e o prazer em até 300%. Palavras certas no momento certo transformam qualquer experiência em algo memorável.</p>
                 <div className="bonus-value">VALOR: R$ 14,90 · <span className="free">GRÁTIS HOJE</span></div>
               </div>
             </div>
@@ -483,7 +464,7 @@ export default function HomePage() {
               <div className="bonus-number">03</div>
               <div style={{ flex: 1 }}>
                 <h3>Controle Absoluto</h3>
-                <p>Técnicas comprovadas de respiração e foco mental para você durar quanto tempo quiser e ter total controle</p>
+                <p>Métodos comprovados de respiração e foco mental para você ter total domínio sobre seu corpo e sua energia. Nada de ansiedade. Apenas presença e controle total.</p>
                 <div className="bonus-value">VALOR: R$ 34,90 · <span className="free">GRÁTIS HOJE</span></div>
               </div>
             </div>
@@ -498,37 +479,31 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           SECTION 6 — SOCIAL PROOF (WhatsApp Style)
+           SECTION 6 — SOCIAL PROOF (WhatsApp Style) — 3 LARGER
            ═══════════════════════════════════════════════════════════ */}
-      <section className="section-bg-mid section-pad-lg">
+      <section className="section-bg-dark section-pad-lg">
         <div className="container-sm">
           <div className="divider reveal"><span>Resultados Reais</span></div>
           <h2 className="reveal" style={{ fontSize: 'clamp(30px,6.5vw,48px)', marginBottom: 40, textAlign: 'center' }}>
             O Que Nossos Alunos <span style={{ color: 'var(--gold)' }}>Estão Dizendo</span>
           </h2>
 
-          <div className="whatsapp-container">
-            <div className="wa-message right reveal">
+          <div className="whatsapp-container testimonials-large">
+            <div className="wa-message wa-message-large right reveal">
               <div className="wa-stars">{[...Array(5)].map((_, i) => <StarIcon key={i} />)}</div>
-              <p>&quot;Minha esposa disse que foi a melhor experiência que já tivemos em 8 anos de casamento. Os movimentos são simples mas fazem TODA a diferença. Valeu cada centavo.&quot;</p>
+              <p>&quot;Minha esposa disse que foi a melhor experiência que já tivemos em 8 anos de casamento. Eu mudei a forma como me aproximo, como toco, como olho. Os princípios são simples mas fazem TODA a diferença. Ela disse que eu nunca tinha sido tão presente assim. Valeu cada centavo.&quot;</p>
               <div className="wa-time">Carlos M. · São Paulo, SP · 14:32</div>
             </div>
-            <div className="wa-message left reveal reveal-delay-1">
+            <div className="wa-message wa-message-large left reveal reveal-delay-1">
               <div className="wa-name">Rafael T.</div>
-              <p>&quot;Eu sempre achei que sabia o que estava fazendo, mas percebi que estava completamente errado. Depois de aplicar os 23 códigos, a conexão com minha namorada está em outro nível.&quot;</p>
-              <div className="wa-stars" style={{ marginTop: 6 }}>{[...Array(5)].map((_, i) => <StarIcon key={i} />)}</div>
+              <p>&quot;Eu sempre achei que sabia o que estava fazendo, mas percebi que estava completamente errado. Depois de aplicar o conteúdo, minha namorada me disse que eu tinha mudado de uma forma que ela não consegue explicar. A conexão está em outro nível. Eu me sinto mais homem, mais confiante.&quot;</p>
+              <div className="wa-stars" style={{ marginTop: 8 }}>{[...Array(5)].map((_, i) => <StarIcon key={i} />)}</div>
               <div className="wa-time">Curitiba, PR · 16:45</div>
             </div>
-            <div className="wa-message right reveal reveal-delay-2">
+            <div className="wa-message wa-message-large right reveal reveal-delay-2">
               <div className="wa-stars">{[...Array(5)].map((_, i) => <StarIcon key={i} />)}</div>
-              <p>&quot;Material sério e profissional. Nada de truque mágico, são técnicas reais baseadas em tantra que funcionam. Meu relacionamento mudou completamente.&quot;</p>
+              <p>&quot;Comprei cético e me surpreendi. A minha parceira notou a diferença na primeira semana. Ela disse que nunca tinha se sentido tão desejada e valorizada. Isso não é sobre técnica, é sobre presença. E presença muda tudo. Recomendo para qualquer homem que quer ser memorável.&quot;</p>
               <div className="wa-time">Diego S. · Rio de Janeiro, RJ · 19:12</div>
-            </div>
-            <div className="wa-message left reveal reveal-delay-3">
-              <div className="wa-name">Bruno A.</div>
-              <p>&quot;Comprei cético e me surpreendi. A minha parceira notou a diferença na primeira semana. Recomendo demais para qualquer homem que quer se tornar memorável.&quot;</p>
-              <div className="wa-stars" style={{ marginTop: 6 }}>{[...Array(5)].map((_, i) => <StarIcon key={i} />)}</div>
-              <div className="wa-time">Belo Horizonte, MG · 21:08</div>
             </div>
           </div>
         </div>
@@ -537,14 +512,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
            SECTION 7 — OFFER
            ═══════════════════════════════════════════════════════════ */}
-      <section className="offer-section section-pad-xl" data-parallax="0.15">
-        <div className="offer-video-wrapper">
-          <video autoPlay muted loop playsInline data-lazy preload="none" poster="">
-            <source src="/videos/offer.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div className="offer-overlay" />
-
+      <section className="offer-section section-pad-xl">
         <div className="offer-content container-sm">
           <div className="divider reveal"><span>Oferta Exclusiva</span></div>
           <h2 className="reveal" style={{ fontSize: 'clamp(32px,7vw,56px)', marginBottom: 16, textAlign: 'center' }}>
@@ -570,12 +538,41 @@ export default function HomePage() {
             </div>
           </div>
 
+          {/* Value Anchoring */}
+          <div className="glass-strong value-anchor reveal" style={{ marginBottom: 28 }}>
+            <p className="value-anchor-title">Valor individual dos conteúdos:</p>
+            <div className="value-anchor-row">
+              <span className="value-anchor-item">Conteúdo Principal</span>
+              <span className="value-anchor-dots" />
+              <span className="value-anchor-price">R$ 97</span>
+            </div>
+            <div className="value-anchor-row">
+              <span className="value-anchor-item">Material Complementar</span>
+              <span className="value-anchor-dots" />
+              <span className="value-anchor-price">R$ 47</span>
+            </div>
+            <div className="value-anchor-row">
+              <span className="value-anchor-item">Bônus Exclusivos</span>
+              <span className="value-anchor-dots" />
+              <span className="value-anchor-price">R$ 37</span>
+            </div>
+            <div className="value-anchor-divider" />
+            <div className="value-anchor-row total">
+              <span className="value-anchor-item" style={{ fontWeight: 600 }}>Valor Total</span>
+              <span className="value-anchor-dots" />
+              <span className="value-anchor-price" style={{ fontWeight: 600 }}>R$ 181</span>
+            </div>
+            <div className="value-anchor-today">
+              <span>Hoje você investe apenas:</span>
+              <span className="value-anchor-final">R$ 24,90</span>
+            </div>
+          </div>
+
           {/* Price */}
           <div className="price-block reveal">
-            <p className="price-original">De R$ 134,60 (produto + 3 bônus)</p>
             <p className="price-label">Oferta Especial de Lançamento</p>
             <p className="price-big">R$ 24,90</p>
-            <p className="price-meta">Pagamento único · Acesso vitalício · 81% OFF</p>
+            <p className="price-meta">Pagamento único · Acesso vitalício · 86% OFF</p>
           </div>
 
           {/* Checklist */}
@@ -583,7 +580,7 @@ export default function HomePage() {
             <div className="offer-checklist">
               <div className="offer-check-item highlight">
                 <div className="offer-check-icon"><CheckIcon /></div>
-                <span className="offer-check-text">Código do Toque — 23 movimentos completos</span>
+                <span className="offer-check-text">Código do Toque — 23 princípios completos</span>
               </div>
               <div className="offer-check-item">
                 <div className="offer-check-icon"><CheckIcon /></div>
@@ -603,12 +600,12 @@ export default function HomePage() {
               </div>
               <div className="offer-check-item highlight">
                 <div className="offer-check-icon"><CheckIcon /></div>
-                <span className="offer-check-text">Garantia incondicional de 30 dias</span>
+                <span className="offer-check-text">Garantia blindada de 30 dias</span>
               </div>
             </div>
 
             <button className="btn-cta-offer" onClick={goCheckout} style={{ marginBottom: 16 }}>
-              <span>QUERO DESPERTAR O PODER DO TOQUE — R$ 24,90</span>
+              <span>QUERO ACESSO IMEDIATO — R$ 24,90</span>
             </button>
             <p style={{ textAlign: 'center', fontSize: 11, color: 'var(--text-muted)', letterSpacing: '.04em' }}>
               Pagamento seguro via Cakto · Acesso em menos de 2 minutos
@@ -623,9 +620,14 @@ export default function HomePage() {
                 <path d="M9 12l2 2 4-4" />
               </svg>
             </div>
-            <h3>Garantia Incondicional de 30 Dias</h3>
-            <p>Você tem <strong style={{ color: 'var(--gold-light)' }}>30 dias completos</strong> para testar os 23 movimentos. Se por qualquer motivo não ficar satisfeito, devolvemos <strong style={{ color: 'var(--gold-light)' }}>100% do seu dinheiro</strong> — sem perguntas, sem burocracia.</p>
-            <p style={{ fontSize: 14, color: 'var(--text-muted)', marginTop: 12, fontWeight: 300 }}>O risco é todo nosso. Você só tem a ganhar.</p>
+            <h3>Garantia Blindada de 30 Dias</h3>
+            <p>Você terá acesso completo ao conteúdo para explorar cada material com tranquilidade.</p>
+            <p>Se dentro do período de garantia sentir que o conteúdo não entregou valor para você, basta solicitar o reembolso.</p>
+            <div className="guarantee-pillars">
+              <span>Sem burocracia.</span>
+              <span>Sem complicação.</span>
+              <span>Sem risco.</span>
+            </div>
           </div>
         </div>
       </section>
@@ -647,15 +649,15 @@ export default function HomePage() {
             </div>
             <div className="glass faq-item reveal reveal-delay-1">
               <div className="faq-q">Funciona para relacionamentos de longo prazo?</div>
-              <div className="faq-a">Sim! O Código do Toque é perfeito tanto para quem está começando quanto para casais que querem reacender a chama e aprofundar a conexão.</div>
+              <div className="faq-a">Sim! O Código do Toque é perfeito tanto para quem está começando quanto para casais que querem reacender a conexão e aprofundar a intimidade.</div>
             </div>
             <div className="glass faq-item reveal reveal-delay-2">
               <div className="faq-q">Preciso de experiência prévia?</div>
-              <div className="faq-a">Não! O método foi desenvolvido para qualquer pessoa, mesmo sem nenhuma experiência em tantra ou técnicas similares. Tudo é explicado passo a passo.</div>
+              <div className="faq-a">Não! O método foi desenvolvido para qualquer pessoa, mesmo sem nenhuma experiência em tantra. Tudo é explicado passo a passo.</div>
             </div>
             <div className="glass faq-item reveal reveal-delay-3">
               <div className="faq-q">E se eu não gostar?</div>
-              <div className="faq-a">Você tem 30 dias de garantia incondicional. Se não ficar satisfeito por qualquer motivo, basta pedir o reembolso completo — sem perguntas.</div>
+              <div className="faq-a">Você tem 30 dias de garantia blindada. Se não ficar satisfeito por qualquer motivo, basta pedir o reembolso — sem perguntas, sem burocracia.</div>
             </div>
             <div className="glass faq-item reveal reveal-delay-4">
               <div className="faq-q">O acesso é vitalício?</div>
@@ -671,14 +673,14 @@ export default function HomePage() {
       <section className="final-cta-section section-pad-xl">
         <div className="container-sm">
           <h2 className="final-cta-headline reveal">
-            Está Na Hora de Criar<br />Momentos <span style={{ color: 'var(--gold)' }}>Inesquecíveis</span>
+            Está Na Hora De Se Tornar<br /><span style={{ color: 'var(--gold)' }}>Inesquecível</span>
           </h2>
           <p className="final-cta-sub reveal reveal-delay-1">
-            O Código do Toque vai te dar as ferramentas exatas para transformar a experiência dela e criar uma conexão que ela nunca vai esquecer
+            A oportunidade está diante de você.<br />O próximo passo depende apenas da sua decisão.
           </p>
           <div className="reveal reveal-delay-2" style={{ maxWidth: 520, margin: '0 auto' }}>
             <button className="btn-cta" onClick={goCheckout}>
-              <span>SIM, QUERO O CÓDIGO DO TOQUE — R$ 24,90</span>
+              <span>QUERO COMEÇAR AGORA</span>
             </button>
             <div className="final-cta-trust">
               <div className="final-cta-trust-item"><CheckSmall /> Acesso Imediato</div>

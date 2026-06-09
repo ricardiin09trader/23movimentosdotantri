@@ -18,9 +18,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Código do Toque — Os 23 Movimentos que Ela Nunca Vai Esquecer",
+  title: "Código do Toque — Por Que Alguns Homens São Inesquecíveis",
   description:
-    "Descubra os 23 movimentos tântricos que fazem ela pensar em você e criar uma conexão inesquecível. Método desenvolvido por terapeuta tântrica com 6 anos de experiência.",
+    "Descubra os princípios que despertam conexão, criam impacto emocional e fazem sua presença ser lembrada. Método desenvolvido por terapeuta tântrica com 6 anos de experiência.",
   icons: {
     icon: "/logo.svg",
     type: "image/svg+xml",
