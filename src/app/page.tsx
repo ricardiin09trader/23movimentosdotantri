@@ -428,25 +428,25 @@ export default function HomePage() {
           </div>
 
           {/* Product mockup */}
-          <div className="reveal" style={{ textAlign: 'center', marginTop: 56 }}>
-            <div style={{ position: 'relative', display: 'inline-block' }}>
-              <div style={{ position: 'relative', filter: 'drop-shadow(0 32px 64px rgba(0,0,0,.8))' }}>
-                <img src="/lovable-uploads/book-cover.jpg" alt="Código do Toque" style={{ width: 200, borderRadius: 8, display: 'block', transform: 'perspective(800px) rotateY(-8deg)' }} />
-                <div style={{ position: 'absolute', top: 0, left: -12, bottom: 0, width: 12, background: 'linear-gradient(90deg,#1a0800,#3d1010)', borderRadius: '4px 0 0 4px', transform: 'perspective(800px) rotateY(-8deg)' }} />
+          <div className="reveal" style={{ textAlign: 'center', marginTop: 48 }}>
+            <div className="product-mockup">
+              <div className="product-mockup-book">
+                <img src="/lovable-uploads/book-cover.jpg" alt="Código do Toque" />
+                <div className="product-mockup-spine" />
               </div>
-              <div style={{ position: 'absolute', bottom: -16, right: -56, zIndex: 3, filter: 'drop-shadow(0 20px 40px rgba(0,0,0,.8))' }}>
-                <div style={{ width: 100, background: '#0F0F0F', borderRadius: 16, border: '1px solid rgba(212,175,55,.15)', padding: '6px 5px' }}>
-                  <div style={{ width: 28, height: 4, background: '#1a1a1a', borderRadius: 6, margin: '0 auto 5px', border: '1px solid rgba(212,175,55,.1)' }} />
+              <div className="product-mockup-phone">
+                <div className="product-mockup-phone-inner">
+                  <div style={{ width: 24, height: 3, background: '#1a1a1a', borderRadius: 6, margin: '0 auto 4px', border: '1px solid rgba(212,175,55,.1)' }} />
                   <div style={{ borderRadius: 8, overflow: 'hidden', aspectRatio: '9/16', background: '#050505', position: 'relative' }}>
                     <img src="/lovable-uploads/book-cover.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                    <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(to top,rgba(5,5,5,.9),transparent)', padding: '6px 4px', textAlign: 'center' }}>
+                    <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(to top,rgba(5,5,5,.9),transparent)', padding: '4px 3px', textAlign: 'center' }}>
                       <p style={{ color: 'var(--gold)', fontSize: 5, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase' }}>ACESSO IMEDIATO</p>
                     </div>
                   </div>
-                  <div style={{ width: 18, height: 3, background: '#1a1a1a', borderRadius: 6, margin: '5px auto 0', border: '1px solid rgba(212,175,55,.1)' }} />
+                  <div style={{ width: 16, height: 2, background: '#1a1a1a', borderRadius: 6, margin: '4px auto 0', border: '1px solid rgba(212,175,55,.1)' }} />
                 </div>
               </div>
-              <div style={{ position: 'absolute', top: -6, right: -6, background: 'linear-gradient(135deg,var(--gold-dark),var(--gold))', color: '#050505', fontSize: 9, fontWeight: 700, padding: '4px 12px', borderRadius: 6, letterSpacing: '.1em', textTransform: 'uppercase', zIndex: 10, boxShadow: '0 4px 16px rgba(212,175,55,.4)' }}>+ Vendido</div>
+              <div className="product-mockup-badge">+ Vendido</div>
             </div>
           </div>
         </div>
