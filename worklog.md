@@ -63,3 +63,30 @@ Stage Summary:
 - Reduced from 4 to 3 testimonials but made them larger and more impactful
 - Performance optimized: removed 2 video backgrounds, removed particles, lazy image loading
 - All changes verified in browser (desktop + mobile) with zero errors
+
+---
+Task ID: 3
+Agent: Main Agent
+Task: Fix duplicate price, clean repetitive copy, add fade transitions, mockup next to price, PDF delivery mention, responsive border fixes
+
+Work Log:
+- **Removed duplicate price**: Value anchor table showed "Hoje: R$ 24,90" AND a separate price-block showed "R$ 24,90" again. Removed the standalone price-block and value-anchor-today section, replaced with single mockup+price display.
+- **Cleaned Final CTA repetitive copy**: Removed 3 repetitive trust items (Acesso imediato, Garantia 30 dias, Pagamento seguro) from final CTA section. Replaced with single clean note "Acesso imediato via email · Garantia 30 dias".
+- **Simplified footer**: Removed footer grid with 4 repeated items. Footer now shows only copyright line.
+- **Added section fade transitions**: Added `::before` pseudo-elements to `.section-bg-dark` and `.section-bg-mid` classes creating 50px gradient overlays at section tops for smooth visual flow between sections.
+- **Increased container margins**: Changed container padding from 24px to 28px (desktop), mobile from 20px to 24px for better border spacing.
+- **Mockup next to price (perceived value)**: Created new `offer-price-hero` flex layout with book mockup on left and price info on right. On mobile, stacks vertically and centers.
+- **PDF delivery mention**: Added `offer-delivery-badge` with email icon + "Recebe tudo via email — PDF com imagens de modelos reais". Also added "PDF Guia ilustrado com imagens de modelos reais" as highlighted checklist item.
+- **Updated checklist**: Replaced "Acesso imediato e vitalício" with "PDF Guia ilustrado com imagens de modelos reais" as highlighted item.
+- **Mobile responsive fixes**: Added proper styles for offer-price-hero (column layout on tablet+), mockup sizing (100px on mobile), delivery badge sizing adjustments.
+- Removed stale `.final-cta-trust` CSS reference from 360px breakpoint, replaced with delivery badge responsive rules.
+- ESLint: 0 errors
+- Verified with Agent Browser (desktop + mobile): mockup visible next to price, delivery badge visible, checklist with PDF item, guarantee section, final CTA clean, no console errors.
+
+Stage Summary:
+- Price no longer duplicated — shows once next to mockup in offer section
+- Final CTA and footer cleaned of repetitive trust items
+- Smooth section fade transitions between all folds
+- Book mockup positioned next to price for higher perceived value
+- "Recebe tudo via email — PDF com imagens de modelos reais" prominently displayed
+- All responsive breakpoints properly adjusted

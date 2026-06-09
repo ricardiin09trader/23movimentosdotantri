@@ -556,16 +556,25 @@ export default function HomePage() {
               <span className="value-anchor-dots" />
               <span className="value-anchor-price" style={{ fontWeight: 600 }}>R$ 181</span>
             </div>
-            <div className="value-anchor-today">
-              <span>Hoje:</span>
-              <span className="value-anchor-final">R$ 24,90</span>
-            </div>
           </div>
 
-          {/* Price */}
-          <div className="price-block reveal">
-            <p className="price-big">R$ 24,90</p>
-            <p className="price-meta">Pagamento único · Acesso vitalício · 86% OFF</p>
+          {/* Price + Mockup */}
+          <div className="offer-price-hero reveal">
+            <div className="offer-mockup-wrap">
+              <div className="offer-mockup-book">
+                <img data-lazy data-src="/lovable-uploads/book-cover.jpg" alt="Código do Toque" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" loading="lazy" />
+                <div className="offer-mockup-spine" />
+              </div>
+            </div>
+            <div className="offer-price-info">
+              <p className="offer-price-from">De R$ 181</p>
+              <p className="offer-price-big">R$ 24,90</p>
+              <p className="offer-price-meta">Pagamento único · Acesso vitalício</p>
+              <div className="offer-delivery-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="M22 7l-10 7L2 7" /></svg>
+                <span>Recebe tudo via email — PDF com imagens de modelos reais</span>
+              </div>
+            </div>
           </div>
 
           {/* Checklist */}
@@ -574,6 +583,10 @@ export default function HomePage() {
               <div className="offer-check-item highlight">
                 <div className="offer-check-icon"><CheckIcon /></div>
                 <span className="offer-check-text">23 princípios completos</span>
+              </div>
+              <div className="offer-check-item highlight">
+                <div className="offer-check-icon"><CheckIcon /></div>
+                <span className="offer-check-text">PDF Guia ilustrado com imagens de modelos reais</span>
               </div>
               <div className="offer-check-item">
                 <div className="offer-check-icon"><CheckIcon /></div>
@@ -586,10 +599,6 @@ export default function HomePage() {
               <div className="offer-check-item">
                 <div className="offer-check-icon"><CheckIcon /></div>
                 <span className="offer-check-text">Bônus: Controle Absoluto (R$ 34,90)</span>
-              </div>
-              <div className="offer-check-item highlight">
-                <div className="offer-check-icon"><CheckIcon /></div>
-                <span className="offer-check-text">Acesso imediato e vitalício</span>
               </div>
               <div className="offer-check-item highlight">
                 <div className="offer-check-icon"><CheckIcon /></div>
@@ -668,15 +677,11 @@ export default function HomePage() {
           <p className="final-cta-sub reveal">
             A decisão é sua. O próximo passo, também.
           </p>
-          <div className="reveal" style={{ maxWidth: 480, margin: '0 auto' }}>
+          <div className="reveal" style={{ maxWidth: 420, margin: '0 auto' }}>
             <button className="btn-cta" onClick={goCheckout}>
-              <span>Quero Começar Agora</span>
+              <span>Quero Acesso Imediato — R$ 24,90</span>
             </button>
-            <div className="final-cta-trust">
-              <div className="final-cta-trust-item"><CheckSmall /> Acesso imediato</div>
-              <div className="final-cta-trust-item"><CheckSmall /> Garantia 30 dias</div>
-              <div className="final-cta-trust-item"><CheckSmall /> Pagamento seguro</div>
-            </div>
+            <p className="final-cta-note reveal">Acesso imediato via email · Garantia 30 dias</p>
           </div>
         </div>
       </section>
@@ -685,12 +690,6 @@ export default function HomePage() {
            FOOTER
            ═══════════════════════════════════════════════════════════ */}
       <footer className="footer" style={{ marginTop: 'auto' }}>
-        <div className="footer-grid">
-          <div className="footer-item"><CheckSmall /> Pagamento seguro</div>
-          <div className="footer-item"><CheckSmall /> Acesso imediato</div>
-          <div className="footer-item"><CheckSmall /> Garantia 30 dias</div>
-          <div className="footer-item"><CheckSmall /> Suporte</div>
-        </div>
         <p className="footer-copy">&copy; 2025 Código do Toque &middot; Todos os direitos reservados</p>
       </footer>
     </>
