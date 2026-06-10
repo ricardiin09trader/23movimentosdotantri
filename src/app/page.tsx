@@ -382,54 +382,73 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           PRICING — Beautiful layout with HF mockup
+           PRICING — Centered card layout (old copy structure)
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-pricing-section fade-section">
         <div className="stitch-container">
-          <div className="stitch-pricing-grid">
+          <h2 className="stitch-pricing-header reveal">Seu Acesso Está Aqui</h2>
+
+          <div className="stitch-pricing-card reveal">
             {/* Product Mockup */}
-            <div className="stitch-pricing-mockup reveal">
-              <div className="stitch-pricing-mockup-wrap">
-                <img
-                  data-lazy
-                  data-src="/lovable-uploads/mockup-hf.png"
-                  alt="Código do Toque — Livro + Tablet + Smartphone"
-                  className="stitch-pricing-img"
-                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                />
-              </div>
+            <div className="stitch-pricing-card-mockup">
+              <img
+                data-lazy
+                data-src="/lovable-uploads/mockup-hf.png"
+                alt="Código do Toque"
+                className="stitch-pricing-card-mockup-img"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              />
             </div>
 
-            {/* Pricing Info */}
-            <div className="stitch-pricing-info reveal">
-              <div className="stitch-pricing-tag">OFERTA ESPECIAL</div>
-              <h2 className="stitch-pricing-title">
+            {/* Card Body */}
+            <div className="stitch-pricing-card-body">
+              <p className="stitch-pricing-card-subtitle">
                 Comece Hoje e Transforme<br />a Experiência Dela
-              </h2>
-
-              <ul className="stitch-pricing-checklist">
-                <li><CheckWhite /> Código do Toque — 23 movimentos completos</li>
-                <li><CheckWhite /> Bônus: Sexo Tântrico para Iniciantes (R$ 59,90)</li>
-                <li><CheckWhite /> Bônus: Guia dos 7 Sussurros (R$ 14,90)</li>
-                <li><CheckWhite /> Bônus: Controle Absoluto (R$ 34,90)</li>
-                <li className="stitch-pricing-checklist-muted"><CheckWhite /> Garantia incondicional de 30 dias</li>
-              </ul>
-
-              <div className="stitch-pricing-price-block">
-                <div className="stitch-pricing-original">
-                  <span className="stitch-pricing-from-label">De</span>
-                  <span className="stitch-pricing-from-val">R$ 181,00</span>
-                </div>
-                <div className="stitch-pricing-current">
-                  <span className="stitch-pricing-value">R$ 24,90</span>
-                  <span className="stitch-pricing-type">Pagamento Único</span>
-                </div>
+              </p>
+              <div className="stitch-pricing-card-product">
+                <span className="stitch-pricing-card-name">Código do Toque</span>
               </div>
 
-              <button className="stitch-btn-pricing" onClick={goCheckout}>
-                QUERO DESPERTAR O PODER DO TOQUE — R$ 24,90
+              {/* Sold count */}
+              <div className="stitch-pricing-card-sold">
+                <span className="stitch-pricing-card-sold-count">+488</span>
+                <span className="stitch-pricing-card-sold-label">vendidos</span>
+              </div>
+
+              {/* Price block */}
+              <div className="stitch-pricing-card-priceblock">
+                <div className="stitch-pricing-card-original">
+                  De <span>R$ 134,60</span>
+                  <small className="stitch-pricing-card-original-note">produto + 3 bônus</small>
+                </div>
+                <div className="stitch-pricing-card-badge">Oferta Especial de Lançamento</div>
+                <div className="stitch-pricing-card-current">
+                  <span className="stitch-pricing-card-currency">R$</span>
+                  <span className="stitch-pricing-card-amount">24,90</span>
+                </div>
+                <p className="stitch-pricing-card-tags">Pagamento único · Acesso vitalício · 81% OFF</p>
+              </div>
+
+              {/* Checklist */}
+              <ul className="stitch-pricing-card-list">
+                <li><CheckWhite /> Código do Toque — 23 movimentos completos</li>
+                <li><CheckWhite /> Bônus: Sexo Tântrico para Iniciantes</li>
+                <li><CheckWhite /> Bônus: Guia dos 7 Sussurros</li>
+                <li><CheckWhite /> Bônus: Controle Absoluto</li>
+                <li><CheckWhite /> Acesso imediato e vitalício</li>
+                <li><CheckWhite /> Garantia incondicional de 30 dias</li>
+              </ul>
+
+              {/* CTA */}
+              <button className="stitch-btn-pricing-card" onClick={goCheckout}>
+                QUERO DESPERTAR O PODER DO TOQUE
               </button>
-              <p className="stitch-pricing-safe">Acesso imediato · Pagamento seguro · Garantia 30 dias</p>
+
+              {/* Trust */}
+              <div className="stitch-pricing-card-trust">
+                <span><svg className="stitch-trust-lock" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} /></svg> Pagamento seguro</span>
+                <span><svg className="stitch-trust-bolt" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} /></svg> Acesso em menos de 2 min</span>
+              </div>
             </div>
           </div>
         </div>

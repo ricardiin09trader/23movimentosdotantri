@@ -249,3 +249,32 @@ Stage Summary:
 - Content code items are clean cards (no broken background images)
 - Pricing redesigned with tag, strikethrough price, safety text — fully responsive
 - Zero errors on all viewports
+
+---
+Task ID: 9
+Agent: Main Agent
+Task: Redesign pricing/offer section as centered card layout matching old copy structure
+
+Work Log:
+- Analyzed user's old copy for the offer section structure: centered card with mockup at top, subtitle, product name badge, sold count, strikethrough price, "Oferta Especial de Lançamento" badge, large R$ 24,90 price, tags, 6-item checklist, full-width CTA button, trust icons
+- **Removed old 2-column pricing grid**: Replaced `stitch-pricing-grid` (mockup left + info right) with single centered card layout
+- **New pricing card structure** (`.stitch-pricing-card`):
+  - Max-width: 460px, centered, dark card (#1a1a1a) with subtle border and deep shadow
+  - Mockup at top of card (dark background wrapper, rounded corners)
+  - Card body centered with: subtitle (Playfair serif), product name badge (red pill), sold count (+488 in green), price block (De R$ 134,60 strikethrough → "Oferta Especial de Lançamento" red badge → R$ 24,90 large), payment tags, 6-item checklist with green checkmarks, full-width red CTA button, trust icons (lock + bolt)
+- **CSS overhaul**: Removed all old pricing grid CSS (`.stitch-pricing-grid`, `.stitch-pricing-mockup`, `.stitch-pricing-info`, `.stitch-btn-pricing`, etc.). Added ~120 lines of new card-specific CSS.
+- **Responsive updates**:
+  - Tablet (768px): Card max-width 420px, reduced padding
+  - Mobile (576px): Full-width card (margins 16px), 36px price, smaller fonts
+  - Large desktop (1200px): Card max-width 500px, increased padding
+- ESLint: 0 errors, zero console errors
+- Verified with Agent Browser + VLM analysis:
+  - Desktop: Card centered, mockup visible, price R$ 24,90 prominent, all 6 checklist items with green checkmarks, red CTA button, trust icons ✓
+  - Mobile (375px): Card full-width with margins, all elements visible and readable, CTA full-width ✓
+
+Stage Summary:
+- Pricing section completely redesigned as a beautiful centered card matching old copy structure
+- Card layout: mockup → subtitle → product badge → sold count → price block → checklist → CTA → trust icons
+- Clean, compact, and elegant — no more oversized elements
+- Fully responsive across all breakpoints (375px mobile to 1440px desktop)
+- All VLM-verified: correct elements, proper sizing, no issues
