@@ -220,3 +220,32 @@ Stage Summary:
 - 5 testimonials: 1 woman (lesbian, Camila R.) + 4 men (Carlos, Rafael, Diego, Bruno) with initials circles
 - Staggered fade-in animation on testimonial cards
 - All elements properly sized and responsive across breakpoints
+
+---
+Task ID: 8
+Agent: Main Agent
+Task: HF hero image, mockup image, fade animations, responsive pricing redesign
+
+Work Log:
+- **Hero image**: Replaced hero-stitch.jpg with user-provided HF image (romantic couple with red curtains). Added warm-tone overlay using dual-layer gradient: dark left-side for text readability + bottom fade for section transitions. Added Ken Burns slow zoom animation (scale 1→1.06 over 20s) for cinematic feel.
+- **Mockup image**: Replaced book-cover.jpg in pricing section with user-provided HF mockup (book + tablet + phone on dark maroon background). Added hover lift effect and elegant shadow. Max-width 420px on desktop, scales down responsively.
+- **Fade in/out animations**: Added `.fade-section` class to all major sections. Sections start at opacity 0.2 with slight translateY, fade to full opacity when scrolled into view via IntersectionObserver. Sections fade back out when scrolled past — creating smooth parallax-like feel.
+- **Content code items**: Removed broken background images (content-bg-1/2/3/4.jpg). Now clean dark cards with subtle border and hover slide-right effect. Larger green checkmarks with glow shadow.
+- **Pricing section redesign**:
+  - "OFERTA ESPECIAL" red tag above title
+  - Price display: "De R$ 181,00" strikethrough + "R$ 24,90" large in separated rows
+  - Price block with top/bottom borders for visual separation
+  - Mockup has max-width: 420px and hover zoom+lift effect
+  - "Acesso imediato · Pagamento seguro · Garantia 30 dias" safety text below button
+  - Fully responsive: 2-col on desktop, mockup stacks on top on mobile
+- **Responsive fixes**: All breakpoints updated for new pricing layout, hero overlay adjustments for mobile (stronger left gradient), code item padding, flow icon sizing.
+- ESLint: 0 errors, zero console errors
+- Verified with Agent Browser: desktop hero confirmed (warm couple photo + dark overlay), mobile hero confirmed (readable text), desktop pricing confirmed (mockup with book/tablet/phone visible), zero errors
+
+Stage Summary:
+- Hero now shows user's romantic couple HF photo with warm dark overlay + Ken Burns zoom
+- Pricing section uses user's book+tablet+phone HF mockup with hover effects
+- All sections fade in/out on scroll for cinematic feel
+- Content code items are clean cards (no broken background images)
+- Pricing redesigned with tag, strikethrough price, safety text — fully responsive
+- Zero errors on all viewports

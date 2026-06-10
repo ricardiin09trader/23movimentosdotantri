@@ -6,22 +6,22 @@ const CHECKOUT = 'https://pay.cakto.com.br/3j7svgt_458559';
 
 /* ═══ SVG ICONS ═══ */
 const HeartIcon = () => (
-  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+  <svg className="flow-icon-svg" fill="currentColor" viewBox="0 0 24 24">
     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
   </svg>
 );
 const BoltIcon = () => (
-  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="flow-icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
   </svg>
 );
 const ClockIcon = () => (
-  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="flow-icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
   </svg>
 );
 const ChartIcon = () => (
-  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="flow-icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
   </svg>
 );
@@ -53,60 +53,20 @@ const StarIcon = () => (
 
 /* ═══ FAQ DATA ═══ */
 const faqs = [
-  {
-    q: 'Como recebo o acesso?',
-    a: 'Imediatamente após a confirmação do pagamento, você recebe um email com acesso ao PDF completo — com imagens de modelos reais para melhor ensinamento.',
-  },
-  {
-    q: 'Funciona para relacionamentos de longo prazo?',
-    a: 'Sim. É perfeito tanto para quem está começando quanto para quem quer reacender a conexão em um relacionamento consolidado.',
-  },
-  {
-    q: 'Preciso de experiência prévia?',
-    a: 'Não. O conteúdo é 100% passo a passo, com imagens ilustradas, para qualquer pessoa aplicar.',
-  },
-  {
-    q: 'E se eu não gostar?',
-    a: 'Você tem 30 dias de garantia incondicional. Reembolso total, sem perguntas, sem burocracia.',
-  },
-  {
-    q: 'O acesso é vitalício?',
-    a: 'Sim. Paga uma vez e acessa para sempre, incluindo todas as atualizações futuras.',
-  },
+  { q: 'Como recebo o acesso?', a: 'Imediatamente após a confirmação do pagamento, você recebe um email com acesso ao PDF completo — com imagens de modelos reais para melhor ensinamento.' },
+  { q: 'Funciona para relacionamentos de longo prazo?', a: 'Sim. É perfeito tanto para quem está começando quanto para quem quer reacender a conexão em um relacionamento consolidado.' },
+  { q: 'Preciso de experiência prévia?', a: 'Não. O conteúdo é 100% passo a passo, com imagens ilustradas, para qualquer pessoa aplicar.' },
+  { q: 'E se eu não gostar?', a: 'Você tem 30 dias de garantia incondicional. Reembolso total, sem perguntas, sem burocracia.' },
+  { q: 'O acesso é vitalício?', a: 'Sim. Paga uma vez e acessa para sempre, incluindo todas as atualizações futuras.' },
 ];
 
 /* ═══ TESTIMONIALS DATA ═══ */
 const testimonials = [
-  {
-    name: 'Camila R.',
-    city: 'Florianópolis, SC',
-    quote: 'Depois de aplicar com minha namorada, a conexão entre nós mudou completamente. Ela disse que nunca se sentiu tão vista e desejada. O conteúdo funciona para qualquer tipo de casal.',
-    stars: 5,
-  },
-  {
-    name: 'Carlos M.',
-    city: 'Jundiaí, SP',
-    quote: 'Minha esposa disse que foi a melhor experiência em 8 anos de casamento. Eu mudei a forma como me aproximo, como olho. Valeu cada centavo.',
-    stars: 5,
-  },
-  {
-    name: 'Rafael T.',
-    city: 'Londrina, PR',
-    quote: 'Depois de aplicar o conteúdo, minha namorada disse que eu mudei de uma forma que ela não consegue explicar. Me sinto mais confiante.',
-    stars: 5,
-  },
-  {
-    name: 'Diego S.',
-    city: 'Uberlândia, MG',
-    quote: 'Comprei cético. Na primeira semana ela disse que nunca se sentiu tão desejada. Isso é sobre presença. E presença muda tudo.',
-    stars: 5,
-  },
-  {
-    name: 'Bruno A.',
-    city: 'Joinville, SC',
-    quote: 'O segredo não é só técnica, é presença. Depois que comecei a aplicar os movimentos, minha parceira percebeu na primeira noite. Recomendo demais.',
-    stars: 5,
-  },
+  { name: 'Camila R.', city: 'Florianópolis, SC', quote: 'Depois de aplicar com minha namorada, a conexão entre nós mudou completamente. Ela disse que nunca se sentiu tão vista e desejada. O conteúdo funciona para qualquer tipo de casal.', stars: 5 },
+  { name: 'Carlos M.', city: 'Jundiaí, SP', quote: 'Minha esposa disse que foi a melhor experiência em 8 anos de casamento. Eu mudei a forma como me aproximo, como olho. Valeu cada centavo.', stars: 5 },
+  { name: 'Rafael T.', city: 'Londrina, PR', quote: 'Depois de aplicar o conteúdo, minha namorada disse que eu mudei de uma forma que ela não consegue explicar. Me sinto mais confiante.', stars: 5 },
+  { name: 'Diego S.', city: 'Uberlândia, MG', quote: 'Comprei cético. Na primeira semana ela disse que nunca se sentiu tão desejada. Isso é sobre presença. E presença muda tudo.', stars: 5 },
+  { name: 'Bruno A.', city: 'Joinville, SC', quote: 'O segredo não é só técnica, é presença. Depois que comecei a aplicar os movimentos, minha parceira percebeu na primeira noite. Recomendo demais.', stars: 5 },
 ];
 
 /* ═══ MAIN PAGE ═══ */
@@ -115,22 +75,41 @@ export default function HomePage() {
   const [toastText, setToastText] = useState('');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  /* ═══ SCROLL REVEAL ═══ */
+  /* ═══ SCROLL REVEAL + FADE IN/OUT ═══ */
   useEffect(() => {
-    const els = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(
+    // Reveal on scroll-in
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+            revealObs.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
+      { threshold: 0.06, rootMargin: '0px 0px -20px 0px' }
     );
-    els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    revealEls.forEach((el) => revealObs.observe(el));
+
+    // Fade sections in/out on scroll
+    const fadeSections = document.querySelectorAll('.fade-section');
+    const fadeObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target as HTMLElement;
+          if (entry.isIntersecting) {
+            el.classList.add('in-view');
+          } else {
+            el.classList.remove('in-view');
+          }
+        });
+      },
+      { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+    );
+    fadeSections.forEach((el) => fadeObs.observe(el));
+
+    return () => { revealObs.disconnect(); fadeObs.disconnect(); };
   }, []);
 
   /* ═══ LAZY LOAD IMAGES ═══ */
@@ -144,7 +123,7 @@ export default function HomePage() {
           imgObserver.unobserve(img);
         }
       });
-    }, { threshold: 0.25 });
+    }, { threshold: 0.1 });
     images.forEach((img) => imgObserver.observe(img));
     return () => imgObserver.disconnect();
   }, []);
@@ -169,7 +148,6 @@ export default function HomePage() {
     return () => { clearTimeout(t1); clearInterval(t2); };
   }, []);
 
-  /* ═══ CHECKOUT HANDLER ═══ */
   const goCheckout = useCallback(() => {
     window.open(CHECKOUT, '_blank');
   }, []);
@@ -182,21 +160,19 @@ export default function HomePage() {
         <p className="stitch-toast-text">{toastText}</p>
       </div>
 
-      {/* ═══════════════════════════════════════════════════════════
-           TOP BANNER
-           ═══════════════════════════════════════════════════════════ */}
+      {/* ═══ TOP BANNER ═══ */}
       <div className="stitch-top-banner">
         <p>OFERTA ESPECIAL — Apenas <strong>R$ 24,90</strong> (86% OFF)</p>
       </div>
 
       {/* ═══════════════════════════════════════════════════════════
-           HERO
+           HERO — HF image with overlay
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-hero">
         <div className="stitch-hero-bg">
           <img
             data-lazy
-            data-src="/lovable-uploads/hero-stitch.jpg"
+            data-src="/lovable-uploads/hero-hf.png"
             alt=""
             className="stitch-hero-bg-img"
             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
@@ -230,7 +206,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
            BENEFITS FLOW
            ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-benefits">
+      <section className="stitch-benefits fade-section">
         <div className="stitch-container">
           <h2 className="stitch-section-title reveal">
             Aprenda Como Conduzir a Melhor<br />Experiência da Vida Dela
@@ -241,7 +217,6 @@ export default function HomePage() {
 
           <div className="stitch-flow-grid">
             <div className="stitch-flow-line" />
-
             <div className="stitch-flow-step reveal">
               <div className="stitch-flow-icon"><HeartIcon /></div>
               <h3>Conexão</h3>
@@ -267,9 +242,9 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           CONTENT BREAKDOWN (23 Codes)
+           CONTENT BREAKDOWN — Clean cards, no bg images
            ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-codes-section">
+      <section className="stitch-codes-section fade-section">
         <div className="stitch-container stitch-container-narrow">
           <h2 className="stitch-section-title-dark reveal">
             Os 23 Códigos Que Vão Transformar<br />a Experiência Dela
@@ -277,7 +252,6 @@ export default function HomePage() {
 
           <div className="stitch-codes-list">
             <div className="stitch-code-item reveal">
-              <img data-lazy data-src="/lovable-uploads/content-bg-1.jpg" alt="" className="stitch-code-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
               <div className="stitch-code-inner">
                 <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
@@ -286,9 +260,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-
             <div className="stitch-code-item reveal">
-              <img data-lazy data-src="/lovable-uploads/content-bg-2.jpg" alt="" className="stitch-code-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
               <div className="stitch-code-inner">
                 <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
@@ -297,9 +269,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-
             <div className="stitch-code-item reveal">
-              <img data-lazy data-src="/lovable-uploads/content-bg-3.jpg" alt="" className="stitch-code-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
               <div className="stitch-code-inner">
                 <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
@@ -308,9 +278,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-
             <div className="stitch-code-item reveal">
-              <img data-lazy data-src="/lovable-uploads/content-bg-4.jpg" alt="" className="stitch-code-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
               <div className="stitch-code-inner">
                 <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
@@ -326,7 +294,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
            BONUSES
            ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-bonus-section">
+      <section className="stitch-bonus-section fade-section">
         <div className="stitch-container">
           <h2 className="stitch-section-title-dark reveal">
             Mais 3 Bônus Exclusivos Para Você
@@ -340,7 +308,6 @@ export default function HomePage() {
               <p>Transforme a intimidade usando princípios milenares.</p>
               <p className="stitch-bonus-value">Valor real: <s>R$ 59,90</s></p>
             </div>
-
             <div className="stitch-bonus-card reveal">
               <span className="stitch-bonus-badge">Grátis Hoje</span>
               <div className="stitch-bonus-num">02</div>
@@ -348,7 +315,6 @@ export default function HomePage() {
               <p>As palavras certas no momento certo para mais conexão.</p>
               <p className="stitch-bonus-value">Valor real: <s>R$ 14,90</s></p>
             </div>
-
             <div className="stitch-bonus-card reveal">
               <span className="stitch-bonus-badge">Grátis Hoje</span>
               <div className="stitch-bonus-num">03</div>
@@ -367,9 +333,9 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           TESTIMONIALS — 5 cards, no avatars, staggered fade-in
+           TESTIMONIALS — 5 cards, staggered fade-in
            ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-testimonials-section">
+      <section className="stitch-testimonials-section fade-section">
         <div className="stitch-container stitch-container-wide">
           <h2 className="stitch-section-title-dark reveal">
             O Que Nossos Alunos Estão Dizendo
@@ -385,9 +351,7 @@ export default function HomePage() {
                   &ldquo;{t.quote}&rdquo;
                 </p>
                 <div className="stitch-testimonial-author">
-                  <div className="stitch-testimonial-initials">
-                    {t.name.charAt(0)}
-                  </div>
+                  <div className="stitch-testimonial-initials">{t.name.charAt(0)}</div>
                   <div>
                     <p className="stitch-testimonial-name">{t.name}</p>
                     <p className="stitch-testimonial-city">{t.city}</p>
@@ -402,12 +366,10 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
            GUARANTEE
            ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-guarantee-section">
+      <section className="stitch-guarantee-section fade-section">
         <div className="stitch-container stitch-container-narrow">
           <div className="stitch-guarantee-card reveal">
-            <div className="stitch-guarantee-icon">
-              <ShieldIcon />
-            </div>
+            <div className="stitch-guarantee-icon"><ShieldIcon /></div>
             <div className="stitch-guarantee-content">
               <h3>Garantia Incondicional de 30 Dias</h3>
               <p>
@@ -420,27 +382,27 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           PRICING — Mockup left + Info right
+           PRICING — Beautiful layout with HF mockup
            ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-pricing-section">
+      <section className="stitch-pricing-section fade-section">
         <div className="stitch-container">
           <div className="stitch-pricing-grid">
             {/* Product Mockup */}
             <div className="stitch-pricing-mockup reveal">
-              <img
-                data-lazy
-                data-src="/lovable-uploads/book-cover.jpg"
-                alt="Código do Toque"
-                className="stitch-pricing-img"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              />
-              <div className="stitch-pricing-badge">
-                <span>Acesso<br />Imediato</span>
+              <div className="stitch-pricing-mockup-wrap">
+                <img
+                  data-lazy
+                  data-src="/lovable-uploads/mockup-hf.png"
+                  alt="Código do Toque — Livro + Tablet + Smartphone"
+                  className="stitch-pricing-img"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                />
               </div>
             </div>
 
             {/* Pricing Info */}
             <div className="stitch-pricing-info reveal">
+              <div className="stitch-pricing-tag">OFERTA ESPECIAL</div>
               <h2 className="stitch-pricing-title">
                 Comece Hoje e Transforme<br />a Experiência Dela
               </h2>
@@ -454,28 +416,31 @@ export default function HomePage() {
               </ul>
 
               <div className="stitch-pricing-price-block">
-                <p className="stitch-pricing-from">De R$ 181,00 por apenas:</p>
-                <div className="stitch-pricing-amount">
+                <div className="stitch-pricing-original">
+                  <span className="stitch-pricing-from-label">De</span>
+                  <span className="stitch-pricing-from-val">R$ 181,00</span>
+                </div>
+                <div className="stitch-pricing-current">
                   <span className="stitch-pricing-value">R$ 24,90</span>
-                  <span className="stitch-pricing-type">(Pagamento Único)</span>
+                  <span className="stitch-pricing-type">Pagamento Único</span>
                 </div>
               </div>
 
               <button className="stitch-btn-pricing" onClick={goCheckout}>
                 QUERO DESPERTAR O PODER DO TOQUE — R$ 24,90
               </button>
+              <p className="stitch-pricing-safe">Acesso imediato · Pagamento seguro · Garantia 30 dias</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           FAQ — Accordion (custom, no <details>)
+           FAQ
            ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-faq-section">
+      <section className="stitch-faq-section fade-section">
         <div className="stitch-container stitch-container-narrow">
           <h2 className="stitch-section-title-dark reveal">Perguntas Frequentes</h2>
-
           <div className="stitch-faq-list">
             {faqs.map((faq, i) => (
               <div
@@ -487,9 +452,7 @@ export default function HomePage() {
                   <span>{faq.q}</span>
                   <ChevronIcon />
                 </div>
-                <div className="stitch-faq-answer">
-                  <p>{faq.a}</p>
-                </div>
+                <div className="stitch-faq-answer"><p>{faq.a}</p></div>
               </div>
             ))}
           </div>
@@ -499,7 +462,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════
            FINAL CTA
            ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-final-cta">
+      <section className="stitch-final-cta fade-section">
         <div className="stitch-container stitch-container-narrow">
           <h2 className="reveal">Está Na Hora de Criar Momentos Inesquecíveis</h2>
           <p className="reveal">
@@ -513,9 +476,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════
-           FOOTER
-           ═══════════════════════════════════════════════════════════ */}
+      {/* ═══ FOOTER ═══ */}
       <footer className="stitch-footer">
         <div className="stitch-footer-inner">
           <div className="stitch-footer-links">
