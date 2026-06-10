@@ -330,6 +330,42 @@ Task ID: 10
 Agent: Main Agent
 Task: Font change (Poppins), hero improvements, benefits flow cards, content breakdown cards, testimonials carousel
 
+Stage Summary:
+- Font: Poppins (rounded, inviting) replaces Playfair Display + Inter across entire site
+- Hero: centered on mobile, red glow behind CTA, better text readability
+- Benefits: white cards with red gradient icons, hover effects
+- Content breakdown: green left border, stronger hover
+- Testimonials: infinite auto-scrolling carousel, compact, edge fade
+- Zero errors on all viewports
+
+---
+Task ID: 11
+Agent: Main Agent + Subagent
+Task: Apply new stitch (1).zip design template to existing project context
+
+Work Log:
+- Extracted stitch (1).zip: contained screen.png (317x1600px mobile design reference)
+- Analyzed new stitch design via VLM: dark theme (#000/#0a0a0a backgrounds), red accents (#cc0000), full-width red guarantee bar, dark benefit cards, red numbered code circles, card-style final CTA with mockup
+- **Guarantee → Full-width red bar**: Replaced gradient card with solid #cc0000 full-width section, centered shield icon, added "O risco é todo nosso" risk-free statement
+- **Benefits flow → Dark theme**: Background changed from light gray (#f3f4f6) to dark (#0a0a0a), step cards from white to dark gray (#1a1a1a)
+- **Code items → Red numbered circles**: Replaced green checkmark SVGs with red numbered circles (01-04) with red glow shadow
+- **Bonus cards → Red top border**: Added 2px solid var(--brand-red) border-top accent
+- **Final CTA → Card with mockup + price**: Replaced simple centered text with 2-col card layout (mockup left + content right), strikethrough price, safety text. Stacks to single column on mobile.
+- **Overall dark theme**: All sections now consistently dark — no more light gray backgrounds
+- Preserved: Poppins font, testimonials carousel, pricing card, FAQ accordion, hero with HF image, social proof toasts, scroll animations, all copy/content, checkout URL
+- ESLint: 0 errors, zero console errors
+- Verified with Agent Browser + VLM: guarantee confirmed as full-width red bar (excellent quality), testimonials with red accents, dark benefit cards, final CTA card with mockup
+
+Stage Summary:
+- New stitch design fully applied with dark cohesive theme throughout
+- Guarantee is now a bold full-width red bar (#cc0000)
+- Code items use red numbered circles (01-04) instead of green checkmarks
+- Benefits flow section converted to dark theme with dark cards
+- Bonus cards have red top border accents
+- Final CTA is a card layout with product mockup, price display, and CTA button
+- All current content, animations, and functionality preserved
+- Zero errors on all viewports
+
 Work Log:
 - **Font change (Poppins)**: Replaced Playfair Display + Inter with Poppins throughout the entire project:
   - layout.tsx: Removed Playfair_Display and Inter imports, added single Poppins import with weights 300,400,500,600,700,800 and variable `--font-main`
@@ -381,3 +417,28 @@ Stage Summary:
 - Testimonials converted to auto-scrolling infinite carousel — compact, continuous, no pause
 - All changes responsive across 576px, 768px, 1200px+ breakpoints
 - Zero errors across all viewports
+
+---
+Task ID: 11
+Agent: Main Agent
+Task: Apply new stitch design template — full-width red guarantee bar, dark theme, red numbered code items, enhanced final CTA
+
+Work Log:
+- **Guarantee — Full-width red bar**: Changed from gradient card with border-radius to solid #cc0000 full-width section. Centered shield icon in white translucent circle (48px), bold heading, white text, added "O risco é todo nosso. Você só tem a ganhar." risk-free statement. Removed old `.stitch-guarantee-card` and `.stitch-guarantee-content` styles. Added `.stitch-guarantee-inner` and `.stitch-guarantee-risk` styles. Updated responsive breakpoints (48px base, 36px tablet, 32px mobile, 40px icon tablet).
+- **Code items — Red numbered circles**: Replaced green checkmark circles (`.stitch-code-check` with `CheckGreen` SVG) with red numbered circles (`.stitch-code-num` showing 01, 02, 03, 04). Red background (#b91c1c) with red box-shadow. Removed green left border accent from code cards, changed hover glow from green to red. Responsive: 28px circles on mobile with 11px font.
+- **Benefits flow — Dark theme**: Changed background from light gray (#f3f4f6) to dark (#0a0a0a). Section title changed to #fff. Section lead changed from gray-500 to gray-400. Step cards changed from white background with shadow to dark card (#1a1a1a) with subtle white borders (rgba(255,255,255,0.06)) and hover border-color change (0.12). Step headings changed to white, descriptions to gray-400. Removed box-shadow from hover state.
+- **Bonus cards — Red top border**: Added `border-top: 2px solid var(--brand-red)` to bonus cards for visual accent matching new stitch design.
+- **Final CTA — Card layout with mockup + price**: Replaced simple centered text section with a card layout containing: mockup image (left, max-width 200px), content area (right) with heading, description, price display (strikethrough "De R$ 134,60" + large "R$ 24,90"), white CTA button, and safety text. Card has dark background (#1a1a1a), subtle border (rgba(255,255,255,0.08)), border-radius 16px, deep shadow (0 20px 60px). Grid layout on desktop, stacks to single column centered on mobile (576px). Responsive: 180px mockup tablet, 160px mobile; gap/padding adjust at each breakpoint.
+- **Overall dark theme consistency**: All sections now consistently dark (#000, #0a0a0a, #1a1a1a backgrounds). Benefits flow was the last light section — now dark.
+- **ShieldIcon**: Updated SVG to use w-5 h-5 sm:w-6 sm:h-6 Tailwind classes (20px/24px), fitting properly inside the 48px guarantee icon container.
+- ESLint: 0 errors, zero console errors
+
+Stage Summary:
+- Guarantee is now a bold full-width #cc0000 red bar — maximum visual impact
+- Code items use red numbered circles (01-04) instead of green checkmarks — matches new stitch design
+- Benefits flow section converted to dark theme — consistent dark feel across entire page
+- Bonus cards have red top border accents — subtle brand reinforcement
+- Final CTA redesigned as a card with mockup + price + CTA — more conversion-focused layout
+- All sections consistently dark with white/gray text hierarchy
+- Fully responsive across 576px, 768px, and 1200px+ breakpoints
+- Zero errors on all viewports
