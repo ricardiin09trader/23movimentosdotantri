@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const CHECKOUT = 'https://pay.cakto.com.br/3j7svgt_458559';
 const HERO_GIF = '/hero-intro.gif';
+const MOCKUP = '/lovable-uploads/mockup-hf.png';
 
 /* ═══ SVG ICONS ═══ */
 const StarIcon = () => (
@@ -29,11 +30,6 @@ const RhythmIcon = () => (
     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
   </svg>
 );
-const LayersIcon = () => (
-  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
-  </svg>
-);
 const FireIcon = () => (
   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
@@ -43,11 +39,6 @@ const FireIcon = () => (
 const MapIcon = () => (
   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
-  </svg>
-);
-const HandIcon = () => (
-  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
   </svg>
 );
 const ShieldIcon = () => (
@@ -63,11 +54,6 @@ const CheckIcon = () => (
 const ChevronIcon = () => (
   <svg className="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-  </svg>
-);
-const DiamondIcon = () => (
-  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M12 2L2 12l10 10 10-10L12 2z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
   </svg>
 );
 
@@ -95,51 +81,51 @@ const MotionIconWrap = ({ children, delay = 0 }: { children: React.ReactNode; de
   </motion.div>
 );
 
-/* ═══ DATA ═══ */
+/* ═══ DATA — shorter, direct copy ═══ */
 const solutionCards = [
-  { num: '01', title: 'Conexão antes do contato', desc: 'Como preparar o estado emocional dela antes de tocar — o que acontece na mente dela antes que qualquer toque comece.' },
-  { num: '02', title: 'Os 12 pontos de ativação', desc: 'Zonas que a maioria desconhece completamente. Onde tocar, com que pressão, por quanto tempo — e em que ordem.' },
-  { num: '03', title: 'Ritmo e intenção', desc: 'O que separa um toque qualquer de um toque que ela vai lembrar. Não é força — é presença e timing.' },
-  { num: '04', title: 'A sequência de finalização', desc: 'Os 4 movimentos que criam o estado de conexão total — e fazem você ser a última coisa na cabeça dela antes de dormir.' },
+  { num: '01', title: 'Conexão antes do contato', desc: 'Prepare o estado emocional dela antes de qualquer toque.' },
+  { num: '02', title: 'Os 12 pontos de ativação', desc: 'Zonas que a maioria desconhece. Onde, com que pressão, e em que ordem.' },
+  { num: '03', title: 'Ritmo e intenção', desc: 'O que separa um toque qualquer de um toque inesquecível.' },
+  { num: '04', title: 'A sequência de finalização', desc: '4 movimentos que criam conexão total e memória duradoura.' },
 ];
 
 const contentModules = [
-  { num: 'I', title: 'Os 7 Movimentos de Preparação', desc: 'Como criar o estado físico e emocional certo antes de qualquer contato. Sem essa base, os outros 16 movimentos perdem 70% do efeito.' },
-  { num: 'II', title: 'Os 12 Pontos de Ativação', desc: 'Mapeamento completo com guias visuais: onde tocar, a pressão exata, o ritmo ideal, e a janela de tempo certa para cada ponto.' },
-  { num: 'III', title: 'Os 4 Movimentos de Finalização', desc: 'A sequência que fecha o ciclo e deixa ela num estado de relaxamento e conexão profunda — o que cria memória afetiva duradoura.' },
-  { num: 'IV', title: 'Mapas Visuais Ilustrados', desc: 'Guias detalhados de cada movimento, pressão e ritmo. Feito para que você aplique com segurança desde a primeira vez, sem ter que adivinhar nada.' },
+  { num: 'I', title: 'Os 7 Movimentos de Preparação', desc: 'Crie o estado certo antes de qualquer contato. Sem isso, os outros movimentos perdem 70% do efeito.' },
+  { num: 'II', title: 'Os 12 Pontos de Ativação', desc: 'Mapeamento completo: onde tocar, pressão exata, ritmo ideal e timing para cada ponto.' },
+  { num: 'III', title: 'Os 4 Movimentos de Finalização', desc: 'A sequência que fecha o ciclo e cria memória afetiva duradoura.' },
+  { num: 'IV', title: 'Mapas Visuais Ilustrados', desc: 'Guias detalhados de cada movimento. Aplique com segurança desde a primeira vez.' },
 ];
 
 const bonuses = [
-  { num: 'I', title: 'Sexo Tântrico para Iniciantes', desc: 'O contexto filosófico e prático do tantra — o que ele é, o que não é, e como os princípios mudam a qualidade da presença durante a intimidade. Mesmo quem nunca ouviu falar entende em 20 minutos.', value: 'R$ 59,90' },
-  { num: 'II', title: 'Guia dos 7 Sussurros', desc: 'As palavras exatas que amplificam o efeito de cada toque. O que dizer, quando dizer, e como o tom de voz ativa ou desativa a entrega emocional dela.', value: 'R$ 14,90' },
-  { num: 'III', title: 'Controle Absoluto', desc: 'Técnicas de respiração e foco para você manter presença total durante a experiência. Porque a entrega dela depende diretamente da sua presença.', value: 'R$ 34,90' },
+  { num: 'I', title: 'Sexo Tântrico para Iniciantes', desc: 'O que é tantra, o que não é, e como muda a qualidade da intimidade. Entende em 20 minutos.', value: 'R$ 59,90' },
+  { num: 'II', title: 'Guia dos 7 Sussurros', desc: 'As palavras exatas que amplificam cada toque. O que dizer e quando dizer.', value: 'R$ 14,90' },
+  { num: 'III', title: 'Controle Absoluto', desc: 'Respiração e foco para manter presença total. A entrega dela depende da sua.', value: 'R$ 34,90' },
 ];
 
 const testimonials = [
-  { name: 'Carlos M.', city: 'São Paulo, SP', avatar: 'C', quote: 'Minha esposa disse que foi a melhor experiência que já tivemos em 8 anos de casamento. Eu apliquei no sábado. No domingo ela trouxe o assunto sozinha — disse que não conseguia parar de pensar no que aconteceu. Os movimentos são simples, mas fazem toda a diferença.' },
-  { name: 'Rafael T.', city: 'Curitiba, PR', avatar: 'R', quote: 'Entrei cético — sou engenheiro, não acredito em coisa sem base. Mas a lógica por trás dos movimentos faz sentido: são pontos de tensão real que a maioria ignora. Apliquei com minha namorada e a diferença foi imediata. Ela ficou olhando para mim de um jeito diferente. Continua assim.' },
-  { name: 'Diego S.', city: 'Rio de Janeiro, RJ', avatar: 'D', quote: 'Material sério. Nada de "truque mágico" ou linguagem cafona. São técnicas com base real em tantra terapêutico, explicadas de forma direta. Meu relacionamento de 5 anos mudou nos últimos 3 meses. Ela fica procurando minha presença de formas que não aconteciam há anos.' },
-  { name: 'Marcos P.', city: 'Belo Horizonte, MG', avatar: 'M', quote: 'Eu sempre achei que sabia o que estava fazendo. Percebi que estava completamente errado na abordagem — não por falta de esforço, mas por falta de direção. Os 23 códigos deram uma estrutura clara. Em duas semanas, a conexão com minha parceira está num patamar diferente.' },
+  { name: 'Carlos M.', city: 'São Paulo, SP', avatar: 'C', quote: 'Minha esposa disse que foi a melhor experiência em 8 anos de casamento. No domingo ela trouxe o assunto sozinha — não conseguia parar de pensar no que aconteceu.' },
+  { name: 'Rafael T.', city: 'Curitiba, PR', avatar: 'R', quote: 'Sou engenheiro, não acredito sem base. Mas a lógica dos movimentos faz sentido. Apliquei com minha namorada e a diferença foi imediata. Continua assim.' },
+  { name: 'Diego S.', city: 'Rio de Janeiro, RJ', avatar: 'D', quote: 'Material sério, nada de truque mágico. Técnicas reais de tantra, explicadas de forma direta. Meu relacionamento de 5 anos mudou nos últimos 3 meses.' },
+  { name: 'Marcos P.', city: 'Belo Horizonte, MG', avatar: 'M', quote: 'Percebi que estava errado na abordagem — não por falta de esforço, mas de direção. Os 23 códigos deram estrutura clara. Em duas semanas, conexão em outro patamar.' },
 ];
 
 const painPoints = [
-  'Você sente que a intimidade virou rotina — presente, mas sem aquela faísca de antes.',
-  'Ela parece distante durante os momentos íntimos, como se estivesse lá mas não completamente.',
-  'Você não sabe exatamente o que falta — mas sente que poderia ser mais.',
-  'Já tentou algumas coisas. Algumas funcionaram por um tempo. Nenhuma criou uma conexão que durou.',
+  'A intimidade virou rotina — presente, mas sem faísca.',
+  'Ela parece distante durante os momentos íntimos.',
+  'Você não sabe o que falta — mas sente que poderia ser mais.',
+  'Já tentou algumas coisas. Nenhuma criou conexão que durou.',
 ];
 
 const faqs = [
-  { q: 'Funciona mesmo sem experiência com tantra?', a: 'Sim. O método foi traduzido para linguagem direta e passo a passo visual. Você não precisa saber nada sobre tantra antes de começar — o Bônus I cobre o contexto necessário em menos de 20 minutos.' },
-  { q: 'Minha parceira precisa saber que aprendi com um curso?', a: 'Não. Os movimentos são naturais e fluem dentro de um momento íntimo normal. A diferença que ela vai sentir é no resultado — não na origem.' },
-  { q: 'Funciona em relacionamentos longos onde a rotina já se instalou?', a: 'Especialmente nesses casos. A maioria dos relatos mais intensos vem de casamentos e relacionamentos de anos — justamente porque o contraste é maior e o impacto emocional da novidade é mais profundo.' },
+  { q: 'Funciona mesmo sem experiência com tantra?', a: 'Sim. O método foi traduzido para linguagem direta e passo a passo visual. Você não precisa saber nada sobre tantra — o Bônus I cobre o contexto em menos de 20 minutos.' },
+  { q: 'Minha parceira precisa saber que aprendi com um curso?', a: 'Não. Os movimentos são naturais e fluem dentro de um momento íntimo normal. A diferença que ela sente é no resultado — não na origem.' },
+  { q: 'Funciona em relacionamentos longos com rotina instalada?', a: 'Especialmente nesses. A maioria dos relatos mais intensos vem de casamentos de anos — o contraste é maior e o impacto emocional é mais profundo.' },
   { q: 'Quando recebo o acesso?', a: 'Imediatamente após a confirmação do pagamento. Em menos de 2 minutos você já pode começar.' },
-  { q: 'E se eu pedir reembolso?', a: 'Você tem 30 dias. Basta enviar um e-mail — sem formulário, sem justificativa obrigatória, sem espera longa. O valor é devolvido integralmente.' },
+  { q: 'E se eu pedir reembolso?', a: 'Você tem 30 dias. Basta enviar um e-mail — sem formulário, sem justificativa, sem espera. Valor devolvido integralmente.' },
 ];
 
 const offerChecklist = [
-  'Código do Toque — 23 movimentos completos com mapas visuais',
+  'Código do Toque — 23 movimentos completos',
   'Bônus I: Sexo Tântrico para Iniciantes',
   'Bônus II: Guia dos 7 Sussurros',
   'Bônus III: Controle Absoluto',
@@ -173,6 +159,23 @@ export default function HomePage() {
     const onScroll = () => setHeaderScrolled(window.scrollY > 50);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  /* Fade sections on scroll */
+  useEffect(() => {
+    const fadeSections = document.querySelectorAll('.fade-section');
+    const fadeObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target as HTMLElement;
+          if (entry.isIntersecting) el.classList.add('in-view');
+          else el.classList.remove('in-view');
+        });
+      },
+      { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+    );
+    fadeSections.forEach((el) => fadeObs.observe(el));
+    return () => { fadeObs.disconnect(); };
   }, []);
 
   /* Social proof toast */
@@ -223,62 +226,60 @@ export default function HomePage() {
       <header className={`stitch-header ${headerScrolled ? 'scrolled' : ''}`}>
         <span className="stitch-header-logo-text">Código do Toque</span>
         <nav className="stitch-header-nav">
-          <a href="#problema">Método</a>
+          <a href="#metodo">Método</a>
           <a href="#conteudo">Conteúdo</a>
           <a href="#bonus">Bônus</a>
           <a href="#depoimentos">Depoimentos</a>
         </nav>
       </header>
 
-      {/* ═══ HERO + BG EXTENSION ═══ */}
-      <div className="stitch-hero-wrap">
+      {/* ═══ HERO ═══ */}
+      <section className="stitch-hero fade-section" id="topo">
         <div className="stitch-hero-bg">
           <img src={HERO_GIF} alt="" className="stitch-hero-bg-gif" />
           <div className="stitch-hero-overlay" />
         </div>
-        <section className="stitch-hero">
-          <div className="stitch-hero-content">
-            <MotionFade>
-              <span className="stitch-hero-eyebrow">Método Tântrico · Desenvolvido por Terapeuta Clínica</span>
-            </MotionFade>
-            <MotionFade delay={0.1}>
-              <h1 className="stitch-hero-title">
-                O toque que faz ela<br />não conseguir parar de pensar em <span className="stitch-hero-title-red">você</span>
-              </h1>
-            </MotionFade>
-            <MotionFade delay={0.2}>
-              <p className="stitch-hero-desc">
-                23 movimentos tântricos que criam uma conexão física e emocional tão profunda que ela vai se lembrar da experiência ao seu lado pelo resto da vida.
-              </p>
-            </MotionFade>
-            <MotionFade delay={0.3}>
-              <div className="stitch-hero-rating">
-                <div className="stitch-hero-stars">{[...Array(5)].map((_, i) => <StarIcon key={i} />)}</div>
-                <span className="stitch-hero-rating-text">4.9 · 488 avaliações verificadas</span>
-              </div>
-            </MotionFade>
-            <MotionFade delay={0.4}>
-              <motion.button
-                className="stitch-btn-hero"
-                onClick={goCheckout}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Quero o Código do Toque — R$ 24,90
-              </motion.button>
-            </MotionFade>
-            <MotionFade delay={0.5}>
-              <div className="stitch-hero-trust">
-                <span>Acesso imediato</span>
-                <span className="stitch-hero-trust-sep">·</span>
-                <span>Garantia de 30 dias</span>
-                <span className="stitch-hero-trust-sep">·</span>
-                <span>Pagamento seguro via Cakto</span>
-              </div>
-            </MotionFade>
-          </div>
-        </section>
-      </div>
+        <div className="stitch-hero-content">
+          <MotionFade>
+            <span className="stitch-hero-eyebrow">Método Tântrico · Desenvolvido por Terapeuta Clínica</span>
+          </MotionFade>
+          <MotionFade delay={0.1}>
+            <h1 className="stitch-hero-title">
+              O toque que faz ela<br />não conseguir parar de pensar em <span className="stitch-hero-title-red">você</span>
+            </h1>
+          </MotionFade>
+          <MotionFade delay={0.2}>
+            <p className="stitch-hero-desc">
+              23 movimentos tântricos que criam uma conexão física e emocional tão profunda que ela vai se lembrar da experiência ao seu lado pelo resto da vida.
+            </p>
+          </MotionFade>
+          <MotionFade delay={0.3}>
+            <div className="stitch-hero-rating">
+              <div className="stitch-hero-stars">{[...Array(5)].map((_, i) => <StarIcon key={i} />)}</div>
+              <span className="stitch-hero-rating-text">4.9 · 488 avaliações verificadas</span>
+            </div>
+          </MotionFade>
+          <MotionFade delay={0.4}>
+            <motion.button
+              className="stitch-btn-hero"
+              onClick={goCheckout}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Quero o Código do Toque — R$ 24,90
+            </motion.button>
+          </MotionFade>
+          <MotionFade delay={0.5}>
+            <div className="stitch-hero-trust">
+              <span>Acesso imediato</span>
+              <span className="stitch-hero-trust-sep">·</span>
+              <span>Garantia de 30 dias</span>
+              <span className="stitch-hero-trust-sep">·</span>
+              <span>Pagamento seguro via Cakto</span>
+            </div>
+          </MotionFade>
+        </div>
+      </section>
 
       {/* ═══ SEÇÃO 1 — PROBLEMA ═══ */}
       <section className="stitch-problem fade-section" id="problema">
@@ -291,7 +292,7 @@ export default function HomePage() {
           </MotionFade>
           <MotionFade delay={0.15}>
             <p className="stitch-problem-text">
-              A maioria dos homens se esforça. Faz o que acha certo. Mas existe uma distância entre &ldquo;foi bom&rdquo; e &ldquo;foi inesquecível&rdquo; — e essa distância não tem nada a ver com duração ou técnica de cama.
+              A maioria dos homens se esforça. Faz o que acha certo. Mas existe uma distância entre &ldquo;foi bom&rdquo; e &ldquo;foi inesquecível&rdquo; — e essa distância não tem nada a ver com duração ou técnica.
             </p>
           </MotionFade>
           <MotionFade delay={0.2}>
@@ -324,7 +325,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ SEÇÃO 2 — TRANSIÇÃO / CITAÇÃO ═══ */}
+      {/* ═══ SEÇÃO 2 — TRANSIÇÃO ═══ */}
       <section className="stitch-transition fade-section">
         <MotionFade>
           <blockquote className="stitch-transition-quote">
@@ -337,7 +338,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══ SEÇÃO 3 — SOLUÇÃO ═══ */}
-      <section className="stitch-solution fade-section" id="solucao">
+      <section className="stitch-solution fade-section" id="metodo">
         <div className="stitch-container">
           <MotionFade>
             <span className="stitch-solution-badge">✦ Código do Toque</span>
@@ -347,12 +348,12 @@ export default function HomePage() {
           </MotionFade>
           <MotionFade delay={0.15}>
             <p className="stitch-solution-text">
-              O Código do Toque não é um guia de massagem. É um protocolo desenvolvido a partir de 6 anos de prática clínica com tantra terapêutico — traduzido em passo a passo visual que qualquer homem consegue aplicar hoje à noite, mesmo sem nenhuma experiência anterior.
+              O Código do Toque não é um guia de massagem. É um protocolo de 6 anos de prática clínica com tantra terapêutico — traduzido em passo a passo visual que qualquer homem aplica hoje à noite, sem experiência anterior.
             </p>
           </MotionFade>
           <MotionFade delay={0.2}>
-            <p className="stitch-solution-text">
-              O que muda: ela para de &ldquo;estar presente&rdquo; e começa a se entregar. A diferença é perceptível na primeira aplicação — e cumulativa em cada vez seguinte.
+            <p className="stitch-solution-text stitch-solution-highlight">
+              O que muda: ela para de &ldquo;estar presente&rdquo; e começa a se entregar. Perceptível na primeira aplicação — cumulativa em cada vez seguinte.
             </p>
           </MotionFade>
           <div className="stitch-solution-grid">
@@ -382,27 +383,22 @@ export default function HomePage() {
             <p className="stitch-section-label">O que está dentro</p>
           </MotionFade>
           <MotionFade delay={0.1}>
-            <h2 className="stitch-content-title">Cada módulo tem um propósito. Nenhum é filler.</h2>
+            <h2 className="stitch-content-title">4 módulos. 23 movimentos. Nada sobrando.</h2>
           </MotionFade>
-          <div className="stitch-modules-list">
+          <div className="stitch-modules-grid">
             {contentModules.map((m, i) => (
               <motion.div
                 key={i}
-                className="stitch-module-item"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="stitch-module-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -3, transition: { duration: 0.2 } }}
               >
-                <div className="stitch-module-num-wrap">
-                  <MotionIconWrap delay={0.05 * i}>
-                    <div className="stitch-module-icon">{m.num}</div>
-                  </MotionIconWrap>
-                </div>
-                <div className="stitch-module-body">
-                  <h4 className="stitch-module-title">{m.title}</h4>
-                  <p className="stitch-module-desc">{m.desc}</p>
-                </div>
+                <div className="stitch-module-num">{m.num}</div>
+                <h4 className="stitch-module-title">{m.title}</h4>
+                <p className="stitch-module-desc">{m.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -419,7 +415,7 @@ export default function HomePage() {
             <h2 className="stitch-bonus-title">3 bônus que amplificam cada movimento</h2>
           </MotionFade>
           <MotionFade delay={0.15}>
-            <p className="stitch-bonus-subtitle">Não são extras genéricos. Cada um resolve um obstáculo real.</p>
+            <p className="stitch-bonus-subtitle">Cada um resolve um obstáculo real.</p>
           </MotionFade>
         </div>
         <div className="stitch-bonus-grid">
@@ -438,7 +434,7 @@ export default function HomePage() {
               <p className="stitch-bonus-card-desc">{b.desc}</p>
               <div className="stitch-bonus-card-bottom">
                 <span className="stitch-bonus-value">{b.value}</span>
-                <span className="stitch-bonus-free">Grátis</span>
+                <span className="stitch-bonus-free">GRÁTIS</span>
               </div>
             </motion.div>
           ))}
@@ -490,7 +486,7 @@ export default function HomePage() {
           </MotionFade>
           <MotionFade delay={0.1}>
             <p className="stitch-authority-text">
-              O Código do Toque foi desenvolvido com base em 6 anos de prática clínica em terapia tântrica com centenas de atendimentos. Não é teoria retirada de livro. É o que realmente funciona, extraído de sessão em sessão, refinado por resultado real.
+              O Código do Toque foi desenvolvido com base em 6 anos de prática clínica em terapia tântrica com centenas de atendimentos. Não é teoria de livro. É o que funciona, refinado sessão por sessão.
             </p>
           </MotionFade>
         </div>
@@ -507,11 +503,11 @@ export default function HomePage() {
           </MotionFade>
           <MotionFade delay={0.1}>
             <p className="stitch-guarantee-text">
-              Você tem 30 dias para aplicar os 23 movimentos e avaliar por conta própria. Se por qualquer razão não ficar satisfeito, devolvemos 100% do valor pago — sem formulários, sem perguntas, sem burocracia.
+              Você tem 30 dias para aplicar os 23 movimentos. Se não ficar satisfeito, devolvemos 100% — sem formulários, sem perguntas, sem burocracia.
             </p>
           </MotionFade>
           <MotionFade delay={0.15}>
-            <p className="stitch-guarantee-italic">O risco é inteiramente nosso. O único risco real é não tentar.</p>
+            <p className="stitch-guarantee-italic">O risco é nosso. O único risco real é não tentar.</p>
           </MotionFade>
         </div>
       </section>
@@ -526,6 +522,9 @@ export default function HomePage() {
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
+            <div className="stitch-offer-image">
+              <img src={MOCKUP} alt="Código do Toque" />
+            </div>
             <div className="stitch-offer-details">
               <p className="stitch-section-label">Oferta de Lançamento</p>
               <h3 className="stitch-offer-heading">Código do Toque</h3>
@@ -580,7 +579,7 @@ export default function HomePage() {
           {faqs.map((faq, i) => (
             <motion.div
               key={i}
-              className={`stitch-faq-item reveal ${openFaq === i ? 'open' : ''}`}
+              className={`stitch-faq-item ${openFaq === i ? 'open' : ''}`}
               onClick={() => setOpenFaq(openFaq === i ? null : i)}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
