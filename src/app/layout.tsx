@@ -16,7 +16,6 @@ export const metadata: Metadata = {
     "Descubra os princípios que despertam conexão, criam impacto emocional e fazem sua presença ser lembrada. Método desenvolvido por terapeuta tântrica com 6 anos de experiência.",
   icons: {
     icon: "/logo.svg",
-    type: "image/svg+xml",
   },
 };
 
