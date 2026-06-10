@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════
-   STITCH DESIGN — v6: Full template redesign
+   CÓDIGO DO TOQUE — v7: Clean & Didactic
    ════════════════════════════════════════════════════════════════ */
 
 /* ═══ RESET & BASE ═══ */
@@ -28,15 +28,12 @@ a { text-decoration: none; color: inherit; }
 :root {
   --brand-red: #b91c1c;
   --brand-darkRed: #7f1d1d;
-  --brand-charcoal: #111111;
   --brand-card: #1a1a1a;
-  --text-white: #ffffff;
   --text-gray-300: #d1d5db;
   --text-gray-400: #9ca3af;
   --text-gray-500: #6b7280;
-  --green-500: #22c55e;
-  --yellow-500: #FACC15;
   --container-pad: clamp(24px, 5vw, 48px);
+  --section-pad: clamp(64px, 8vw, 100px);
   --header-h: 60px;
 }
 
@@ -59,46 +56,21 @@ a { text-decoration: none; color: inherit; }
   100% { transform: translateX(-33.3333%); }
 }
 
-/* ═══ VIBECODE CARD ANIMATIONS ═══ */
-@keyframes vibeFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-@keyframes vibeGlow {
-  0%, 100% { box-shadow: 0 2px 12px rgba(0,0,0,.06), 0 0 0 0 rgba(185,28,28,0); }
-  50% { box-shadow: 0 8px 24px rgba(0,0,0,.1), 0 0 20px rgba(185,28,28,.12); }
-}
-@keyframes vibeShimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-@keyframes vibeIconPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-}
-@keyframes vibeBorderGlow {
-  0%, 100% { border-color: rgba(185,28,28,0); }
-  50% { border-color: rgba(185,28,28,.25); }
-}
-
 /* ═══ SCROLL REVEAL ═══ */
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+  transform: translateY(16px);
+  transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ═══ SECTION FADE IN/OUT ON SCROLL ═══ */
+/* ═══ SECTION FADE ═══ */
 .fade-section {
   opacity: 0.2;
-  transform: translateY(10px);
+  transform: translateY(8px);
   transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
 }
-.fade-section.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
+.fade-section.in-view { opacity: 1; transform: translateY(0); }
 
 /* ═══ CONTAINER ═══ */
 .stitch-container {
@@ -106,10 +78,9 @@ a { text-decoration: none; color: inherit; }
   margin: 0 auto;
   padding: 0 var(--container-pad);
 }
-.stitch-container-wide { max-width: 1080px; }
 
 /* ═══════════════════════════════════════════════════════════
-   1. FIXED HEADER
+   1. HEADER
    ═══════════════════════════════════════════════════════════ */
 .stitch-header {
   position: fixed;
@@ -123,40 +94,30 @@ a { text-decoration: none; color: inherit; }
   justify-content: space-between;
   padding: 0 var(--container-pad);
   background: transparent;
-  transition: background .35s ease, backdrop-filter .35s ease, -webkit-backdrop-filter .35s ease;
+  transition: background .35s ease, backdrop-filter .35s ease;
 }
 .stitch-header.scrolled {
-  background: rgba(0,0,0,0.9);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.92);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  -webkit-backdrop-filter: blur(12px);
 }
 .stitch-header-logo {
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
+  width: 34px; height: 34px; min-width: 34px;
   border-radius: 50%;
   background: var(--brand-red);
   color: #fff;
-  font-family: var(--font-main), 'Poppins', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
-  letter-spacing: 0.02em;
 }
-.stitch-header-nav {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
+.stitch-header-nav { display: flex; align-items: center; gap: 28px; }
 .stitch-header-nav a {
   font-size: 13px;
   font-weight: 500;
   color: rgba(255,255,255,0.7);
   transition: color .2s;
-  letter-spacing: 0.01em;
 }
 .stitch-header-nav a:hover { color: #fff; }
 .stitch-header-cta {
@@ -173,7 +134,7 @@ a { text-decoration: none; color: inherit; }
 .stitch-header-cta:hover { background: var(--brand-darkRed); transform: scale(1.03); }
 
 /* ═══════════════════════════════════════════════════════════
-   2. HERO SECTION — Full-screen
+   2. HERO
    ═══════════════════════════════════════════════════════════ */
 .stitch-hero {
   position: relative;
@@ -185,14 +146,9 @@ a { text-decoration: none; color: inherit; }
   overflow: hidden;
   background: #000;
 }
-.stitch-hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
+.stitch-hero-bg { position: absolute; inset: 0; z-index: 0; }
 .stitch-hero-bg-img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: cover;
   opacity: 0.5;
   animation: heroZoom 20s ease-in-out infinite alternate;
@@ -207,54 +163,40 @@ a { text-decoration: none; color: inherit; }
 .stitch-hero-content {
   position: relative;
   z-index: 10;
-  max-width: 640px;
+  max-width: 580px;
   text-align: center;
   padding: 60px var(--container-pad) 80px;
 }
-.stitch-hero-tagline {
-  font-size: clamp(10px, 2vw, 13px);
-  font-weight: 300;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-gray-300);
-  margin-bottom: 16px;
-}
 .stitch-hero-title {
-  font-size: clamp(32px, 7vw, 64px);
+  font-size: clamp(32px, 7vw, 60px);
   line-height: 1.05;
   color: #fff;
-  margin-bottom: 20px;
-  text-shadow: 0 2px 24px rgba(0,0,0,.6), 0 0 60px rgba(0,0,0,.3);
+  margin-bottom: 24px;
+  text-shadow: 0 2px 24px rgba(0,0,0,.6);
 }
 .stitch-hero-title-red { color: var(--brand-red); }
 .stitch-hero-desc {
-  font-size: clamp(14px, 2vw, 17px);
+  font-size: clamp(15px, 2.2vw, 18px);
   color: var(--text-gray-300);
-  line-height: 1.7;
-  margin-bottom: 28px;
+  line-height: 1.6;
+  margin-bottom: 32px;
   text-shadow: 0 1px 12px rgba(0,0,0,.4);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 .stitch-hero-desc-bold {
   font-weight: 700;
   color: var(--brand-red);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: rgba(185,28,28,0.5);
 }
-/* CTA button */
+/* CTA */
 .stitch-btn-hero {
   display: inline-block;
   background: var(--brand-red);
   color: #fff;
   font-weight: 700;
-  font-size: clamp(11px, 2vw, 14px);
+  font-size: clamp(12px, 2vw, 14px);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-align: center;
-  padding: 16px 28px;
+  padding: 18px 32px;
   border-radius: 8px;
   box-shadow: 0 6px 18px rgba(185,28,28,.3);
   animation: ctaPulse 3s ease-in-out infinite;
@@ -272,46 +214,38 @@ a { text-decoration: none; color: inherit; }
 }
 .stitch-btn-hero:hover::before { left: 100%; }
 .stitch-btn-hero:hover { background: var(--brand-darkRed); transform: scale(1.015); }
-/* Hero stars */
+/* Rating */
 .stitch-hero-rating {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 24px;
 }
 .stitch-hero-stars { display: flex; gap: 2px; }
-.stitch-hero-stars svg { width: 15px; height: 15px; }
+.stitch-hero-stars svg { width: 14px; height: 14px; }
 .stitch-hero-rating-text { font-size: 12px; color: var(--text-gray-400); }
 
 /* ═══════════════════════════════════════════════════════════
-   3. PROBLEM SECTION
+   3. PROBLEM — Short hook
    ═══════════════════════════════════════════════════════════ */
 .stitch-problem {
   background: #0a0a0a;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  padding: 60px 0;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: 48px 0;
 }
 .stitch-problem-inner {
-  max-width: 52rem;
+  max-width: 48rem;
   margin: 0 auto;
   text-align: center;
   padding: 0 var(--container-pad);
 }
-.stitch-problem-title {
-  font-size: clamp(20px, 4vw, 32px);
-  color: #fff;
-  margin-bottom: 24px;
-  line-height: 1.2;
-}
-.stitch-problem-title-red { color: var(--brand-red); }
 .stitch-problem p {
-  font-size: clamp(14px, 1.8vw, 16px);
+  font-size: clamp(15px, 2vw, 18px);
   font-weight: 300;
   color: var(--text-gray-400);
   line-height: 1.8;
-  margin-bottom: 14px;
 }
 .stitch-problem-bold {
   font-weight: 700;
@@ -319,104 +253,86 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ═══════════════════════════════════════════════════════════
-   4. CONNECTION SECTION — "A ARTE DA CONEXÃO"
+   4. CONNECTION — Image + short text
    ═══════════════════════════════════════════════════════════ */
 .stitch-connection {
   background: #000;
-  padding: 80px 0;
+  padding: var(--section-pad) 0;
 }
 .stitch-connection-grid {
   display: flex;
-  flex-direction: column;
-  gap: 40px;
+  flex-direction: column-reverse;
+  gap: 36px;
   align-items: center;
 }
-.stitch-connection-text { max-width: 600px; }
+.stitch-connection-text { max-width: 480px; }
 .stitch-connection-title {
-  font-size: clamp(24px, 4.5vw, 36px);
+  font-size: clamp(22px, 4vw, 32px);
   color: #fff;
-  margin-bottom: 6px;
-}
-.stitch-connection-subtitle {
-  font-size: clamp(14px, 2.2vw, 18px);
-  font-weight: 400;
-  font-style: italic;
-  color: var(--brand-red);
-  margin-bottom: 24px;
-}
-.stitch-connection-dropcap {
-  font-size: clamp(14px, 1.6vw, 16px);
-  font-weight: 300;
-  color: var(--text-gray-400);
-  line-height: 1.8;
   margin-bottom: 16px;
 }
-.stitch-connection-dropcap::first-letter {
-  float: left;
-  font-size: 5rem;
-  line-height: 1;
-  color: var(--brand-red);
-  font-weight: 900;
-  margin-right: 0.5rem;
-  font-family: Georgia, 'Times New Roman', serif;
-}
-.stitch-connection-text p:not(.stitch-connection-dropcap) {
+.stitch-connection-text p {
   font-size: clamp(14px, 1.6vw, 16px);
   font-weight: 300;
   color: var(--text-gray-400);
   line-height: 1.8;
+  margin-bottom: 12px;
 }
-/* Image side */
+/* Image */
 .stitch-connection-image-wrap {
   position: relative;
-  max-width: 480px;
+  max-width: 420px;
   width: 100%;
 }
 .stitch-connection-frame {
-  border: 8px solid var(--brand-card);
+  border: 6px solid var(--brand-card);
   border-radius: 4px;
   overflow: hidden;
   transition: transform .4s ease;
 }
 .stitch-connection-frame:hover { transform: scale(1.02); }
 .stitch-connection-frame img {
-  width: 100%;
-  display: block;
+  width: 100%; display: block;
   filter: grayscale(1);
   transition: filter .5s ease;
 }
 .stitch-connection-frame:hover img { filter: grayscale(0); }
 .stitch-connection-deco {
   position: absolute;
-  width: 60%;
-  height: 60%;
-  border: 3px solid var(--brand-red);
-  top: 20px;
-  right: -20px;
+  width: 60%; height: 60%;
+  border: 2px solid var(--brand-red);
+  top: 16px; right: -16px;
   z-index: -1;
   border-radius: 4px;
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 /* ═══════════════════════════════════════════════════════════
-   5. CODES SECTION — 6 code items in grid
+   5. CODES
    ═══════════════════════════════════════════════════════════ */
 .stitch-codes {
   background: #0a0a0a;
-  padding: 80px 0;
+  padding: var(--section-pad) 0;
 }
 .stitch-codes-title {
-  font-size: clamp(22px, 4.5vw, 36px);
+  font-size: clamp(22px, 4.5vw, 34px);
   text-align: center;
   color: #fff;
-  margin-bottom: 40px;
+  margin-bottom: 8px;
   line-height: 1.2;
 }
 .stitch-codes-title-red { color: var(--brand-red); }
+.stitch-codes-subtitle {
+  text-align: center;
+  font-size: clamp(13px, 1.6vw, 15px);
+  color: var(--text-gray-500);
+  margin-bottom: 40px;
+  font-weight: 400;
+}
 .stitch-codes-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 12px;
   padding: 0 var(--container-pad);
   max-width: 960px;
   margin: 0 auto;
@@ -424,8 +340,8 @@ a { text-decoration: none; color: inherit; }
 .stitch-code-item {
   background: var(--brand-card);
   border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 10px;
+  padding: 18px 20px;
   display: flex;
   align-items: flex-start;
   gap: 14px;
@@ -436,21 +352,18 @@ a { text-decoration: none; color: inherit; }
   transform: translateY(-2px);
 }
 .stitch-code-icon {
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
+  width: 40px; height: 40px; min-width: 40px;
   color: var(--brand-red);
   flex-shrink: 0;
 }
 .stitch-code-icon svg { width: 100%; height: 100%; }
 .stitch-code-label {
-  font-family: var(--font-main), 'Poppins', sans-serif;
   font-size: clamp(12px, 1.8vw, 14px);
   font-weight: 700;
   color: var(--brand-red);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 .stitch-code-desc {
   font-size: clamp(12px, 1.4vw, 13px);
@@ -459,20 +372,11 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ═══════════════════════════════════════════════════════════
-   6. BONUS SECTION — New design with watermark numbers
+   6. BONUSES
    ═══════════════════════════════════════════════════════════ */
 .stitch-bonus {
   background: #000;
-  padding: 80px 0;
-}
-.stitch-bonus-label {
-  text-align: center;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--brand-red);
-  margin-bottom: 8px;
+  padding: var(--section-pad) 0;
 }
 .stitch-bonus-title {
   font-size: clamp(22px, 4vw, 34px);
@@ -485,10 +389,10 @@ a { text-decoration: none; color: inherit; }
 .stitch-bonus-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 14px;
   padding: 0 var(--container-pad);
   max-width: 960px;
-  margin: 0 auto 28px;
+  margin: 0 auto;
 }
 .stitch-bonus-card {
   background: var(--brand-card);
@@ -505,19 +409,14 @@ a { text-decoration: none; color: inherit; }
 }
 .stitch-bonus-watermark {
   position: absolute;
-  top: -10px;
-  right: 8px;
-  font-family: var(--font-main), 'Poppins', sans-serif;
+  top: -10px; right: 8px;
   font-size: 120px;
   font-weight: 800;
   color: rgba(255,255,255,0.03);
   line-height: 1;
   pointer-events: none;
-  transition: color .3s;
 }
-.stitch-bonus-card:hover .stitch-bonus-watermark { color: rgba(255,255,255,0.06); }
-.stitch-bonus-card-label {
-  font-family: var(--font-main), 'Poppins', sans-serif;
+.stitch-card-label {
   font-size: 10px;
   font-weight: 700;
   color: var(--brand-red);
@@ -526,86 +425,36 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 6px;
 }
 .stitch-bonus-card h4 {
-  font-family: var(--font-main), 'Poppins', sans-serif;
   font-size: clamp(15px, 2.2vw, 18px);
   font-weight: 700;
   color: #fff;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
-.stitch-bonus-card p {
+.stitch-bonus-card > p {
   font-size: clamp(12px, 1.5vw, 13px);
   color: var(--text-gray-400);
   line-height: 1.6;
-  margin-bottom: 8px;
-}
-.stitch-bonus-free {
-  font-family: var(--font-main), 'Poppins', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--brand-red);
-  margin-top: 2px;
-}
-/* Value stack card */
-.stitch-value-stack {
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 0 var(--container-pad);
-  text-align: center;
-  background: rgba(26,26,26,0.4);
-  border: 1px solid rgba(185,28,28,0.2);
-  border-radius: 12px;
-  padding: 24px 20px;
-}
-.stitch-value-stack-label {
-  font-size: 12px;
-  color: var(--text-gray-500);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 4px;
-}
-.stitch-value-stack-price {
-  font-family: var(--font-main), 'Poppins', sans-serif;
-  font-size: clamp(14px, 2vw, 16px);
-  color: var(--text-gray-300);
-  font-weight: 400;
-  line-height: 1.5;
-}
-.stitch-value-stack-note {
-  font-family: var(--font-main), 'Poppins', sans-serif;
-  font-size: clamp(13px, 2vw, 15px);
-  color: var(--brand-red);
-  font-weight: 600;
-  margin-top: 6px;
 }
 
 /* ═══════════════════════════════════════════════════════════
-   7. TESTIMONIALS — Auto-scrolling carousel
+   7. TESTIMONIALS
    ═══════════════════════════════════════════════════════════ */
 .stitch-testimonials {
   background: #0a0a0a;
-  padding: 64px 0;
-}
-.stitch-testimonials-label {
-  text-align: center;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-gray-500);
-  margin-bottom: 6px;
+  padding: var(--section-pad) 0;
 }
 .stitch-testimonials-title {
-  font-size: clamp(20px, 3.5vw, 30px);
+  font-size: clamp(22px, 4vw, 32px);
   text-align: center;
   color: #fff;
-  margin-bottom: 28px;
+  margin-bottom: 36px;
   line-height: 1.2;
 }
 .stitch-carousel-wrapper {
   overflow: hidden;
   width: 100%;
-  mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
 .stitch-carousel-track {
   display: flex;
@@ -614,26 +463,25 @@ a { text-decoration: none; color: inherit; }
 }
 .stitch-carousel-card {
   flex-shrink: 0;
-  width: clamp(280px, 36vw, 360px);
+  width: clamp(260px, 34vw, 340px);
   background: var(--brand-card);
   border-radius: 12px;
-  padding: 18px 20px;
-  border: 1px solid rgba(255,255,255,0.06);
-  margin-right: 12px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.05);
+  margin-right: 14px;
 }
 .stitch-carousel-stars {
-  display: flex;
-  gap: 2px;
-  margin-bottom: 10px;
+  display: flex; gap: 2px;
+  margin-bottom: 12px;
 }
 .stitch-carousel-stars svg { width: 12px; height: 12px; }
 .stitch-carousel-quote {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-gray-300);
   font-style: italic;
-  line-height: 1.55;
-  margin-bottom: 12px;
-  max-height: 80px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  max-height: 72px;
   overflow: hidden;
 }
 .stitch-carousel-author {
@@ -642,13 +490,10 @@ a { text-decoration: none; color: inherit; }
   gap: 8px;
 }
 .stitch-carousel-initials {
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
+  width: 30px; height: 30px; min-width: 30px;
   border-radius: 50%;
   background: var(--brand-darkRed);
   color: #fff;
-  font-family: var(--font-main), 'Poppins', sans-serif;
   font-size: 12px;
   font-weight: 700;
   display: flex;
@@ -656,114 +501,76 @@ a { text-decoration: none; color: inherit; }
   justify-content: center;
 }
 .stitch-carousel-name {
-  font-family: var(--font-main), 'Poppins', sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   color: #fff;
 }
-.stitch-carousel-city { font-size: 10px; color: var(--text-gray-500); }
-.stitch-carousel-days {
-  font-size: 9px;
-  color: var(--brand-red);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  margin-top: 1px;
-}
+.stitch-carousel-city { font-size: 11px; color: var(--text-gray-500); }
 
 /* ═══════════════════════════════════════════════════════════
-   8. GUARANTEE — Full-width RED BAR
+   8. GUARANTEE
    ═══════════════════════════════════════════════════════════ */
 .stitch-guarantee {
   background: var(--brand-red);
-  padding: 96px 0;
+  padding: clamp(56px, 8vw, 80px) 0;
   text-align: center;
 }
 .stitch-guarantee-icon {
-  width: 64px;
-  height: 64px;
-  border: 3px solid rgba(255,255,255,0.8);
+  width: 56px; height: 56px;
+  border: 2px solid rgba(255,255,255,0.7);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  margin: 0 auto 20px;
+  margin: 0 auto 16px;
 }
-.stitch-guarantee-icon svg { width: 28px; height: 28px; }
+.stitch-guarantee-icon svg { width: 24px; height: 24px; }
 .stitch-guarantee h3 {
-  font-size: clamp(22px, 4vw, 34px);
+  font-size: clamp(20px, 3.5vw, 28px);
   color: #fff;
-  margin-bottom: 14px;
-  font-weight: 700;
+  margin-bottom: 10px;
 }
 .stitch-guarantee-text {
   font-size: clamp(14px, 1.8vw, 16px);
-  color: rgba(255,255,255,0.92);
-  line-height: 1.7;
-  max-width: 560px;
-  margin: 0 auto 16px;
+  color: rgba(255,255,255,0.9);
+  max-width: 400px;
+  margin: 0 auto;
   padding: 0 var(--container-pad);
-}
-.stitch-guarantee-italic {
-  font-size: clamp(11px, 1.6vw, 14px);
-  font-style: italic;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #fff;
-  opacity: 0.75;
 }
 
 /* ═══════════════════════════════════════════════════════════
-   9. FAQ SECTION
+   9. FAQ
    ═══════════════════════════════════════════════════════════ */
 .stitch-faq {
   background: #000;
-  padding: 80px 0;
-}
-.stitch-faq-label {
-  text-align: center;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-gray-500);
-  margin-bottom: 6px;
-}
-.stitch-faq-title {
-  font-size: clamp(20px, 3.5vw, 30px);
-  text-align: center;
-  color: #fff;
-  margin-bottom: 28px;
-  line-height: 1.2;
+  padding: var(--section-pad) 0;
 }
 .stitch-faq-list {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  max-width: 640px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 0 var(--container-pad);
 }
 .stitch-faq-item {
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
   cursor: pointer;
 }
 .stitch-faq-question {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: var(--font-main), 'Poppins', sans-serif;
   font-weight: 600;
-  padding: 14px 0;
-  font-size: clamp(13px, 2vw, 14px);
+  padding: 16px 0;
+  font-size: clamp(13px, 2vw, 15px);
   color: #fff;
   user-select: none;
   transition: color .2s;
 }
 .stitch-faq-item:hover .stitch-faq-question { color: var(--text-gray-300); }
 .faq-chevron {
-  width: 14px;
-  height: 14px;
+  width: 14px; height: 14px;
   flex-shrink: 0;
   margin-left: 12px;
   transition: transform .3s ease;
@@ -775,23 +582,23 @@ a { text-decoration: none; color: inherit; }
   overflow: hidden;
   transition: max-height .35s ease, padding .35s ease;
 }
-.stitch-faq-item.open .stitch-faq-answer { max-height: 160px; padding-bottom: 14px; }
+.stitch-faq-item.open .stitch-faq-answer { max-height: 120px; padding-bottom: 16px; }
 .stitch-faq-answer p { font-size: 13px; color: var(--text-gray-400); line-height: 1.6; }
 
 /* ═══════════════════════════════════════════════════════════
-   10. OFFER SECTION — 2-column with product image
+   10. OFFER
    ═══════════════════════════════════════════════════════════ */
 .stitch-offer {
   background: #0a0a0a;
-  padding: 80px 0;
+  padding: var(--section-pad) 0;
 }
 .stitch-offer-card {
-  max-width: 64rem;
+  max-width: 60rem;
   margin: 0 auto;
   background: #000;
   border: 1px solid rgba(185,28,28,0.2);
   border-radius: 16px;
-  box-shadow: 0 24px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,0.03);
+  box-shadow: 0 24px 80px rgba(0,0,0,.5);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -807,15 +614,12 @@ a { text-decoration: none; color: inherit; }
 .stitch-offer-image-side img {
   max-width: 100%;
   border-radius: 8px;
-  display: block;
 }
 .stitch-offer-bonus-badge {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 16px; right: 16px;
   background: var(--brand-red);
   color: #fff;
-  font-family: var(--font-main), 'Poppins', sans-serif;
   font-size: 10px;
   font-weight: 700;
   padding: 5px 12px;
@@ -828,19 +632,10 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   flex-direction: column;
 }
-.stitch-offer-pill {
-  display: inline-block;
-  background: rgba(185,28,28,0.1);
-  border: 1px solid rgba(185,28,28,0.3);
-  color: var(--brand-red);
-  font-family: var(--font-main), 'Poppins', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 5px 14px;
-  border-radius: 20px;
-  letter-spacing: 0.03em;
-  margin-bottom: 16px;
-  align-self: flex-start;
+.stitch-offer-access-label {
+  font-size: clamp(12px, 1.6vw, 14px);
+  color: var(--text-gray-400);
+  margin-bottom: 20px;
 }
 .stitch-offer-price-row {
   display: flex;
@@ -849,13 +644,11 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 2px;
 }
 .stitch-offer-currency {
-  font-family: var(--font-main), 'Poppins', sans-serif;
   font-size: clamp(18px, 3.5vw, 24px);
   font-weight: 700;
   color: #fff;
 }
 .stitch-offer-amount {
-  font-family: var(--font-main), 'Poppins', sans-serif;
   font-size: clamp(40px, 8vw, 56px);
   font-weight: 700;
   color: #fff;
@@ -864,28 +657,26 @@ a { text-decoration: none; color: inherit; }
 .stitch-offer-per {
   font-size: 12px;
   color: var(--text-gray-500);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 .stitch-offer-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 28px;
   padding: 0;
 }
 .stitch-offer-list li {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
-  font-size: clamp(12px, 1.6vw, 14px);
+  font-size: clamp(13px, 1.6vw, 15px);
   color: var(--text-gray-300);
-  line-height: 1.4;
 }
 .stitch-offer-list li svg {
   flex-shrink: 0;
   color: var(--brand-red);
-  margin-top: 2px;
 }
 .stitch-offer-cta {
   display: block;
@@ -897,7 +688,7 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: 0.05em;
   text-transform: uppercase;
   text-align: center;
-  padding: 16px 20px;
+  padding: 18px 20px;
   border-radius: 10px;
   box-shadow: 0 8px 24px rgba(185,28,28,.35);
   transition: background .2s, transform .15s;
@@ -920,45 +711,43 @@ a { text-decoration: none; color: inherit; }
   margin-top: 16px;
   font-size: 11px;
   color: var(--text-gray-500);
-  letter-spacing: 0.02em;
 }
 
 /* ═══════════════════════════════════════════════════════════
-   11. FOOTER — Simplified
+   11. FOOTER
    ═══════════════════════════════════════════════════════════ */
 .stitch-footer {
   background: #000;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  padding: 48px 0;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 40px 0;
   text-align: center;
 }
 .stitch-footer-inner {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 var(--container-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 .stitch-footer-18 {
   display: inline-block;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 4px;
   padding: 3px 10px;
-  font-family: var(--font-main), 'Poppins', sans-serif;
   font-size: 10px;
   font-weight: 700;
-  color: var(--text-gray-400);
-  margin-bottom: 14px;
-  letter-spacing: 0.04em;
+  color: var(--text-gray-500);
 }
 .stitch-footer-copy {
   font-size: 11px;
-  color: rgba(255,255,255,0.25);
-  margin-bottom: 12px;
+  color: rgba(255,255,255,0.2);
 }
 .stitch-footer-links {
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;
 }
 .stitch-footer-links a {
   font-size: 11px;
@@ -973,8 +762,7 @@ a { text-decoration: none; color: inherit; }
 .stitch-toast {
   position: fixed;
   bottom: 16px;
-  left: 12px;
-  right: 12px;
+  left: 12px; right: 12px;
   max-width: 260px;
   z-index: 999;
   background: rgba(20,20,20,0.95);
@@ -1002,12 +790,11 @@ a { text-decoration: none; color: inherit; }
 .stitch-toast-text { color: var(--text-gray-300); font-size: 11px; line-height: 1.3; }
 
 /* ═══════════════════════════════════════════════════════════
-   RESPONSIVE — TABLET (max 768px)
+   RESPONSIVE — TABLET
    ═══════════════════════════════════════════════════════════ */
 @media (min-width: 576px) and (max-width: 768px) {
   .stitch-codes-grid { grid-template-columns: repeat(2, 1fr); }
   .stitch-bonus-grid { grid-template-columns: repeat(2, 1fr); }
-  .stitch-carousel-card { width: clamp(260px, 40vw, 340px); }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1034,83 +821,40 @@ a { text-decoration: none; color: inherit; }
   .stitch-header { padding: 0 20px; }
   .stitch-header-nav { display: none !important; }
   .stitch-header-cta { font-size: 10px; padding: 6px 12px; }
-  .stitch-header-logo { width: 32px; height: 32px; min-width: 32px; font-size: 12px; }
+  .stitch-header-logo { width: 30px; height: 30px; min-width: 30px; font-size: 11px; }
 
-  .stitch-hero { min-height: 100vh; }
   .stitch-hero-content { padding: 40px 20px 60px; }
-  .stitch-hero-tagline { letter-spacing: 0.12em; margin-bottom: 12px; }
   .stitch-hero-overlay {
     background:
       linear-gradient(to right, rgba(0,0,0,.92) 0%, rgba(0,0,0,.78) 60%, rgba(15,5,5,.45) 100%),
       linear-gradient(to bottom, rgba(0,0,0,.4) 0%, rgba(0,0,0,.15) 50%, rgba(0,0,0,.8) 100%);
   }
-  .stitch-btn-hero { padding: 14px 20px; font-size: 11px; }
+  .stitch-btn-hero { padding: 15px 24px; font-size: 11px; }
 
-  .stitch-problem { padding: 48px 0; }
-  .stitch-problem p { font-size: 13px; }
+  .stitch-problem { padding: 40px 0; }
 
-  .stitch-connection { padding: 56px 0; }
-  .stitch-connection-dropcap::first-letter { font-size: 3.5rem; }
   .stitch-connection-deco { display: none; }
 
-  .stitch-codes { padding: 56px 0; }
-  .stitch-code-icon { width: 36px; height: 36px; min-width: 36px; }
-  .stitch-code-item { padding: 16px; }
+  .stitch-code-icon { width: 34px; height: 34px; min-width: 34px; }
+  .stitch-code-item { padding: 14px 16px; }
 
-  .stitch-bonus { padding: 56px 0; }
   .stitch-bonus-card { padding: 20px; }
   .stitch-bonus-watermark { font-size: 80px; }
 
-  .stitch-testimonials { padding: 48px 0; }
-  .stitch-carousel-card { width: clamp(240px, 78vw, 340px); padding: 14px 16px; }
+  .stitch-carousel-card { width: clamp(250px, 80vw, 340px); padding: 16px; }
 
-  .stitch-guarantee { padding: 56px 0; }
-  .stitch-guarantee-icon { width: 52px; height: 52px; }
-  .stitch-guarantee-icon svg { width: 22px; height: 22px; }
+  .stitch-guarantee-icon { width: 48px; height: 48px; }
+  .stitch-guarantee-icon svg { width: 20px; height: 20px; }
 
-  .stitch-faq { padding: 56px 0; }
-
-  .stitch-offer { padding: 56px 0; }
   .stitch-offer-card { border-radius: 12px; }
   .stitch-offer-image-side { padding: 20px; }
   .stitch-offer-details { padding: 24px 20px; }
   .stitch-offer-amount { font-size: 40px; }
-  .stitch-offer-cta { padding: 14px 16px; font-size: 11px; }
-  .stitch-offer-list li { font-size: 12px; }
+  .stitch-offer-cta { padding: 15px 16px; font-size: 11px; }
 
-  .stitch-footer { padding: 36px 0; }
+  .stitch-footer { padding: 32px 0; }
   .stitch-toast { left: 12px; right: 12px; bottom: 16px; max-width: calc(100% - 24px); }
 }
 
-/* ═══════════════════════════════════════════════════════════
-   RESPONSIVE — LARGE DESKTOP (min 1200px)
-   ═══════════════════════════════════════════════════════════ */
-@media (min-width: 1200px) {
-  :root { --container-pad: 48px; }
-
-  .stitch-container { max-width: 1024px; }
-
-  .stitch-hero-content { padding: 80px 0 100px; }
-
-  .stitch-problem { padding: 80px 0; }
-
-  .stitch-connection { padding: 100px 0; }
-  .stitch-connection-grid { gap: 64px; }
-
-  .stitch-codes { padding: 100px 0; }
-  .stitch-codes-grid { max-width: 1024px; }
-
-  .stitch-bonus { padding: 100px 0; }
-  .stitch-bonus-grid { max-width: 1024px; }
-
-  .stitch-testimonials { padding: 72px 0; }
-
-  .stitch-guarantee { padding: 120px 0; }
-
-  .stitch-faq { padding: 100px 0; }
-
-  .stitch-offer { padding: 100px 0; }
-}
-
-/* Hide scrollbar during intro */
+/* Intro loading */
 .intro-loading { overflow: hidden !important; }
