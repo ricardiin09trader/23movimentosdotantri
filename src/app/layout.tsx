@@ -42,28 +42,28 @@ export default function RootLayout({
             fbq('track', 'PageView');
           `}
         </Script>
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: 'none' }}
-            src="https://www.facebook.com/tr?id=900080772936894&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
 
         {/* ═══ UTMIFY ═══ */}
         <Script
           src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-          data-utmify-prevent-xcod-sck=""
-          data-utmify-prevent-subids=""
           strategy="afterInteractive"
+          {...({ 'data-utmify-prevent-xcod-sck': '', 'data-utmify-prevent-subids': '' } as Record<string, string>)}
         />
       </head>
       <body
         className={`${poppins.variable} antialiased intro-loading`}
         style={{ background: "#0a0a0a", color: "#fff" }}
       >
+        {/* Facebook Pixel noscript fallback */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=900080772936894&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
         {children}
       </body>
     </html>
