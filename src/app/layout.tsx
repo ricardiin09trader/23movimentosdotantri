@@ -1,18 +1,11 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const poppins = Poppins({
+  variable: "--font-main",
   subsets: ["latin"],
-  weight: ["700"],
-  display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -34,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body
-        className={`${playfair.variable} ${inter.variable} antialiased intro-loading`}
+        className={`${poppins.variable} antialiased intro-loading`}
         style={{ background: "#0a0a0a", color: "#fff" }}
       >
         {children}

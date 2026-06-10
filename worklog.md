@@ -278,3 +278,106 @@ Stage Summary:
 - Clean, compact, and elegant — no more oversized elements
 - Fully responsive across all breakpoints (375px mobile to 1440px desktop)
 - All VLM-verified: correct elements, proper sizing, no issues
+
+---
+Task ID: 10
+Agent: Main Agent + Subagent
+Task: Font change to Poppins, hero improvements, benefits/content cards polish, testimonials carousel
+
+Work Log:
+- **Font change**: Replaced Playfair Display + Inter with Poppins (rounded, inviting font). Updated layout.tsx (single Poppins import with weights 300-800). Replaced all ~30 `var(--font-playfair)` and `var(--font-inter)` CSS references with `var(--font-main)` / `'Poppins'`.
+- **Hero section improvements**:
+  - Mobile: Text centered, title clamp(22px,6vw,28px), min-height 340px
+  - Added radial red glow behind CTA button via `.stitch-hero-btn-wrap::before` pseudo-element
+  - Enhanced text shadow for readability
+  - Desktop: explicit left-alignment at 1200px+, max-width 540px
+  - More bottom padding (72px desktop, 52px mobile)
+  - Rating centered on mobile with flex-wrap
+- **Benefits flow cards (section 2)**:
+  - Added white card background with 14px border-radius and subtle shadow
+  - Icon circles: gradient from brand-red to brand-darkRed, 56-60px
+  - Hover lift effect (translateY + shadow)
+  - Grid gap increased to 24px
+  - 2x2 grid on tablet with proper padding
+- **Content breakdown cards (section 3)**:
+  - Added 3px green left border accent
+  - Radius increased 10px → 12px
+  - Hover: translateX(6px) + green glow shadow
+  - Mobile padding 16px 18px for better touch targets
+- **Testimonials auto-scrolling carousel**:
+  - Replaced 3-column grid with horizontal infinite carousel
+  - Added `.stitch-carousel-wrapper` (overflow: hidden + edge fade mask)
+  - `.stitch-carousel-track` (display: flex, width: max-content, CSS animation)
+  - `@keyframes carouselScroll` — translateX(-33.3333%) for 40s loop
+  - Testimonials duplicated 3x (15 cards) for seamless infinite scroll
+  - Cards: clamp(260px, 35vw, 320px), compact with max-height: 60px quotes
+  - Removed old grid CSS and staggered fade classes
+  - Section padding reduced to 40px (compact footprint)
+  - Responsive: cards clamp(240px,40vw,300px) tablet, clamp(220px,70vw,300px) mobile
+- ESLint: 0 errors, zero console errors
+- Verified desktop + mobile with Agent Browser + VLM: fonts rounded, hero centered on mobile, glow behind CTA, benefits cards with white bg, content cards with green border, carousel scrolling with edge fade
+
+Stage Summary:
+- Font: Poppins (rounded, inviting) replaces Playfair Display + Inter across entire site
+- Hero: centered on mobile, red glow behind CTA, better text readability
+- Benefits: white cards with red gradient icons, hover effects
+- Content breakdown: green left border, stronger hover
+- Testimonials: infinite auto-scrolling carousel, compact, edge fade
+- Zero errors on all viewports
+
+---
+Task ID: 10
+Agent: Main Agent
+Task: Font change (Poppins), hero improvements, benefits flow cards, content breakdown cards, testimonials carousel
+
+Work Log:
+- **Font change (Poppins)**: Replaced Playfair Display + Inter with Poppins throughout the entire project:
+  - layout.tsx: Removed Playfair_Display and Inter imports, added single Poppins import with weights 300,400,500,600,700,800 and variable `--font-main`
+  - globals.css: Replaced ALL `var(--font-playfair)` and `var(--font-inter)` references with `var(--font-main)` / `'Poppins'` across body, headings, button, and every component that used font variables (~30 replacements)
+  - Poppins is a rounded sans-serif, headings remain bold with friendly/inviting feel
+- **Hero section improvements**:
+  - Text centered on mobile/tablet (text-align: center), left-aligned on desktop (1200px+ breakpoint explicitly sets text-align: left)
+  - Mobile title: `clamp(22px, 6vw, 28px)` for larger readable heading
+  - Reduced hero min-height on mobile to 340px (from 380px)
+  - Added radial gradient glow behind CTA button via `.stitch-hero-btn-wrap::before` pseudo-element (radial-gradient red glow, blurred, z-index: -1)
+  - Increased bottom padding on hero content (72px desktop, 56px tablet, 52px mobile) for breathing room
+  - Enhanced text-shadow on title for better readability (dual shadow: sharp + soft blur)
+  - Mobile overlay adjusted (stronger left gradient for centered text)
+  - Stars/rating centered and compact on mobile (flex-wrap, justify-content: center)
+- **Benefits flow cards (Section 2)**:
+  - Each step now has white card background with rounded corners (14px) and subtle shadow
+  - Added padding (24px 16px 20px desktop, responsive down) for card feel
+  - Icon circles: slightly larger (56px desktop, 60px large desktop) with gradient background (dark red → darker red via linear-gradient)
+  - Hover effect: translateY(-3px) + enhanced box-shadow for lift feel
+  - Grid gap increased to 24px (from 20px) for more breathing room
+  - 2x2 grid on tablet, cards have more padding on mobile (18px 14px 14px)
+- **Content breakdown cards (Section 3)**:
+  - Added green left border accent (3px solid var(--green-500)) using border-left
+  - Increased border-radius from 10px → 12px
+  - Enhanced hover: translateX(6px) (from 4px) + green glow shadow (box-shadow with green-500)
+  - On mobile: increased padding to 16px 18px (from 14px 16px) for better touch targets
+- **Testimonials auto-scrolling carousel**:
+  - Replaced 3-column grid (`stitch-testimonials-grid`) with horizontal carousel track (`stitch-carousel-track`)
+  - HTML: Testimonials array duplicated 3x for infinite scroll illusion (15 cards total)
+  - CSS: `@keyframes carouselScroll` translates from 0 to `calc(-100% / 3)` for seamless loop, 30s linear infinite
+  - Cards: flex-shrink: 0, width clamp(260px, 35vw, 320px), compact padding (16px 18px)
+  - Hidden scrollbar (::-webkit-scrollbar none, -ms-overflow-style none, scrollbar-width none)
+  - Compact design: stars 12px, quote 12px with max-height 60px overflow hidden, initials circle 28px
+  - Removed old `.stitch-testimonials-grid`, `.stitch-testimonial-card`, `.stitch-testimonial-stars`, `.stitch-testimonial-quote`, `.stitch-testimonial-author`, `.stitch-testimonial-initials`, `.stitch-testimonial-name`, `.stitch-testimonial-city` CSS
+  - Removed `.fade-stagger-*` CSS classes (no longer needed for carousel)
+  - Section padding reduced to 40px (compact, 32px mobile, 48px large desktop)
+  - Removed `stitch-container-wide` from testimonials container (carousel fills parent width)
+- **Responsive updates across all 4 breakpoints** (576px, 768px, 1200px):
+  - All new styles properly scale across all breakpoints
+  - Carousel card widths responsive: clamp(220px, 70vw, 300px) mobile, clamp(240px, 40vw, 300px) tablet, clamp(280px, 35vw, 340px) desktop
+- ESLint: 0 errors, zero console errors
+- Dev server running clean, ready in 638ms
+
+Stage Summary:
+- Font unified to Poppins (rounded sans-serif) replacing Playfair Display + Inter
+- Hero more impactful: centered mobile, larger title, glow behind CTA, better text shadows
+- Benefits flow cards polished with white backgrounds, gradient icons, hover lift, more spacing
+- Content breakdown cards have green left accent, stronger hover effect, better radius
+- Testimonials converted to auto-scrolling infinite carousel — compact, continuous, no pause
+- All changes responsive across 576px, 768px, 1200px+ breakpoints
+- Zero errors across all viewports

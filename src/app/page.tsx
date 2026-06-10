@@ -188,7 +188,7 @@ export default function HomePage() {
             <p className="stitch-hero-sub reveal">
               Descubra os 23 movimentos táticos que criam uma conexão tão profunda que ela nunca vai esquecer da experiência ao seu lado.
             </p>
-            <div className="reveal">
+            <div className="stitch-hero-btn-wrap reveal">
               <button className="stitch-btn-primary" onClick={goCheckout}>
                 QUERO DESPERTAR O PODER DO TOQUE — R$ 24,90
               </button>
@@ -333,32 +333,32 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           TESTIMONIALS — 5 cards, staggered fade-in
+           TESTIMONIALS — Auto-scrolling carousel
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-testimonials-section fade-section">
-        <div className="stitch-container stitch-container-wide">
+        <div className="stitch-container">
           <h2 className="stitch-section-title-dark reveal">
             O Que Nossos Alunos Estão Dizendo
           </h2>
 
-          <div className="stitch-testimonials-grid">
-            {testimonials.map((t, i) => (
-              <div key={i} className={`stitch-testimonial-card reveal fade-stagger-${(i % 3) + 1}`}>
-                <div className="stitch-testimonial-stars">
-                  {[...Array(t.stars)].map((_, j) => <StarIcon key={j} />)}
-                </div>
-                <p className="stitch-testimonial-quote">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="stitch-testimonial-author">
-                  <div className="stitch-testimonial-initials">{t.name.charAt(0)}</div>
-                  <div>
-                    <p className="stitch-testimonial-name">{t.name}</p>
-                    <p className="stitch-testimonial-city">{t.city}</p>
+          <div className="stitch-carousel-wrapper">
+            <div className="stitch-carousel-track">
+              {[...testimonials, ...testimonials, ...testimonials].map((t, i) => (
+                <div key={i} className="stitch-carousel-card">
+                  <div className="stitch-carousel-stars">
+                    {[...Array(t.stars)].map((_, j) => <StarIcon key={j} />)}
+                  </div>
+                  <p className="stitch-carousel-quote">&ldquo;{t.quote}&rdquo;</p>
+                  <div className="stitch-carousel-author">
+                    <div className="stitch-carousel-initials">{t.name.charAt(0)}</div>
+                    <div>
+                      <p className="stitch-carousel-name">{t.name}</p>
+                      <p className="stitch-carousel-city">{t.city}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
