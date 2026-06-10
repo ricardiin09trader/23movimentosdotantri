@@ -90,3 +90,22 @@ Stage Summary:
 - Book mockup positioned next to price for higher perceived value
 - "Recebe tudo via email — PDF com imagens de modelos reais" prominently displayed
 - All responsive breakpoints properly adjusted
+
+---
+Task ID: 4
+Agent: Main Agent
+Task: Complete rewrite back to red/black format matching old design with improvements
+
+Work Log:
+- User provided screenshot of old format: red/black sales page with simple direct layout
+- Analyzed old format structure: top banner, hero, 4 feature cards, 4 bullet codes, 3 bonus cards, 3 testimonials, red guarantee bar, offer section (mockup left + price right), FAQ, red final CTA bar, footer
+- Completely rewrote globals.css: replaced gold/dark luxury color scheme with red (#DC2626)/black (#0A0A0A), removed all glassmorphism/parallax/particle styles, added simple card styles, red bar styles, red button styles
+- Completely rewrote page.tsx: removed intro overlay, parallax, particles, countdown; matched old format section structure
+- Improvements applied over old format: Outfit font, scroll reveal animations, responsive 4 breakpoints, mockup+price layout, PDF delivery badge, lazy images, social proof toasts, button shine effects
+- ESLint: 0 errors, zero console errors
+- Verified desktop + mobile with Agent Browser: all sections render correctly
+
+Stage Summary:
+- Complete visual overhaul back to red/black format matching user's original design
+- All old format sections recreated faithfully
+- Key improvements retained: responsive design, animations, mockup+price layout, PDF delivery mention, social proof toasts
