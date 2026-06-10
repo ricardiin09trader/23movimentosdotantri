@@ -253,7 +253,7 @@ export default function HomePage() {
           <div className="stitch-codes-list">
             <div className="stitch-code-item reveal">
               <div className="stitch-code-inner">
-                <div className="stitch-code-num">01</div>
+                <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
                   <h4>Os 7 Movimentos de Preparação</h4>
                   <p>Crie o ambiente ideal para uma conexão profunda</p>
@@ -262,7 +262,7 @@ export default function HomePage() {
             </div>
             <div className="stitch-code-item reveal">
               <div className="stitch-code-inner">
-                <div className="stitch-code-num">02</div>
+                <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
                   <h4>Os 12 Pontos de Ativação</h4>
                   <p>Desperte desejo e confiança em cada toque</p>
@@ -271,7 +271,7 @@ export default function HomePage() {
             </div>
             <div className="stitch-code-item reveal">
               <div className="stitch-code-inner">
-                <div className="stitch-code-num">03</div>
+                <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
                   <h4>Os 4 Movimentos de Finalização</h4>
                   <p>Crie um momento inesquecível para ela</p>
@@ -280,7 +280,7 @@ export default function HomePage() {
             </div>
             <div className="stitch-code-item reveal">
               <div className="stitch-code-inner">
-                <div className="stitch-code-num">04</div>
+                <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
                   <h4>Mapas Visuais Ilustrados</h4>
                   <p>Guias com imagens de modelos reais — impossível errar</p>
@@ -368,7 +368,7 @@ export default function HomePage() {
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-guarantee-section fade-section">
         <div className="stitch-container">
-          <div className="stitch-guarantee-inner reveal">
+          <div className="stitch-guarantee-card reveal">
             <div className="stitch-guarantee-icon"><ShieldIcon /></div>
             <h3>Garantia Incondicional de 30 Dias</h3>
             <p>
@@ -482,29 +482,18 @@ export default function HomePage() {
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-final-cta fade-section">
         <div className="stitch-container">
-          <div className="stitch-final-cta-card reveal">
-            <div className="stitch-final-cta-mockup">
-              <img
-                data-lazy
-                data-src="/lovable-uploads/mockup-hf.png"
-                alt="Código do Toque"
-                className="stitch-final-cta-img"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              />
-            </div>
-            <div className="stitch-final-cta-content">
-              <h2>Está Na Hora de Criar Momentos Inesquecíveis</h2>
-              <p>O Código do Toque vai te dar as ferramentas exatas para transformar a experiência dela e criar uma conexão que ela nunca vai esquecer.</p>
-              <div className="stitch-final-cta-price">
-                <span className="stitch-final-cta-from">De R$ 134,60</span>
-                <span className="stitch-final-cta-now">R$ 24,90</span>
-              </div>
-              <button className="stitch-btn-white" onClick={goCheckout}>
-                SIM, QUERO O CÓDIGO DO TOQUE — R$ 24,90
-              </button>
-              <p className="stitch-final-cta-safe">Pagamento seguro · Acesso imediato · Garantia 30 dias</p>
-            </div>
+          <h2 className="reveal">Está Na Hora de Criar Momentos Inesquecíveis</h2>
+          <p className="stitch-final-cta-sub reveal">
+            O Código do Toque vai te dar as ferramentas exatas para transformar a experiência dela e criar uma conexão que ela nunca vai esquecer.
+          </p>
+          <div className="stitch-final-cta-price reveal">
+            <span className="stitch-final-cta-from">De R$ 134,60</span>
+            <span className="stitch-final-cta-now">R$ 24,90</span>
           </div>
+          <button className="stitch-btn-white reveal" onClick={goCheckout}>
+            SIM, QUERO O CÓDIGO DO TOQUE — R$ 24,90
+          </button>
+          <p className="stitch-final-cta-safe reveal">Pagamento seguro · Acesso imediato · Garantia 30 dias</p>
         </div>
       </section>
 

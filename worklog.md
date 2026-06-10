@@ -442,3 +442,24 @@ Stage Summary:
 - All sections consistently dark with white/gray text hierarchy
 - Fully responsive across 576px, 768px, and 1200px+ breakpoints
 - Zero errors on all viewports
+
+---
+Task ID: 12
+Agent: Main Agent
+Task: Revert Task 11 changes — go back to previous format
+
+Work Log:
+- User said "volte ao formato antigo, nao gostei" (go back to the old format, didn't like it)
+- Reverted all Task 11 design changes back to Task 10 format:
+  - Benefits flow: dark → light gray bg, dark cards → white cards, dark text → dark text
+  - Code items: red numbered circles → green checkmark circles with green left border
+  - Bonus cards: removed red top border
+  - Guarantee: full-width red bar → gradient red card centered
+  - Final CTA: card with mockup → gradient section with centered text
+- ESLint: 0 errors, zero console errors
+- Verified via computed styles: benefits bg rgb(243,244,246), code border rgb(34,197,94), guarantee gradient, final CTA gradient
+
+Stage Summary:
+- All Task 11 changes successfully reverted to Task 10 format
+- Light benefits flow, green checkmarks, gradient guarantee card, gradient final CTA
+- Zero errors on desktop + mobile

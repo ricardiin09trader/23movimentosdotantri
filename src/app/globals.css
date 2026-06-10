@@ -188,23 +188,23 @@ a { text-decoration: none; color: inherit; }
 .stitch-hero-rating p { font-size: 12px; color: var(--text-gray-400); }
 
 /* ═══════════════════════════════════════════════════════════
-   BENEFITS FLOW — Dark theme step cards
+   BENEFITS FLOW — Light theme white cards with red icons
    ═══════════════════════════════════════════════════════════ */
 .stitch-benefits {
-  background: #0a0a0a;
+  background: var(--brand-lightGray);
   padding: 64px 0;
-  color: #fff;
+  color: #111;
 }
 .stitch-section-title {
   font-size: clamp(20px, 3.5vw, 32px);
   text-align: center;
-  color: #fff;
+  color: var(--text-gray-800);
   margin-bottom: 10px;
   line-height: 1.2;
 }
 .stitch-section-lead {
   font-size: clamp(12px, 1.8vw, 14px);
-  color: var(--text-gray-400);
+  color: var(--text-gray-500);
   text-align: center;
   max-width: 520px;
   margin: 0 auto 40px;
@@ -234,15 +234,15 @@ a { text-decoration: none; color: inherit; }
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: var(--brand-card);
-  border-radius: 12px;
+  background: #fff;
+  border-radius: 14px;
   padding: 20px 16px;
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: transform .3s, border-color .3s;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  transition: transform .3s, box-shadow .3s;
 }
 .stitch-flow-step:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.1);
 }
 .stitch-flow-icon {
   width: 56px;
@@ -262,17 +262,17 @@ a { text-decoration: none; color: inherit; }
   font-size: clamp(13px, 2vw, 15px);
   font-weight: 700;
   margin-bottom: 4px;
-  color: #fff;
+  color: var(--text-gray-800);
 }
 .stitch-flow-step p {
   font-size: clamp(11px, 1.4vw, 12px);
-  color: var(--text-gray-400);
+  color: var(--text-gray-500);
   line-height: 1.45;
   max-width: 150px;
 }
 
 /* ═══════════════════════════════════════════════════════════
-   CONTENT BREAKDOWN — Cards with red numbered circles
+   CONTENT BREAKDOWN — Cards with green left border + checkmarks
    ═══════════════════════════════════════════════════════════ */
 .stitch-codes-section {
   background: #000;
@@ -294,33 +294,35 @@ a { text-decoration: none; color: inherit; }
   background: var(--brand-card);
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.06);
+  border-left: 3px solid var(--green-500);
   padding: 16px var(--container-pad);
   transition: border-color .3s, transform .2s, box-shadow .3s;
 }
 .stitch-code-item:hover {
-  border-color: rgba(255,255,255,0.1);
+  border-color: rgba(34,197,94,0.2);
   transform: translateX(6px);
-  box-shadow: 0 4px 20px rgba(204,0,0,.08);
+  box-shadow: 0 4px 20px rgba(34,197,94,.08);
 }
 .stitch-code-inner {
   display: flex;
   align-items: center;
   gap: 14px;
 }
-.stitch-code-num {
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  background: var(--brand-red);
-  color: #fff;
-  font-family: var(--font-main), 'Poppins', sans-serif;
-  font-size: 12px;
-  font-weight: 800;
+.stitch-code-check {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  background: rgba(34,197,94,0.1);
+  color: var(--green-500);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(204,0,0,.3);
+  box-shadow: 0 2px 8px rgba(34,197,94,.15);
+}
+.stitch-code-check svg {
+  width: 14px;
+  height: 14px;
 }
 .stitch-code-inner h4 {
   font-family: var(--font-main), 'Poppins', sans-serif;
@@ -352,7 +354,6 @@ a { text-decoration: none; color: inherit; }
   padding: 20px;
   border-radius: 10px;
   border: 1px solid rgba(255,255,255,0.05);
-  border-top: 2px solid var(--brand-red);
   position: relative;
   transition: transform .3s, border-color .3s;
 }
@@ -495,13 +496,16 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ═══════════════════════════════════════════════════════════
-   GUARANTEE — Full-width red bar
+   GUARANTEE — Gradient card
    ═══════════════════════════════════════════════════════════ */
 .stitch-guarantee-section {
-  background: #cc0000;
-  padding: 48px 0;
+  background: #0a0a0a;
+  padding: 72px 0;
 }
-.stitch-guarantee-inner {
+.stitch-guarantee-card {
+  background: linear-gradient(135deg, var(--brand-red), var(--brand-darkRed));
+  border-radius: 16px;
+  padding: 32px;
   text-align: center;
   max-width: 600px;
   margin: 0 auto;
@@ -517,13 +521,13 @@ a { text-decoration: none; color: inherit; }
   justify-content: center;
   color: #fff;
 }
-.stitch-guarantee-inner h3 {
+.stitch-guarantee-card h3 {
   font-size: clamp(18px, 3vw, 24px);
   color: #fff;
   margin-bottom: 12px;
   font-weight: 700;
 }
-.stitch-guarantee-inner p {
+.stitch-guarantee-card p {
   font-size: clamp(13px, 1.8vw, 15px);
   color: rgba(255,255,255,0.9);
   line-height: 1.6;
@@ -818,56 +822,36 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ═══════════════════════════════════════════════════════════
-   FINAL CTA — Card layout with mockup + price
+   FINAL CTA — Gradient section, centered text
    ═══════════════════════════════════════════════════════════ */
 .stitch-final-cta {
-  background: #0a0a0a;
+  background: linear-gradient(135deg, var(--brand-red), var(--brand-darkRed));
   padding: 72px 0;
+  text-align: center;
 }
-.stitch-final-cta-card {
-  background: var(--brand-card);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 32px;
-  align-items: center;
-  padding: 32px;
-  max-width: 800px;
-  margin: 0 auto;
-  box-shadow: 0 20px 60px rgba(0,0,0,.5);
-}
-.stitch-final-cta-mockup {
-  max-width: 200px;
-}
-.stitch-final-cta-img {
-  width: 100%;
-  border-radius: 10px;
-}
-.stitch-final-cta-content {
-  text-align: left;
-}
-.stitch-final-cta-content h2 {
-  font-size: clamp(18px, 2.8vw, 24px);
+.stitch-final-cta h2 {
+  font-size: clamp(20px, 3.5vw, 30px);
   color: #fff;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  line-height: 1.2;
 }
-.stitch-final-cta-content p {
-  font-size: clamp(12px, 1.6vw, 14px);
-  color: var(--text-gray-400);
-  margin-bottom: 16px;
+.stitch-final-cta-sub {
+  font-size: clamp(13px, 1.8vw, 15px);
+  color: rgba(255,255,255,0.85);
+  max-width: 520px;
+  margin: 0 auto 20px;
   line-height: 1.6;
 }
 .stitch-final-cta-price {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 .stitch-final-cta-from {
   font-size: 14px;
-  color: var(--text-gray-500);
+  color: rgba(255,255,255,0.6);
   text-decoration: line-through;
 }
 .stitch-final-cta-now {
@@ -878,8 +862,8 @@ a { text-decoration: none; color: inherit; }
 }
 .stitch-final-cta-safe {
   font-size: 11px;
-  color: var(--text-gray-500);
-  margin-top: 12px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 14px;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1020,8 +1004,8 @@ a { text-decoration: none; color: inherit; }
   .stitch-carousel-card { width: clamp(240px, 40vw, 300px); }
 
   /* Guarantee */
-  .stitch-guarantee-section { padding: 36px 0; }
-  .stitch-guarantee-icon { width: 40px; height: 40px; }
+  .stitch-guarantee-section { padding: 52px 0; }
+  .stitch-guarantee-card { padding: 24px; }
 
   /* Pricing */
   .stitch-pricing-section { padding: 52px 0; }
@@ -1032,8 +1016,6 @@ a { text-decoration: none; color: inherit; }
   /* FAQ + Final CTA */
   .stitch-faq-section { padding: 52px 0; }
   .stitch-final-cta { padding: 52px 0; }
-  .stitch-final-cta-card { gap: 24px; padding: 24px; }
-  .stitch-final-cta-mockup { max-width: 180px; }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1069,7 +1051,8 @@ a { text-decoration: none; color: inherit; }
   /* Content breakdown — more padding for touch */
   .stitch-codes-section { padding: 40px 0; }
   .stitch-code-item { padding: 16px 18px; }
-  .stitch-code-num { width: 28px; height: 28px; min-width: 28px; font-size: 11px; }
+  .stitch-code-check { width: 24px; height: 24px; min-width: 24px; }
+  .stitch-code-check svg { width: 12px; height: 12px; }
 
   /* Bonuses */
   .stitch-bonus-section { padding: 40px 0; }
@@ -1084,7 +1067,8 @@ a { text-decoration: none; color: inherit; }
   .stitch-carousel-card { width: clamp(220px, 70vw, 300px); padding: 14px 16px; }
 
   /* Guarantee */
-  .stitch-guarantee-section { padding: 32px 0; }
+  .stitch-guarantee-section { padding: 40px 0; }
+  .stitch-guarantee-card { padding: 20px; border-radius: 12px; }
 
   /* Pricing */
   .stitch-pricing-section { padding: 40px 0; }
@@ -1104,15 +1088,6 @@ a { text-decoration: none; color: inherit; }
   /* FAQ + Final CTA */
   .stitch-faq-section { padding: 40px 0; }
   .stitch-final-cta { padding: 40px 0; }
-  .stitch-final-cta-card {
-    grid-template-columns: 1fr;
-    text-align: center;
-    padding: 24px;
-    gap: 20px;
-  }
-  .stitch-final-cta-mockup { max-width: 160px; margin: 0 auto; }
-  .stitch-final-cta-price { justify-content: center; }
-  .stitch-final-cta-content { text-align: center; }
 
   .stitch-value-stack { padding: 16px; }
   .stitch-footer { padding: 24px 16px; }
@@ -1153,6 +1128,9 @@ a { text-decoration: none; color: inherit; }
   .stitch-testimonials-section { padding: 48px 0; }
   .stitch-carousel-card { width: clamp(280px, 35vw, 340px); padding: 18px 20px; }
 
+  /* Guarantee */
+  .stitch-guarantee-section { padding: 80px 0; }
+
   /* Pricing */
   .stitch-pricing-section { padding: 96px 0; }
   .stitch-pricing-card { max-width: 500px; }
@@ -1161,8 +1139,6 @@ a { text-decoration: none; color: inherit; }
 
   .stitch-faq-section { padding: 80px 0; }
   .stitch-final-cta { padding: 80px 0; }
-  .stitch-final-cta-card { gap: 40px; padding: 40px; }
-  .stitch-final-cta-mockup { max-width: 220px; }
 }
 
 /* Hide scrollbar during intro */
