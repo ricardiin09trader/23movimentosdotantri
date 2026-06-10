@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════
-   CÓDIGO DO TOQUE — v10: Strong colors, contained GIF, responsive cards
+   CÓDIGO DO TOQUE — v11: Production-ready, mobile-first spacing
    ════════════════════════════════════════════════════════════════ */
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,8 +25,8 @@ a { text-decoration: none; color: inherit; }
   --text: #fff;
   --text-secondary: rgba(255,255,255,.7);
   --text-muted: rgba(255,255,255,.45);
-  --pad: clamp(24px, 5vw, 48px);
-  --sec: clamp(56px, 7vw, 96px);
+  --pad: clamp(20px, 5vw, 48px);
+  --sec: clamp(48px, 8vw, 96px);
   --hdr: 60px;
 }
 
@@ -97,7 +97,8 @@ a { text-decoration: none; color: inherit; }
    ═══════════════════════════════════════════════════════ */
 .stitch-hero {
   position: relative;
-  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; align-items: center; justify-content: center;
   padding-top: var(--hdr); overflow: hidden; background: #000;
 }
 .stitch-hero-bg {
@@ -106,7 +107,7 @@ a { text-decoration: none; color: inherit; }
 }
 .stitch-hero-bg-gif {
   width: 100%; height: 100%; object-fit: cover; object-position: center;
-  opacity: 0.3;
+  opacity: 0.35;
 }
 .stitch-hero-overlay {
   position: absolute; inset: 0;
@@ -123,7 +124,7 @@ a { text-decoration: none; color: inherit; }
   color: var(--text-secondary); margin-bottom: 20px;
 }
 .stitch-hero-title {
-  font-size: clamp(26px, 6vw, 52px); line-height: 1.08; color: #fff;
+  font-size: clamp(24px, 6vw, 52px); line-height: 1.08; color: #fff;
   margin-bottom: 24px; text-shadow: 0 2px 24px rgba(0,0,0,.6);
 }
 .stitch-hero-title-red { color: var(--red); }
@@ -240,7 +241,7 @@ a { text-decoration: none; color: inherit; }
 }
 .stitch-solution-grid {
   display: grid; grid-template-columns: 1fr;
-  gap: 14px; max-width: 960px; margin: 40px auto 0;
+  gap: 12px; max-width: 960px; margin: 40px auto 0;
   padding: 0 var(--pad);
 }
 .stitch-solution-card {
@@ -272,7 +273,7 @@ a { text-decoration: none; color: inherit; }
 }
 .stitch-modules-grid {
   display: grid; grid-template-columns: 1fr;
-  gap: 14px; max-width: 960px; margin: 0 auto;
+  gap: 12px; max-width: 960px; margin: 0 auto;
   padding: 0 var(--pad);
 }
 .stitch-module-card {
@@ -303,7 +304,7 @@ a { text-decoration: none; color: inherit; }
 }
 .stitch-bonus-header {
   background: var(--red);
-  padding: clamp(40px, 6vw, 64px) var(--pad);
+  padding: clamp(36px, 6vw, 64px) var(--pad);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -327,9 +328,9 @@ a { text-decoration: none; color: inherit; }
   text-align: center; margin-bottom: 0; position: relative; z-index: 1;
 }
 .stitch-bonus-grid {
-  display: grid; grid-template-columns: 1fr; gap: 14px;
+  display: grid; grid-template-columns: 1fr; gap: 12px;
   max-width: 960px; margin: 0 auto;
-  padding: 40px var(--pad) var(--sec);
+  padding: 36px var(--pad) var(--sec);
 }
 .stitch-bonus-card {
   background: var(--card); border: 1px solid var(--card-border);
@@ -417,7 +418,7 @@ a { text-decoration: none; color: inherit; }
    10. GARANTIA
    ═══════════════════════════════════════════════════════ */
 .stitch-guarantee {
-  background: var(--red); padding: clamp(56px, 8vw, 80px) 0; text-align: center;
+  background: var(--red); padding: clamp(48px, 8vw, 80px) 0; text-align: center;
 }
 .stitch-guarantee-inner { max-width: 560px; margin: 0 auto; padding: 0 var(--pad); }
 .stitch-guarantee-icon {
@@ -443,7 +444,7 @@ a { text-decoration: none; color: inherit; }
    10.5 COMUNIDADE EXCLUSIVA — Urgency banner
    ═══════════════════════════════════════════════════════ */
 .stitch-community {
-  background: #000; padding: clamp(48px, 7vw, 72px) 0;
+  background: #000; padding: clamp(48px, 8vw, 72px) 0;
   text-align: center;
   position: relative;
   border-top: 1px solid var(--card-border);
@@ -503,7 +504,7 @@ a { text-decoration: none; color: inherit; }
   position: relative;
 }
 .stitch-offer-image img {
-  max-width: 280px; border-radius: 8px;
+  max-width: 280px; width: 100%; border-radius: 8px;
   transition: transform .3s;
 }
 .stitch-offer-image:hover img { transform: scale(1.02); }
@@ -660,9 +661,11 @@ a { text-decoration: none; color: inherit; }
    RESPONSIVE — TABLET (576–768px)
    ═══════════════════════════════════════════════════════ */
 @media (min-width: 576px) and (max-width: 768px) {
-  .stitch-solution-grid { grid-template-columns: repeat(2, 1fr); }
-  .stitch-modules-grid { grid-template-columns: repeat(2, 1fr); }
-  .stitch-bonus-grid { grid-template-columns: repeat(2, 1fr); }
+  .stitch-solution-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .stitch-modules-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .stitch-bonus-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .stitch-btn-hero { width: 100%; max-width: 420px; }
+  .stitch-community-cta { width: 100%; max-width: 420px; }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -677,7 +680,6 @@ a { text-decoration: none; color: inherit; }
   .stitch-offer-card { flex-direction: row; }
   .stitch-offer-image { width: 45%; padding: 32px; }
   .stitch-offer-details { width: 55%; }
-  .stitch-offer-image img { max-width: 100%; }
   .stitch-transition { padding: clamp(56px, 8vw, 80px) var(--pad); }
 }
 
@@ -685,33 +687,113 @@ a { text-decoration: none; color: inherit; }
    RESPONSIVE — MOBILE (< 576px)
    ═══════════════════════════════════════════════════════ */
 @media (max-width: 576px) {
-  :root { --pad: 24px; --hdr: 54px; }
-  .stitch-header { padding: 0 20px; }
+  :root {
+    --pad: 20px;
+    --sec: 48px;
+    --hdr: 52px;
+  }
+
+  /* Header */
+  .stitch-header { padding: 0 16px; }
   .stitch-header-nav { display: none !important; }
   .stitch-header-logo-text { font-size: 11px; }
-  .stitch-hero-content { padding: 40px 20px 60px; }
+
+  /* Hero — GIF more visible on mobile, text centered */
+  .stitch-hero {
+    min-height: 100vh; min-height: 100dvh;
+  }
+  .stitch-hero-bg-gif { opacity: 0.25; }
   .stitch-hero-overlay {
     background:
-      linear-gradient(to right, rgba(0,0,0,.94) 0%, rgba(0,0,0,.8) 60%, rgba(0,0,0,.6) 100%),
-      linear-gradient(to bottom, rgba(0,0,0,.4) 0%, rgba(0,0,0,.15) 50%, rgba(0,0,0,.85) 100%);
+      linear-gradient(to right, rgba(0,0,0,.95) 0%, rgba(0,0,0,.85) 50%, rgba(0,0,0,.7) 100%),
+      linear-gradient(to bottom, rgba(0,0,0,.5) 0%, rgba(0,0,0,.1) 40%, rgba(0,0,0,.85) 100%);
   }
-  .stitch-btn-hero { padding: 15px 24px; font-size: 11px; }
+  .stitch-hero-content {
+    padding: 48px 20px 64px;
+  }
+  .stitch-hero-title { margin-bottom: 20px; }
+  .stitch-hero-desc { margin-bottom: 20px; }
+  .stitch-hero-rating { margin-bottom: 24px; }
+
+  /* CTA — full width on mobile */
+  .stitch-btn-hero {
+    width: 100%; padding: 16px 24px; font-size: 11px;
+  }
+
+  /* Problem */
+  .stitch-problem { padding: 48px 0; }
+  .stitch-problem-title { margin-bottom: 20px; }
+  .stitch-problem-text { margin-bottom: 16px; }
+  .stitch-pain-list { gap: 14px; margin-top: 24px; }
+
+  /* Transition */
+  .stitch-transition { padding: 36px 20px; }
+
+  /* Solution cards */
+  .stitch-solution { padding: 48px 0; }
+  .stitch-solution-grid { gap: 10px; padding: 0 20px; margin-top: 32px; }
   .stitch-solution-card { padding: 20px; }
+
+  /* Content modules */
+  .stitch-content { padding: 48px 0; }
+  .stitch-modules-grid { gap: 10px; padding: 0 20px; }
   .stitch-module-card { padding: 20px; }
   .stitch-module-num { width: 34px; height: 34px; font-size: 12px; }
+
+  /* Bonus */
+  .stitch-bonus-header { padding: 32px 20px; }
+  .stitch-bonus-grid { gap: 10px; padding: 32px 20px 48px; }
   .stitch-bonus-card { padding: 20px; }
-  .stitch-carousel-card { width: clamp(260px, 82vw, 360px); padding: 16px; }
+
+  /* Testimonials */
+  .stitch-testimonials { padding: 48px 0; }
+  .stitch-carousel-card {
+    width: clamp(260px, 82vw, 320px); padding: 16px; margin-right: 12px;
+  }
+
+  /* Guarantee */
+  .stitch-guarantee { padding: 40px 0; }
   .stitch-guarantee-icon { width: 48px; height: 48px; }
   .stitch-guarantee-icon svg { width: 20px; height: 20px; }
-  .stitch-offer-card { border-radius: 12px; }
+
+  /* Community */
+  .stitch-community { padding: 40px 0; }
+  .stitch-community-inner { padding: 0 20px; }
+  .stitch-community-tag { padding: 6px 16px; font-size: 10px; }
+  .stitch-community-heading { margin-bottom: 12px; }
+  .stitch-community-text { margin-bottom: 8px; }
+  .stitch-community-subtext { margin-bottom: 24px; }
+  .stitch-community-cta {
+    width: 100%; padding: 14px 24px; font-size: 11px;
+  }
+
+  /* Offer */
+  .stitch-offer { padding: 48px 0; }
+  .stitch-offer-card { border-radius: 12px; margin: 0 20px; }
   .stitch-offer-image { padding: 20px; }
-  .stitch-offer-image img { max-width: 200px; }
-  .stitch-offer-details { padding: 24px 20px; }
+  .stitch-offer-image img { max-width: 180px; }
+  .stitch-offer-details { padding: 20px; }
   .stitch-offer-amount { font-size: 40px; }
-  .stitch-offer-cta { padding: 15px 16px; font-size: 11px; }
+  .stitch-offer-cta { padding: 14px 16px; font-size: 11px; }
+  .stitch-offer-list { gap: 8px; margin-bottom: 20px; }
   .stitch-offer-list li { font-size: 12px; }
-  .stitch-footer { padding: 28px 0; }
-  .stitch-toast { left: 12px; right: 12px; bottom: 16px; max-width: calc(100% - 24px); }
+
+  /* FAQ */
+  .stitch-faq { padding: 48px 0; }
+  .stitch-faq-question { padding: 16px 0; }
+
+  /* Footer CTA */
+  .stitch-footer-cta { padding: 40px 0; }
+  .stitch-footer-cta-badges { gap: 12px; }
+
+  /* Footer */
+  .stitch-footer { padding: 24px 0; }
+
+  /* Toast */
+  .stitch-toast {
+    left: 12px; right: 12px; bottom: 16px;
+    max-width: calc(100% - 24px);
+  }
 }
 
 /* Intro loading lock */

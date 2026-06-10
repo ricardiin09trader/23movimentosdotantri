@@ -421,24 +421,24 @@ export default function HomePage() {
         <div className="stitch-container">
           <div className="stitch-bonus-grid">
             {bonuses.map((b, i) => (
-            <motion.div
-              key={i}
-              className="stitch-bonus-card"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.5, delay: 0.1 * i, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            >
-              <p className="stitch-bonus-label">BÔNUS {b.num}</p>
-              <h4 className="stitch-bonus-card-title">{b.title}</h4>
-              <p className="stitch-bonus-card-desc">{b.desc}</p>
-              <div className="stitch-bonus-card-bottom">
-                <span className="stitch-bonus-value">{b.value}</span>
-                <span className="stitch-bonus-free">GRÁTIS</span>
-              </div>
-            </motion.div>
-          ))}
+              <motion.div
+                key={i}
+                className="stitch-bonus-card"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.5, delay: 0.1 * i, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              >
+                <p className="stitch-bonus-label">BÔNUS {b.num}</p>
+                <h4 className="stitch-bonus-card-title">{b.title}</h4>
+                <p className="stitch-bonus-card-desc">{b.desc}</p>
+                <div className="stitch-bonus-card-bottom">
+                  <span className="stitch-bonus-value">{b.value}</span>
+                  <span className="stitch-bonus-free">GRÁTIS</span>
+                </div>
+              </motion.div>
+            ))}
           </div>
           <MotionFade delay={0.2}>
             <p className="stitch-bonus-total">Valor total dos bônus: R$ 109,70 · Incluídos sem custo adicional</p>
