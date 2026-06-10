@@ -26,7 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <head>
+      <body
+        className={`${poppins.variable} antialiased intro-loading`}
+        style={{ background: "#0a0a0a", color: "#fff" }}
+        suppressHydrationWarning
+      >
         {/* ═══ FACEBOOK PIXEL — 900080772936894 ═══ */}
         <Script id="facebook-pixel" strategy="afterInteractive">
           {`
@@ -45,15 +49,21 @@ export default function RootLayout({
 
         {/* ═══ UTMIFY ═══ */}
         <Script
-          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+          id="utmify-loader"
           strategy="afterInteractive"
-          {...({ 'data-utmify-prevent-xcod-sck': '', 'data-utmify-prevent-subids': '' } as Record<string, string>)}
+          dangerouslySetInnerHTML={{
+            __html: `(function(){
+              var s = document.createElement('script');
+              s.src = 'https://cdn.utmify.com.br/scripts/utms/latest.js';
+              s.async = true;
+              s.defer = true;
+              s.setAttribute('data-utmify-prevent-xcod-sck', '');
+              s.setAttribute('data-utmify-prevent-subids', '');
+              document.head.appendChild(s);
+            })();`,
+          }}
         />
-      </head>
-      <body
-        className={`${poppins.variable} antialiased intro-loading`}
-        style={{ background: "#0a0a0a", color: "#fff" }}
-      >
+
         {/* Facebook Pixel noscript fallback */}
         <noscript>
           <img
