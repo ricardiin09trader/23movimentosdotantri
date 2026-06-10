@@ -463,3 +463,33 @@ Stage Summary:
 - All Task 11 changes successfully reverted to Task 10 format
 - Light benefits flow, green checkmarks, gradient guarantee card, gradient final CTA
 - Zero errors on desktop + mobile
+
+---
+Task ID: 13
+Agent: Main Agent
+Task: Apply new full copy to landing page
+
+Work Log:
+- User provided complete new copy with significant updates across all sections
+- **Hero**: Added "Método desenvolvido por terapeuta tântrica com 6 anos de prática clínica" line, added trust items below CTA (✓ Acesso imediato · ✓ Garantia incondicional), updated subtitle to "23 movimentos tântricos"
+- **Benefits section**: Restructured with "O Que Você Vai Descobrir" as main header, "Aprenda Como Conduzir a Melhor Experiência da Vida Dela" as subtitle (red), added 2-paragraph intro about tantra, renamed steps (Conexão Emocional Profunda, Técnica Comprovada, Fácil de Aplicar, Resultados Imediatos) with longer descriptions
+- **Content breakdown**: Updated card descriptions to be more detailed (e.g., "Como criar o ambiente perfeito...", "Descubra exatamente onde, como e quando tocar...")
+- **Bonuses**: Added "Ganhe Hoje" section label, longer bonus descriptions, changed value format to "Valor: R$ X · Grátis Hoje" (green text)
+- **Testimonials**: Updated to 3 reviews (Carlos M. São Paulo, Rafael T. Curitiba, Diego S. Rio de Janeiro) with longer quotes, kept carousel format with increased card width and quote max-height
+- **Testimonials section**: Added "Resultados Reais" section label
+- **Pricing card**: Added "ACESSO IMEDIATO" badge, updated checklist with bonus values (R$ 59,90, R$ 14,90, R$ 34,90), changed trust text to "Pagamento seguro via Cakto · Acesso em menos de 2 minutos"
+- **FAQ**: Updated all 5 answers with new wording (e.g., "plataforma exclusiva", "reacender a chama")
+- **Final CTA**: Added 3 trust badges (Acesso Imediato, Garantia de 30 dias, Pagamento 100% Seguro) with icons
+- **Footer**: Added 4 trust items with icons (Pagamento 100% seguro, Acesso imediato, Garantia de 30 dias, Suporte após compra), updated copyright to "© 2025 Código do Toque · Luna Amaral · Todos os direitos reservados."
+- **CSS**: Added styles for hero-author, hero-trust-inline, section-subtitle, section-intro, bonus-section-label, testimonials-label, pricing-card-access, final-cta-badges, footer-trust, adjusted carousel card width and quote max-height
+- ESLint: 0 errors, zero console errors
+- Verified on desktop + mobile: all new elements present, correct text content
+
+Stage Summary:
+- Complete copy overhaul applied across all sections
+- New credibility elements: therapist line, "Resultados Reais" label, "Ganhe Hoje" label
+- Testimonials updated to 3 longer reviews with new cities
+- Bonus values shown in checklist items
+- Final CTA and footer now have trust badges
+- Footer includes "Luna Amaral" in copyright
+- Zero errors on all viewports

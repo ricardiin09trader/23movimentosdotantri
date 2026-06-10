@@ -50,23 +50,51 @@ const StarIcon = () => (
     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
   </svg>
 );
+const CheckIcon = () => (
+  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} />
+  </svg>
+);
+const LockIcon = () => (
+  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
+  </svg>
+);
+const ZapIcon = () => (
+  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
+  </svg>
+);
+const ShieldFooterIcon = () => (
+  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
+  </svg>
+);
+const RocketIcon = () => (
+  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
+  </svg>
+);
+const HeadsetIcon = () => (
+  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9m-4.27 13a2 2 0 01-3.46 0" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
+  </svg>
+);
 
 /* ═══ FAQ DATA ═══ */
 const faqs = [
-  { q: 'Como recebo o acesso?', a: 'Imediatamente após a confirmação do pagamento, você recebe um email com acesso ao PDF completo — com imagens de modelos reais para melhor ensinamento.' },
-  { q: 'Funciona para relacionamentos de longo prazo?', a: 'Sim. É perfeito tanto para quem está começando quanto para quem quer reacender a conexão em um relacionamento consolidado.' },
-  { q: 'Preciso de experiência prévia?', a: 'Não. O conteúdo é 100% passo a passo, com imagens ilustradas, para qualquer pessoa aplicar.' },
-  { q: 'E se eu não gostar?', a: 'Você tem 30 dias de garantia incondicional. Reembolso total, sem perguntas, sem burocracia.' },
-  { q: 'O acesso é vitalício?', a: 'Sim. Paga uma vez e acessa para sempre, incluindo todas as atualizações futuras.' },
+  { q: 'Como recebo o acesso?', a: 'Imediatamente após a confirmação do pagamento, você receberá um email com seus dados de acesso à plataforma exclusiva. Leva menos de 2 minutos.' },
+  { q: 'Funciona para relacionamentos de longo prazo?', a: 'Sim! O Código do Toque é perfeito tanto para quem está começando quanto para casais que querem reacender a chama e aprofundar a conexão.' },
+  { q: 'Preciso de experiência prévia?', a: 'Não! O método foi desenvolvido para qualquer pessoa, mesmo sem nenhuma experiência em tantra ou técnicas similares. Tudo é explicado passo a passo.' },
+  { q: 'E se eu não gostar?', a: 'Você tem 30 dias de garantia incondicional. Se não ficar satisfeito por qualquer motivo, basta pedir o reembolso completo — sem perguntas.' },
+  { q: 'O acesso é vitalício?', a: 'Sim! Você paga apenas uma vez e tem acesso para sempre, incluindo todas as atualizações futuras do conteúdo.' },
 ];
 
 /* ═══ TESTIMONIALS DATA ═══ */
 const testimonials = [
-  { name: 'Camila R.', city: 'Florianópolis, SC', quote: 'Depois de aplicar com minha namorada, a conexão entre nós mudou completamente. Ela disse que nunca se sentiu tão vista e desejada. O conteúdo funciona para qualquer tipo de casal.', stars: 5 },
-  { name: 'Carlos M.', city: 'Jundiaí, SP', quote: 'Minha esposa disse que foi a melhor experiência em 8 anos de casamento. Eu mudei a forma como me aproximo, como olho. Valeu cada centavo.', stars: 5 },
-  { name: 'Rafael T.', city: 'Londrina, PR', quote: 'Depois de aplicar o conteúdo, minha namorada disse que eu mudei de uma forma que ela não consegue explicar. Me sinto mais confiante.', stars: 5 },
-  { name: 'Diego S.', city: 'Uberlândia, MG', quote: 'Comprei cético. Na primeira semana ela disse que nunca se sentiu tão desejada. Isso é sobre presença. E presença muda tudo.', stars: 5 },
-  { name: 'Bruno A.', city: 'Joinville, SC', quote: 'O segredo não é só técnica, é presença. Depois que comecei a aplicar os movimentos, minha parceira percebeu na primeira noite. Recomendo demais.', stars: 5 },
+  { name: 'Carlos M.', city: 'São Paulo, SP', quote: 'Minha esposa disse que foi a melhor experiência que já tivemos em 8 anos de casamento. Os movimentos são simples mas fazem TODA a diferença. Valeu cada centavo.', stars: 5 },
+  { name: 'Rafael T.', city: 'Curitiba, PR', quote: 'Eu sempre achei que sabia o que estava fazendo, mas percebi que estava completamente errado. Depois de aplicar os 23 códigos, a conexão com minha namorada está em outro nível.', stars: 5 },
+  { name: 'Diego S.', city: 'Rio de Janeiro, RJ', quote: 'Material sério e profissional. Nada de "truque mágico", são técnicas reais baseadas em tantra que realmente funcionam. Meu relacionamento mudou completamente.', stars: 5 },
 ];
 
 /* ═══ MAIN PAGE ═══ */
@@ -77,7 +105,6 @@ export default function HomePage() {
 
   /* ═══ SCROLL REVEAL + FADE IN/OUT ═══ */
   useEffect(() => {
-    // Reveal on scroll-in
     const revealEls = document.querySelectorAll('.reveal');
     const revealObs = new IntersectionObserver(
       (entries) => {
@@ -92,7 +119,6 @@ export default function HomePage() {
     );
     revealEls.forEach((el) => revealObs.observe(el));
 
-    // Fade sections in/out on scroll
     const fadeSections = document.querySelectorAll('.fade-section');
     const fadeObs = new IntersectionObserver(
       (entries) => {
@@ -130,8 +156,8 @@ export default function HomePage() {
 
   /* ═══ SOCIAL PROOF TOAST ═══ */
   useEffect(() => {
-    const names = ['Carlos M.', 'Rafael T.', 'Diego S.', 'Bruno A.', 'Marcos P.', 'Eduardo L.', 'Felipe R.', 'André V.', 'Lucas C.', 'Thiago N.', 'Pedro H.', 'Gabriel S.'];
-    const cities = ['Jundiaí, SP', 'Campinas, SP', 'Uberlândia, MG', 'Londrina, PR', 'Joinville, SC', 'Sorocaba, SP', 'Governador Valadares, MG', 'Vila Velha, ES', 'São José do Rio Preto, SP', 'Maringá, PR', 'Passo Fundo, RS', 'Caxias do Sul, RS'];
+    const names = ['Carlos M.', 'Rafael T.', 'Diego S.', 'Marcos P.', 'Eduardo L.', 'Felipe R.', 'André V.', 'Lucas C.', 'Thiago N.', 'Pedro H.', 'Gabriel S.', 'Bruno A.'];
+    const cities = ['São Paulo, SP', 'Campinas, SP', 'Uberlândia, MG', 'Curitiba, PR', 'Joinville, SC', 'Sorocaba, SP', 'Governador Valadares, MG', 'Vila Velha, ES', 'São José do Rio Preto, SP', 'Maringá, PR', 'Rio de Janeiro, RJ', 'Porto Alegre, RS'];
     const actions = ['acabou de adquirir', 'acessou o conteúdo', 'completou o módulo 1', 'enviou mensagem de agradecimento'];
     let lastIdx = -1;
     function showToast() {
@@ -162,11 +188,11 @@ export default function HomePage() {
 
       {/* ═══ TOP BANNER ═══ */}
       <div className="stitch-top-banner">
-        <p>OFERTA ESPECIAL — Apenas <strong>R$ 24,90</strong> (86% OFF)</p>
+        <p>OFERTA ESPECIAL · LANÇAMENTO — Apenas <strong>R$ 24,90</strong> (81% OFF)</p>
       </div>
 
       {/* ═══════════════════════════════════════════════════════════
-           HERO — HF image with overlay
+           HERO
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-hero">
         <div className="stitch-hero-bg">
@@ -183,16 +209,23 @@ export default function HomePage() {
         <div className="stitch-container">
           <div className="stitch-hero-content">
             <h1 className="stitch-hero-title reveal">
-              O Toque Que Faz<br />Ela Pensar em Você
+              O Toque Que Faz Ela<br />Pensar em Você
             </h1>
             <p className="stitch-hero-sub reveal">
-              Descubra os 23 movimentos táticos que criam uma conexão tão profunda que ela nunca vai esquecer da experiência ao seu lado.
+              Descubra os 23 movimentos tântricos que criam uma conexão tão profunda que ela nunca vai esquecer da experiência ao seu lado.
+            </p>
+            <p className="stitch-hero-author reveal">
+              Método desenvolvido por terapeuta tântrica com 6 anos de prática clínica
             </p>
             <div className="stitch-hero-btn-wrap reveal">
               <button className="stitch-btn-primary" onClick={goCheckout}>
                 QUERO DESPERTAR O PODER DO TOQUE — R$ 24,90
               </button>
             </div>
+            <p className="stitch-hero-trust-inline reveal">
+              <span><CheckIcon /> Acesso imediato após o pagamento</span>
+              <span><CheckIcon /> Garantia incondicional de 30 dias</span>
+            </p>
             <div className="stitch-hero-rating reveal">
               <div className="stitch-hero-stars">
                 {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
@@ -209,45 +242,51 @@ export default function HomePage() {
       <section className="stitch-benefits fade-section">
         <div className="stitch-container">
           <h2 className="stitch-section-title reveal">
-            Aprenda Como Conduzir a Melhor<br />Experiência da Vida Dela
+            O Que Você Vai Descobrir
           </h2>
-          <p className="stitch-section-lead reveal">
-            Passos e movimentos precisos que vão levar seu relacionamento a um nível de intimidade nunca visto antes.
+          <p className="stitch-section-subtitle reveal">
+            Aprenda Como Conduzir a Melhor Experiência da Vida Dela
+          </p>
+          <p className="stitch-section-intro reveal">
+            A maioria dos homens não percebe, mas o toque é a linguagem mais poderosa da intimidade. Um toque consciente e intencional pode criar uma conexão emocional profunda que vai muito além do físico.
+          </p>
+          <p className="stitch-section-intro reveal">
+            O Código do Toque revela os 23 movimentos tântricos que ativam os pontos de prazer e relaxamento profundo, fazendo dela uma experiência inesquecível — e fazendo você se tornar alguém que ela nunca vai esquecer.
           </p>
 
           <div className="stitch-flow-grid">
             <div className="stitch-flow-line" />
             <div className="stitch-flow-step reveal">
               <div className="stitch-flow-icon"><HeartIcon /></div>
-              <h3>Conexão</h3>
-              <p>Prepare o terreno criando intimidade verdadeira e confiança absoluta.</p>
+              <h3>Conexão Emocional Profunda</h3>
+              <p>Cada movimento foi desenvolvido para criar intimidade verdadeira e confiança absoluta</p>
             </div>
             <div className="stitch-flow-step reveal">
               <div className="stitch-flow-icon"><BoltIcon /></div>
-              <h3>Técnica</h3>
-              <p>Os movimentos exatos para despertar desejo e confiança em cada toque.</p>
+              <h3>Técnica Comprovada</h3>
+              <p>Baseado em 6 anos de prática clínica em terapia tântrica com centenas de casos de sucesso</p>
             </div>
             <div className="stitch-flow-step reveal">
               <div className="stitch-flow-icon"><ClockIcon /></div>
-              <h3>Prática</h3>
-              <p>Fácil de aplicar — passo a passo completo, sem experiência prévia.</p>
+              <h3>Fácil de Aplicar</h3>
+              <p>Instruções passo a passo que qualquer pessoa pode seguir, mesmo sem experiência prévia</p>
             </div>
             <div className="stitch-flow-step reveal">
               <div className="stitch-flow-icon"><ChartIcon /></div>
-              <h3>Resultados</h3>
-              <p>Impacto desde a primeira aplicação — transformação instantânea.</p>
+              <h3>Resultados Imediatos</h3>
+              <p>Você vai perceber a diferença já na primeira vez que aplicar os movimentos</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           CONTENT BREAKDOWN — Clean cards, no bg images
+           CONTENT BREAKDOWN
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-codes-section fade-section">
         <div className="stitch-container stitch-container-narrow">
           <h2 className="stitch-section-title-dark reveal">
-            Os 23 Códigos Que Vão Transformar<br />a Experiência Dela
+            Conteúdo Completo<br />Os 23 Códigos Que Vão Transformar a Experiência Dela
           </h2>
 
           <div className="stitch-codes-list">
@@ -256,7 +295,7 @@ export default function HomePage() {
                 <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
                   <h4>Os 7 Movimentos de Preparação</h4>
-                  <p>Crie o ambiente ideal para uma conexão profunda</p>
+                  <p>Como criar o ambiente perfeito e preparar o corpo dela para receber toques profundos e relaxar completamente</p>
                 </div>
               </div>
             </div>
@@ -265,7 +304,7 @@ export default function HomePage() {
                 <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
                   <h4>Os 12 Pontos de Ativação</h4>
-                  <p>Desperte desejo e confiança em cada toque</p>
+                  <p>Descubra exatamente onde, como e quando tocar para ativar as zonas de prazer profundo que a maioria dos homens desconhece</p>
                 </div>
               </div>
             </div>
@@ -274,7 +313,7 @@ export default function HomePage() {
                 <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
                   <h4>Os 4 Movimentos de Finalização</h4>
-                  <p>Crie um momento inesquecível para ela</p>
+                  <p>A sequência exata para criar o clímax perfeito e deixar ela em um estado de relaxamento e conexão total</p>
                 </div>
               </div>
             </div>
@@ -283,7 +322,7 @@ export default function HomePage() {
                 <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
                   <h4>Mapas Visuais Ilustrados</h4>
-                  <p>Guias com imagens de modelos reais — impossível errar</p>
+                  <p>Guias visuais detalhados mostrando cada movimento, pressão e ritmo — impossível errar</p>
                 </div>
               </div>
             </div>
@@ -296,6 +335,7 @@ export default function HomePage() {
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-bonus-section fade-section">
         <div className="stitch-container">
+          <p className="stitch-bonus-section-label reveal">Ganhe Hoje</p>
           <h2 className="stitch-section-title-dark reveal">
             Mais 3 Bônus Exclusivos Para Você
           </h2>
@@ -305,27 +345,27 @@ export default function HomePage() {
               <span className="stitch-bonus-badge">Grátis Hoje</span>
               <div className="stitch-bonus-num">01</div>
               <h4>Sexo Tântrico para Iniciantes</h4>
-              <p>Transforme a intimidade usando princípios milenares.</p>
-              <p className="stitch-bonus-value">Valor real: <s>R$ 59,90</s></p>
+              <p>Guia completo para transformar a experiência íntima usando os princípios do tantra — mesmo se você nunca estudou sobre o assunto.</p>
+              <p className="stitch-bonus-value">Valor: R$ 59,90 · Grátis Hoje</p>
             </div>
             <div className="stitch-bonus-card reveal">
               <span className="stitch-bonus-badge">Grátis Hoje</span>
               <div className="stitch-bonus-num">02</div>
               <h4>Guia dos 7 Sussurros</h4>
-              <p>As palavras certas no momento certo para mais conexão.</p>
-              <p className="stitch-bonus-value">Valor real: <s>R$ 14,90</s></p>
+              <p>As palavras exatas para usar durante os toques que amplificam a conexão e o prazer em até 300%.</p>
+              <p className="stitch-bonus-value">Valor: R$ 14,90 · Grátis Hoje</p>
             </div>
             <div className="stitch-bonus-card reveal">
               <span className="stitch-bonus-badge">Grátis Hoje</span>
               <div className="stitch-bonus-num">03</div>
               <h4>Controle Absoluto</h4>
-              <p>Respiração e foco mental para total domínio.</p>
-              <p className="stitch-bonus-value">Valor real: <s>R$ 34,90</s></p>
+              <p>Técnicas comprovadas de respiração e foco mental para você durar quanto tempo quiser e ter total controle.</p>
+              <p className="stitch-bonus-value">Valor: R$ 34,90 · Grátis Hoje</p>
             </div>
           </div>
 
           <div className="stitch-value-stack reveal">
-            <p className="stitch-value-stack-label">Valor total dos bônus</p>
+            <p className="stitch-value-stack-label">Valor Total dos Bônus:</p>
             <p className="stitch-value-stack-price">R$ 109,70</p>
             <p className="stitch-value-stack-note">Seu investimento hoje: <strong>R$ 24,90</strong></p>
           </div>
@@ -337,6 +377,7 @@ export default function HomePage() {
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-testimonials-section fade-section">
         <div className="stitch-container">
+          <p className="stitch-testimonials-label reveal">Resultados Reais</p>
           <h2 className="stitch-section-title-dark reveal">
             O Que Nossos Alunos Estão Dizendo
           </h2>
@@ -373,7 +414,7 @@ export default function HomePage() {
             <h3>Garantia Incondicional de 30 Dias</h3>
             <p>
               Você tem 30 dias completos para testar os 23 movimentos do Código do Toque.
-              Se por qualquer motivo não ficar satisfeito, devolvemos 100% do seu dinheiro — sem perguntas, sem burocracia.
+              Se por qualquer motivo você não ficar satisfeito, devolvemos 100% do seu dinheiro — sem perguntas, sem burocracia.
             </p>
             <p className="stitch-guarantee-risk">O risco é todo nosso. Você só tem a ganhar.</p>
           </div>
@@ -381,7 +422,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           PRICING — Centered card layout (old copy structure)
+           PRICING — Centered card layout
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-pricing-section fade-section">
         <div className="stitch-container">
@@ -408,6 +449,11 @@ export default function HomePage() {
                 <span className="stitch-pricing-card-name">Código do Toque</span>
               </div>
 
+              <div className="stitch-pricing-card-access">
+                <span className="stitch-pricing-card-access-icon"><ZapIcon /></span>
+                <span>ACESSO IMEDIATO</span>
+              </div>
+
               {/* Sold count */}
               <div className="stitch-pricing-card-sold">
                 <span className="stitch-pricing-card-sold-count">+488</span>
@@ -431,9 +477,9 @@ export default function HomePage() {
               {/* Checklist */}
               <ul className="stitch-pricing-card-list">
                 <li><CheckWhite /> Código do Toque — 23 movimentos completos</li>
-                <li><CheckWhite /> Bônus: Sexo Tântrico para Iniciantes</li>
-                <li><CheckWhite /> Bônus: Guia dos 7 Sussurros</li>
-                <li><CheckWhite /> Bônus: Controle Absoluto</li>
+                <li><CheckWhite /> Bônus: Sexo Tântrico para Iniciantes (R$ 59,90)</li>
+                <li><CheckWhite /> Bônus: Guia dos 7 Sussurros (R$ 14,90)</li>
+                <li><CheckWhite /> Bônus: Controle Absoluto (R$ 34,90)</li>
                 <li><CheckWhite /> Acesso imediato e vitalício</li>
                 <li><CheckWhite /> Garantia incondicional de 30 dias</li>
               </ul>
@@ -445,8 +491,8 @@ export default function HomePage() {
 
               {/* Trust */}
               <div className="stitch-pricing-card-trust">
-                <span><svg className="stitch-trust-lock" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} /></svg> Pagamento seguro</span>
-                <span><svg className="stitch-trust-bolt" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} /></svg> Acesso em menos de 2 min</span>
+                <span><LockIcon /> Pagamento seguro via Cakto</span>
+                <span><ZapIcon /> Acesso em menos de 2 minutos</span>
               </div>
             </div>
           </div>
@@ -482,30 +528,40 @@ export default function HomePage() {
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-final-cta fade-section">
         <div className="stitch-container">
-          <h2 className="reveal">Está Na Hora de Criar Momentos Inesquecíveis</h2>
+          <h2 className="reveal">Está na Hora de Criar Momentos Inesquecíveis</h2>
           <p className="stitch-final-cta-sub reveal">
-            O Código do Toque vai te dar as ferramentas exatas para transformar a experiência dela e criar uma conexão que ela nunca vai esquecer.
+            O Código do Toque vai te dar as ferramentas exatas para transformar a experiência dela e criar uma conexão que ela nunca vai esquecer
           </p>
-          <div className="stitch-final-cta-price reveal">
-            <span className="stitch-final-cta-from">De R$ 134,60</span>
-            <span className="stitch-final-cta-now">R$ 24,90</span>
-          </div>
           <button className="stitch-btn-white reveal" onClick={goCheckout}>
             SIM, QUERO O CÓDIGO DO TOQUE — R$ 24,90
           </button>
-          <p className="stitch-final-cta-safe reveal">Pagamento seguro · Acesso imediato · Garantia 30 dias</p>
+          <div className="stitch-final-cta-badges reveal">
+            <div className="stitch-final-cta-badge">
+              <RocketIcon />
+              <span>Acesso Imediato</span>
+            </div>
+            <div className="stitch-final-cta-badge">
+              <ShieldFooterIcon />
+              <span>Garantia de 30 dias</span>
+            </div>
+            <div className="stitch-final-cta-badge">
+              <LockIcon />
+              <span>Pagamento 100% Seguro</span>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ═══ FOOTER ═══ */}
       <footer className="stitch-footer">
         <div className="stitch-footer-inner">
-          <div className="stitch-footer-links">
-            <span>Termos de Uso</span>
-            <span>Política de Privacidade</span>
-            <span>Contato</span>
+          <div className="stitch-footer-trust">
+            <span><ShieldFooterIcon /> Pagamento 100% seguro</span>
+            <span><RocketIcon /> Acesso imediato</span>
+            <span><ShieldFooterIcon /> Garantia de 30 dias</span>
+            <span><HeadsetIcon /> Suporte após compra</span>
           </div>
-          <p className="stitch-footer-copy">&copy; 2025 Código do Toque. Todos os direitos reservados.</p>
+          <p className="stitch-footer-copy">&copy; 2025 Código do Toque &middot; Luna Amaral &middot; Todos os direitos reservados.</p>
         </div>
       </footer>
     </>

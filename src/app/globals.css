@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════
-   STITCH DESIGN — v4: Poppins font, hero glow, polished cards, carousel
+   STITCH DESIGN — v5: Updated copy, therapist line, trust badges
    ════════════════════════════════════════════════════════════════ */
 
 /* ═══ RESET & BASE ═══ */
@@ -89,6 +89,18 @@ a { text-decoration: none; color: inherit; }
 .stitch-container-narrow { max-width: 640px; }
 .stitch-container-wide { max-width: 1080px; }
 
+/* ═══ SECTION LABELS (e.g. "Ganhe Hoje", "Resultados Reais") ═══ */
+.stitch-bonus-section-label,
+.stitch-testimonials-label {
+  text-align: center;
+  font-size: clamp(10px, 1.6vw, 12px);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  margin-bottom: 6px;
+}
+
 /* ═══════════════════════════════════════════════════════════
    TOP BANNER
    ═══════════════════════════════════════════════════════════ */
@@ -107,7 +119,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ═══════════════════════════════════════════════════════════
-   HERO — HF couple image with warm dark overlay + glow CTA
+   HERO
    ═══════════════════════════════════════════════════════════ */
 .stitch-hero {
   position: relative;
@@ -127,10 +139,8 @@ a { text-decoration: none; color: inherit; }
   height: 100%;
   object-fit: cover;
   opacity: 0.6;
-  /* Ken Burns slow zoom */
   animation: heroZoom 20s ease-in-out infinite alternate;
 }
-/* Warm overlay matching the couple photo tones */
 .stitch-hero-overlay {
   position: absolute;
   inset: 0;
@@ -155,8 +165,16 @@ a { text-decoration: none; color: inherit; }
   font-size: clamp(14px, 2.2vw, 17px);
   color: var(--text-gray-300);
   line-height: 1.6;
-  margin-bottom: 28px;
+  margin-bottom: 12px;
   text-shadow: 0 1px 12px rgba(0,0,0,.4);
+}
+/* Therapist author line */
+.stitch-hero-author {
+  font-size: clamp(11px, 1.6vw, 13px);
+  color: var(--text-gray-400);
+  font-style: italic;
+  margin-bottom: 24px;
+  text-shadow: 0 1px 8px rgba(0,0,0,.4);
 }
 /* CTA button wrapper with radial glow behind button */
 .stitch-hero-btn-wrap {
@@ -177,18 +195,37 @@ a { text-decoration: none; color: inherit; }
   pointer-events: none;
   filter: blur(8px);
 }
+/* Trust items below hero CTA */
+.stitch-hero-trust-inline {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.stitch-hero-trust-inline span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: clamp(10px, 1.5vw, 12px);
+  color: var(--text-gray-400);
+}
+.stitch-hero-trust-inline svg {
+  color: var(--green-500);
+  flex-shrink: 0;
+}
 .stitch-hero-rating {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 24px;
+  margin-top: 18px;
 }
 .stitch-hero-stars { display: flex; gap: 2px; }
 .stitch-hero-stars svg { width: 15px; height: 15px; }
 .stitch-hero-rating p { font-size: 12px; color: var(--text-gray-400); }
 
 /* ═══════════════════════════════════════════════════════════
-   BENEFITS FLOW — Light theme white cards with red icons
+   BENEFITS FLOW — Light theme white cards
    ═══════════════════════════════════════════════════════════ */
 .stitch-benefits {
   background: var(--brand-lightGray);
@@ -199,8 +236,24 @@ a { text-decoration: none; color: inherit; }
   font-size: clamp(20px, 3.5vw, 32px);
   text-align: center;
   color: var(--text-gray-800);
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   line-height: 1.2;
+}
+.stitch-section-subtitle {
+  font-size: clamp(15px, 2.5vw, 20px);
+  text-align: center;
+  color: var(--brand-red);
+  margin-bottom: 16px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+.stitch-section-intro {
+  font-size: clamp(12px, 1.6vw, 14px);
+  color: var(--text-gray-500);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 12px;
+  line-height: 1.65;
 }
 .stitch-section-lead {
   font-size: clamp(12px, 1.8vw, 14px);
@@ -215,6 +268,7 @@ a { text-decoration: none; color: inherit; }
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   position: relative;
+  margin-top: 36px;
 }
 .stitch-flow-line {
   display: none;
@@ -259,16 +313,16 @@ a { text-decoration: none; color: inherit; }
 .flow-icon-svg { width: 24px; height: 24px; }
 .stitch-flow-step h3 {
   font-family: var(--font-main), 'Poppins', sans-serif;
-  font-size: clamp(13px, 2vw, 15px);
+  font-size: clamp(12px, 1.8vw, 14px);
   font-weight: 700;
   margin-bottom: 4px;
   color: var(--text-gray-800);
 }
 .stitch-flow-step p {
-  font-size: clamp(11px, 1.4vw, 12px);
+  font-size: clamp(11px, 1.3vw, 12px);
   color: var(--text-gray-500);
   line-height: 1.45;
-  max-width: 150px;
+  max-width: 160px;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -305,7 +359,7 @@ a { text-decoration: none; color: inherit; }
 }
 .stitch-code-inner {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
 }
 .stitch-code-check {
@@ -319,6 +373,7 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 8px rgba(34,197,94,.15);
+  margin-top: 2px;
 }
 .stitch-code-check svg {
   width: 14px;
@@ -334,6 +389,7 @@ a { text-decoration: none; color: inherit; }
   font-size: clamp(11px, 1.5vw, 13px);
   color: var(--text-gray-400);
   margin-top: 2px;
+  line-height: 1.55;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -395,8 +451,11 @@ a { text-decoration: none; color: inherit; }
   line-height: 1.5;
   margin-bottom: 12px;
 }
-.stitch-bonus-value { font-size: 11px; color: var(--text-gray-600); }
-.stitch-bonus-value s { color: var(--text-gray-600); }
+.stitch-bonus-value {
+  font-size: 11px;
+  color: var(--green-500);
+  font-weight: 600;
+}
 
 /* Value Stack */
 .stitch-value-stack {
@@ -421,9 +480,8 @@ a { text-decoration: none; color: inherit; }
    ═══════════════════════════════════════════════════════════ */
 .stitch-testimonials-section {
   background: #000;
-  padding: 40px 0;
+  padding: 48px 0;
 }
-/* Wrapper clips the scrolling track */
 .stitch-carousel-wrapper {
   overflow: hidden;
   width: 100%;
@@ -431,38 +489,33 @@ a { text-decoration: none; color: inherit; }
   mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
 }
-/* Track holds all cards and animates */
 .stitch-carousel-track {
   display: flex;
   width: max-content;
   animation: carouselScroll 40s linear infinite;
 }
-
 .stitch-carousel-card {
   flex-shrink: 0;
-  width: clamp(260px, 35vw, 320px);
+  width: clamp(280px, 36vw, 360px);
   background: var(--brand-card);
   border-radius: 12px;
-  padding: 16px 18px;
+  padding: 18px 20px;
   border: 1px solid rgba(255,255,255,0.06);
   margin-right: 12px;
 }
 .stitch-carousel-stars {
   display: flex;
   gap: 2px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
-.stitch-carousel-stars svg {
-  width: 12px;
-  height: 12px;
-}
+.stitch-carousel-stars svg { width: 12px; height: 12px; }
 .stitch-carousel-quote {
   font-size: 12px;
   color: var(--text-gray-300);
   font-style: italic;
-  line-height: 1.5;
-  margin-bottom: 10px;
-  max-height: 60px;
+  line-height: 1.55;
+  margin-bottom: 12px;
+  max-height: 80px;
   overflow: hidden;
 }
 .stitch-carousel-author {
@@ -490,10 +543,7 @@ a { text-decoration: none; color: inherit; }
   font-weight: 700;
   color: #fff;
 }
-.stitch-carousel-city {
-  font-size: 10px;
-  color: var(--text-gray-500);
-}
+.stitch-carousel-city { font-size: 10px; color: var(--text-gray-500); }
 
 /* ═══════════════════════════════════════════════════════════
    GUARANTEE — Gradient card
@@ -552,8 +602,6 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 32px;
   line-height: 1.2;
 }
-
-/* Card wrapper */
 .stitch-pricing-card {
   max-width: 460px;
   margin: 0 auto;
@@ -563,8 +611,6 @@ a { text-decoration: none; color: inherit; }
   overflow: hidden;
   box-shadow: 0 24px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,0.03);
 }
-
-/* Mockup at top of card */
 .stitch-pricing-card-mockup {
   background: #0d0d0d;
   padding: 24px 24px 0;
@@ -574,8 +620,6 @@ a { text-decoration: none; color: inherit; }
   border-radius: 10px;
   display: block;
 }
-
-/* Card body */
 .stitch-pricing-card-body {
   padding: 24px 24px 28px;
   display: flex;
@@ -590,11 +634,7 @@ a { text-decoration: none; color: inherit; }
   line-height: 1.3;
   margin-bottom: 6px;
 }
-
-/* Product name badge */
-.stitch-pricing-card-product {
-  margin-bottom: 10px;
-}
+.stitch-pricing-card-product { margin-bottom: 10px; }
 .stitch-pricing-card-name {
   display: inline-block;
   background: rgba(185,28,28,0.12);
@@ -608,8 +648,19 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-
-/* Sold count */
+/* ACESSO IMEDIATO badge */
+.stitch-pricing-card-access {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green-500);
+  margin-bottom: 6px;
+}
+.stitch-pricing-card-access svg { color: var(--green-500); }
 .stitch-pricing-card-sold {
   display: flex;
   align-items: center;
@@ -622,12 +673,7 @@ a { text-decoration: none; color: inherit; }
   font-weight: 700;
   color: var(--green-500);
 }
-.stitch-pricing-card-sold-label {
-  font-size: 11px;
-  color: var(--text-gray-500);
-}
-
-/* Price block — centered, stacked */
+.stitch-pricing-card-sold-label { font-size: 11px; color: var(--text-gray-500); }
 .stitch-pricing-card-priceblock {
   text-align: center;
   padding: 16px 0;
@@ -641,9 +687,7 @@ a { text-decoration: none; color: inherit; }
   color: var(--text-gray-500);
   margin-bottom: 2px;
 }
-.stitch-pricing-card-original span {
-  text-decoration: line-through;
-}
+.stitch-pricing-card-original span { text-decoration: line-through; }
 .stitch-pricing-card-original-note {
   display: block;
   font-size: 10px;
@@ -688,8 +732,6 @@ a { text-decoration: none; color: inherit; }
   color: var(--text-gray-400);
   letter-spacing: 0.02em;
 }
-
-/* Checklist */
 .stitch-pricing-card-list {
   list-style: none;
   width: 100%;
@@ -713,8 +755,6 @@ a { text-decoration: none; color: inherit; }
   height: 14px;
   color: var(--green-500);
 }
-
-/* Card CTA button */
 .stitch-btn-pricing-card {
   display: block;
   width: 100%;
@@ -743,8 +783,6 @@ a { text-decoration: none; color: inherit; }
 }
 .stitch-btn-pricing-card:hover::before { left: 100%; }
 .stitch-btn-pricing-card:hover { background: var(--brand-darkRed); transform: scale(1.015); }
-
-/* Trust icons below CTA */
 .stitch-pricing-card-trust {
   display: flex;
   justify-content: center;
@@ -758,7 +796,7 @@ a { text-decoration: none; color: inherit; }
   font-size: 10px;
   color: var(--text-gray-500);
 }
-.stitch-trust-lock, .stitch-trust-bolt {
+.stitch-pricing-card-trust svg {
   width: 12px;
   height: 12px;
   color: var(--text-gray-500);
@@ -802,27 +840,17 @@ a { text-decoration: none; color: inherit; }
   transition: transform .3s ease;
   color: var(--text-gray-500);
 }
-.stitch-faq-item.open .faq-chevron {
-  transform: rotate(180deg);
-  color: var(--brand-red);
-}
+.stitch-faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--brand-red); }
 .stitch-faq-answer {
   max-height: 0;
   overflow: hidden;
   transition: max-height .35s ease, padding .35s ease;
 }
-.stitch-faq-item.open .stitch-faq-answer {
-  max-height: 120px;
-  padding-bottom: 14px;
-}
-.stitch-faq-answer p {
-  font-size: 13px;
-  color: var(--text-gray-400);
-  line-height: 1.6;
-}
+.stitch-faq-item.open .stitch-faq-answer { max-height: 120px; padding-bottom: 14px; }
+.stitch-faq-answer p { font-size: 13px; color: var(--text-gray-400); line-height: 1.6; }
 
 /* ═══════════════════════════════════════════════════════════
-   FINAL CTA — Gradient section, centered text
+   FINAL CTA — Gradient section with trust badges
    ═══════════════════════════════════════════════════════════ */
 .stitch-final-cta {
   background: linear-gradient(135deg, var(--brand-red), var(--brand-darkRed));
@@ -839,35 +867,30 @@ a { text-decoration: none; color: inherit; }
   font-size: clamp(13px, 1.8vw, 15px);
   color: rgba(255,255,255,0.85);
   max-width: 520px;
-  margin: 0 auto 20px;
+  margin: 0 auto 24px;
   line-height: 1.6;
 }
-.stitch-final-cta-price {
+.stitch-final-cta-badges {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.stitch-final-cta-badge {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-.stitch-final-cta-from {
-  font-size: 14px;
-  color: rgba(255,255,255,0.6);
-  text-decoration: line-through;
-}
-.stitch-final-cta-now {
-  font-family: var(--font-main), 'Poppins', sans-serif;
-  font-size: clamp(28px, 5vw, 38px);
-  font-weight: 700;
-  color: #fff;
-}
-.stitch-final-cta-safe {
+  gap: 6px;
   font-size: 11px;
-  color: rgba(255,255,255,0.6);
-  margin-top: 14px;
+  color: rgba(255,255,255,0.8);
+  font-weight: 500;
+}
+.stitch-final-cta-badge svg {
+  color: rgba(255,255,255,0.7);
 }
 
 /* ═══════════════════════════════════════════════════════════
-   FOOTER
+   FOOTER — With trust items
    ═══════════════════════════════════════════════════════════ */
 .stitch-footer {
   background: var(--brand-charcoal);
@@ -876,21 +899,27 @@ a { text-decoration: none; color: inherit; }
   margin-top: auto;
 }
 .stitch-footer-inner { max-width: 960px; margin: 0 auto; }
-.stitch-footer-links {
+.stitch-footer-trust {
   display: flex;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
-.stitch-footer-links span {
+.stitch-footer-trust span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   font-size: 11px;
   color: var(--text-gray-500);
-  cursor: pointer;
-  transition: color .2s;
 }
-.stitch-footer-links span:hover { color: #fff; }
-.stitch-footer-copy { font-size: 10px; color: rgba(255,255,255,0.18); }
+.stitch-footer-trust svg {
+  color: var(--text-gray-500);
+}
+.stitch-footer-copy {
+  font-size: 10px;
+  color: rgba(255,255,255,0.18);
+}
 
 /* ═══════════════════════════════════════════════════════════
    BUTTONS
@@ -979,43 +1008,37 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 768px) {
   :root { --container-pad: clamp(20px, 5vw, 32px); }
 
-  /* Hero — centered on tablet */
   .stitch-hero { min-height: 400px; }
   .stitch-hero-content { padding: 48px 0 56px; text-align: center; max-width: 100%; }
   .stitch-hero-title { font-size: clamp(22px, 6vw, 30px); }
+  .stitch-hero-trust-inline { justify-content: center; }
 
-  /* Benefits flow */
   .stitch-benefits { padding: 52px 0; }
   .stitch-flow-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .stitch-flow-step { padding: 20px 14px 16px; }
   .stitch-flow-icon { width: 48px; height: 48px; }
   .flow-icon-svg { width: 20px !important; height: 20px !important; }
 
-  /* Content breakdown */
   .stitch-codes-section { padding: 52px 0; }
 
-  /* Bonuses */
   .stitch-bonus-section { padding: 52px 0; }
   .stitch-bonus-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .stitch-bonus-card { padding: 16px; }
 
-  /* Testimonials carousel */
-  .stitch-testimonials-section { padding: 32px 0; }
-  .stitch-carousel-card { width: clamp(240px, 40vw, 300px); }
+  .stitch-testimonials-section { padding: 36px 0; }
+  .stitch-carousel-card { width: clamp(260px, 40vw, 340px); }
 
-  /* Guarantee */
   .stitch-guarantee-section { padding: 52px 0; }
   .stitch-guarantee-card { padding: 24px; }
 
-  /* Pricing */
   .stitch-pricing-section { padding: 52px 0; }
   .stitch-pricing-card { max-width: 420px; }
   .stitch-pricing-card-body { padding: 20px 20px 24px; }
   .stitch-pricing-card-mockup { padding: 20px 20px 0; }
 
-  /* FAQ + Final CTA */
   .stitch-faq-section { padding: 52px 0; }
   .stitch-final-cta { padding: 52px 0; }
+  .stitch-final-cta-badges { gap: 16px; }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1024,14 +1047,13 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 576px) {
   :root { --container-pad: 20px; }
 
-  /* Hero — centered, compact, larger title */
-  .stitch-hero { min-height: 340px; }
+  .stitch-hero { min-height: 380px; }
   .stitch-hero-content { padding: 36px 0 52px; max-width: 100%; text-align: center; }
   .stitch-hero-title {
     font-size: clamp(22px, 6vw, 28px);
     text-shadow: 0 2px 20px rgba(0,0,0,.7), 0 0 40px rgba(0,0,0,.4);
   }
-  .stitch-hero-sub { font-size: clamp(13px, 3.5vw, 15px); margin-bottom: 24px; }
+  .stitch-hero-sub { font-size: clamp(13px, 3.5vw, 15px); margin-bottom: 10px; }
   .stitch-hero-overlay {
     background:
       linear-gradient(to right, rgba(0,0,0,.9) 0%, rgba(0,0,0,.75) 60%, rgba(15,5,5,.4) 100%),
@@ -1039,22 +1061,20 @@ a { text-decoration: none; color: inherit; }
   }
   .stitch-hero-rating { justify-content: center; flex-wrap: wrap; }
   .stitch-hero-btn-wrap { display: flex; justify-content: center; }
+  .stitch-hero-trust-inline { gap: 12px; font-size: 10px; }
 
-  /* Benefits flow — 2x2 grid with card padding */
   .stitch-benefits { padding: 40px 0; }
-  .stitch-flow-grid { gap: 14px; }
+  .stitch-flow-grid { gap: 14px; margin-top: 28px; }
   .stitch-flow-step { padding: 18px 14px 14px; }
   .stitch-flow-icon { width: 44px; height: 44px; }
   .flow-icon-svg { width: 18px !important; height: 18px !important; }
   .stitch-flow-line { display: none !important; }
 
-  /* Content breakdown — more padding for touch */
   .stitch-codes-section { padding: 40px 0; }
   .stitch-code-item { padding: 16px 18px; }
   .stitch-code-check { width: 24px; height: 24px; min-width: 24px; }
   .stitch-code-check svg { width: 12px; height: 12px; }
 
-  /* Bonuses */
   .stitch-bonus-section { padding: 40px 0; }
   .stitch-bonus-grid { grid-template-columns: 1fr; gap: 10px; }
   .stitch-bonus-card { padding: 16px; }
@@ -1062,15 +1082,12 @@ a { text-decoration: none; color: inherit; }
   .stitch-bonus-card h4 { font-size: 13px; }
   .stitch-bonus-card p { font-size: 11px; margin-bottom: 10px; }
 
-  /* Testimonials carousel — narrower cards on mobile */
   .stitch-testimonials-section { padding: 28px 0; }
-  .stitch-carousel-card { width: clamp(220px, 70vw, 300px); padding: 14px 16px; }
+  .stitch-carousel-card { width: clamp(240px, 75vw, 340px); padding: 14px 16px; }
 
-  /* Guarantee */
   .stitch-guarantee-section { padding: 40px 0; }
   .stitch-guarantee-card { padding: 20px; border-radius: 12px; }
 
-  /* Pricing */
   .stitch-pricing-section { padding: 40px 0; }
   .stitch-pricing-card { max-width: 100%; margin: 0 16px; border-radius: 12px; }
   .stitch-pricing-header { font-size: 20px; margin-bottom: 24px; }
@@ -1085,9 +1102,13 @@ a { text-decoration: none; color: inherit; }
   .stitch-pricing-card-trust { gap: 12px; margin-top: 10px; }
   .stitch-pricing-card-trust span { font-size: 9px; }
 
-  /* FAQ + Final CTA */
   .stitch-faq-section { padding: 40px 0; }
   .stitch-final-cta { padding: 40px 0; }
+  .stitch-final-cta-badges { gap: 12px; }
+  .stitch-final-cta-badge { font-size: 10px; }
+
+  .stitch-footer-trust { gap: 12px; }
+  .stitch-footer-trust span { font-size: 10px; }
 
   .stitch-value-stack { padding: 16px; }
   .stitch-footer { padding: 24px 16px; }
@@ -1104,34 +1125,27 @@ a { text-decoration: none; color: inherit; }
   .stitch-container-narrow { max-width: 720px; }
   .stitch-container-wide { max-width: 1140px; }
 
-  /* Hero — left-aligned on desktop */
   .stitch-hero { min-height: 560px; }
   .stitch-hero-content { padding: 80px 0 88px; max-width: 540px; text-align: left; }
 
-  /* Benefits flow */
   .stitch-benefits { padding: 80px 0; }
   .stitch-flow-line { display: block; }
-  .stitch-flow-grid { gap: 28px; }
+  .stitch-flow-grid { gap: 28px; margin-top: 44px; }
   .stitch-flow-step { padding: 28px 20px 24px; }
   .stitch-flow-icon { width: 60px; height: 60px; }
   .flow-icon-svg { width: 26px; height: 26px; }
 
-  /* Content breakdown */
   .stitch-codes-section { padding: 80px 0; }
 
-  /* Bonuses */
   .stitch-bonus-section { padding: 80px 0; }
   .stitch-bonus-grid { gap: 20px; }
   .stitch-bonus-card { padding: 24px; }
 
-  /* Testimonials carousel */
-  .stitch-testimonials-section { padding: 48px 0; }
-  .stitch-carousel-card { width: clamp(280px, 35vw, 340px); padding: 18px 20px; }
+  .stitch-testimonials-section { padding: 56px 0; }
+  .stitch-carousel-card { width: clamp(300px, 36vw, 380px); padding: 20px 22px; }
 
-  /* Guarantee */
   .stitch-guarantee-section { padding: 80px 0; }
 
-  /* Pricing */
   .stitch-pricing-section { padding: 96px 0; }
   .stitch-pricing-card { max-width: 500px; }
   .stitch-pricing-card-body { padding: 28px 28px 32px; }
@@ -1139,6 +1153,7 @@ a { text-decoration: none; color: inherit; }
 
   .stitch-faq-section { padding: 80px 0; }
   .stitch-final-cta { padding: 80px 0; }
+  .stitch-final-cta-badges { gap: 32px; }
 }
 
 /* Hide scrollbar during intro */
