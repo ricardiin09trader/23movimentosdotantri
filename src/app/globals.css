@@ -702,11 +702,11 @@ a { text-decoration: none; color: inherit; }
   .stitch-hero {
     min-height: 100vh; min-height: 100dvh;
   }
-  .stitch-hero-bg-gif { opacity: 0.25; }
+  .stitch-hero-bg-gif { opacity: 0.45; }
   .stitch-hero-overlay {
     background:
-      linear-gradient(to right, rgba(0,0,0,.95) 0%, rgba(0,0,0,.85) 50%, rgba(0,0,0,.7) 100%),
-      linear-gradient(to bottom, rgba(0,0,0,.5) 0%, rgba(0,0,0,.1) 40%, rgba(0,0,0,.85) 100%);
+      linear-gradient(to right, rgba(0,0,0,.88) 0%, rgba(0,0,0,.72) 50%, rgba(0,0,0,.55) 100%),
+      linear-gradient(to bottom, rgba(0,0,0,.5) 0%, rgba(0,0,0,.05) 35%, rgba(0,0,0,.75) 100%);
   }
   .stitch-hero-content {
     padding: 48px 20px 64px;

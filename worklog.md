@@ -740,3 +740,21 @@ Stage Summary:
 - All sections have proper spacing, breathing room, and readable typography
 - Hero GIF properly centered and contained on all viewports
 - Desktop layout unchanged — all grids and layouts working as expected
+---
+Task ID: 21
+Agent: Main Agent
+Task: Fix hero GIF invisible on mobile — increase opacity and lighten overlay
+
+Work Log:
+- Diagnosed: GIF was rendering but overlay was too dark (95% opacity black on left) making it invisible on mobile
+- Increased GIF opacity from 0.25 to 0.45 on mobile
+- Lightened overlay gradients: left 95%→88%, center 85%→72%, right 70%→55%, middle band 10%→5%
+- Verified on mobile (375x812): GIF now visible as background
+- Verified on desktop (1440x900): no visual change to desktop layout
+- Zero lint errors, zero console errors
+- Project ready for download/publish
+
+Stage Summary:
+- Hero GIF now properly visible on mobile as background, overlay balanced for text readability
+- Desktop unchanged
+- Production-ready
