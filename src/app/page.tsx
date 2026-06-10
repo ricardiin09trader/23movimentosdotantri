@@ -73,9 +73,9 @@ const codes = [
 
 /* ═══ BONUSES DATA ═══ */
 const bonuses = [
-  { num: '01', title: 'Sexo Tântrico para Iniciantes', desc: 'Guia completo para prolongar o prazer e expandir a energia vital.', value: 'VALOR: R$ 297,00' },
-  { num: '02', title: 'Guia dos 7 Sussurros', desc: 'As palavras certas para serem ditas no momento de intimidade.', value: 'VALOR: R$ 147,00' },
-  { num: '03', title: 'Controle Absoluto', desc: 'Técnicas de respiração para controlar seu corpo totalmente.', value: 'VALOR: R$ 197,00' },
+  { num: '01', title: 'Sexo Tântrico para Iniciantes', desc: 'Guia completo para prolongar o prazer e expandir a energia vital.' },
+  { num: '02', title: 'Guia dos 7 Sussurros', desc: 'As palavras certas para serem ditas no momento de intimidade.' },
+  { num: '03', title: 'Controle Absoluto', desc: 'Técnicas de respiração para controlar seu corpo totalmente.' },
 ];
 
 /* ═══ COMMUNITY MEMBERS DATA ═══ */
@@ -320,7 +320,7 @@ export default function HomePage() {
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-bonus fade-section" id="bonus">
         <div className="stitch-container">
-          <p className="stitch-bonus-label reveal">CORRA HOJE</p>
+          <p className="stitch-bonus-label reveal">EXCLUSIVOS DA COMUNIDADE</p>
           <h2 className="stitch-bonus-title reveal">
             MAIS 3 BÔNUS <span className="stitch-bonus-title-red">EXCLUSIVOS</span> PARA VOCÊ
           </h2>
@@ -332,15 +332,14 @@ export default function HomePage() {
               <p className="stitch-bonus-card-label">BÔNUS {b.num}</p>
               <h4>{b.title}</h4>
               <p>{b.desc}</p>
-              <p className="stitch-bonus-value">{b.value}</p>
-              <p className="stitch-bonus-free">GRÁTIS HOJE</p>
+              <p className="stitch-bonus-free">GRÁTIS</p>
             </div>
           ))}
         </div>
         <div className="stitch-value-stack reveal">
-          <p className="stitch-value-stack-label">VALOR TOTAL DOS BÔNUS</p>
-          <p className="stitch-value-stack-price">R$ 641,00</p>
-          <p className="stitch-value-stack-note">PARA FECHAMENTO EXTRA: R$ 31,90</p>
+          <p className="stitch-value-stack-label">AO ADQUIRIR A OFERTA, VOCÊ GANHA</p>
+          <p className="stitch-value-stack-price">Acesso imediato à comunidade exclusiva + os 3 bônus incluídos</p>
+          <p className="stitch-value-stack-note">Tudo isso por apenas R$ 24,90 — acesso vitalício</p>
         </div>
       </section>
 
@@ -428,29 +427,28 @@ export default function HomePage() {
               />
             </div>
             <div className="stitch-offer-details">
-              <span className="stitch-offer-pill">Oferta Exclusiva por tempo limitado</span>
-              <p className="stitch-offer-original">De: <span>R$ 497,00</span></p>
+              <span className="stitch-offer-pill">Acesso à comunidade exclusiva</span>
               <div className="stitch-offer-price-row">
                 <span className="stitch-offer-currency">R$</span>
                 <span className="stitch-offer-amount">24,90</span>
               </div>
-              <p className="stitch-offer-per">/ acesso vitalício</p>
-              <p className="stitch-offer-installment">Ou 12x de R$ 2,49 no cartão</p>
+              <p className="stitch-offer-per">acesso vitalício à comunidade + todo conteúdo</p>
 
               <ul className="stitch-offer-list">
-                <li><CheckRedIcon /> Código do Toque - 23 movimentos completos</li>
-                <li><CheckRedIcon /> Bônus: Sexo Tântrico (V. R$ 297,00)</li>
-                <li><CheckRedIcon /> Bônus: Guia dos 7 Sussurros (V. R$ 147,00)</li>
-                <li><CheckRedIcon /> Bônus: Controle Absoluto (V. R$ 197,00)</li>
-                <li><CheckRedIcon /> Acesso Vitalício à Comunidade e Atualizações</li>
-                <li><CheckRedIcon /> Garantia Incondicional de 30 Dias</li>
+                <li><CheckRedIcon /> Acesso vitalício à Comunidade Exclusiva</li>
+                <li><CheckRedIcon /> Código do Toque — 23 movimentos completos</li>
+                <li><CheckRedIcon /> Bônus: Sexo Tântrico para Iniciantes</li>
+                <li><CheckRedIcon /> Bônus: Guia dos 7 Sussurros</li>
+                <li><CheckRedIcon /> Bônus: Controle Absoluto</li>
+                <li><CheckRedIcon /> Lives semanais e suporte da comunidade</li>
+                <li><CheckRedIcon /> Garantia incondicional de 30 dias</li>
               </ul>
 
               <button className="stitch-offer-cta" onClick={goCheckout}>
                 QUERO ENTRAR NA COMUNIDADE
               </button>
 
-              <p className="stitch-offer-trust">Pagamento Seguro • Entrega Imediata • Acesso Vitalício</p>
+              <p className="stitch-offer-trust">Pagamento seguro • Acesso imediato • Suporte vitalício</p>
             </div>
           </div>
         </div>

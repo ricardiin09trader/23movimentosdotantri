@@ -36,8 +36,8 @@ a { text-decoration: none; color: inherit; }
   --text-gray-500: #6b7280;
   --green-500: #22c55e;
   --yellow-500: #FACC15;
-  --container-pad: clamp(20px, 5vw, 48px);
-  --header-h: 64px;
+  --container-pad: clamp(24px, 5vw, 48px);
+  --header-h: 60px;
 }
 
 /* ═══ ANIMATIONS ═══ */
@@ -207,9 +207,9 @@ a { text-decoration: none; color: inherit; }
 .stitch-hero-content {
   position: relative;
   z-index: 10;
-  max-width: 680px;
+  max-width: 640px;
   text-align: center;
-  padding: 60px 0 80px;
+  padding: 60px var(--container-pad) 80px;
 }
 .stitch-hero-tagline {
   font-size: clamp(10px, 2vw, 13px);
@@ -291,10 +291,10 @@ a { text-decoration: none; color: inherit; }
   background: #0a0a0a;
   border-top: 1px solid rgba(255,255,255,0.05);
   border-bottom: 1px solid rgba(255,255,255,0.05);
-  padding: 64px 0;
+  padding: 60px 0;
 }
 .stitch-problem-inner {
-  max-width: 56rem;
+  max-width: 52rem;
   margin: 0 auto;
   text-align: center;
   padding: 0 var(--container-pad);
@@ -536,12 +536,7 @@ a { text-decoration: none; color: inherit; }
   font-size: clamp(12px, 1.5vw, 13px);
   color: var(--text-gray-400);
   line-height: 1.6;
-  margin-bottom: 12px;
-}
-.stitch-bonus-value {
-  font-size: 12px;
-  color: var(--text-gray-500);
-  text-decoration: line-through;
+  margin-bottom: 8px;
 }
 .stitch-bonus-free {
   font-family: var(--font-main), 'Poppins', sans-serif;
@@ -552,12 +547,12 @@ a { text-decoration: none; color: inherit; }
 }
 /* Value stack card */
 .stitch-value-stack {
-  max-width: 480px;
+  max-width: 520px;
   margin: 0 auto;
   padding: 0 var(--container-pad);
   text-align: center;
-  background: rgba(26,26,26,0.5);
-  border: 1px solid rgba(185,28,28,0.3);
+  background: rgba(26,26,26,0.4);
+  border: 1px solid rgba(185,28,28,0.2);
   border-radius: 12px;
   padding: 24px 20px;
 }
@@ -570,13 +565,14 @@ a { text-decoration: none; color: inherit; }
 }
 .stitch-value-stack-price {
   font-family: var(--font-main), 'Poppins', sans-serif;
-  font-size: clamp(28px, 5vw, 40px);
-  color: #fff;
-  font-weight: 700;
+  font-size: clamp(14px, 2vw, 16px);
+  color: var(--text-gray-300);
+  font-weight: 400;
+  line-height: 1.5;
 }
 .stitch-value-stack-note {
   font-family: var(--font-main), 'Poppins', sans-serif;
-  font-size: 14px;
+  font-size: clamp(13px, 2vw, 15px);
   color: var(--brand-red);
   font-weight: 600;
   margin-top: 6px;
@@ -846,12 +842,6 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 16px;
   align-self: flex-start;
 }
-.stitch-offer-original {
-  font-size: 14px;
-  color: var(--text-gray-500);
-  margin-bottom: 4px;
-}
-.stitch-offer-original span { text-decoration: line-through; }
 .stitch-offer-price-row {
   display: flex;
   align-items: baseline;
@@ -872,11 +862,6 @@ a { text-decoration: none; color: inherit; }
   line-height: 1;
 }
 .stitch-offer-per {
-  font-size: 12px;
-  color: var(--text-gray-500);
-  margin-bottom: 4px;
-}
-.stitch-offer-installment {
   font-size: 12px;
   color: var(--text-gray-500);
   margin-bottom: 20px;
@@ -1044,15 +1029,15 @@ a { text-decoration: none; color: inherit; }
    RESPONSIVE — MOBILE (max 576px)
    ═══════════════════════════════════════════════════════════ */
 @media (max-width: 576px) {
-  :root { --container-pad: 20px; --header-h: 56px; }
+  :root { --container-pad: 24px; --header-h: 54px; }
 
-  .stitch-header { padding: 0 16px; }
+  .stitch-header { padding: 0 20px; }
   .stitch-header-nav { display: none !important; }
   .stitch-header-cta { font-size: 10px; padding: 6px 12px; }
   .stitch-header-logo { width: 32px; height: 32px; min-width: 32px; font-size: 12px; }
 
   .stitch-hero { min-height: 100vh; }
-  .stitch-hero-content { padding: 40px 0 60px; }
+  .stitch-hero-content { padding: 40px 20px 60px; }
   .stitch-hero-tagline { letter-spacing: 0.12em; margin-bottom: 12px; }
   .stitch-hero-overlay {
     background:
@@ -1070,28 +1055,31 @@ a { text-decoration: none; color: inherit; }
 
   .stitch-codes { padding: 56px 0; }
   .stitch-code-icon { width: 36px; height: 36px; min-width: 36px; }
+  .stitch-code-item { padding: 16px; }
 
   .stitch-bonus { padding: 56px 0; }
   .stitch-bonus-card { padding: 20px; }
   .stitch-bonus-watermark { font-size: 80px; }
 
   .stitch-testimonials { padding: 48px 0; }
-  .stitch-carousel-card { width: clamp(240px, 75vw, 340px); padding: 14px 16px; }
+  .stitch-carousel-card { width: clamp(240px, 78vw, 340px); padding: 14px 16px; }
 
-  .stitch-guarantee { padding: 64px 0; }
+  .stitch-guarantee { padding: 56px 0; }
   .stitch-guarantee-icon { width: 52px; height: 52px; }
   .stitch-guarantee-icon svg { width: 22px; height: 22px; }
 
   .stitch-faq { padding: 56px 0; }
 
   .stitch-offer { padding: 56px 0; }
+  .stitch-offer-card { border-radius: 12px; }
   .stitch-offer-image-side { padding: 20px; }
-  .stitch-offer-details { padding: 20px; }
+  .stitch-offer-details { padding: 24px 20px; }
   .stitch-offer-amount { font-size: 40px; }
   .stitch-offer-cta { padding: 14px 16px; font-size: 11px; }
+  .stitch-offer-list li { font-size: 12px; }
 
   .stitch-footer { padding: 36px 0; }
-  .stitch-toast { left: 8px; right: 8px; bottom: 12px; max-width: calc(100% - 16px); }
+  .stitch-toast { left: 12px; right: 12px; bottom: 16px; max-width: calc(100% - 24px); }
 }
 
 /* ═══════════════════════════════════════════════════════════

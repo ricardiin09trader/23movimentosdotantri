@@ -607,3 +607,30 @@ Stage Summary:
 - All our copy, colors, carousel, and animations preserved
 - Fully responsive across desktop, tablet, and mobile
 - Zero errors on all viewports
+
+---
+Task ID: 15
+Agent: Main Agent
+Task: Fix mobile responsiveness, revert to community-focused pricing copy, improve edge spacing
+
+Work Log:
+- Read current page.tsx, globals.css, layout.tsx to understand state
+- Updated CSS: increased mobile container padding from 20px to 24px, improved section spacing
+- Updated hero content to use container padding variable for consistent edge spacing
+- Cleaned up unused CSS classes (.stitch-offer-original, .stitch-offer-installment, .stitch-bonus-value)
+- Removed excessive price anchoring: eliminated "De: R$ 497,00" from offer section
+- Removed individual bonus value strikethroughs (R$297, R$147, R$197)
+- Changed bonus section label from "CORRA HOJE" to "EXCLUSIVOS DA COMUNIDADE"
+- Changed value stack from "R$ 641,00" anchoring to community messaging: "Acesso imediato à comunidade exclusiva + os 3 bônus incluídos"
+- Reordered offer checklist: community access first, then content/bonuses
+- Changed offer pill from "Oferta Exclusiva por tempo limitado" to "Acesso à comunidade exclusiva"
+- Added "Lives semanais e suporte da comunidade" to offer checklist
+- Updated trust line: "Pagamento seguro • Acesso imediato • Suporte vitalício"
+- Verified with Agent Browser on mobile (390x844) and desktop (1440x900) - zero errors
+- Confirmed 24px edge spacing on mobile across all sections
+
+Stage Summary:
+- Mobile spacing: consistent 24px from edges on all sections
+- Pricing copy: community-first approach, no aggressive anchoring
+- Offer angle: "Ao adquirir, você ganha acesso à comunidade"
+- All changes compile cleanly, zero lint errors, zero console errors
