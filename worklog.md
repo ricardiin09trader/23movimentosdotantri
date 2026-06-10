@@ -698,3 +698,21 @@ Stage Summary:
 - Community-as-offer angle maintained in CTA copy
 - Responsive across mobile/tablet/desktop breakpoints
 - Zero errors on all viewports
+---
+Task ID: 19
+Agent: Main Agent
+Task: Add community highlight section between Guarantee and Offer; style bonus section with red banner
+
+Work Log:
+- Added new "Comunidade Exclusiva" section (stitch-community) between Guarantee and Offer sections in page.tsx
+- Community section features: "🔥 COMPRANDO HOJE" tag, heading with red-highlighted "Comunidade Exclusiva", "+300 horas de aulas" text, and a white CTA button
+- Restructured bonus section (SEÇÃO 5) in page.tsx: wrapped header in `stitch-bonus-header` div, moved grid inside container
+- Updated globals.css: bonus header now has red background (#DC2626) with gradient fade-to-black at bottom, white text with z-index layering
+- Added all CSS for community section: tag with dark-red bg and glow shadow, responsive text sizes, white CTA button with subtle shadow
+- Lint: 0 errors
+- Agent Browser verification: bonus bg confirmed as rgb(220,38,38), all community text content verified, 0 console errors
+
+Stage Summary:
+- New community section successfully placed between Guarantee and Offer
+- Bonus section now has strong red banner header matching guarantee section style
+- Both sections verified working with correct content and styling

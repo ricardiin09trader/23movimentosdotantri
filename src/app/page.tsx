@@ -407,9 +407,9 @@ export default function HomePage() {
 
       {/* ═══ SEÇÃO 5 — BÔNUS ═══ */}
       <section className="stitch-bonus fade-section" id="bonus">
-        <div className="stitch-container">
+        <div className="stitch-bonus-header">
           <MotionFade>
-            <p className="stitch-section-label">Incluído no acesso</p>
+            <p className="stitch-bonus-section-label">Incluído no acesso</p>
           </MotionFade>
           <MotionFade delay={0.1}>
             <h2 className="stitch-bonus-title">3 bônus que amplificam cada movimento</h2>
@@ -418,8 +418,9 @@ export default function HomePage() {
             <p className="stitch-bonus-subtitle">Cada um resolve um obstáculo real.</p>
           </MotionFade>
         </div>
-        <div className="stitch-bonus-grid">
-          {bonuses.map((b, i) => (
+        <div className="stitch-container">
+          <div className="stitch-bonus-grid">
+            {bonuses.map((b, i) => (
             <motion.div
               key={i}
               className="stitch-bonus-card"
@@ -438,8 +439,7 @@ export default function HomePage() {
               </div>
             </motion.div>
           ))}
-        </div>
-        <div className="stitch-container">
+          </div>
           <MotionFade delay={0.2}>
             <p className="stitch-bonus-total">Valor total dos bônus: R$ 109,70 · Incluídos sem custo adicional</p>
           </MotionFade>
@@ -508,6 +508,38 @@ export default function HomePage() {
           </MotionFade>
           <MotionFade delay={0.15}>
             <p className="stitch-guarantee-italic">O risco é nosso. O único risco real é não tentar.</p>
+          </MotionFade>
+        </div>
+      </section>
+
+      {/* ═══ SEÇÃO 8.5 — COMUNIDADE EXCLUSIVA ═══ */}
+      <section className="stitch-community fade-section">
+        <div className="stitch-community-inner">
+          <MotionFade>
+            <span className="stitch-community-tag">🔥 COMPRANDO HOJE</span>
+          </MotionFade>
+          <MotionFade delay={0.1}>
+            <h3 className="stitch-community-heading">Você ganha acesso à <span className="stitch-community-highlight">Comunidade Exclusiva</span> Código do Toque</h3>
+          </MotionFade>
+          <MotionFade delay={0.15}>
+            <p className="stitch-community-text">
+              +300 horas de aulas em documentos, áudio e imagens disponíveis imediatamente.
+            </p>
+          </MotionFade>
+          <MotionFade delay={0.2}>
+            <p className="stitch-community-subtext">
+              Conteúdo exclusivo para membros. Sem custo adicional. Para sempre.
+            </p>
+          </MotionFade>
+          <MotionFade delay={0.25}>
+            <motion.button
+              className="stitch-community-cta"
+              onClick={goCheckout}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Quero acesso à comunidade + Código do Toque
+            </motion.button>
           </MotionFade>
         </div>
       </section>
