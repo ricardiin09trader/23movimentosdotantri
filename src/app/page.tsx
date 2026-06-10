@@ -6,37 +6,42 @@ const CHECKOUT = 'https://pay.cakto.com.br/3j7svgt_458559';
 
 /* ═══ SVG ICONS ═══ */
 const HeartIcon = () => (
-  <svg className="flow-icon-svg" fill="currentColor" viewBox="0 0 24 24">
+  <svg fill="currentColor" viewBox="0 0 24 24">
     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
   </svg>
 );
 const BoltIcon = () => (
-  <svg className="flow-icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
   </svg>
 );
-const ClockIcon = () => (
-  <svg className="flow-icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
+const ZapIcon = () => (
+  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
+  </svg>
+);
+const HandIcon = () => (
+  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
   </svg>
 );
 const ChartIcon = () => (
-  <svg className="flow-icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
   </svg>
 );
-const CheckGreen = () => (
-  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} />
+const ClockIcon = () => (
+  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
   </svg>
 );
-const CheckWhite = () => (
-  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-    <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+const StarIcon = () => (
+  <svg viewBox="0 0 24 24" fill="#FACC15">
+    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
   </svg>
 );
 const ShieldIcon = () => (
-  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
   </svg>
 );
@@ -45,41 +50,33 @@ const ChevronIcon = () => (
     <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
   </svg>
 );
-const StarIcon = () => (
-  <svg viewBox="0 0 24 24" fill="#FACC15">
-    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-  </svg>
-);
-const CheckIcon = () => (
-  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+const CheckRedIcon = () => (
+  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} />
   </svg>
 );
-const LockIcon = () => (
-  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
+const HeartVariantIcon = () => (
+  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
   </svg>
 );
-const ZapIcon = () => (
-  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
-  </svg>
-);
-const ShieldFooterIcon = () => (
-  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
-  </svg>
-);
-const RocketIcon = () => (
-  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
-  </svg>
-);
-const HeadsetIcon = () => (
-  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9m-4.27 13a2 2 0 01-3.46 0" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
-  </svg>
-);
+
+/* ═══ CODES DATA ═══ */
+const codes = [
+  { icon: <HeartIcon />, label: '01. O TOQUE SUTIL', desc: 'A arte de iniciar o toque sem parecer invasivo, criando antecipação imediata.' },
+  { icon: <BoltIcon />, label: '02. PODER & CALOR', desc: 'Movimentos rítmicos que elevam a temperatura corporal em segundos.' },
+  { icon: <HandIcon />, label: '03. A PRESSÃO CERTA', desc: 'A pressão exata para relaxar a mente e despertar o corpo.' },
+  { icon: <ChartIcon />, label: '04. RESPIRAÇÃO DO DESEJO', desc: 'Como sincronizar sua respiração para dobrar a intensidade da conexão.' },
+  { icon: <ClockIcon />, label: '05. LEITURA CORPORAL', desc: 'O código secreto para ler os sinais não-verbais dela instantaneamente.' },
+  { icon: <HeartVariantIcon />, label: '06. ZONAS IGNORADAS', desc: 'Exploração de áreas sensoriais frequentemente esquecidas.' },
+];
+
+/* ═══ BONUSES DATA ═══ */
+const bonuses = [
+  { num: '01', title: 'Sexo Tântrico para Iniciantes', desc: 'Guia completo para prolongar o prazer e expandir a energia vital.', value: 'VALOR: R$ 297,00' },
+  { num: '02', title: 'Guia dos 7 Sussurros', desc: 'As palavras certas para serem ditas no momento de intimidade.', value: 'VALOR: R$ 147,00' },
+  { num: '03', title: 'Controle Absoluto', desc: 'Técnicas de respiração para controlar seu corpo totalmente.', value: 'VALOR: R$ 197,00' },
+];
 
 /* ═══ COMMUNITY MEMBERS DATA ═══ */
 const communityMembers = [
@@ -100,13 +97,19 @@ const faqs = [
   { q: 'O acesso à comunidade é vitalício?', a: 'Sim! Você paga apenas uma vez e tem acesso vitalício à comunidade, incluindo todas as atualizações futuras, lives exclusivas e bônus extras.' },
 ];
 
-
-
 /* ═══ MAIN PAGE ═══ */
 export default function HomePage() {
+  const [headerScrolled, setHeaderScrolled] = useState(false);
   const [toastVisible, setToastVisible] = useState(false);
   const [toastText, setToastText] = useState('');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  /* ═══ HEADER SCROLL ═══ */
+  useEffect(() => {
+    const onScroll = () => setHeaderScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   /* ═══ SCROLL REVEAL + FADE IN/OUT ═══ */
   useEffect(() => {
@@ -191,13 +194,22 @@ export default function HomePage() {
         <p className="stitch-toast-text">{toastText}</p>
       </div>
 
-      {/* ═══ TOP BANNER ═══ */}
-      <div className="stitch-top-banner">
-        <p>OFERTA ESPECIAL · LANÇAMENTO — Apenas <strong>R$ 24,90</strong> (81% OFF)</p>
-      </div>
+      {/* ═══════════════════════════════════════════════════════════
+           1. FIXED HEADER
+           ═══════════════════════════════════════════════════════════ */}
+      <header className={`stitch-header ${headerScrolled ? 'scrolled' : ''}`}>
+        <div className="stitch-header-logo">CT</div>
+        <nav className="stitch-header-nav">
+          <a href="#sobre">Sobre</a>
+          <a href="#codigos">Os 23 Códigos</a>
+          <a href="#bonus">Bônus</a>
+          <a href="#depoimentos">Depoimentos</a>
+        </nav>
+        <button className="stitch-header-cta" onClick={goCheckout}>Comprar Agora</button>
+      </header>
 
       {/* ═══════════════════════════════════════════════════════════
-           HERO
+           2. HERO SECTION — Full-screen
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-hero">
         <div className="stitch-hero-bg">
@@ -211,181 +223,134 @@ export default function HomePage() {
           <div className="stitch-hero-overlay" />
         </div>
 
-        <div className="stitch-container">
-          <div className="stitch-hero-content">
-            <h1 className="stitch-hero-title reveal">
-              O Toque Que Faz Ela<br />Pensar em Você
-            </h1>
-            <p className="stitch-hero-sub reveal">
-              Descubra os 23 movimentos tântricos que criam uma conexão tão profunda que ela nunca vai esquecer — e entre para a comunidade exclusiva de homens que transformaram suas relações.
-            </p>
-            <p className="stitch-hero-author reveal">
-              Método desenvolvido por terapeuta tântrica com 6 anos de prática clínica
-            </p>
-            <div className="stitch-hero-btn-wrap reveal">
-              <button className="stitch-btn-primary" onClick={goCheckout}>
-                QUERO ENTRAR NA COMUNIDADE — R$ 24,90
-              </button>
-            </div>
-            <p className="stitch-hero-trust-inline reveal">
-              <span><CheckIcon /> Acesso imediato após o pagamento</span>
-              <span><CheckIcon /> Garantia incondicional de 30 dias</span>
-            </p>
-            <div className="stitch-hero-rating reveal">
-              <div className="stitch-hero-stars">
-                {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
-              </div>
-              <p>488 avaliações · Nota 4.9/5.0</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════
-           BENEFITS FLOW
-           ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-benefits fade-section">
-        <div className="stitch-container">
-          <h2 className="stitch-section-title reveal">
-            O Que Você Vai Ter Acesso Na Comunidade
-          </h2>
-          <p className="stitch-section-subtitle reveal">
-            Aprenda, Conecte-se e Evolua Com Homens Que Querem O Melhor
+        <div className="stitch-hero-content">
+          <p className="stitch-hero-tagline reveal">MASTERCLASS DE CONEXÃO E PRAZER PROFUNDO.</p>
+          <h1 className="stitch-hero-title reveal">
+            O CÓDIGO <span className="stitch-hero-title-red">DO TOQUE.</span>
+          </h1>
+          <p className="stitch-hero-desc reveal">
+            Descubra os <span className="stitch-hero-desc-bold">23 movimentos hipnóticos</span> que criam uma conexão tão profunda que ela nunca vai esquecer — e entre para a comunidade exclusiva de homens que transformaram suas relações.
           </p>
-          <p className="stitch-section-intro reveal">
-            A maioria dos homens não percebe, mas o toque é a linguagem mais poderosa da intimidade. Dentro da nossa comunidade, você vai aprender técnicas que criam uma conexão emocional profunda que vai muito além do físico.
+          <div className="reveal">
+            <button className="stitch-btn-hero" onClick={goCheckout}>
+              QUERO ENTRAR NA COMUNIDADE — R$ 24,90
+            </button>
+          </div>
+          <div className="stitch-hero-rating reveal">
+            <div className="stitch-hero-stars">
+              {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
+            </div>
+            <p className="stitch-hero-rating-text">4.9/5 (488 AVALIAÇÕES)</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+           3. PROBLEM SECTION
+           ═══════════════════════════════════════════════════════════ */}
+      <section className="stitch-problem fade-section" id="sobre">
+        <div className="stitch-problem-inner">
+          <h2 className="stitch-problem-title reveal">
+            O PROBLEMA DO TOQUE TRADICIONAL: <span className="stitch-problem-title-red">POR QUE ELE FALHA</span>
+          </h2>
+          <p className="reveal">
+            Comum de tantas conexões íntimas que perdem sua essência inicial, o toque torna-se mecânico e previsível, resultando em distanciamento.
           </p>
-          <p className="stitch-section-intro reveal">
-            Ao entrar, você ganha acesso aos 23 movimentos tântricos, lives exclusivas, suporte direto com a terapeuta e uma comunidade de homens comprometidos com a evolução. Tudo isso por menos do que uma refeição.
+          <p className="reveal">
+            O Código dos <span className="stitch-problem-bold">23 movimentos hipnóticos</span> resgata os instintos que criam uma conexão tão profunda que ela nunca vai esquecer.
           </p>
-
-          <div className="stitch-flow-grid">
-            <div className="stitch-flow-line" />
-            <div className="stitch-flow-step vibe-card reveal">
-              <div className="stitch-flow-icon"><HeartIcon /></div>
-              <h3>Conexão Emocional Profunda</h3>
-              <p>Cada movimento foi desenvolvido para criar intimidade verdadeira e confiança absoluta</p>
-            </div>
-            <div className="stitch-flow-step vibe-card vibe-card-delay-1 reveal">
-              <div className="stitch-flow-icon"><BoltIcon /></div>
-              <h3>Técnica Comprovada</h3>
-              <p>Baseado em 6 anos de prática clínica em terapia tântrica com centenas de casos de sucesso</p>
-            </div>
-            <div className="stitch-flow-step vibe-card vibe-card-delay-2 reveal">
-              <div className="stitch-flow-icon"><ClockIcon /></div>
-              <h3>Fácil de Aplicar</h3>
-              <p>Instruções passo a passo que qualquer pessoa pode seguir, mesmo sem experiência prévia</p>
-            </div>
-            <div className="stitch-flow-step vibe-card vibe-card-delay-3 reveal">
-              <div className="stitch-flow-icon"><ChartIcon /></div>
-              <h3>Resultados Imediatos</h3>
-              <p>Você vai perceber a diferença já na primeira vez que aplicar os movimentos</p>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           CONTENT BREAKDOWN
+           4. CONNECTION SECTION — "A ARTE DA CONEXÃO"
            ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-codes-section fade-section">
-        <div className="stitch-container stitch-container-narrow">
-          <h2 className="stitch-section-title-dark reveal">
-            Conteúdo Completo<br />Os 23 Códigos Que Vão Transformar a Experiência Dela
-          </h2>
-
-          <div className="stitch-codes-list">
-            <div className="stitch-code-item reveal">
-              <div className="stitch-code-inner">
-                <div className="stitch-code-check"><CheckGreen /></div>
-                <div>
-                  <h4>Os 7 Movimentos de Preparação</h4>
-                  <p>Como criar o ambiente perfeito e preparar o corpo dela para receber toques profundos e relaxar completamente</p>
-                </div>
-              </div>
-            </div>
-            <div className="stitch-code-item reveal">
-              <div className="stitch-code-inner">
-                <div className="stitch-code-check"><CheckGreen /></div>
-                <div>
-                  <h4>Os 12 Pontos de Ativação</h4>
-                  <p>Descubra exatamente onde, como e quando tocar para ativar as zonas de prazer profundo que a maioria dos homens desconhece</p>
-                </div>
-              </div>
-            </div>
-            <div className="stitch-code-item reveal">
-              <div className="stitch-code-inner">
-                <div className="stitch-code-check"><CheckGreen /></div>
-                <div>
-                  <h4>Os 4 Movimentos de Finalização</h4>
-                  <p>A sequência exata para criar o clímax perfeito e deixar ela em um estado de relaxamento e conexão total</p>
-                </div>
-              </div>
-            </div>
-            <div className="stitch-code-item reveal">
-              <div className="stitch-code-inner">
-                <div className="stitch-code-check"><CheckGreen /></div>
-                <div>
-                  <h4>Mapas Visuais Ilustrados</h4>
-                  <p>Guias visuais detalhados mostrando cada movimento, pressão e ritmo — impossível errar</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════
-           BONUSES
-           ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-bonus-section fade-section">
+      <section className="stitch-connection fade-section">
         <div className="stitch-container">
-          <p className="stitch-bonus-section-label reveal">Bônus Exclusivos</p>
-          <h2 className="stitch-section-title-dark reveal">
-            3 Bônus Que Você Ganha Ao Entrar Na Comunidade
-          </h2>
-
-          <div className="stitch-bonus-grid">
-            <div className="stitch-bonus-card reveal">
-              <span className="stitch-bonus-badge">Grátis Hoje</span>
-              <div className="stitch-bonus-num">01</div>
-              <h4>Sexo Tântrico para Iniciantes</h4>
-              <p>Guia completo para transformar a experiência íntima usando os princípios do tantra — mesmo se você nunca estudou sobre o assunto.</p>
-              <p className="stitch-bonus-value">Valor: R$ 59,90 · Grátis Hoje</p>
+          <div className="stitch-connection-grid">
+            <div className="stitch-connection-text">
+              <h2 className="stitch-connection-title reveal">A ARTE DA CONEXÃO</h2>
+              <p className="stitch-connection-subtitle reveal">Reescreva a sua história de prazer.</p>
+              <p className="stitch-connection-dropcap reveal">
+                Código do Toque é a Masterclass de conexão definitiva que revela o que a ciência e a psicologia evolutiva esconderam por décadas. Imagine tocar sua parceira de forma que cada movimento envie descargas elétricas de desejo, criando uma conexão emocional que transcende o físico.
+              </p>
+              <p className="reveal">
+                Não se trata apenas de técnica, mas de entender a linguagem silenciosa do corpo e como o toque pode ser a ferramenta mais poderosa para despertar uma intimidade sem precedentes.
+              </p>
             </div>
-            <div className="stitch-bonus-card reveal">
-              <span className="stitch-bonus-badge">Grátis Hoje</span>
-              <div className="stitch-bonus-num">02</div>
-              <h4>Guia dos 7 Sussurros</h4>
-              <p>As palavras exatas para usar durante os toques que amplificam a conexão e o prazer em até 300%.</p>
-              <p className="stitch-bonus-value">Valor: R$ 14,90 · Grátis Hoje</p>
+            <div className="stitch-connection-image-wrap reveal">
+              <div className="stitch-connection-deco" />
+              <div className="stitch-connection-frame">
+                <img
+                  data-lazy
+                  data-src="/lovable-uploads/mockup-hf.png"
+                  alt="Código do Toque — A Arte da Conexão"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                />
+              </div>
             </div>
-            <div className="stitch-bonus-card reveal">
-              <span className="stitch-bonus-badge">Grátis Hoje</span>
-              <div className="stitch-bonus-num">03</div>
-              <h4>Controle Absoluto</h4>
-              <p>Técnicas comprovadas de respiração e foco mental para você durar quanto tempo quiser e ter total controle.</p>
-              <p className="stitch-bonus-value">Valor: R$ 34,90 · Grátis Hoje</p>
-            </div>
-          </div>
-
-          <div className="stitch-value-stack reveal">
-            <p className="stitch-value-stack-label">Valor Total dos Bônus:</p>
-            <p className="stitch-value-stack-price">R$ 109,70</p>
-            <p className="stitch-value-stack-note">Seu investimento hoje: <strong>R$ 24,90</strong></p>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           TESTIMONIALS — Auto-scrolling carousel
+           5. CODES SECTION — 6 code items in grid
            ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-testimonials-section fade-section">
+      <section className="stitch-codes fade-section" id="codigos">
         <div className="stitch-container">
-          <p className="stitch-testimonials-label reveal">Relatos Reais</p>
-          <h2 className="stitch-section-title-dark reveal">
-            O Que a Nossa Comunidade Está Dizendo
+          <h2 className="stitch-codes-title reveal">
+            OS <span className="stitch-codes-title-red">23 CÓDIGOS:</span> MAPA PARA O ÊXTASE
           </h2>
+        </div>
+        <div className="stitch-codes-grid">
+          {codes.map((c, i) => (
+            <div key={i} className="stitch-code-item reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
+              <div className="stitch-code-icon">{c.icon}</div>
+              <div>
+                <p className="stitch-code-label">{c.label}</p>
+                <p className="stitch-code-desc">{c.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+           6. BONUS SECTION — New design with watermark numbers
+           ═══════════════════════════════════════════════════════════ */}
+      <section className="stitch-bonus fade-section" id="bonus">
+        <div className="stitch-container">
+          <p className="stitch-bonus-label reveal">CORRA HOJE</p>
+          <h2 className="stitch-bonus-title reveal">
+            MAIS 3 BÔNUS <span className="stitch-bonus-title-red">EXCLUSIVOS</span> PARA VOCÊ
+          </h2>
+        </div>
+        <div className="stitch-bonus-grid">
+          {bonuses.map((b, i) => (
+            <div key={i} className="stitch-bonus-card reveal" style={{ transitionDelay: `${i * 0.1}s` }}>
+              <span className="stitch-bonus-watermark">{b.num}</span>
+              <p className="stitch-bonus-card-label">BÔNUS {b.num}</p>
+              <h4>{b.title}</h4>
+              <p>{b.desc}</p>
+              <p className="stitch-bonus-value">{b.value}</p>
+              <p className="stitch-bonus-free">GRÁTIS HOJE</p>
+            </div>
+          ))}
+        </div>
+        <div className="stitch-value-stack reveal">
+          <p className="stitch-value-stack-label">VALOR TOTAL DOS BÔNUS</p>
+          <p className="stitch-value-stack-price">R$ 641,00</p>
+          <p className="stitch-value-stack-note">PARA FECHAMENTO EXTRA: R$ 31,90</p>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+           7. TESTIMONIALS — Auto-scrolling carousel
+           ═══════════════════════════════════════════════════════════ */}
+      <section className="stitch-testimonials fade-section" id="depoimentos">
+        <div className="stitch-container">
+          <p className="stitch-testimonials-label reveal">NOSSOS ALUNOS</p>
+          <h2 className="stitch-testimonials-title reveal">O Que Nossa Comunidade Está Dizendo</h2>
 
           <div className="stitch-carousel-wrapper">
             <div className="stitch-carousel-track">
@@ -411,165 +376,100 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           GUARANTEE
+           8. GUARANTEE — Full-width RED BAR
            ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-guarantee-section fade-section">
-        <div className="stitch-container">
-          <div className="stitch-guarantee-card reveal">
-            <div className="stitch-guarantee-icon"><ShieldIcon /></div>
-            <h3>Garantia Incondicional de 30 Dias</h3>
-            <p>
-              Você tem 30 dias completos para testar os 23 movimentos do Código do Toque.
-              Se por qualquer motivo você não ficar satisfeito, devolvemos 100% do seu dinheiro — sem perguntas, sem burocracia.
-            </p>
-            <p className="stitch-guarantee-risk">O risco é todo nosso. Você só tem a ganhar.</p>
-          </div>
+      <section className="stitch-guarantee fade-section">
+        <div className="stitch-guarantee-icon reveal">
+          <ShieldIcon />
+        </div>
+        <h3 className="reveal">Garantia Incondicional de 30 Dias</h3>
+        <p className="stitch-guarantee-text reveal">
+          Você tem 30 dias para testar todas as técnicas do Código do Toque. Se por qualquer motivo você não se sentir satisfeito, devolvemos 100% do seu dinheiro sem perguntas.
+        </p>
+        <p className="stitch-guarantee-italic reveal">O RISCO É TODO MEU, O PRAZER É TODO SEU.</p>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+           9. FAQ SECTION
+           ═══════════════════════════════════════════════════════════ */}
+      <section className="stitch-faq fade-section">
+        <p className="stitch-faq-label reveal">PERGUNTAS FREQUENTES</p>
+        <h2 className="stitch-faq-title reveal">Perguntas Frequentes</h2>
+        <div className="stitch-faq-list">
+          {faqs.map((faq, i) => (
+            <div
+              key={i}
+              className={`stitch-faq-item reveal ${openFaq === i ? 'open' : ''}`}
+              onClick={() => setOpenFaq(openFaq === i ? null : i)}
+            >
+              <div className="stitch-faq-question">
+                <span>{faq.q}</span>
+                <ChevronIcon />
+              </div>
+              <div className="stitch-faq-answer"><p>{faq.a}</p></div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           PRICING — Centered card layout
+           10. OFFER SECTION — 2-column with product image
            ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-pricing-section fade-section">
+      <section className="stitch-offer fade-section" id="oferta">
         <div className="stitch-container">
-          <h2 className="stitch-pricing-header reveal">Seu Acesso à Comunidade Está Aqui</h2>
-
-          <div className="stitch-pricing-card reveal">
-            {/* Product Mockup */}
-            <div className="stitch-pricing-card-mockup">
+          <div className="stitch-offer-card reveal">
+            <div className="stitch-offer-image-side">
+              <span className="stitch-offer-bonus-badge">+ 3 BÔNUS</span>
               <img
                 data-lazy
                 data-src="/lovable-uploads/mockup-hf.png"
                 alt="Código do Toque"
-                className="stitch-pricing-card-mockup-img"
                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
               />
             </div>
-
-            {/* Card Body */}
-            <div className="stitch-pricing-card-body">
-              <p className="stitch-pricing-card-subtitle">
-                Entre Hoje e Ganhe Acesso<br />à Comunidade Exclusiva
-              </p>
-              <div className="stitch-pricing-card-product">
-                <span className="stitch-pricing-card-name">Comunidade Código do Toque</span>
+            <div className="stitch-offer-details">
+              <span className="stitch-offer-pill">Oferta Exclusiva por tempo limitado</span>
+              <p className="stitch-offer-original">De: <span>R$ 497,00</span></p>
+              <div className="stitch-offer-price-row">
+                <span className="stitch-offer-currency">R$</span>
+                <span className="stitch-offer-amount">24,90</span>
               </div>
+              <p className="stitch-offer-per">/ acesso vitalício</p>
+              <p className="stitch-offer-installment">Ou 12x de R$ 2,49 no cartão</p>
 
-              <div className="stitch-pricing-card-access">
-                <span className="stitch-pricing-card-access-icon"><ZapIcon /></span>
-                <span>ACESSO IMEDIATO</span>
-              </div>
-
-              {/* Sold count */}
-              <div className="stitch-pricing-card-sold">
-                <span className="stitch-pricing-card-sold-count">+488</span>
-                <span className="stitch-pricing-card-sold-label">vendidos</span>
-              </div>
-
-              {/* Price block */}
-              <div className="stitch-pricing-card-priceblock">
-                <div className="stitch-pricing-card-original">
-                  De <span>R$ 134,60</span>
-                  <small className="stitch-pricing-card-original-note">produto + 3 bônus</small>
-                </div>
-                <div className="stitch-pricing-card-badge">Oferta Especial de Lançamento</div>
-                <div className="stitch-pricing-card-current">
-                  <span className="stitch-pricing-card-currency">R$</span>
-                  <span className="stitch-pricing-card-amount">24,90</span>
-                </div>
-                <p className="stitch-pricing-card-tags">Pagamento único · Acesso vitalício · 81% OFF</p>
-              </div>
-
-              {/* Checklist */}
-              <ul className="stitch-pricing-card-list">
-                <li><CheckWhite /> Código do Toque — 23 movimentos completos</li>
-                <li><CheckWhite /> Acesso vitalício à comunidade exclusiva</li>
-                <li><CheckWhite /> Lives semanais com a terapeuta</li>
-                <li><CheckWhite /> Bônus: Sexo Tântrico para Iniciantes (R$ 59,90)</li>
-                <li><CheckWhite /> Bônus: Guia dos 7 Sussurros (R$ 14,90)</li>
-                <li><CheckWhite /> Bônus: Controle Absoluto (R$ 34,90)</li>
-                <li><CheckWhite /> Grupo exclusivo no Telegram</li>
-                <li><CheckWhite /> Suporte direto + Garantia 30 dias</li>
+              <ul className="stitch-offer-list">
+                <li><CheckRedIcon /> Código do Toque - 23 movimentos completos</li>
+                <li><CheckRedIcon /> Bônus: Sexo Tântrico (V. R$ 297,00)</li>
+                <li><CheckRedIcon /> Bônus: Guia dos 7 Sussurros (V. R$ 147,00)</li>
+                <li><CheckRedIcon /> Bônus: Controle Absoluto (V. R$ 197,00)</li>
+                <li><CheckRedIcon /> Acesso Vitalício à Comunidade e Atualizações</li>
+                <li><CheckRedIcon /> Garantia Incondicional de 30 Dias</li>
               </ul>
 
-              {/* CTA */}
-              <button className="stitch-btn-pricing-card" onClick={goCheckout}>
+              <button className="stitch-offer-cta" onClick={goCheckout}>
                 QUERO ENTRAR NA COMUNIDADE
               </button>
 
-              {/* Trust */}
-              <div className="stitch-pricing-card-trust">
-                <span><LockIcon /> Pagamento seguro via Cakto</span>
-                <span><ZapIcon /> Acesso em menos de 2 minutos</span>
-              </div>
+              <p className="stitch-offer-trust">Pagamento Seguro • Entrega Imediata • Acesso Vitalício</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           FAQ
+           11. FOOTER
            ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-faq-section fade-section">
-        <div className="stitch-container stitch-container-narrow">
-          <h2 className="stitch-section-title-dark reveal">Perguntas Frequentes</h2>
-          <div className="stitch-faq-list">
-            {faqs.map((faq, i) => (
-              <div
-                key={i}
-                className={`stitch-faq-item reveal ${openFaq === i ? 'open' : ''}`}
-                onClick={() => setOpenFaq(openFaq === i ? null : i)}
-              >
-                <div className="stitch-faq-question">
-                  <span>{faq.q}</span>
-                  <ChevronIcon />
-                </div>
-                <div className="stitch-faq-answer"><p>{faq.a}</p></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════
-           FINAL CTA
-           ═══════════════════════════════════════════════════════════ */}
-      <section className="stitch-final-cta fade-section">
-        <div className="stitch-container">
-          <h2 className="reveal">Está na Hora de Fazer Parte Da Comunidade</h2>
-          <p className="stitch-final-cta-sub reveal">
-            Junte-se a mais de 488 homens que já transformaram suas relações. Ao entrar, você ganha acesso imediato aos 23 códigos, lives exclusivas, bônus e uma comunidade que vai te apoiar em cada passo.
-          </p>
-          <button className="stitch-btn-white reveal" onClick={goCheckout}>
-            SIM, QUERO ENTRAR NA COMUNIDADE — R$ 24,90
-          </button>
-          <div className="stitch-final-cta-badges reveal">
-            <div className="stitch-final-cta-badge">
-              <RocketIcon />
-              <span>Acesso Imediato</span>
-            </div>
-            <div className="stitch-final-cta-badge">
-              <ShieldFooterIcon />
-              <span>Garantia de 30 dias</span>
-            </div>
-            <div className="stitch-final-cta-badge">
-              <LockIcon />
-              <span>Pagamento 100% Seguro</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ FOOTER ═══ */}
       <footer className="stitch-footer">
         <div className="stitch-footer-inner">
-          <div className="stitch-footer-trust">
-            <span><ShieldFooterIcon /> Pagamento 100% seguro</span>
-            <span><RocketIcon /> Acesso imediato</span>
-            <span><ShieldFooterIcon /> Garantia de 30 dias</span>
-            <span><HeadsetIcon /> Suporte após compra</span>
+          <div className="stitch-footer-18">18+</div>
+          <p className="stitch-footer-copy">© 2025 Código do Toque · Luna Amaral · Todos os direitos reservados.</p>
+          <div className="stitch-footer-links">
+            <a href="#termos">Termos de Uso</a>
+            <span style={{ color: 'rgba(255,255,255,0.2)' }}>|</span>
+            <a href="#privacidade">Privacidade</a>
+            <span style={{ color: 'rgba(255,255,255,0.2)' }}>|</span>
+            <a href="#contato">Contato</a>
           </div>
-          <p className="stitch-footer-copy">&copy; 2025 Código do Toque &middot; Luna Amaral &middot; Todos os direitos reservados.</p>
         </div>
       </footer>
     </>

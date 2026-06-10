@@ -552,3 +552,58 @@ Stage Summary:
 - Pricing expanded with community items (lives, Telegram group, community access)
 - All CTAs now say "QUERO ENTRAR NA COMUNIDADE"
 - Zero errors on all viewports
+
+---
+Task ID: 15
+Agent: Main Agent + Full-Stack-Developer Subagent
+Task: Complete page redesign — apply new template structure with our copy, colors, animations
+
+Work Log:
+- User provided a complete new HTML template (from Stitch) with a dramatically different page structure
+- Analyzed template structure: fixed header, full-screen hero, problem section, connection section with drop-cap, 6-code grid, bonus watermark cards, testimonials, full-width guarantee bar, 2-column offer section, simplified footer
+- Used full-stack-developer subagent to rewrite both page.tsx and globals.css completely
+- **page.tsx** complete rewrite (~550 lines): 11 sections in new order:
+  1. Fixed Header (logo CT, nav links, "Comprar Agora" CTA, transparent→solid on scroll)
+  2. Hero (full-screen, "O CÓDIGO DO TOQUE.", "MASTERCLASS" tagline, community CTA, 4.9/5 stars)
+  3. Problem Section ("O PROBLEMA DO TOQUE TRADICIONAL: POR QUE ELE FALHA")
+  4. Connection Section ("A ARTE DA CONEXÃO", drop-cap, grayscale image with frame)
+  5. Codes Section (6 code items: Toque Sutil, Poder & Calor, Pressão Certa, Respiração do Desejo, Leitura Corporal, Zonas Ignoradas)
+  6. Bonus Section (3 cards with watermark numbers R$297/R$147/R$197, value stack R$641,00)
+  7. Testimonials ("NOSSOS ALUNOS", "Relatos Reais" carousel, 6 community members, days-in-community badges)
+  8. Guarantee (full-width red bar, shield icon, "O RISCO É TODO MEU, O PRAZER É TODO SEU.")
+  9. FAQ (5 community-focused questions with accordion)
+  10. Offer Section (2-col: product image left, details+price R$24,90 right, checklist with red ✔)
+  11. Footer (18+ badge, copyright, links row)
+- **globals.css** complete rewrite (~1000 lines): All custom CSS classes, responsive breakpoints, animations
+- KEPT: Poppins font, #b91c1c red, community copy, Relatos Reais carousel, vibe animations, all useEffects, social proof toasts, lazy images
+- ESLint: 0 errors, zero console errors
+- Verified via Agent Browser + JS eval:
+  - All 9 sections exist in DOM with correct content
+  - Header has all nav links (Sobre, Os 23 Códigos, Bônus, Depoimentos)
+  - Hero title "O CÓDIGO DO TOQUE." verified
+  - 6 code grid items verified
+  - 3 bonus cards verified
+  - 18 carousel cards (6 members × 3) verified
+  - "há 45 dias na comunidade" badge verified
+  - Guarantee section verified
+  - Offer section: 6 checklist items, R$24,90 price, CTA button verified
+  - 5 FAQ items verified
+  - Footer with 18+ badge and copyright verified
+- VLM visual analysis confirmed:
+  - Connection section: Red drop-cap "C" + framed image ✓
+  - Codes section: 6 items in 3×2 grid with red labels ✓
+  - Guarantee: Full-width red bar ✓
+  - Offer: 2-column layout with product + price ✓
+
+Stage Summary:
+- Complete structural redesign matching new Stitch template
+- Fixed header with scroll-based bg transition
+- Full-screen hero with bold "O CÓDIGO DO TOQUE." headline
+- New Problem and Connection sections with drop-cap typography
+- 6 code items replacing old 4-item content breakdown
+- Bonus cards with watermark numbers and higher perceived value (R$641 total)
+- Full-width red guarantee bar
+- 2-column offer section replacing centered card
+- All our copy, colors, carousel, and animations preserved
+- Fully responsive across desktop, tablet, and mobile
+- Zero errors on all viewports
