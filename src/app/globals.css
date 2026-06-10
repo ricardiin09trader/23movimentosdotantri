@@ -61,6 +61,28 @@ a { text-decoration: none; color: inherit; }
   100% { transform: translateX(-33.3333%); }
 }
 
+/* ═══ VIBECODE CARD ANIMATIONS ═══ */
+@keyframes vibeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes vibeGlow {
+  0%, 100% { box-shadow: 0 2px 12px rgba(0,0,0,.06), 0 0 0 0 rgba(185,28,28,0); }
+  50% { box-shadow: 0 8px 24px rgba(0,0,0,.1), 0 0 20px rgba(185,28,28,.12); }
+}
+@keyframes vibeShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes vibeIconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+@keyframes vibeBorderGlow {
+  0%, 100% { border-color: rgba(185,28,28,0); }
+  50% { border-color: rgba(185,28,28,.25); }
+}
+
 /* ═══ SCROLL REVEAL ═══ */
 .reveal {
   opacity: 0;
@@ -295,8 +317,45 @@ a { text-decoration: none; color: inherit; }
   transition: transform .3s, box-shadow .3s;
 }
 .stitch-flow-step:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,.1);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(0,0,0,.12);
+}
+
+/* ═══ VIBE CARD — Staggered float + glow + shimmer ═══ */
+.vibe-card {
+  animation: vibeFloat 4s ease-in-out infinite, vibeGlow 4s ease-in-out infinite;
+  border: 2px solid transparent;
+  overflow: hidden;
+}
+.vibe-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(185,28,28,.06) 45%, rgba(255,255,255,.15) 50%, rgba(185,28,28,.06) 55%, transparent 60%);
+  background-size: 200% 100%;
+  animation: vibeShimmer 3s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: 12px;
+  z-index: 1;
+}
+.vibe-card:hover {
+  animation: vibeFloat 3s ease-in-out infinite, vibeGlow 2s ease-in-out infinite, vibeBorderGlow 1.5s ease-in-out infinite;
+}
+.vibe-card:hover .stitch-flow-icon {
+  animation: vibeIconPulse 1.2s ease-in-out infinite;
+}
+.vibe-card-delay-1 { animation-delay: 0s, 0s, 0.5s; }
+.vibe-card-delay-2 { animation-delay: 0.3s, 0.3s, 1s; }
+.vibe-card-delay-3 { animation-delay: 0.6s, 0.6s, 1.5s; }
+.vibe-card-delay-1.vibe-card:hover { animation-delay: 0s, 0s, 0s; }
+.vibe-card-delay-2.vibe-card:hover { animation-delay: 0s, 0s, 0s; }
+.vibe-card-delay-3.vibe-card:hover { animation-delay: 0s, 0s, 0s; }
+/* Pause vibe animations until card is revealed */
+.vibe-card.reveal:not(.visible) {
+  animation-play-state: paused !important;
+}
+.vibe-card.reveal:not(.visible)::after {
+  animation-play-state: paused !important;
 }
 .stitch-flow-icon {
   width: 56px;
@@ -544,6 +603,13 @@ a { text-decoration: none; color: inherit; }
   color: #fff;
 }
 .stitch-carousel-city { font-size: 10px; color: var(--text-gray-500); }
+.stitch-carousel-days {
+  font-size: 9px;
+  color: var(--brand-red);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+   margin-top: 1px;
+}
 
 /* ═══════════════════════════════════════════════════════════
    GUARANTEE — Gradient card
@@ -1018,6 +1084,11 @@ a { text-decoration: none; color: inherit; }
   .stitch-flow-step { padding: 20px 14px 16px; }
   .stitch-flow-icon { width: 48px; height: 48px; }
   .flow-icon-svg { width: 20px !important; height: 20px !important; }
+  .vibe-card { animation-duration: 5s, 5s; }
+  .vibe-card::after { animation-duration: 4s; }
+  .vibe-card-delay-1 { animation-delay: 0s, 0s, 0.6s; }
+  .vibe-card-delay-2 { animation-delay: 0.4s, 0.4s, 1.2s; }
+  .vibe-card-delay-3 { animation-delay: 0.8s, 0.8s, 1.8s; }
 
   .stitch-codes-section { padding: 52px 0; }
 
@@ -1069,6 +1140,11 @@ a { text-decoration: none; color: inherit; }
   .stitch-flow-icon { width: 44px; height: 44px; }
   .flow-icon-svg { width: 18px !important; height: 18px !important; }
   .stitch-flow-line { display: none !important; }
+  .vibe-card { animation-duration: 6s, 6s; }
+  .vibe-card::after { animation-duration: 5s; }
+  .vibe-card-delay-1 { animation-delay: 0s, 0s, 0.8s; }
+  .vibe-card-delay-2 { animation-delay: 0.5s, 0.5s, 1.6s; }
+  .vibe-card-delay-3 { animation-delay: 1s, 1s, 2.4s; }
 
   .stitch-codes-section { padding: 40px 0; }
   .stitch-code-item { padding: 16px 18px; }

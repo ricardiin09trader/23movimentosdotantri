@@ -81,21 +81,26 @@ const HeadsetIcon = () => (
   </svg>
 );
 
-/* ═══ FAQ DATA ═══ */
-const faqs = [
-  { q: 'Como recebo o acesso?', a: 'Imediatamente após a confirmação do pagamento, você receberá um email com seus dados de acesso à plataforma exclusiva. Leva menos de 2 minutos.' },
-  { q: 'Funciona para relacionamentos de longo prazo?', a: 'Sim! O Código do Toque é perfeito tanto para quem está começando quanto para casais que querem reacender a chama e aprofundar a conexão.' },
-  { q: 'Preciso de experiência prévia?', a: 'Não! O método foi desenvolvido para qualquer pessoa, mesmo sem nenhuma experiência em tantra ou técnicas similares. Tudo é explicado passo a passo.' },
-  { q: 'E se eu não gostar?', a: 'Você tem 30 dias de garantia incondicional. Se não ficar satisfeito por qualquer motivo, basta pedir o reembolso completo — sem perguntas.' },
-  { q: 'O acesso é vitalício?', a: 'Sim! Você paga apenas uma vez e tem acesso para sempre, incluindo todas as atualizações futuras do conteúdo.' },
+/* ═══ COMMUNITY MEMBERS DATA ═══ */
+const communityMembers = [
+  { name: 'Carlos M.', city: 'São Paulo, SP', avatar: 'C', quote: 'Minha esposa disse que foi a melhor experiência que já tivemos em 8 anos de casamento. Os movimentos são simples mas fazem TODA a diferença. Valeu cada centavo. Hoje sou membro ativo da comunidade e aprendo coisas novas todo dia.', stars: 5, daysIn: 'há 45 dias na comunidade' },
+  { name: 'Rafael T.', city: 'Curitiba, PR', avatar: 'R', quote: 'Eu sempre achei que sabia o que estava fazendo, mas percebi que estava completamente errado. Depois de aplicar os 23 códigos, a conexão com minha namorada está em outro nível. A comunidade é sensacional, sempre tem alguém pra ajudar.', stars: 5, daysIn: 'há 32 dias na comunidade' },
+  { name: 'Diego S.', city: 'Rio de Janeiro, RJ', avatar: 'D', quote: 'Material sério e profissional. Nada de "truque mágico", são técnicas reais baseadas em tantra que realmente funcionam. Meu relacionamento mudou completamente. Os bônus exclusivos da comunidade valem muito mais que o investimento.', stars: 5, daysIn: 'há 28 dias na comunidade' },
+  { name: 'Marcos P.', city: 'Belo Horizonte, MG', avatar: 'M', quote: 'Entrei cético e saí transformado. Os módulos são claros e as Lives semanais na comunidade me deram suporte real. Minha parceira percebeu a diferença na primeira semana.', stars: 5, daysIn: 'há 60 dias na comunidade' },
+  { name: 'Lucas C.', city: 'Porto Alegre, RS', avatar: 'L', quote: 'O suporte dentro da comunidade é incrível. Sempre que tenho dúvida, alguém responde em minutos. Os bônus de controle absoluto e guia dos sussurros foram o divisor de águas pra mim.', stars: 5, daysIn: 'há 15 dias na comunidade' },
+  { name: 'Felipe R.', city: 'Campinas, SP', avatar: 'F', quote: 'Já tinha comprado outros cursos, mas nenhum entrega como esse. Os mapas visuais são perfeitos e o grupo exclusivo no Telegram é muito ativo. Melhor investimento que fiz.', stars: 5, daysIn: 'há 90 dias na comunidade' },
 ];
 
-/* ═══ TESTIMONIALS DATA ═══ */
-const testimonials = [
-  { name: 'Carlos M.', city: 'São Paulo, SP', quote: 'Minha esposa disse que foi a melhor experiência que já tivemos em 8 anos de casamento. Os movimentos são simples mas fazem TODA a diferença. Valeu cada centavo.', stars: 5 },
-  { name: 'Rafael T.', city: 'Curitiba, PR', quote: 'Eu sempre achei que sabia o que estava fazendo, mas percebi que estava completamente errado. Depois de aplicar os 23 códigos, a conexão com minha namorada está em outro nível.', stars: 5 },
-  { name: 'Diego S.', city: 'Rio de Janeiro, RJ', quote: 'Material sério e profissional. Nada de "truque mágico", são técnicas reais baseadas em tantra que realmente funcionam. Meu relacionamento mudou completamente.', stars: 5 },
+/* ═══ FAQ DATA ═══ */
+const faqs = [
+  { q: 'Como recebo o acesso à comunidade?', a: 'Imediatamente após a confirmação do pagamento, você receberá um email com seus dados de acesso à comunidade exclusiva e todos os bônus. Leva menos de 2 minutos.' },
+  { q: 'Funciona para relacionamentos de longo prazo?', a: 'Sim! A comunidade do Código do Toque é perfeita tanto para quem está começando quanto para casais que querem reacender a chama e aprofundar a conexão.' },
+  { q: 'Preciso de experiência prévia?', a: 'Não! O método foi desenvolvido para qualquer pessoa, mesmo sem nenhuma experiência em tantra ou técnicas similares. Dentro da comunidade, tudo é explicado passo a passo com suporte.' },
+  { q: 'E se eu não gostar?', a: 'Você tem 30 dias de garantia incondicional. Se não ficar satisfeito por qualquer motivo, basta pedir o reembolso completo — sem perguntas, sem burocracia.' },
+  { q: 'O acesso à comunidade é vitalício?', a: 'Sim! Você paga apenas uma vez e tem acesso vitalício à comunidade, incluindo todas as atualizações futuras, lives exclusivas e bônus extras.' },
 ];
+
+
 
 /* ═══ MAIN PAGE ═══ */
 export default function HomePage() {
@@ -158,7 +163,7 @@ export default function HomePage() {
   useEffect(() => {
     const names = ['Carlos M.', 'Rafael T.', 'Diego S.', 'Marcos P.', 'Eduardo L.', 'Felipe R.', 'André V.', 'Lucas C.', 'Thiago N.', 'Pedro H.', 'Gabriel S.', 'Bruno A.'];
     const cities = ['São Paulo, SP', 'Campinas, SP', 'Uberlândia, MG', 'Curitiba, PR', 'Joinville, SC', 'Sorocaba, SP', 'Governador Valadares, MG', 'Vila Velha, ES', 'São José do Rio Preto, SP', 'Maringá, PR', 'Rio de Janeiro, RJ', 'Porto Alegre, RS'];
-    const actions = ['acabou de adquirir', 'acessou o conteúdo', 'completou o módulo 1', 'enviou mensagem de agradecimento'];
+    const actions = ['entrou na comunidade', 'acessou os bônus exclusivos', 'completou o módulo 1', 'participou da live semanal', 'enviou mensagem no grupo', 'compartilhou resultado'];
     let lastIdx = -1;
     function showToast() {
       let idx: number;
@@ -212,14 +217,14 @@ export default function HomePage() {
               O Toque Que Faz Ela<br />Pensar em Você
             </h1>
             <p className="stitch-hero-sub reveal">
-              Descubra os 23 movimentos tântricos que criam uma conexão tão profunda que ela nunca vai esquecer da experiência ao seu lado.
+              Descubra os 23 movimentos tântricos que criam uma conexão tão profunda que ela nunca vai esquecer — e entre para a comunidade exclusiva de homens que transformaram suas relações.
             </p>
             <p className="stitch-hero-author reveal">
               Método desenvolvido por terapeuta tântrica com 6 anos de prática clínica
             </p>
             <div className="stitch-hero-btn-wrap reveal">
               <button className="stitch-btn-primary" onClick={goCheckout}>
-                QUERO DESPERTAR O PODER DO TOQUE — R$ 24,90
+                QUERO ENTRAR NA COMUNIDADE — R$ 24,90
               </button>
             </div>
             <p className="stitch-hero-trust-inline reveal">
@@ -242,36 +247,36 @@ export default function HomePage() {
       <section className="stitch-benefits fade-section">
         <div className="stitch-container">
           <h2 className="stitch-section-title reveal">
-            O Que Você Vai Descobrir
+            O Que Você Vai Ter Acesso Na Comunidade
           </h2>
           <p className="stitch-section-subtitle reveal">
-            Aprenda Como Conduzir a Melhor Experiência da Vida Dela
+            Aprenda, Conecte-se e Evolua Com Homens Que Querem O Melhor
           </p>
           <p className="stitch-section-intro reveal">
-            A maioria dos homens não percebe, mas o toque é a linguagem mais poderosa da intimidade. Um toque consciente e intencional pode criar uma conexão emocional profunda que vai muito além do físico.
+            A maioria dos homens não percebe, mas o toque é a linguagem mais poderosa da intimidade. Dentro da nossa comunidade, você vai aprender técnicas que criam uma conexão emocional profunda que vai muito além do físico.
           </p>
           <p className="stitch-section-intro reveal">
-            O Código do Toque revela os 23 movimentos tântricos que ativam os pontos de prazer e relaxamento profundo, fazendo dela uma experiência inesquecível — e fazendo você se tornar alguém que ela nunca vai esquecer.
+            Ao entrar, você ganha acesso aos 23 movimentos tântricos, lives exclusivas, suporte direto com a terapeuta e uma comunidade de homens comprometidos com a evolução. Tudo isso por menos do que uma refeição.
           </p>
 
           <div className="stitch-flow-grid">
             <div className="stitch-flow-line" />
-            <div className="stitch-flow-step reveal">
+            <div className="stitch-flow-step vibe-card reveal">
               <div className="stitch-flow-icon"><HeartIcon /></div>
               <h3>Conexão Emocional Profunda</h3>
               <p>Cada movimento foi desenvolvido para criar intimidade verdadeira e confiança absoluta</p>
             </div>
-            <div className="stitch-flow-step reveal">
+            <div className="stitch-flow-step vibe-card vibe-card-delay-1 reveal">
               <div className="stitch-flow-icon"><BoltIcon /></div>
               <h3>Técnica Comprovada</h3>
               <p>Baseado em 6 anos de prática clínica em terapia tântrica com centenas de casos de sucesso</p>
             </div>
-            <div className="stitch-flow-step reveal">
+            <div className="stitch-flow-step vibe-card vibe-card-delay-2 reveal">
               <div className="stitch-flow-icon"><ClockIcon /></div>
               <h3>Fácil de Aplicar</h3>
               <p>Instruções passo a passo que qualquer pessoa pode seguir, mesmo sem experiência prévia</p>
             </div>
-            <div className="stitch-flow-step reveal">
+            <div className="stitch-flow-step vibe-card vibe-card-delay-3 reveal">
               <div className="stitch-flow-icon"><ChartIcon /></div>
               <h3>Resultados Imediatos</h3>
               <p>Você vai perceber a diferença já na primeira vez que aplicar os movimentos</p>
@@ -335,9 +340,9 @@ export default function HomePage() {
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-bonus-section fade-section">
         <div className="stitch-container">
-          <p className="stitch-bonus-section-label reveal">Ganhe Hoje</p>
+          <p className="stitch-bonus-section-label reveal">Bônus Exclusivos</p>
           <h2 className="stitch-section-title-dark reveal">
-            Mais 3 Bônus Exclusivos Para Você
+            3 Bônus Que Você Ganha Ao Entrar Na Comunidade
           </h2>
 
           <div className="stitch-bonus-grid">
@@ -377,24 +382,25 @@ export default function HomePage() {
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-testimonials-section fade-section">
         <div className="stitch-container">
-          <p className="stitch-testimonials-label reveal">Resultados Reais</p>
+          <p className="stitch-testimonials-label reveal">Relatos Reais</p>
           <h2 className="stitch-section-title-dark reveal">
-            O Que Nossos Alunos Estão Dizendo
+            O Que a Nossa Comunidade Está Dizendo
           </h2>
 
           <div className="stitch-carousel-wrapper">
             <div className="stitch-carousel-track">
-              {[...testimonials, ...testimonials, ...testimonials].map((t, i) => (
+              {[...communityMembers, ...communityMembers, ...communityMembers].map((t, i) => (
                 <div key={i} className="stitch-carousel-card">
                   <div className="stitch-carousel-stars">
                     {[...Array(t.stars)].map((_, j) => <StarIcon key={j} />)}
                   </div>
                   <p className="stitch-carousel-quote">&ldquo;{t.quote}&rdquo;</p>
                   <div className="stitch-carousel-author">
-                    <div className="stitch-carousel-initials">{t.name.charAt(0)}</div>
+                    <div className="stitch-carousel-initials">{t.avatar}</div>
                     <div>
                       <p className="stitch-carousel-name">{t.name}</p>
                       <p className="stitch-carousel-city">{t.city}</p>
+                      <p className="stitch-carousel-days">{t.daysIn}</p>
                     </div>
                   </div>
                 </div>
@@ -426,7 +432,7 @@ export default function HomePage() {
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-pricing-section fade-section">
         <div className="stitch-container">
-          <h2 className="stitch-pricing-header reveal">Seu Acesso Está Aqui</h2>
+          <h2 className="stitch-pricing-header reveal">Seu Acesso à Comunidade Está Aqui</h2>
 
           <div className="stitch-pricing-card reveal">
             {/* Product Mockup */}
@@ -443,10 +449,10 @@ export default function HomePage() {
             {/* Card Body */}
             <div className="stitch-pricing-card-body">
               <p className="stitch-pricing-card-subtitle">
-                Comece Hoje e Transforme<br />a Experiência Dela
+                Entre Hoje e Ganhe Acesso<br />à Comunidade Exclusiva
               </p>
               <div className="stitch-pricing-card-product">
-                <span className="stitch-pricing-card-name">Código do Toque</span>
+                <span className="stitch-pricing-card-name">Comunidade Código do Toque</span>
               </div>
 
               <div className="stitch-pricing-card-access">
@@ -477,16 +483,18 @@ export default function HomePage() {
               {/* Checklist */}
               <ul className="stitch-pricing-card-list">
                 <li><CheckWhite /> Código do Toque — 23 movimentos completos</li>
+                <li><CheckWhite /> Acesso vitalício à comunidade exclusiva</li>
+                <li><CheckWhite /> Lives semanais com a terapeuta</li>
                 <li><CheckWhite /> Bônus: Sexo Tântrico para Iniciantes (R$ 59,90)</li>
                 <li><CheckWhite /> Bônus: Guia dos 7 Sussurros (R$ 14,90)</li>
                 <li><CheckWhite /> Bônus: Controle Absoluto (R$ 34,90)</li>
-                <li><CheckWhite /> Acesso imediato e vitalício</li>
-                <li><CheckWhite /> Garantia incondicional de 30 dias</li>
+                <li><CheckWhite /> Grupo exclusivo no Telegram</li>
+                <li><CheckWhite /> Suporte direto + Garantia 30 dias</li>
               </ul>
 
               {/* CTA */}
               <button className="stitch-btn-pricing-card" onClick={goCheckout}>
-                QUERO DESPERTAR O PODER DO TOQUE
+                QUERO ENTRAR NA COMUNIDADE
               </button>
 
               {/* Trust */}
@@ -528,12 +536,12 @@ export default function HomePage() {
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-final-cta fade-section">
         <div className="stitch-container">
-          <h2 className="reveal">Está na Hora de Criar Momentos Inesquecíveis</h2>
+          <h2 className="reveal">Está na Hora de Fazer Parte Da Comunidade</h2>
           <p className="stitch-final-cta-sub reveal">
-            O Código do Toque vai te dar as ferramentas exatas para transformar a experiência dela e criar uma conexão que ela nunca vai esquecer
+            Junte-se a mais de 488 homens que já transformaram suas relações. Ao entrar, você ganha acesso imediato aos 23 códigos, lives exclusivas, bônus e uma comunidade que vai te apoiar em cada passo.
           </p>
           <button className="stitch-btn-white reveal" onClick={goCheckout}>
-            SIM, QUERO O CÓDIGO DO TOQUE — R$ 24,90
+            SIM, QUERO ENTRAR NA COMUNIDADE — R$ 24,90
           </button>
           <div className="stitch-final-cta-badges reveal">
             <div className="stitch-final-cta-badge">

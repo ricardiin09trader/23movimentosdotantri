@@ -493,3 +493,62 @@ Stage Summary:
 - Final CTA and footer now have trust badges
 - Footer includes "Luna Amaral" in copyright
 - Zero errors on all viewports
+
+---
+Task ID: 14
+Agent: Main Agent
+Task: Community-focused copy update, vibecoding card animations, testimonials to "Relatos Reais"
+
+Work Log:
+- **Community copy pivot**: Shifted entire page copy from product-only to community-access narrative:
+  - Hero subtitle: Added "entre para a comunidade exclusiva de homens que transformaram suas relações"
+  - Hero CTA: "QUERO ENTRAR NA COMUNIDADE — R$ 24,90"
+  - Benefits title: "O Que Você Vai Ter Acesso Na Comunidade"
+  - Benefits subtitle: "Aprenda, Conecte-se e Evolua Com Homens Que Querem O Melhor"
+  - Benefits intro: Community-focused messaging (lives exclusivas, suporte direto com a terapeuta)
+  - Bonus title: "3 Bônus Que Você Ganha Ao Entrar Na Comunidade"
+  - Testimonials label: "Relatos Reais" (was "Resultados Reais")
+  - Testimonials title: "O Que a Nossa Comunidade Está Dizendo" (was "O Que Nossos Alunos Estão Dizendo")
+  - Pricing header: "Seu Acesso à Comunidade Está Aqui"
+  - Product name: "Comunidade Código do Toque" (was "Código do Toque")
+  - Pricing checklist: Expanded from 6 to 8 items (added "Acesso vitalício à comunidade exclusiva", "Lives semanais com a terapeuta", "Grupo exclusivo no Telegram")
+  - Pricing CTA: "QUERO ENTRAR NA COMUNIDADE"
+  - Final CTA: "Está na Hora de Fazer Parte Da Comunidade" with community-focused subtitle
+  - Final CTA button: "SIM, QUERO ENTRAR NA COMUNIDADE — R$ 24,90"
+  - FAQ: All questions updated with community references
+  - Social proof toasts: Community-focused actions ("entrou na comunidade", "acessou os bônus exclusivos", "participou da live semanal")
+- **Testimonials data overhaul**: Replaced 3 testimonials with 6 community members:
+  - Each has: name, city, avatar initial, longer quote mentioning community, star rating, daysIn ("há X dias na comunidade")
+  - New members: Carlos M., Rafael T., Diego S., Marcos P., Lucas C., Felipe R.
+  - Added "stitch-carousel-days" CSS class for red "days in community" badge text
+  - Carousel shows 18 cards (6 × 3 copies)
+- **Vibecoding card animations**: Added 5 new CSS animations for benefit cards:
+  - `vibeFloat`: Subtle continuous Y-axis floating (6px range, 4s)
+  - `vibeGlow`: Pulsing box-shadow with red tint (4s)
+  - `vibeShimmer`: Moving gradient overlay across card face (3s)
+  - `vibeIconPulse`: Icon circle scale pulse on hover (1.2s)
+  - `vibeBorderGlow`: Border color animation on hover (1.5s)
+  - Staggered delays: card 2 → 0.5s, card 3 → 1s, card 4 → 1.5s
+  - Animations pause when card not yet revealed (animation-play-state: paused on .reveal:not(.visible))
+  - On hover: float/glow speed up, border glow activates, icon pulses
+- **Responsive animation speeds**: Slower on tablet (5s) and mobile (6s) for better performance and less motion
+- ESLint: 0 errors, zero console errors
+- Verified with Agent Browser + JS eval:
+  - All text content verified: hero CTA, benefits title, testimonials label/title, pricing header/product name/CTA, final CTA title/button
+  - 4 vibe cards with correct stagger classes (vibe-card, vibe-card-delay-1/2/3)
+  - 18 carousel cards (6 members × 3)
+  - "há 45 dias na comunidade" badge text showing
+  - All 5 FAQ questions with community references
+  - All 8 pricing checklist items including community items
+  - FAQ accordion clickable and functional
+  - Zero browser console errors
+
+Stage Summary:
+- Entire page copy shifted to community-access narrative
+- "Relatos Reais" section with 6 community members, each showing days in community
+- 4 benefit cards now have vibecoding animations: float, glow, shimmer, border glow, icon pulse
+- Animations are staggered and pause until cards are revealed by scroll
+- Responsive animation speeds for tablet and mobile
+- Pricing expanded with community items (lives, Telegram group, community access)
+- All CTAs now say "QUERO ENTRAR NA COMUNIDADE"
+- Zero errors on all viewports
