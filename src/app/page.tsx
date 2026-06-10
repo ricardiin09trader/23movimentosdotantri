@@ -6,42 +6,42 @@ const CHECKOUT = 'https://pay.cakto.com.br/3j7svgt_458559';
 
 /* ═══ SVG ICONS ═══ */
 const HeartIcon = () => (
-  <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
   </svg>
 );
 const BoltIcon = () => (
-  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
   </svg>
 );
 const ClockIcon = () => (
-  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
   </svg>
 );
 const ChartIcon = () => (
-  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
   </svg>
 );
 const CheckGreen = () => (
-  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} />
   </svg>
 );
 const CheckWhite = () => (
-  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
     <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
   </svg>
 );
 const ShieldIcon = () => (
-  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
   </svg>
 );
 const ChevronIcon = () => (
-  <svg className="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
   </svg>
 );
@@ -75,10 +75,45 @@ const faqs = [
   },
 ];
 
+/* ═══ TESTIMONIALS DATA ═══ */
+const testimonials = [
+  {
+    name: 'Camila R.',
+    city: 'Florianópolis, SC',
+    quote: 'Depois de aplicar com minha namorada, a conexão entre nós mudou completamente. Ela disse que nunca se sentiu tão vista e desejada. O conteúdo funciona para qualquer tipo de casal.',
+    stars: 5,
+  },
+  {
+    name: 'Carlos M.',
+    city: 'Jundiaí, SP',
+    quote: 'Minha esposa disse que foi a melhor experiência em 8 anos de casamento. Eu mudei a forma como me aproximo, como olho. Valeu cada centavo.',
+    stars: 5,
+  },
+  {
+    name: 'Rafael T.',
+    city: 'Londrina, PR',
+    quote: 'Depois de aplicar o conteúdo, minha namorada disse que eu mudei de uma forma que ela não consegue explicar. Me sinto mais confiante.',
+    stars: 5,
+  },
+  {
+    name: 'Diego S.',
+    city: 'Uberlândia, MG',
+    quote: 'Comprei cético. Na primeira semana ela disse que nunca se sentiu tão desejada. Isso é sobre presença. E presença muda tudo.',
+    stars: 5,
+  },
+  {
+    name: 'Bruno A.',
+    city: 'Joinville, SC',
+    quote: 'O segredo não é só técnica, é presença. Depois que comecei a aplicar os movimentos, minha parceira percebeu na primeira noite. Recomendo demais.',
+    stars: 5,
+  },
+];
+
 /* ═══ MAIN PAGE ═══ */
 export default function HomePage() {
   const [toastVisible, setToastVisible] = useState(false);
   const [toastText, setToastText] = useState('');
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   /* ═══ SCROLL REVEAL ═══ */
   useEffect(() => {
@@ -117,7 +152,7 @@ export default function HomePage() {
   /* ═══ SOCIAL PROOF TOAST ═══ */
   useEffect(() => {
     const names = ['Carlos M.', 'Rafael T.', 'Diego S.', 'Bruno A.', 'Marcos P.', 'Eduardo L.', 'Felipe R.', 'André V.', 'Lucas C.', 'Thiago N.', 'Pedro H.', 'Gabriel S.'];
-    const cities = ['São Paulo, SP', 'Rio de Janeiro, RJ', 'Curitiba, PR', 'Belo Horizonte, MG', 'Porto Alegre, RS', 'Salvador, BA', 'Brasília, DF', 'Fortaleza, CE'];
+    const cities = ['Jundiaí, SP', 'Campinas, SP', 'Uberlândia, MG', 'Londrina, PR', 'Joinville, SC', 'Sorocaba, SP', 'Governador Valadares, MG', 'Vila Velha, ES', 'São José do Rio Preto, SP', 'Maringá, PR', 'Passo Fundo, RS', 'Caxias do Sul, RS'];
     const actions = ['acabou de adquirir', 'acessou o conteúdo', 'completou o módulo 1', 'enviou mensagem de agradecimento'];
     let lastIdx = -1;
     function showToast() {
@@ -155,10 +190,9 @@ export default function HomePage() {
       </div>
 
       {/* ═══════════════════════════════════════════════════════════
-           HERO — Full-width background image + overlay
+           HERO
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-hero">
-        {/* Background Image with Overlay */}
         <div className="stitch-hero-bg">
           <img
             data-lazy
@@ -194,7 +228,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           BENEFITS FLOW — Light background, 4 steps
+           BENEFITS FLOW
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-benefits">
         <div className="stitch-container">
@@ -205,36 +239,26 @@ export default function HomePage() {
             Passos e movimentos precisos que vão levar seu relacionamento a um nível de intimidade nunca visto antes.
           </p>
 
-          {/* Flow Diagram */}
           <div className="stitch-flow-grid">
-            {/* Connector Line (desktop only) */}
             <div className="stitch-flow-line" />
 
             <div className="stitch-flow-step reveal">
-              <div className="stitch-flow-icon">
-                <HeartIcon />
-              </div>
+              <div className="stitch-flow-icon"><HeartIcon /></div>
               <h3>Conexão</h3>
               <p>Prepare o terreno criando intimidade verdadeira e confiança absoluta.</p>
             </div>
             <div className="stitch-flow-step reveal">
-              <div className="stitch-flow-icon">
-                <BoltIcon />
-              </div>
+              <div className="stitch-flow-icon"><BoltIcon /></div>
               <h3>Técnica</h3>
               <p>Os movimentos exatos para despertar desejo e confiança em cada toque.</p>
             </div>
             <div className="stitch-flow-step reveal">
-              <div className="stitch-flow-icon">
-                <ClockIcon />
-              </div>
+              <div className="stitch-flow-icon"><ClockIcon /></div>
               <h3>Prática</h3>
               <p>Fácil de aplicar — passo a passo completo, sem experiência prévia.</p>
             </div>
             <div className="stitch-flow-step reveal">
-              <div className="stitch-flow-icon">
-                <ChartIcon />
-              </div>
+              <div className="stitch-flow-icon"><ChartIcon /></div>
               <h3>Resultados</h3>
               <p>Impacto desde a primeira aplicação — transformação instantânea.</p>
             </div>
@@ -243,7 +267,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           CONTENT BREAKDOWN — 23 Codes with image backgrounds
+           CONTENT BREAKDOWN (23 Codes)
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-codes-section">
         <div className="stitch-container stitch-container-narrow">
@@ -253,13 +277,7 @@ export default function HomePage() {
 
           <div className="stitch-codes-list">
             <div className="stitch-code-item reveal">
-              <img
-                data-lazy
-                data-src="/lovable-uploads/content-bg-1.jpg"
-                alt=""
-                className="stitch-code-bg"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              />
+              <img data-lazy data-src="/lovable-uploads/content-bg-1.jpg" alt="" className="stitch-code-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
               <div className="stitch-code-inner">
                 <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
@@ -270,13 +288,7 @@ export default function HomePage() {
             </div>
 
             <div className="stitch-code-item reveal">
-              <img
-                data-lazy
-                data-src="/lovable-uploads/content-bg-2.jpg"
-                alt=""
-                className="stitch-code-bg"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              />
+              <img data-lazy data-src="/lovable-uploads/content-bg-2.jpg" alt="" className="stitch-code-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
               <div className="stitch-code-inner">
                 <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
@@ -287,13 +299,7 @@ export default function HomePage() {
             </div>
 
             <div className="stitch-code-item reveal">
-              <img
-                data-lazy
-                data-src="/lovable-uploads/content-bg-3.jpg"
-                alt=""
-                className="stitch-code-bg"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              />
+              <img data-lazy data-src="/lovable-uploads/content-bg-3.jpg" alt="" className="stitch-code-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
               <div className="stitch-code-inner">
                 <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
@@ -304,13 +310,7 @@ export default function HomePage() {
             </div>
 
             <div className="stitch-code-item reveal">
-              <img
-                data-lazy
-                data-src="/lovable-uploads/content-bg-4.jpg"
-                alt=""
-                className="stitch-code-bg"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              />
+              <img data-lazy data-src="/lovable-uploads/content-bg-4.jpg" alt="" className="stitch-code-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
               <div className="stitch-code-inner">
                 <div className="stitch-code-check"><CheckGreen /></div>
                 <div>
@@ -324,7 +324,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           BONUSES — 3-column grid
+           BONUSES
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-bonus-section">
         <div className="stitch-container">
@@ -367,7 +367,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           TESTIMONIALS — 3-column grid with avatars
+           TESTIMONIALS — 5 cards, no avatars, staggered fade-in
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-testimonials-section">
         <div className="stitch-container stitch-container-wide">
@@ -376,77 +376,31 @@ export default function HomePage() {
           </h2>
 
           <div className="stitch-testimonials-grid">
-            <div className="stitch-testimonial-card reveal">
-              <div className="stitch-testimonial-stars">
-                {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
-              </div>
-              <p className="stitch-testimonial-quote">
-                &ldquo;Minha esposa disse que foi a melhor experiência em 8 anos de casamento. Eu mudei a forma como me aproximo, como olho. Valeu cada centavo.&rdquo;
-              </p>
-              <div className="stitch-testimonial-author">
-                <img
-                  data-lazy
-                  data-src="/lovable-uploads/avatar-carlos.jpg"
-                  alt="Carlos M."
-                  className="stitch-testimonial-avatar"
-                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                />
-                <div>
-                  <p className="stitch-testimonial-name">Carlos M.</p>
-                  <p className="stitch-testimonial-city">São Paulo, SP</p>
+            {testimonials.map((t, i) => (
+              <div key={i} className={`stitch-testimonial-card reveal fade-stagger-${(i % 3) + 1}`}>
+                <div className="stitch-testimonial-stars">
+                  {[...Array(t.stars)].map((_, j) => <StarIcon key={j} />)}
+                </div>
+                <p className="stitch-testimonial-quote">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <div className="stitch-testimonial-author">
+                  <div className="stitch-testimonial-initials">
+                    {t.name.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="stitch-testimonial-name">{t.name}</p>
+                    <p className="stitch-testimonial-city">{t.city}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className="stitch-testimonial-card reveal">
-              <div className="stitch-testimonial-stars">
-                {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
-              </div>
-              <p className="stitch-testimonial-quote">
-                &ldquo;Depois de aplicar o conteúdo, minha namorada disse que eu mudei de uma forma que ela não consegue explicar. Me sinto mais confiante.&rdquo;
-              </p>
-              <div className="stitch-testimonial-author">
-                <img
-                  data-lazy
-                  data-src="/lovable-uploads/avatar-rafael.jpg"
-                  alt="Rafael T."
-                  className="stitch-testimonial-avatar"
-                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                />
-                <div>
-                  <p className="stitch-testimonial-name">Rafael T.</p>
-                  <p className="stitch-testimonial-city">Curitiba, PR</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="stitch-testimonial-card reveal">
-              <div className="stitch-testimonial-stars">
-                {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
-              </div>
-              <p className="stitch-testimonial-quote">
-                &ldquo;Comprei cético. Na primeira semana ela disse que nunca se sentiu tão desejada. Isso é sobre presença. E presença muda tudo.&rdquo;
-              </p>
-              <div className="stitch-testimonial-author">
-                <img
-                  data-lazy
-                  data-src="/lovable-uploads/avatar-diego.jpg"
-                  alt="Diego S."
-                  className="stitch-testimonial-avatar"
-                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                />
-                <div>
-                  <p className="stitch-testimonial-name">Diego S.</p>
-                  <p className="stitch-testimonial-city">Rio de Janeiro, RJ</p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           GUARANTEE — Gradient card
+           GUARANTEE
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-guarantee-section">
         <div className="stitch-container stitch-container-narrow">
@@ -516,7 +470,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-           FAQ — Accordion
+           FAQ — Accordion (custom, no <details>)
            ═══════════════════════════════════════════════════════════ */}
       <section className="stitch-faq-section">
         <div className="stitch-container stitch-container-narrow">
@@ -524,13 +478,19 @@ export default function HomePage() {
 
           <div className="stitch-faq-list">
             {faqs.map((faq, i) => (
-              <details key={i} className="stitch-faq-item reveal">
-                <summary>
-                  {faq.q}
+              <div
+                key={i}
+                className={`stitch-faq-item reveal ${openFaq === i ? 'open' : ''}`}
+                onClick={() => setOpenFaq(openFaq === i ? null : i)}
+              >
+                <div className="stitch-faq-question">
+                  <span>{faq.q}</span>
                   <ChevronIcon />
-                </summary>
-                <div className="stitch-faq-answer">{faq.a}</div>
-              </details>
+                </div>
+                <div className="stitch-faq-answer">
+                  <p>{faq.a}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>

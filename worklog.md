@@ -183,3 +183,40 @@ Stage Summary:
 - Pricing stays 2-col on tablet, only stacks on small mobile
 - All font sizes and spacing properly clamped and responsive
 - Zero errors across all viewports
+
+---
+Task ID: 7
+Agent: Main Agent
+Task: Fix FAQ arrows, pricing section proportions, social proof cities, testimonials (5 reviews with woman, no avatars, fade-in), general layout polish
+
+Work Log:
+- **FAQ arrows**: Replaced HTML `<details>`/`<summary>` with custom React accordion using `openFaq` state. Chevron icon now uses `.faq-chevron` CSS class (14x14px) — much smaller and cleaner than the old w-4 h-4 Tailwind class.
+- **Pricing section**: Significantly reduced oversized elements:
+  - Price value: `clamp(26px, 4.5vw, 38px)` (was `clamp(32px, 6vw, 52px)`)
+  - Title: `clamp(18px, 2.8vw, 24px)` (was `clamp(20px, 3vw, 28px)`)
+  - Mockup image max-width: 320px (was unrestricted)
+  - Button font: `clamp(10px, 1.8vw, 13px)` (was `clamp(11px, 2vw, 14px)`)
+  - Checklist items: 12px (was 13px)
+  - Badge: 8px font (was 9px)
+  - Section padding: 56px (was 72px)
+  - Grid gap: 32px (was 40px)
+- **Social proof toasts**: Removed all avatar images. Changed cities from generic ones (São Paulo, Rio de Janeiro) to less generic: Jundiaí, Campinas, Uberlândia, Londrina, Joinville, Sorocaba, Governador Valadares, Vila Velha, São José do Rio Preto, Maringá, Passo Fundo, Caxias do Sul.
+- **Testimonials**: Expanded from 3 to 5 reviews. Added Camila R. (woman, lesbian context — "Depois de aplicar com minha namorada...") as first testimonial. Added Bruno A. as fifth. Removed all avatar images, replaced with initials circles (.stitch-testimonial-initials — 32px circles with first letter). Added fade-in stagger animation classes (.fade-stagger-1/2/3 with 0s/0.12s/0.24s delays).
+- **General layout improvements**:
+  - Reduced all section padding (56px base, 72px large desktop, 36px mobile)
+  - Tighter flow icon sizes (52px, 44px mobile)
+  - Tighter card padding (16-20px)
+  - Reduced font sizes across all sections for better proportions
+  - Better button sizing (smaller, more proportionate)
+- Updated page.tsx: testimonials data array, custom FAQ accordion with openFaq state, initials circle in testimonial cards, removed avatar images
+- Rewrote globals.css completely with all sizing fixes
+- ESLint: 0 errors, zero console errors
+- Verified with Agent Browser: mobile (375x812) + desktop (1440x900), all sections render correctly, FAQ clickable, testimonials with initials visible
+
+Stage Summary:
+- FAQ uses custom accordion with small 14px chevrons (no longer bloated `<details>` elements)
+- Pricing section properly proportioned — price, title, mockup all scaled down
+- Social proof uses non-generic Brazilian cities
+- 5 testimonials: 1 woman (lesbian, Camila R.) + 4 men (Carlos, Rafael, Diego, Bruno) with initials circles
+- Staggered fade-in animation on testimonial cards
+- All elements properly sized and responsive across breakpoints
