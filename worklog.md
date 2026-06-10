@@ -634,3 +634,67 @@ Stage Summary:
 - Pricing copy: community-first approach, no aggressive anchoring
 - Offer angle: "Ao adquirir, você ganha acesso à comunidade"
 - All changes compile cleanly, zero lint errors, zero console errors
+
+---
+Task ID: 17
+Agent: Main Agent
+Task: Apply complete new copy with GIF intro, framer-motion animations, remove CT/Entrar from header
+
+Work Log:
+- Copied user's GIF to /public/hero-intro.gif (13.5MB)
+- Completely rewrote page.tsx with new copy structure:
+  - **Header**: Removed "CT" logo and "Entrar" button, replaced with "Código do Toque" text logo + nav links only
+  - **Intro overlay**: Full-screen GIF with framer-motion AnimatePresence fade-out after 3s, body scroll lock during intro
+  - **Hero**: New copy (eyebrow, H1, subtitle, stars, CTA), GIF background that extends 40vh below hero into problem section
+  - **Problem section**: 4 pain points with red bullets, highlight text, gradient bg overlap with hero GIF
+  - **Transition section**: Luna Amaral quote with attribution on dark card bg
+  - **Solution section**: "✦ Código do Toque" badge, 2x2 grid of numbered cards (01-04) with framer-motion stagger
+  - **Content section**: 4 modules with Roman numerals (I-IV), MotionIconWrap animations on module numbers
+  - **Bonuses**: 3 cards with values (R$59.90, R$14.90, R$34.90), total R$109.70 line
+  - **Testimonials**: 4 specific reviews (Carlos, Rafael, Diego, Marcos) in infinite carousel
+  - **Authority section**: Brief credibility text about 6 years clinical practice
+  - **Guarantee**: Full red section with shield icon, MotionIconWrap animation
+  - **Offer**: Centered card, De R$134.60, R$24.90, 81% OFF, 6-item checklist
+  - **FAQ**: 5 items with full answers, framer-motion stagger
+  - **Footer CTA**: "Ela ainda não sabe..." copy with CTA button
+  - **Footer**: Trust badges, copyright, 18+ disclaimer
+- Added framer-motion animations:
+  - MotionFade: opacity+y scroll-triggered reveals with configurable delay
+  - MotionIconWrap: scale+rotate spring animation on icons
+  - whileHover/whileTap on CTA buttons and cards
+  - AnimatePresence for intro overlay exit animation
+  - Removed old IntersectionObserver for .reveal (replaced by framer-motion whileInView)
+  - Kept IntersectionObserver for .fade-section (section-level opacity)
+- Completely rewrote globals.css (~500 lines) for new structure:
+  - .stitch-intro: fixed full-screen overlay with gradient fade at bottom
+  - .stitch-hero-wrap: extra 40vh padding for GIF extension into next section
+  - .stitch-problem: gradient bg (transparent→black) overlapping hero GIF area
+  - .stitch-transition: quote section with card bg
+  - .stitch-solution: 2x2 card grid with numbered cards
+  - .stitch-content: module items with Roman numeral badges
+  - .stitch-bonus: 3-col grid with value/free bottom row
+  - .stitch-authority: simple text section
+  - .stitch-offer: centered card with price block
+  - .stitch-footer-cta: final CTA section
+  - Updated carousel animation (25% instead of 33.333% for 4 testimonials)
+  - Responsive breakpoints: mobile (<576px), tablet (576-768px), desktop (768px+)
+- Zero lint errors, zero console errors
+- Verified with Agent Browser + VLM:
+  - Desktop hero: clean, readable, GIF background visible
+  - Mobile hero: responsive, text fits, CTA accessible
+  - Problem section: pain points with red bullets, proper overlap with hero
+  - Solution cards: 2x2 grid on desktop, 1-col on mobile
+  - Offer section: price clearly displayed, checklist visible
+  - FAQ accordion: opens/closes correctly
+  - Header: "Código do Toque" text + nav, no CT/Entrar
+
+Stage Summary:
+- Complete new copy applied across all 14 sections exactly as user specified
+- GIF intro animation with framer-motion (3s full-screen, smooth fade-out)
+- GIF background extends from hero into problem section via 40vh padding + gradient overlap
+- Framer-motion animations: scroll reveals, card hover, icon spring, CTA tap
+- Header cleaned: "Código do Toque" text logo, nav links only (no CT badge, no Entrar button)
+- Proper em-dashes (—) used throughout all Portuguese text
+- Community-as-offer angle maintained in CTA copy
+- Responsive across mobile/tablet/desktop breakpoints
+- Zero errors on all viewports
