@@ -497,6 +497,9 @@ export default function HomePage() {
             >
               <h2 className="qz-diagnosis-title">{diagnosis.title}</h2>
               <p className="qz-diagnosis-text">{diagnosis.text}</p>
+              <button className="qz-cta" style={{ marginTop: '28px' }} onClick={() => setPhase('qualification')}>
+                VER RESULTADO COMPLETO 🔥
+              </button>
             </motion.div>
           )}
 
