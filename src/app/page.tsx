@@ -1,678 +1,620 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const CHECKOUT = 'https://pay.cakto.com.br/3j7svgt_458559';
-const HERO_GIF = '/hero-intro.gif';
-const MOCKUP = '/lovable-uploads/mockup-hf.png';
+/* ═══════════════════════════════════════════════════════════
+   CONSTANTS
+   ═══════════════════════════════════════════════════════════ */
 
-/* ═══ SVG ICONS ═══ */
-const StarIcon = () => (
-  <svg viewBox="0 0 24 24" fill="#FACC15">
-    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-  </svg>
-);
-const HeartIcon = () => (
-  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
-  </svg>
-);
-const TargetIcon = () => (
-  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="10" strokeWidth={1.5} />
-    <circle cx="12" cy="12" r="6" strokeWidth={1.5} />
-    <circle cx="12" cy="12" r="2" strokeWidth={1.5} />
-  </svg>
-);
-const RhythmIcon = () => (
-  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
-  </svg>
-);
-const FireIcon = () => (
-  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
-    <path d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
-  </svg>
-);
-const MapIcon = () => (
-  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
-  </svg>
-);
-const ShieldIcon = () => (
-  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />
-  </svg>
-);
-const CheckIcon = () => (
-  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} />
-  </svg>
-);
-const ChevronIcon = () => (
-  <svg className="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-  </svg>
-);
+const CHECKOUT_URL = 'https://pay.cakto.com.br/3j7svgt_458559';
 
-/* ═══ REUSABLE MOTION WRAPPER ═══ */
-const MotionFade = ({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.15 }}
-    transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
-    className={className}
-  >
-    {children}
-  </motion.div>
-);
-
-const MotionIconWrap = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => (
-  <motion.div
-    initial={{ scale: 0.6, opacity: 0, rotate: -8 }}
-    whileInView={{ scale: 1, opacity: 1, rotate: 0 }}
-    viewport={{ once: true, amount: 0.3 }}
-    transition={{ duration: 0.5, delay, type: 'spring', stiffness: 200, damping: 15 }}
-  >
-    {children}
-  </motion.div>
-);
-
-/* ═══ DATA — shorter, direct copy ═══ */
-const solutionCards = [
-  { num: '01', title: 'Conexão antes do contato', desc: 'Prepare o estado emocional dela antes de qualquer toque.' },
-  { num: '02', title: 'Os 12 pontos de ativação', desc: 'Zonas que a maioria desconhece. Onde, com que pressão, e em que ordem.' },
-  { num: '03', title: 'Ritmo e intenção', desc: 'O que separa um toque qualquer de um toque inesquecível.' },
-  { num: '04', title: 'A sequência de finalização', desc: '4 movimentos que criam conexão total e memória duradoura.' },
+const ROULETTE_SEGMENTS = [
+  'Desconto liberado',
+  'Acesso especial',
+  'Condição ativa',
+  'Bônus liberado',
+  'Preço promocional',
+  'Oferta premium',
 ];
 
-const contentModules = [
-  { num: 'I', title: 'Os 7 Movimentos de Preparação', desc: 'Crie o estado certo antes de qualquer contato. Sem isso, os outros movimentos perdem 70% do efeito.' },
-  { num: 'II', title: 'Os 12 Pontos de Ativação', desc: 'Mapeamento completo: onde tocar, pressão exata, ritmo ideal e timing para cada ponto.' },
-  { num: 'III', title: 'Os 4 Movimentos de Finalização', desc: 'A sequência que fecha o ciclo e cria memória afetiva duradoura.' },
-  { num: 'IV', title: 'Mapas Visuais Ilustrados', desc: 'Guias detalhados de cada movimento. Aplique com segurança desde a primeira vez.' },
+const ROULETTE_COLORS = ['#C9A96E', '#1a1018', '#C9A96E', '#1a1018', '#C9A96E', '#1a1018'];
+const WINE_ACCENT = '#722F37';
+
+// Draw from 210° so that CSS rotation of 1830° (5*360+30) lands on segment 0 center
+const ROULETTE_START_ANGLE = (210 * Math.PI) / 180;
+const ROULETTE_TARGET_ROTATION = 360 * 5 + 30; // degrees
+
+type Phase = 'intro' | 'quiz' | 'diagnosis' | 'qualification' | 'roulette' | 'offer';
+
+interface AnswerOption {
+  icon: string;
+  text: string;
+  score: number;
+  type: 'positive' | 'neutral' | 'negative';
+}
+
+interface Question {
+  text: string;
+  options: AnswerOption[];
+}
+
+const QUESTIONS: Question[] = [
+  {
+    text: 'Qual dessas frases mais combina com você hoje?',
+    options: [
+      { icon: '🔥', text: 'Quero melhorar minha presença nos momentos íntimos', score: 2, type: 'positive' },
+      { icon: '🤔', text: 'Nunca pensei muito sobre isso', score: 1, type: 'neutral' },
+      { icon: '👌', text: 'Acho que já me viro bem', score: 0, type: 'negative' },
+    ],
+  },
+  {
+    text: 'Quando o assunto é conexão, você acredita que o toque faz diferença?',
+    options: [
+      { icon: '✅', text: 'Sim, faz muita diferença', score: 2, type: 'positive' },
+      { icon: '🤔', text: 'Talvez, depende do momento', score: 1, type: 'neutral' },
+      { icon: '❌', text: 'Não tenho certeza', score: 0, type: 'negative' },
+    ],
+  },
+  {
+    text: 'Você já sentiu que estava apenas repetindo o básico, sem saber exatamente como conduzir o momento?',
+    options: [
+      { icon: '✅', text: 'Sim, isso já aconteceu', score: 2, type: 'positive' },
+      { icon: '🤔', text: 'Talvez, às vezes fico em dúvida', score: 1, type: 'neutral' },
+      { icon: '❌', text: 'Não, nunca pensei nisso', score: 0, type: 'negative' },
+    ],
+  },
+  {
+    text: 'Você já ficou na dúvida se ela estava realmente envolvida ou apenas seguindo o momento?',
+    options: [
+      { icon: '✅', text: 'Sim, já tive essa dúvida', score: 2, type: 'positive' },
+      { icon: '🤔', text: 'Talvez, nem sempre é claro', score: 1, type: 'neutral' },
+      { icon: '❌', text: 'Não costumo perceber isso', score: 0, type: 'negative' },
+    ],
+  },
+  {
+    text: 'Como você gostaria que ela se sentisse depois de uma experiência com você?',
+    options: [
+      { icon: '🔥', text: 'Marcada e querendo repetir', score: 2, type: 'positive' },
+      { icon: '✨', text: 'Mais conectada e entregue', score: 2, type: 'positive' },
+      { icon: '👌', text: 'Apenas satisfeita já está bom', score: 0, type: 'negative' },
+    ],
+  },
+  {
+    text: 'Se você pudesse aprender movimentos simples para transmitir mais presença, segurança e intenção, você gostaria?',
+    options: [
+      { icon: '✅', text: 'Sim, com certeza', score: 2, type: 'positive' },
+      { icon: '🤔', text: 'Talvez, se fosse fácil de aplicar', score: 1, type: 'neutral' },
+      { icon: '❌', text: 'Não sei se preciso disso', score: 0, type: 'negative' },
+    ],
+  },
+  {
+    text: 'Se existisse um método direto com 23 movimentos guiados para criar uma experiência mais intensa e memorável, você gostaria de conhecer?',
+    options: [
+      { icon: '🔥', text: 'Sim, quero conhecer', score: 2, type: 'positive' },
+      { icon: '👀', text: 'Talvez, quero entender melhor', score: 1, type: 'neutral' },
+      { icon: '👌', text: 'Só se for simples e rápido', score: 1, type: 'neutral' },
+    ],
+  },
 ];
 
-const bonuses = [
-  { num: 'I', title: 'Sexo Tântrico para Iniciantes', desc: 'O que é tantra, o que não é, e como muda a qualidade da intimidade. Entende em 20 minutos.', value: 'R$ 59,90' },
-  { num: 'II', title: 'Guia dos 7 Sussurros', desc: 'As palavras exatas que amplificam cada toque. O que dizer e quando dizer.', value: 'R$ 14,90' },
-  { num: 'III', title: 'Controle Absoluto', desc: 'Respiração e foco para manter presença total. A entrega dela depende da sua.', value: 'R$ 34,90' },
+const MICROFEEDBACK: Record<string, string> = {
+  positive: 'Boa. Isso já mostra que você percebe a importância da conexão. 🔥',
+  neutral: 'Interessante... talvez falte apenas direção. 👀',
+  negative: 'Tudo bem. Vamos entender melhor seu perfil. 👌',
+};
+
+const DIAGNOSIS: Record<string, { title: string; text: string }> = {
+  high: {
+    title: '🔥 Seu diagnóstico: você tem alto potencial de criar uma experiência memorável',
+    text: 'Pelas suas respostas, você já entende que o toque não é apenas contato físico. Ele pode transmitir presença, desejo, segurança e intenção. O ponto é que a maioria dos homens tenta improvisar. E quando não existe direção, o momento pode cair no automático. Por isso o Código do Toque foi criado: para te mostrar 23 movimentos tântricos simples, guiados e aplicáveis, pensados para criar uma conexão mais profunda e uma experiência que ela realmente lembra.',
+  },
+  medium: {
+    title: '👀 Seu diagnóstico: você sente que existe algo a mais, mas talvez ainda não saiba como acessar',
+    text: 'Suas respostas mostram que você percebe a importância da conexão, mas talvez ainda falte clareza sobre como conduzir isso na prática. E esse é exatamente o ponto: não basta querer criar um momento melhor. É preciso saber como tocar, quando diminuir o ritmo, como transmitir presença e como conduzir sem parecer forçado. O Código do Toque te mostra isso com 23 movimentos guiados e fáceis de aplicar.',
+  },
+  low: {
+    title: '👌 Seu diagnóstico: talvez você ainda não veja o toque como uma habilidade, mas ele pode mudar tudo',
+    text: 'Muitos homens acreditam que conexão acontece naturalmente. Mas a verdade é que o toque certo pode mudar completamente a experiência. Ele pode criar mais presença, desejo e intimidade sem precisar de palavras exageradas ou atitudes forçadas. Antes de sair, veja como o Código do Toque transforma esse processo em um método simples com 23 movimentos práticos.',
+  },
+};
+
+const QUAL_CARDS = [
+  'Você demonstrou interesse em melhorar sua conexão pelo toque.',
+  'Você reconhece que o toque faz diferença na intimidade.',
+  'Você está buscando mais direção para conduzir o momento.',
+  'Você está qualificado para conhecer o Código do Toque.',
 ];
 
-const testimonials = [
-  { name: 'Carlos M.', city: 'São Paulo, SP', avatar: 'C', quote: 'Minha esposa disse que foi a melhor experiência em 8 anos de casamento. No domingo ela trouxe o assunto sozinha — não conseguia parar de pensar no que aconteceu.' },
-  { name: 'Rafael T.', city: 'Curitiba, PR', avatar: 'R', quote: 'Sou engenheiro, não acredito sem base. Mas a lógica dos movimentos faz sentido. Apliquei com minha namorada e a diferença foi imediata. Continua assim.' },
-  { name: 'Diego S.', city: 'Rio de Janeiro, RJ', avatar: 'D', quote: 'Material sério, nada de truque mágico. Técnicas reais de tantra, explicadas de forma direta. Meu relacionamento de 5 anos mudou nos últimos 3 meses.' },
-  { name: 'Marcos P.', city: 'Belo Horizonte, MG', avatar: 'M', quote: 'Percebi que estava errado na abordagem — não por falta de esforço, mas de direção. Os 23 códigos deram estrutura clara. Em duas semanas, conexão em outro patamar.' },
-];
+/* ═══════════════════════════════════════════════════════════
+   HELPERS
+   ═══════════════════════════════════════════════════════════ */
 
-const painPoints = [
-  'A intimidade virou rotina — presente, mas sem faísca.',
-  'Ela parece distante durante os momentos íntimos.',
-  'Você não sabe o que falta — mas sente que poderia ser mais.',
-  'Já tentou algumas coisas. Nenhuma criou conexão que durou.',
-];
+function trackFBQ(event: string, params?: Record<string, unknown>) {
+  if (typeof window !== 'undefined' && typeof (window as unknown as Record<string, unknown>).fbq === 'function') {
+    (window as unknown as { fbq: (e: string, n: string, p?: Record<string, unknown>) => void }).fbq('trackCustom', event, params);
+  }
+}
 
-const faqs = [
-  { q: 'Funciona mesmo sem experiência com tantra?', a: 'Sim. O método foi traduzido para linguagem direta e passo a passo visual. Você não precisa saber nada sobre tantra — o Bônus I cobre o contexto em menos de 20 minutos.' },
-  { q: 'Minha parceira precisa saber que aprendi com um curso?', a: 'Não. Os movimentos são naturais e fluem dentro de um momento íntimo normal. A diferença que ela sente é no resultado — não na origem.' },
-  { q: 'Funciona em relacionamentos longos com rotina instalada?', a: 'Especialmente nesses. A maioria dos relatos mais intensos vem de casamentos de anos — o contraste é maior e o impacto emocional é mais profundo.' },
-  { q: 'Quando recebo o acesso?', a: 'Imediatamente após a confirmação do pagamento. Em menos de 2 minutos você já pode começar.' },
-  { q: 'E se eu pedir reembolso?', a: 'Você tem 30 dias. Basta enviar um e-mail — sem formulário, sem justificativa, sem espera. Valor devolvido integralmente.' },
-];
+function getDiagnosisLevel(score: number): 'high' | 'medium' | 'low' {
+  if (score >= 11) return 'high';
+  if (score >= 7) return 'medium';
+  return 'low';
+}
 
-const offerChecklist = [
-  'Código do Toque — 23 movimentos completos',
-  'Bônus I: Sexo Tântrico para Iniciantes',
-  'Bônus II: Guia dos 7 Sussurros',
-  'Bônus III: Controle Absoluto',
-  'Acesso imediato e vitalício',
-  'Garantia incondicional de 30 dias',
-];
+/* ═══════════════════════════════════════════════════════════
+   ANIMATION VARIANTS
+   ═══════════════════════════════════════════════════════════ */
 
-/* ═══ MAIN PAGE ═══ */
+const fadeVariants = {
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+  exit: { opacity: 0, y: -16, transition: { duration: 0.3, ease: [0.4, 0, 1, 1] } },
+};
+
+const staggerContainer = {
+  animate: { transition: { staggerChildren: 0.08 } },
+};
+
+const staggerItem = {
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },
+};
+
+/* ═══════════════════════════════════════════════════════════
+   CHECK ICON SVG
+   ═══════════════════════════════════════════════════════════ */
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 13l4 4L19 7" />
+    </svg>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ROULETTE DRAWING
+   ═══════════════════════════════════════════════════════════ */
+
+function drawRoulette(canvas: HTMLCanvasElement) {
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const dpr = window.devicePixelRatio || 1;
+  const size = canvas.clientWidth;
+  canvas.width = size * dpr;
+  canvas.height = size * dpr;
+  ctx.scale(dpr, dpr);
+
+  const cx = size / 2;
+  const cy = size / 2;
+  const radius = size / 2 - 2;
+  const segmentAngle = (2 * Math.PI) / ROULETTE_SEGMENTS.length;
+
+  ctx.clearRect(0, 0, size, size);
+
+  ROULETTE_SEGMENTS.forEach((label, i) => {
+    const startAngle = ROULETTE_START_ANGLE + i * segmentAngle;
+    const endAngle = startAngle + segmentAngle;
+
+    // Fill segment
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, radius, startAngle, endAngle);
+    ctx.closePath();
+
+    // Alternate colors with wine accent on dark segments
+    if (i % 2 === 0) {
+      ctx.fillStyle = ROULETTE_COLORS[i];
+    } else {
+      // Dark segment with wine tint
+      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+      grad.addColorStop(0, WINE_ACCENT);
+      grad.addColorStop(1, ROULETTE_COLORS[i]);
+      ctx.fillStyle = grad;
+    }
+    ctx.fill();
+
+    // Segment border
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, radius, startAngle, endAngle);
+    ctx.closePath();
+    ctx.strokeStyle = 'rgba(201,169,110,0.25)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // Text
+    const midAngle = startAngle + segmentAngle / 2;
+    const textRadius = radius * 0.62;
+    const tx = cx + Math.cos(midAngle) * textRadius;
+    const ty = cy + Math.sin(midAngle) * textRadius;
+
+    ctx.save();
+    ctx.translate(tx, ty);
+    ctx.rotate(midAngle + Math.PI / 2);
+
+    const fontSize = size < 300 ? 9 : 11;
+    ctx.font = `700 ${fontSize}px Poppins, sans-serif`;
+    ctx.fillStyle = i % 2 === 0 ? '#1a1018' : '#C9A96E';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    // Split long labels into 2 lines
+    const words = label.split(' ');
+    if (words.length > 2) {
+      const mid = Math.ceil(words.length / 2);
+      ctx.fillText(words.slice(0, mid).join(' '), 0, -fontSize * 0.55);
+      ctx.fillText(words.slice(mid).join(' '), 0, fontSize * 0.55);
+    } else {
+      ctx.fillText(label, 0, 0);
+    }
+
+    ctx.restore();
+  });
+
+  // Center circle
+  ctx.beginPath();
+  ctx.arc(cx, cy, size * 0.08, 0, Math.PI * 2);
+  ctx.fillStyle = '#0a0a0a';
+  ctx.fill();
+  ctx.strokeStyle = '#C9A96E';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Inner glow
+  const innerGlow = ctx.createRadialGradient(cx, cy, 0, cx, cy, size * 0.08);
+  innerGlow.addColorStop(0, 'rgba(201,169,110,0.15)');
+  innerGlow.addColorStop(1, 'rgba(201,169,110,0)');
+  ctx.beginPath();
+  ctx.arc(cx, cy, size * 0.08, 0, Math.PI * 2);
+  ctx.fillStyle = innerGlow;
+  ctx.fill();
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MAIN QUIZ COMPONENT
+   ═══════════════════════════════════════════════════════════ */
+
 export default function HomePage() {
-  const [introDone, setIntroDone] = useState(false);
-  const [headerScrolled, setHeaderScrolled] = useState(false);
-  const [toastVisible, setToastVisible] = useState(false);
-  const [toastText, setToastText] = useState('');
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [phase, setPhase] = useState<Phase>('intro');
+  const [currentQ, setCurrentQ] = useState(0);
+  const [score, setScore] = useState(0);
+  const [feedback, setFeedback] = useState<string | null>(null);
+  const [isSpinning, setIsSpinning] = useState(false);
+  const [hasSpun, setHasSpun] = useState(false);
 
-  /* Intro timer */
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasWrapRef = useRef<HTMLDivElement>(null);
+
+  /* Remove intro-loading class on mount */
   useEffect(() => {
-    const timer = setTimeout(() => setIntroDone(true), 3000);
-    return () => clearTimeout(timer);
+    document.body.classList.remove('intro-loading');
   }, []);
 
-  /* Enable scrolling after intro */
+  /* Draw roulette canvas on mount and resize */
   useEffect(() => {
-    if (introDone) {
-      document.body.classList.remove('intro-loading');
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const size = window.innerWidth < 768 ? 280 : 320;
+    canvas.style.width = `${size}px`;
+    canvas.style.height = `${size}px`;
+    drawRoulette(canvas);
+
+    const handleResize = () => {
+      const newSize = window.innerWidth < 768 ? 280 : 320;
+      canvas.style.width = `${newSize}px`;
+      canvas.style.height = `${newSize}px`;
+      drawRoulette(canvas);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  /* Track diagnosis view */
+  useEffect(() => {
+    if (phase === 'diagnosis') {
+      trackFBQ('DiagnosisViewed');
     }
-  }, [introDone]);
+  }, [phase]);
 
-  /* Header scroll detection */
-  useEffect(() => {
-    const onScroll = () => setHeaderScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+  /* ═══ HANDLERS ═══ */
+
+  const handleStart = useCallback(() => {
+    trackFBQ('QuizStarted');
+    setPhase('quiz');
   }, []);
 
-  /* Fade sections on scroll */
-  useEffect(() => {
-    const fadeSections = document.querySelectorAll('.fade-section');
-    const fadeObs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const el = entry.target as HTMLElement;
-          if (entry.isIntersecting) el.classList.add('in-view');
-          else el.classList.remove('in-view');
-        });
-      },
-      { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
-    );
-    fadeSections.forEach((el) => fadeObs.observe(el));
-    return () => { fadeObs.disconnect(); };
-  }, []);
+  const handleAnswer = useCallback(
+    (option: AnswerOption) => {
+      if (feedback) return; // prevent double-click during feedback
 
-  /* Social proof toast */
-  useEffect(() => {
-    if (!introDone) return;
-    const names = ['Carlos M.', 'Rafael T.', 'Diego S.', 'Marcos P.', 'Eduardo L.', 'Felipe R.', 'André V.', 'Lucas C.'];
-    const cities = ['São Paulo, SP', 'Campinas, SP', 'Uberlândia, MG', 'Curitiba, PR', 'Joinville, SC', 'Sorocaba, SP', 'Rio de Janeiro, RJ', 'Porto Alegre, RS'];
-    const actions = ['acessou o conteúdo', 'completou os módulos', 'enviou resultado', 'aplicou no final de semana'];
-    let lastIdx = -1;
-    function showToast() {
-      let idx: number;
-      do { idx = Math.floor(Math.random() * names.length); } while (idx === lastIdx);
-      lastIdx = idx;
-      const mins = Math.floor(Math.random() * 12) + 1;
-      setToastText(`${names[idx]} de ${cities[Math.floor(Math.random() * cities.length)]} ${actions[Math.floor(Math.random() * actions.length)]} · ${mins} min atrás`);
-      setToastVisible(true);
-      setTimeout(() => setToastVisible(false), 4000);
+      trackFBQ('QuizQuestionAnswered');
+      setScore((s) => s + option.score);
+      setFeedback(MICROFEEDBACK[option.type]);
+
+      setTimeout(() => {
+        setFeedback(null);
+        if (currentQ < QUESTIONS.length - 1) {
+          setCurrentQ((q) => q + 1);
+        } else {
+          trackFBQ('QuizCompleted');
+          setPhase('diagnosis');
+        }
+      }, 1000);
+    },
+    [feedback, currentQ],
+  );
+
+  const handleSpin = useCallback(() => {
+    if (isSpinning || hasSpun) return;
+
+    trackFBQ('RouletteStarted');
+    setIsSpinning(true);
+
+    const wrap = canvasWrapRef.current;
+    if (wrap) {
+      // Reset first, then spin
+      wrap.style.transition = 'none';
+      wrap.style.transform = 'rotate(0deg)';
+      // Force reflow
+      (wrap as HTMLDivElement).offsetHeight;
+
+      // Now apply spin
+      wrap.style.transition = 'transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99)';
+      wrap.style.transform = `rotate(${ROULETTE_TARGET_ROTATION}deg)`;
     }
-    const t1 = setTimeout(showToast, 8000);
-    const t2 = setInterval(showToast, 25000);
-    return () => { clearTimeout(t1); clearInterval(t2); };
-  }, [introDone]);
 
-  const goCheckout = useCallback(() => { window.open(CHECKOUT, '_blank'); }, []);
+    setTimeout(() => {
+      setIsSpinning(false);
+      setHasSpun(true);
+      trackFBQ('DiscountUnlocked');
+      setTimeout(() => {
+        setPhase('offer');
+      }, 600);
+    }, 3200);
+  }, [isSpinning, hasSpun]);
+
+  const handleCheckout = useCallback(() => {
+    if (typeof window !== 'undefined' && typeof (window as unknown as Record<string, unknown>).fbq === 'function') {
+      (window as unknown as { fbq: (e: string, n: string, p: Record<string, unknown>) => void }).fbq(
+        'track',
+        'InitiateCheckout',
+        {
+          content_name: 'Código do Toque',
+          content_category: 'Infoproduto',
+          value: 24.9,
+          currency: 'BRL',
+        },
+      );
+    }
+    window.open(CHECKOUT_URL, '_blank');
+  }, []);
+
+  /* ═══ RENDER ═══ */
+
+  const diagnosisLevel = getDiagnosisLevel(score);
+  const diagnosis = DIAGNOSIS[diagnosisLevel];
+  const progressPercent = ((currentQ + 1) / QUESTIONS.length) * 100;
 
   return (
-    <>
-      {/* ═══ INTRO OVERLAY ═══ */}
-      <AnimatePresence>
-        {!introDone && (
-          <motion.div
-            className="stitch-intro"
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-            <img src={HERO_GIF} alt="" />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* ═══ TOAST ═══ */}
-      <div className={`stitch-toast ${toastVisible ? 'show' : ''}`}>
-        <div className="stitch-toast-dot" />
-        <p className="stitch-toast-text">{toastText}</p>
-      </div>
-
-      {/* ═══ HEADER ═══ */}
-      <header className={`stitch-header ${headerScrolled ? 'scrolled' : ''}`}>
-        <span className="stitch-header-logo-text">Código do Toque</span>
-        <nav className="stitch-header-nav">
-          <a href="#metodo">Método</a>
-          <a href="#conteudo">Conteúdo</a>
-          <a href="#bonus">Bônus</a>
-          <a href="#depoimentos">Depoimentos</a>
-        </nav>
-      </header>
-
-      {/* ═══ HERO ═══ */}
-      <section className="stitch-hero fade-section" id="topo">
-        <div className="stitch-hero-bg">
-          <img src={HERO_GIF} alt="" className="stitch-hero-bg-gif" />
-          <div className="stitch-hero-overlay" />
-        </div>
-        <div className="stitch-hero-content">
-          <MotionFade>
-            <span className="stitch-hero-eyebrow">Método Tântrico · Desenvolvido por Terapeuta Clínica</span>
-          </MotionFade>
-          <MotionFade delay={0.1}>
-            <h1 className="stitch-hero-title">
-              O toque que faz ela<br />não conseguir parar de pensar em <span className="stitch-hero-title-red">você</span>
-            </h1>
-          </MotionFade>
-          <MotionFade delay={0.2}>
-            <p className="stitch-hero-desc">
-              23 movimentos tântricos que criam uma conexão física e emocional tão profunda que ela vai se lembrar da experiência ao seu lado pelo resto da vida.
-            </p>
-          </MotionFade>
-          <MotionFade delay={0.3}>
-            <div className="stitch-hero-rating">
-              <div className="stitch-hero-stars">{[...Array(5)].map((_, i) => <StarIcon key={i} />)}</div>
-              <span className="stitch-hero-rating-text">4.9 · 488 avaliações verificadas</span>
-            </div>
-          </MotionFade>
-          <MotionFade delay={0.4}>
-            <motion.button
-              className="stitch-btn-hero"
-              onClick={goCheckout}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Quero o Código do Toque — R$ 24,90
-            </motion.button>
-          </MotionFade>
-          <MotionFade delay={0.5}>
-            <div className="stitch-hero-trust">
-              <span>Acesso imediato</span>
-              <span className="stitch-hero-trust-sep">·</span>
-              <span>Garantia de 30 dias</span>
-              <span className="stitch-hero-trust-sep">·</span>
-              <span>Pagamento seguro via Cakto</span>
-            </div>
-          </MotionFade>
-        </div>
-      </section>
-
-      {/* ═══ SEÇÃO 1 — PROBLEMA ═══ */}
-      <section className="stitch-problem fade-section" id="problema">
-        <div className="stitch-container">
-          <MotionFade>
-            <p className="stitch-section-label">O problema que ninguém admite</p>
-          </MotionFade>
-          <MotionFade delay={0.1}>
-            <h2 className="stitch-problem-title">Você sabe que a conexão pode ser muito mais profunda do que é.</h2>
-          </MotionFade>
-          <MotionFade delay={0.15}>
-            <p className="stitch-problem-text">
-              A maioria dos homens se esforça. Faz o que acha certo. Mas existe uma distância entre &ldquo;foi bom&rdquo; e &ldquo;foi inesquecível&rdquo; — e essa distância não tem nada a ver com duração ou técnica.
-            </p>
-          </MotionFade>
-          <MotionFade delay={0.2}>
-            <p className="stitch-problem-text">
-              Tem tudo a ver com toque. Com como você toca. Onde. Quando. Com que intenção.
-            </p>
-          </MotionFade>
-          <MotionFade delay={0.25}>
-            <ul className="stitch-pain-list">
-              {painPoints.map((p, i) => (
-                <motion.li
-                  key={i}
-                  className="stitch-pain-item"
-                  initial={{ opacity: 0, x: -16 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 * i, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <span className="stitch-pain-bullet">—</span>
-                  <span>{p}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </MotionFade>
-          <MotionFade delay={0.3}>
-            <p className="stitch-problem-text stitch-problem-text-highlight">
-              Isso não é falta de amor. Não é problema do relacionamento. É falta de um mapa.
-            </p>
-          </MotionFade>
-        </div>
-      </section>
-
-      {/* ═══ SEÇÃO 2 — TRANSIÇÃO ═══ */}
-      <section className="stitch-transition fade-section">
-        <MotionFade>
-          <blockquote className="stitch-transition-quote">
-            &ldquo;O toque consciente é a linguagem que o corpo entende antes que a mente processe.&rdquo;
-          </blockquote>
-        </MotionFade>
-        <MotionFade delay={0.15}>
-          <cite className="stitch-transition-author">Luna Amaral · Terapeuta Tântrica · 6 anos de prática clínica</cite>
-        </MotionFade>
-      </section>
-
-      {/* ═══ SEÇÃO 3 — SOLUÇÃO ═══ */}
-      <section className="stitch-solution fade-section" id="metodo">
-        <div className="stitch-container">
-          <MotionFade>
-            <span className="stitch-solution-badge">✦ Código do Toque</span>
-          </MotionFade>
-          <MotionFade delay={0.1}>
-            <h2 className="stitch-solution-title">23 movimentos que ensinam o corpo dela a procurar o seu.</h2>
-          </MotionFade>
-          <MotionFade delay={0.15}>
-            <p className="stitch-solution-text">
-              O Código do Toque não é um guia de massagem. É um protocolo de 6 anos de prática clínica com tantra terapêutico — traduzido em passo a passo visual que qualquer homem aplica hoje à noite, sem experiência anterior.
-            </p>
-          </MotionFade>
-          <MotionFade delay={0.2}>
-            <p className="stitch-solution-text stitch-solution-highlight">
-              O que muda: ela para de &ldquo;estar presente&rdquo; e começa a se entregar. Perceptível na primeira aplicação — cumulativa em cada vez seguinte.
-            </p>
-          </MotionFade>
-          <div className="stitch-solution-grid">
-            {solutionCards.map((card, i) => (
-              <motion.div
-                key={i}
-                className="stitch-solution-card"
-                initial={{ opacity: 0, y: 24, scale: 0.96 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              >
-                <div className="stitch-solution-card-num">{card.num}</div>
-                <h4 className="stitch-solution-card-title">{card.title}</h4>
-                <p className="stitch-solution-card-desc">{card.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ SEÇÃO 4 — CONTEÚDO ═══ */}
-      <section className="stitch-content fade-section" id="conteudo">
-        <div className="stitch-container">
-          <MotionFade>
-            <p className="stitch-section-label">O que está dentro</p>
-          </MotionFade>
-          <MotionFade delay={0.1}>
-            <h2 className="stitch-content-title">4 módulos. 23 movimentos. Nada sobrando.</h2>
-          </MotionFade>
-          <div className="stitch-modules-grid">
-            {contentModules.map((m, i) => (
-              <motion.div
-                key={i}
-                className="stitch-module-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -3, transition: { duration: 0.2 } }}
-              >
-                <div className="stitch-module-num">{m.num}</div>
-                <h4 className="stitch-module-title">{m.title}</h4>
-                <p className="stitch-module-desc">{m.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ SEÇÃO 5 — BÔNUS ═══ */}
-      <section className="stitch-bonus fade-section" id="bonus">
-        <div className="stitch-bonus-header">
-          <MotionFade>
-            <p className="stitch-bonus-section-label">Incluído no acesso</p>
-          </MotionFade>
-          <MotionFade delay={0.1}>
-            <h2 className="stitch-bonus-title">3 bônus que amplificam cada movimento</h2>
-          </MotionFade>
-          <MotionFade delay={0.15}>
-            <p className="stitch-bonus-subtitle">Cada um resolve um obstáculo real.</p>
-          </MotionFade>
-        </div>
-        <div className="stitch-container">
-          <div className="stitch-bonus-grid">
-            {bonuses.map((b, i) => (
-              <motion.div
-                key={i}
-                className="stitch-bonus-card"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.5, delay: 0.1 * i, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              >
-                <p className="stitch-bonus-label">BÔNUS {b.num}</p>
-                <h4 className="stitch-bonus-card-title">{b.title}</h4>
-                <p className="stitch-bonus-card-desc">{b.desc}</p>
-                <div className="stitch-bonus-card-bottom">
-                  <span className="stitch-bonus-value">{b.value}</span>
-                  <span className="stitch-bonus-free">GRÁTIS</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          <MotionFade delay={0.2}>
-            <p className="stitch-bonus-total">Valor total dos bônus: R$ 109,70 · Incluídos sem custo adicional</p>
-          </MotionFade>
-        </div>
-      </section>
-
-      {/* ═══ SEÇÃO 6 — DEPOIMENTOS ═══ */}
-      <section className="stitch-testimonials fade-section" id="depoimentos">
-        <div className="stitch-container">
-          <MotionFade>
-            <p className="stitch-section-label">Resultados reais</p>
-          </MotionFade>
-          <MotionFade delay={0.1}>
-            <h2 className="stitch-testimonials-title">O que mudou para quem aplicou</h2>
-          </MotionFade>
-          <MotionFade delay={0.15}>
-            <p className="stitch-testimonials-subtitle">488 avaliações · Nota 4.9/5.0</p>
-          </MotionFade>
-        </div>
-        <div className="stitch-carousel-wrapper">
-          <div className="stitch-carousel-track">
-            {[...testimonials, ...testimonials, ...testimonials, ...testimonials].map((t, i) => (
-              <div key={i} className="stitch-carousel-card">
-                <div className="stitch-carousel-stars">{[...Array(5)].map((_, j) => <StarIcon key={j} />)}</div>
-                <p className="stitch-carousel-quote">&ldquo;{t.quote}&rdquo;</p>
-                <div className="stitch-carousel-author">
-                  <div className="stitch-carousel-initials">{t.avatar}</div>
-                  <div>
-                    <p className="stitch-carousel-name">{t.name}</p>
-                    <p className="stitch-carousel-city">{t.city}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ SEÇÃO 7 — AUTORIDADE ═══ */}
-      <section className="stitch-authority fade-section">
-        <div className="stitch-container">
-          <MotionFade>
-            <p className="stitch-section-label">Sobre o método</p>
-          </MotionFade>
-          <MotionFade delay={0.1}>
-            <p className="stitch-authority-text">
-              O Código do Toque foi desenvolvido com base em 6 anos de prática clínica em terapia tântrica com centenas de atendimentos. Não é teoria de livro. É o que funciona, refinado sessão por sessão.
-            </p>
-          </MotionFade>
-        </div>
-      </section>
-
-      {/* ═══ SEÇÃO 8 — GARANTIA ═══ */}
-      <section className="stitch-guarantee fade-section">
-        <div className="stitch-guarantee-inner">
-          <MotionIconWrap>
-            <div className="stitch-guarantee-icon"><ShieldIcon /></div>
-          </MotionIconWrap>
-          <MotionFade>
-            <h3 className="stitch-guarantee-heading">Garantia incondicional de 30 dias</h3>
-          </MotionFade>
-          <MotionFade delay={0.1}>
-            <p className="stitch-guarantee-text">
-              Você tem 30 dias para aplicar os 23 movimentos. Se não ficar satisfeito, devolvemos 100% — sem formulários, sem perguntas, sem burocracia.
-            </p>
-          </MotionFade>
-          <MotionFade delay={0.15}>
-            <p className="stitch-guarantee-italic">O risco é nosso. O único risco real é não tentar.</p>
-          </MotionFade>
-        </div>
-      </section>
-
-      {/* ═══ SEÇÃO 8.5 — COMUNIDADE EXCLUSIVA ═══ */}
-      <section className="stitch-community fade-section">
-        <div className="stitch-community-inner">
-          <MotionFade>
-            <span className="stitch-community-tag">🔥 COMPRANDO HOJE</span>
-          </MotionFade>
-          <MotionFade delay={0.1}>
-            <h3 className="stitch-community-heading">Você ganha acesso à <span className="stitch-community-highlight">Comunidade Exclusiva</span> Código do Toque</h3>
-          </MotionFade>
-          <MotionFade delay={0.15}>
-            <p className="stitch-community-text">
-              +300 horas de aulas em documentos, áudio e imagens disponíveis imediatamente.
-            </p>
-          </MotionFade>
-          <MotionFade delay={0.2}>
-            <p className="stitch-community-subtext">
-              Conteúdo exclusivo para membros. Sem custo adicional. Para sempre.
-            </p>
-          </MotionFade>
-          <MotionFade delay={0.25}>
-            <motion.button
-              className="stitch-community-cta"
-              onClick={goCheckout}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Quero acesso à comunidade + Código do Toque
-            </motion.button>
-          </MotionFade>
-        </div>
-      </section>
-
-      {/* ═══ SEÇÃO 9 — OFERTA ═══ */}
-      <section className="stitch-offer fade-section" id="oferta">
-        <div className="stitch-container">
-          <motion.div
-            className="stitch-offer-card"
-            initial={{ opacity: 0, y: 32, scale: 0.97 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="stitch-offer-image">
-              <img src={MOCKUP} alt="Código do Toque" />
-            </div>
-            <div className="stitch-offer-details">
-              <p className="stitch-section-label">Oferta de Lançamento</p>
-              <h3 className="stitch-offer-heading">Código do Toque</h3>
-
-              <div className="stitch-offer-price-block">
-                <p className="stitch-offer-from">De R$ 134,60</p>
-                <div className="stitch-offer-price-row">
-                  <span className="stitch-offer-currency">R$</span>
-                  <span className="stitch-offer-amount">24,90</span>
-                </div>
-                <p className="stitch-offer-tags">Pagamento único · Acesso vitalício · 81% OFF</p>
-              </div>
-
-              <ul className="stitch-offer-list">
-                {offerChecklist.map((item, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, x: -12 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.05 * i }}
-                  >
-                    <span className="stitch-offer-check"><CheckIcon /></span>
-                    {item}
-                  </motion.li>
-                ))}
-              </ul>
-
-              <motion.button
-                className="stitch-offer-cta"
-                onClick={goCheckout}
-                whileHover={{ scale: 1.015 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Quero o Código do Toque — R$ 24,90
-              </motion.button>
-
-              <p className="stitch-offer-trust">Pagamento seguro via Cakto · Acesso em menos de 2 minutos</p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ═══ SEÇÃO 10 — FAQ ═══ */}
-      <section className="stitch-faq fade-section">
-        <div className="stitch-container">
-          <MotionFade>
-            <h2 className="stitch-faq-title">Perguntas frequentes</h2>
-          </MotionFade>
-        </div>
-        <div className="stitch-faq-list">
-          {faqs.map((faq, i) => (
+    <main className="qz-container">
+      <div className="qz-inner">
+        <AnimatePresence mode="wait">
+          {/* ═══ PHASE 1 — INTRO ═══ */}
+          {phase === 'intro' && (
             <motion.div
-              key={i}
-              className={`stitch-faq-item ${openFaq === i ? 'open' : ''}`}
-              onClick={() => setOpenFaq(openFaq === i ? null : i)}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.05 * i }}
+              key="intro"
+              className="qz-intro"
+              variants={fadeVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
-              <div className="stitch-faq-question">
-                <span>{faq.q}</span>
-                <ChevronIcon />
-              </div>
-              <div className="stitch-faq-answer"><p>{faq.a}</p></div>
+              <h1 className="qz-intro-headline">
+                🔥 Descubra seu nível de conexão pelo toque
+              </h1>
+              <p className="qz-intro-sub">
+                Responda algumas perguntas rápidas e veja se você já sabe criar uma experiência que ela realmente lembra depois.
+              </p>
+              <p className="qz-intro-support">
+                O toque certo pode mudar completamente a forma como ela sente sua presença. Mas poucos homens sabem conduzir isso com intenção.
+              </p>
+              <button className="qz-cta" onClick={handleStart}>
+                COMEÇAR DIAGNÓSTICO 🔥
+              </button>
             </motion.div>
-          ))}
-        </div>
-      </section>
+          )}
 
-      {/* ═══ FOOTER CTA ═══ */}
-      <section className="stitch-footer-cta fade-section">
-        <div className="stitch-container">
-          <MotionFade>
-            <h2 className="stitch-footer-cta-title">Ela ainda não sabe o que você vai fazer por ela.</h2>
-          </MotionFade>
-          <MotionFade delay={0.1}>
-            <p className="stitch-footer-cta-text">
-              Mas depois que você aplicar os 23 movimentos, ela vai querer que você faça de novo. E de novo.
-            </p>
-          </MotionFade>
-          <MotionFade delay={0.2}>
-            <motion.button
-              className="stitch-btn-hero"
-              onClick={goCheckout}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+          {/* ═══ PHASE 2 — QUIZ ═══ */}
+          {phase === 'quiz' && (
+            <motion.div
+              key={`quiz-${currentQ}`}
+              className="qz-quiz"
+              variants={fadeVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
             >
-              Começar agora — R$ 24,90
-            </motion.button>
-          </MotionFade>
-          <MotionFade delay={0.25}>
-            <div className="stitch-footer-cta-badges">
-              <span>Garantia de 30 dias</span>
-              <span>Acesso imediato</span>
-              <span>81% OFF</span>
-            </div>
-          </MotionFade>
-        </div>
-      </section>
+              <div className="qz-progress-wrap">
+                <p className="qz-progress-label">Etapa {currentQ + 1} de {QUESTIONS.length}</p>
+                <div className="qz-progress-bar">
+                  <div
+                    className="qz-progress-fill"
+                    style={{ width: `${progressPercent}%` }}
+                  />
+                </div>
+              </div>
 
-      {/* ═══ FOOTER ═══ */}
-      <footer className="stitch-footer">
-        <div className="stitch-footer-inner">
-          <div className="stitch-footer-trust">
-            <span>Pagamento seguro</span>
-            <span>·</span>
-            <span>Acesso imediato</span>
-            <span>·</span>
-            <span>Garantia de 30 dias</span>
-          </div>
-          <p className="stitch-footer-copy">© 2024 Código do Toque · Todos os direitos reservados · Pagamento processado via Cakto</p>
-          <p className="stitch-footer-disclaimer">Este produto é para maiores de 18 anos. Os resultados individuais podem variar.</p>
-        </div>
-      </footer>
-    </>
+              <h2 className="qz-question">{QUESTIONS[currentQ].text}</h2>
+
+              <div className="qz-answers">
+                {QUESTIONS[currentQ].options.map((option, i) => (
+                  <motion.button
+                    key={`${currentQ}-${i}`}
+                    className="qz-answer-btn"
+                    onClick={() => handleAnswer(option)}
+                    disabled={!!feedback}
+                    variants={staggerItem}
+                    initial="initial"
+                    animate="animate"
+                    transition={{ delay: 0.1 + i * 0.08 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <span className="qz-answer-icon">{option.icon}</span>
+                    <span>{option.text}</span>
+                  </motion.button>
+                ))}
+              </div>
+
+              <AnimatePresence>
+                {feedback && (
+                  <motion.p
+                    className="qz-microfeedback"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {feedback}
+                  </motion.p>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          )}
+
+          {/* ═══ PHASE 3 — DIAGNOSIS ═══ */}
+          {phase === 'diagnosis' && (
+            <motion.div
+              key="diagnosis"
+              className="qz-diagnosis"
+              variants={fadeVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
+              <h2 className="qz-diagnosis-title">{diagnosis.title}</h2>
+              <p className="qz-diagnosis-text">{diagnosis.text}</p>
+            </motion.div>
+          )}
+
+          {/* ═══ PHASE 3.5 — QUALIFICATION ═══ */}
+          {phase === 'qualification' && (
+            <motion.div
+              key="qualification"
+              className="qz-qualification"
+              variants={fadeVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
+              <h2 className="qz-qual-title">🎯 Com base nas suas respostas...</h2>
+
+              <motion.div
+                className="qz-qual-cards"
+                variants={staggerContainer}
+                initial="initial"
+                animate="animate"
+              >
+                {QUAL_CARDS.map((text, i) => (
+                  <motion.div
+                    key={i}
+                    className="qz-qual-card"
+                    variants={staggerItem}
+                  >
+                    <span className="qz-qual-check">
+                      <CheckIcon />
+                    </span>
+                    <p className="qz-qual-card-text">{text}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              <div className="qz-qual-bar">
+                <span className="qz-qual-bar-icon">✅</span>
+                <p className="qz-qual-bar-text">
+                  Você está qualificado para desbloquear a condição especial de hoje
+                </p>
+              </div>
+
+              <p className="qz-qual-desc">
+                Como você completou o diagnóstico, agora pode girar a roleta para liberar sua condição promocional.
+              </p>
+
+              <button className="qz-cta" onClick={() => setPhase('roulette')}>
+                AVANÇAR PARA ROLETA 🔥
+              </button>
+            </motion.div>
+          )}
+
+          {/* ═══ PHASE 4 — ROULETTE ═══ */}
+          {phase === 'roulette' && (
+            <motion.div
+              key="roulette"
+              className="qz-roulette"
+              variants={fadeVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
+              <h2 className="qz-roulette-title">🎡 Gire para desbloquear sua condição especial</h2>
+              <p className="qz-roulette-subtitle">
+                Você concluiu o diagnóstico. Agora falta só liberar seu acesso promocional ao Código do Toque.
+              </p>
+
+              <div className="qz-roulette-wrapper">
+                <div className="qz-roulette-pointer" />
+                <div className="qz-roulette-canvas-wrap" ref={canvasWrapRef}>
+                  <canvas ref={canvasRef} className="qz-roulette-canvas" />
+                </div>
+              </div>
+
+              <button
+                className="qz-cta"
+                onClick={handleSpin}
+                disabled={isSpinning || hasSpun}
+              >
+                {isSpinning ? 'Girando...' : 'GIRAR ROLETA 🔥'}
+              </button>
+            </motion.div>
+          )}
+
+          {/* ═══ PHASE 5 — OFFER ═══ */}
+          {phase === 'offer' && (
+            <motion.div
+              key="offer"
+              className="qz-offer"
+              variants={fadeVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
+              <h2 className="qz-offer-title">🔥 Desconto desbloqueado!</h2>
+              <p className="qz-offer-text">
+                Seu acesso promocional ao Código do Toque foi liberado. Você está a um passo de descobrir os 23 movimentos que ajudam a criar mais presença, desejo e conexão através do toque.
+              </p>
+
+              <div className="qz-price-card">
+                <p className="qz-price-from">De R$ 97,00</p>
+                <p className="qz-price-label">por apenas</p>
+                <p className="qz-price-main">R$ 24,90</p>
+                <p className="qz-urgency">
+                  Essa condição especial pode sair do ar a qualquer momento.
+                </p>
+                <button className="qz-cta qz-cta-lg" onClick={handleCheckout}>
+                  QUERO ACESSAR COM DESCONTO 🔥
+                </button>
+              </div>
+
+              <p className="qz-offer-footer">
+                O Código do Toque reúne 23 movimentos tântricos para transformar o momento em uma experiência mais intensa, conectada e memorável.
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </main>
   );
 }
