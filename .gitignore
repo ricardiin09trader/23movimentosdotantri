@@ -1,47 +1,16 @@
-# dependencies
-node_modules
-/.pnp
-.pnp.*
-
-# next.js
-/.next/
-/out/
-/build
-
-# misc
-.DS_Store
-*.pem
-.env*
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-
-# Logs
-*.log
-
-# Ignore everything not essential
+skills/
+node_modules/
+.next/
 *.png
-!public/hero-intro.gif
-!public/logo.svg
-!public/lovable-uploads/mockup-hf.png
-!public/robots.txt
-
-*.mp4
 *.jpg
-
-.zscripts/
-start-dev.sh
-download/
-test/
-prompt
+*.jpeg
+*.webp
+*.mp4
+dev.log
+tool-results/
 worklog.md
-
+.zscripts/
 db/
-prisma/
-mini-services/
-.claude
-.z-ai-config
-upload/
-/skills/
+download/
+start-dev.sh
+tsconfig.tsbuildinfo

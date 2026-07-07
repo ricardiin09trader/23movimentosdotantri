@@ -126,8 +126,8 @@ const FAQ_ITEMS = [
   { q: 'Como recebo o acesso?', a: 'Imediatamente após a confirmação do pagamento, você recebe o acesso completo por e-mail e pela plataforma. É possível começar a estudar nos próximos minutos.' },
   { q: 'Funciona para qualquer fase do relacionamento?', a: 'Sim. Os movimentos podem ser aplicados em qualquer contexto íntimo, independentemente do tempo de relacionamento. O método foca na técnica e na intenção, não na dinâmica do casal.' },
   { q: 'E se eu não gostar?', a: 'Você tem 7 dias de garantia incondicional. Se por qualquer motivo sentir que o método não é para você, basta solicitar reembolso e devolvemos 100% do valor, sem perguntas.' },
-  { q: 'Qual é o tempo de acesso ao conteúdo?', a: 'Acesso vitalício. Uma vez comprado, o conteúdo é seu para sempre. Você pode acessar quantas vezes quiser, em qualquer momento.' },
-  { q: 'Tem suporte?', a: 'Sim. Incluído na compra você tem acesso ao suporte por e-mail e à comunidade exclusiva onde você pode tirar dúvidas com outros homens que estão aplicando o método.' },
+  { q: 'O acesso é vitalício?', a: 'Sim. Você paga uma vez e tem acesso para sempre, incluindo atualizações futuras. Não há cobranças recorrentes ou taxas extras.' },
+  { q: 'É seguro comprar online?', a: 'Sim. Todo o processo é feito pela plataforma Cakto, que é uma das maiores e mais seguras do Brasil. Seus dados são protegidos com criptografia de ponta.' },
 ];
 
 /* ═══════════════════════════════════════════════════════════
@@ -233,6 +233,7 @@ export default function HomePage() {
   const [score, setScore] = useState(0);
   const [feedback, setFeedback] = useState<string | null>(null);
   const [toastVisible, setToastVisible] = useState(false);
+  const [showDownsell, setShowDownsell] = useState(false);
 
   const salesRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLElement>(null);
@@ -407,7 +408,7 @@ export default function HomePage() {
       <header className="stitch-header" ref={headerRef}>
         <span className="stitch-header-logo-text">CÓDIGO DO TOQUE</span>
         <nav className="stitch-header-nav">
-          <a href="#problema">Problema</a>
+          <a href="#metodo">Método</a>
           <a href="#depoimentos">Depoimentos</a>
           <a href="#garantia">Garantia</a>
           <a href="#oferta">Oferta</a>
@@ -423,36 +424,37 @@ export default function HomePage() {
         </div>
         <div className="stitch-hero-content">
           <p className="stitch-hero-eyebrow">MÉTODO CRIADO POR TERAPEUTA TÂNTRICA</p>
-          <h1 className="stitch-hero-title">Ela não vai conseguir explicar por que <span className="stitch-hero-title-red">gostou de você.</span></h1>
-          <h2 className="stitch-hero-desc" style={{fontSize:'clamp(14px,1.8vw,17px)',fontWeight:400,color:'rgba(255,255,255,.7)',lineHeight:1.7,maxWidth:540,margin:'0 auto 24px'}}>Mas existe um motivo para isso acontecer. E são 23 movimentos que você pode aprender hoje.</h2>
+          <h1 className="stitch-hero-title">Por Que Alguns Homens São <span className="stitch-hero-title-red">Inesquecíveis</span> E Outros São Apenas Mais Um?</h1>
+          <p className="stitch-hero-desc">Existe uma diferença invisível entre o homem que deixa uma marca e o que passa despercebido. Não é aparência. Não é dinheiro. É a forma como ele toca, conduz e faz ela sentir cada segundo.</p>
           <div className="stitch-hero-rating">
             <div className="stitch-hero-stars">
               <SvgInline html={STAR_SVG} /><SvgInline html={STAR_SVG} /><SvgInline html={STAR_SVG} /><SvgInline html={STAR_SVG} /><SvgInline html={STAR_SVG} />
             </div>
             <span className="stitch-hero-rating-text">2.847+ homens transformaram sua conexão</span>
           </div>
-          <button className="stitch-btn-hero" onClick={handleCheckout}>Quero conhecer o método</button>
+          <button className="stitch-btn-hero" onClick={handleCheckout}>QUERO CONHECER O MÉTODO</button>
           <div className="stitch-hero-trust">
-            <span>✓ 2.847+ homens transformados</span>
+            <span>Compra Segura</span>
             <span className="stitch-hero-trust-sep">|</span>
-            <span>✓ 7 dias de garantia</span>
+            <span>7 Dias de Garantia</span>
             <span className="stitch-hero-trust-sep">|</span>
-            <span>✓ Acesso imediato</span>
+            <span>Acesso Imediato</span>
           </div>
         </div>
       </section>
 
       {/* 3. PROBLEM */}
-      <section className="stitch-problem fade-section" id="problema">
+      <section className="stitch-problem fade-section">
         <div className="stitch-container">
-          <p className="stitch-section-label">O PROBLEMA REAL</p>
-          <h2 className="stitch-problem-title">Por que a maioria dos homens está invisível nos momentos que mais importam</h2>
-          <div className="stitch-solution-grid" style={{marginTop:'36px'}}>
-            <div className="stitch-solution-card"><p className="stitch-solution-card-num">🔄</p><h3 className="stitch-solution-card-title">Repetição</h3><p className="stitch-solution-card-desc">Você repete os mesmos movimentos sem saber que existem formas muito mais impactantes de tocar.</p></div>
-            <div className="stitch-solution-card"><p className="stitch-solution-card-num">🤔</p><h3 className="stitch-solution-card-title">Insegurança</h3><p className="stitch-solution-card-desc">Você fica na dúvida se ela está realmente envolvida ou apenas acompanhando o momento.</p></div>
-            <div className="stitch-solution-card"><p className="stitch-solution-card-num">⚡</p><h3 className="stitch-solution-card-title">Sem Ritmo</h3><p className="stitch-solution-card-desc">Falta direção real. Você não sabe quando acelerar, diminuir ou fazer uma pausa que mude tudo.</p></div>
-            <div className="stitch-solution-card"><p className="stitch-solution-card-num">💔</p><h3 className="stitch-solution-card-title">Desconexão</h3><p className="stitch-solution-card-desc">A oportunidade de criar uma experiência memorável se perde toda vez, no automático.</p></div>
-          </div>
+          <h2 className="stitch-problem-title">A maioria dos homens nem percebe que está perdendo a maior oportunidade de conexão</h2>
+          <p className="stitch-problem-text">A intimidade se tornou automática. Toque sem intenção. Movimentos repetitivos. Nenhuma condução real. E o resultado? Um momento que passa sem deixar marca.</p>
+          <p className="stitch-problem-text stitch-problem-text-highlight">E o pior: ela percebe.</p>
+          <ul className="stitch-pain-list">
+            <li className="stitch-pain-item"><span className="stitch-pain-bullet">→</span><span>Falta de técnica — você repete os mesmos movimentos sem saber que existem formas mais impactantes de tocar</span></li>
+            <li className="stitch-pain-item"><span className="stitch-pain-bullet">→</span><span>Insegurança — a dúvida se ela está realmente sentindo algo ou apenas acompanhando</span></li>
+            <li className="stitch-pain-item"><span className="stitch-pain-bullet">→</span><span>Repetição — o momento vira rotina e perde a magia que poderia ter</span></li>
+            <li className="stitch-pain-item"><span className="stitch-pain-bullet">→</span><span>Desconexão — a oportunidade de criar uma experiência memorável é perdida todas as vezes</span></li>
+          </ul>
         </div>
       </section>
 
@@ -466,13 +468,13 @@ export default function HomePage() {
       <section className="stitch-solution fade-section" id="metodo">
         <div className="stitch-container">
           <p className="stitch-section-label">MÉTODO CRIADO POR TERAPEUTA TÂNTRICA</p>
-          <h2 className="stitch-solution-title">O Código do Toque — 23 Movimentos que transformam qualquer momento</h2>
-          <p className="stitch-solution-text">Um método direto, desenvolvido por terapeuta tântrica. <span className="stitch-solution-highlight">Sem complicação. Sem teoria excessiva. Apenas movimentos que funcionam.</span></p>
+          <h2 className="stitch-solution-title">Código do Toque — 23 movimentos que transformam qualquer momento em uma experiência memorável</h2>
+          <p className="stitch-solution-text">Um método direto e aplicável, desenvolvido a partir de técnicas tântricas adaptadas para o contexto moderno. <span className="stitch-solution-highlight">Sem complicação. Sem teoria excessiva. Apenas movimentos que funcionam.</span></p>
           <div className="stitch-solution-grid">
-            <div className="stitch-solution-card"><p className="stitch-solution-card-num">👁</p><h3 className="stitch-solution-card-title">Presença Real</h3><p className="stitch-solution-card-desc">Movimentos que transmitem intenção sem precisar falar. Ela sente que você está ali, de verdade.</p></div>
-            <div className="stitch-solution-card"><p className="stitch-solution-card-num">🎵</p><h3 className="stitch-solution-card-title">Ritmo Consciente</h3><p className="stitch-solution-card-desc">Saiba quando acelerar, diminuir e pausar. O ritmo certo transforma qualquer toque em uma experiência envolvente.</p></div>
-            <div className="stitch-solution-card"><p className="stitch-solution-card-num">🔗</p><h3 className="stitch-solution-card-title">Condução Natural</h3><p className="stitch-solution-card-desc">Crie uma jornada que ela queira repetir. Cada movimento conduz para o próximo de forma natural.</p></div>
-            <div className="stitch-solution-card"><p className="stitch-solution-card-num">💎</p><h3 className="stitch-solution-card-title">Impacto Emocional</h3><p className="stitch-solution-card-desc">Vá além do físico e crie impacto emocional. É a diferença entre um momento e uma memória.</p></div>
+            <div className="stitch-solution-card"><p className="stitch-solution-card-num">01</p><h3 className="stitch-solution-card-title">Presença Real</h3><p className="stitch-solution-card-desc">Movimentos que transmitem intenção sem precisar falar. Ela sente que você está ali, de verdade.</p></div>
+            <div className="stitch-solution-card"><p className="stitch-solution-card-num">02</p><h3 className="stitch-solution-card-title">Ritmo Consciente</h3><p className="stitch-solution-card-desc">Saiba quando acelerar, diminuir e pausar. O ritmo certo transforma qualquer toque em uma experiência envolvente.</p></div>
+            <div className="stitch-solution-card"><p className="stitch-solution-card-num">03</p><h3 className="stitch-solution-card-title">Condução Emocional</h3><p className="stitch-solution-card-desc">Crie uma jornada que ela queira repetir. Cada movimento conduz para o próximo de forma natural.</p></div>
+            <div className="stitch-solution-card"><p className="stitch-solution-card-num">04</p><h3 className="stitch-solution-card-title">Conexão Profunda</h3><p className="stitch-solution-card-desc">Vá além do físico e crie impacto emocional. É a diferença entre um momento e uma memória.</p></div>
           </div>
         </div>
       </section>
@@ -480,8 +482,7 @@ export default function HomePage() {
       {/* 6. CONTENT / MODULES */}
       <section className="stitch-content fade-section">
         <div className="stitch-container">
-          <p className="stitch-section-label">O QUE VOCÊ VAI APRENDER</p>
-          <h2 className="stitch-content-title">4 módulos para dominar o método</h2>
+          <h2 className="stitch-content-title">O que você vai descobrir</h2>
           <div className="stitch-modules-grid">
             <div className="stitch-module-card"><div className="stitch-module-num">01</div><h3 className="stitch-module-title">Módulo 1 — Fundamentos do Toque Consciente</h3><p className="stitch-module-desc">Entenda os princípios que transformam um toque comum em uma experiência com intenção e presença real.</p></div>
             <div className="stitch-module-card"><div className="stitch-module-num">02</div><h3 className="stitch-module-title">Módulo 2 — Os 23 Movimentos Tântricos</h3><p className="stitch-module-desc">Cada movimento explicado em detalhes, com foco em como e quando aplicar para máximo impacto.</p></div>
@@ -495,7 +496,7 @@ export default function HomePage() {
       <section className="stitch-bonus fade-section">
         <div className="stitch-bonus-header">
           <p className="stitch-bonus-section-label">BÔNUS EXCLUSIVOS</p>
-          <h2 className="stitch-bonus-title">Leve também esses recursos gratuitamente</h2>
+          <h2 className="stitch-bonus-title">Leve também esses bônus hoje</h2>
           <p className="stitch-bonus-subtitle">Disponíveis apenas para quem acessar agora</p>
         </div>
         <div className="stitch-bonus-grid">
@@ -553,8 +554,7 @@ export default function HomePage() {
         <div className="stitch-guarantee-inner">
           <div className="stitch-guarantee-icon"><SvgInline html={SHIELD_SVG} /></div>
           <h2 className="stitch-guarantee-heading">Garantia Incondicional de 7 Dias</h2>
-          <p className="stitch-guarantee-text">Se por qualquer motivo você sentir que o método não é para você, devolvemos 100% do seu investimento.</p>
-          <p className="stitch-guarantee-text" style={{marginTop:'8px',opacity:'.85'}}>Sem perguntas, sem burocracia.</p>
+          <p className="stitch-guarantee-text">Se por qualquer motivo você sentir que o método não é para você, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.</p>
           <p className="stitch-guarantee-italic">O risco é zero. A oportunidade é real.</p>
         </div>
       </section>
@@ -570,35 +570,106 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 11. OFFER */}
+      {/* 11. OFFER — TWO PLANS */}
       <section className="stitch-offer fade-section" id="oferta">
         <div className="stitch-container">
-          <div className="stitch-offer-card">
-            <div className="stitch-offer-image">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/lovable-uploads/mockup-hf.png" alt="Código do Toque" />
-            </div>
-            <div className="stitch-offer-details">
-              <h2 className="stitch-offer-heading">Código do Toque — 23 Movimentos Tântricos</h2>
-              <div className="stitch-offer-price-block">
-                <p className="stitch-offer-from">De R$97,00</p>
-                <div className="stitch-offer-price-row"><span className="stitch-offer-currency">R$ </span><span className="stitch-offer-amount">24,90</span></div>
-                <p className="stitch-offer-tags">Pagamento único • Acesso vitalício • Suporte incluso</p>
+          <div className="stitch-offer-section-header">
+            <h2 className="stitch-offer-section-title">Escolha o seu caminho</h2>
+            <p className="stitch-offer-section-sub">Dois planos. Um resultado. A diferença está no que você leva junto.</p>
+          </div>
+          <div className="stitch-plans-grid">
+            {/* PLANO BÁSICO */}
+            <div className="stitch-plan-card stitch-plan-basic">
+              <p className="stitch-plan-label">PLANO BÁSICO</p>
+              <h3 className="stitch-plan-name">Código do Toque</h3>
+              <div className="stitch-plan-image-wrap">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/lovable-uploads/mockup-hf.png" alt="Código do Toque" className="stitch-plan-img" />
               </div>
-              <ul className="stitch-offer-list">
+              <div className="stitch-plan-price-block">
+                <p className="stitch-plan-from">De R$97,00</p>
+                <div className="stitch-plan-price-row"><span className="stitch-plan-currency">R$ </span><span className="stitch-plan-amount">19,90</span></div>
+                <p className="stitch-plan-tags">Pagamento único • Acesso vitalício</p>
+              </div>
+              <ul className="stitch-plan-list">
                 <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 23 movimentos guiados passo a passo</li>
                 <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 4 módulos completos</li>
-                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 3 bônus exclusivos</li>
-                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Acesso imediato após confirmação</li>
-                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Garantia incondicional de 7 dias</li>
-                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Acesso à comunidade exclusiva</li>
+                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Acesso imediato</li>
+                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Garantia de 7 dias</li>
               </ul>
-              <button className="stitch-offer-cta" onClick={handleCheckout}>QUERO ACESSAR AGORA</button>
-              <p className="stitch-offer-trust">Compra 100% segura • Acesso imediato após confirmação</p>
+              <button className="stitch-plan-cta stitch-plan-cta-basic" onClick={() => setShowDownsell(true)}>QUERO O BÁSICO</button>
+              <p className="stitch-plan-trust">Compra 100% segura</p>
+            </div>
+            {/* PLANO COMPLETO */}
+            <div className="stitch-plan-card stitch-plan-complete">
+              <div className="stitch-plan-ribbon">MAIS ESCOLHIDO</div>
+              <p className="stitch-plan-label">PLANO COMPLETO</p>
+              <h3 className="stitch-plan-name">Código do Toque + Bônus</h3>
+              <div className="stitch-plan-image-wrap">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/lovable-uploads/mockup-hf.png" alt="Código do Toque Completo" className="stitch-plan-img" />
+              </div>
+              <div className="stitch-plan-price-block">
+                <p className="stitch-plan-from">De R$197,00</p>
+                <div className="stitch-plan-price-row"><span className="stitch-plan-currency">R$ </span><span className="stitch-plan-amount">24,90</span></div>
+                <p className="stitch-plan-tags">Pagamento único • Acesso vitalício • Suporte</p>
+              </div>
+              <ul className="stitch-plan-list">
+                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 23 movimentos guiados passo a passo</li>
+                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 4 módulos completos</li>
+                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Guia de Leitura Corporal (R$47)</li>
+                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Playlist de Atmosfera (R$27)</li>
+                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Protocolo de Primeira Vez (R$37)</li>
+                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Acesso à comunidade exclusiva</li>
+                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Garantia de 7 dias</li>
+              </ul>
+              <button className="stitch-plan-cta stitch-plan-cta-complete" onClick={handleCheckout}>QUERO ACESSAR AGORA</button>
+              <p className="stitch-plan-trust">Compra 100% segura • Acesso imediato</p>
             </div>
           </div>
         </div>
       </section>
+
+      {/* DOWNSELL POPUP */}
+      <AnimatePresence>
+        {showDownsell && (
+          <motion.div
+            className="stitch-downsell-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowDownsell(false)}
+          >
+            <motion.div
+              className="stitch-downsell-card"
+              initial={{ scale: 0.85, opacity: 0, y: 40 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button className="stitch-downsell-close" onClick={() => setShowDownsell(false)} aria-label="Fechar">✕</button>
+              <p className="stitch-downsell-tag">OFERTA ESPECIAL — SÓ AGORA</p>
+              <h3 className="stitch-downsell-title">Antes de continuar…</h3>
+              <p className="stitch-downsell-text">Você está prestes a levar apenas o método. Mas por apenas <strong>R$5,00 a mais</strong>, você pode ter o <strong>plano completo</strong> com todos os bônus:</p>
+              <ul className="stitch-downsell-list">
+                <li><span className="stitch-downsell-check">✓</span> Guia de Leitura Corporal <span className="stitch-downsell-val">R$47</span></li>
+                <li><span className="stitch-downsell-check">✓</span> Playlist de Atmosfera <span className="stitch-downsell-val">R$27</span></li>
+                <li><span className="stitch-downsell-check">✓</span> Protocolo de Primeira Vez <span className="stitch-downsell-val">R$37</span></li>
+                <li><span className="stitch-downsell-check">✓</span> Acesso à comunidade exclusiva</li>
+              </ul>
+              <div className="stitch-downsell-prices">
+                <span className="stitch-downsell-old">Plano básico: R$19,90</span>
+                <span className="stitch-downsell-arrow">→</span>
+                <span className="stitch-downsell-new">Plano completo: <strong>R$24,90</strong></span>
+              </div>
+              <button className="stitch-downsell-cta" onClick={() => { setShowDownsell(false); handleCheckout(); }}>SIM, QUERO O COMPLETO POR R$24,90</button>
+              <button className="stitch-downsell-continue" onClick={() => { setShowDownsell(false); handleCheckout(); }}>Não obrigado, quero o básico</button>
+              <p className="stitch-downsell-note">Essa condição aparece apenas uma vez.</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* 12. FAQ */}
       <section className="stitch-faq fade-section">
