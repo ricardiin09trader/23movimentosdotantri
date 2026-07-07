@@ -1,6 +1,7 @@
 skills/
 node_modules/
 .next/
+examples/
 *.png
 *.jpg
 *.jpeg
