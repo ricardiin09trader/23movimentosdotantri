@@ -7,7 +7,9 @@ import { motion, AnimatePresence } from 'framer-motion';
    CONSTANTS
    ═══════════════════════════════════════════════════════════ */
 
-const CHECKOUT_URL = 'https://pay.cakto.com.br/3j7svgt_458559';
+const CHECKOUT_COMPLETE = 'https://pay.cakto.com.br/3j7svgt_458559';
+const CHECKOUT_BASIC = 'https://pay.cakto.com.br/8taxcob';
+const CHECKOUT_DOWNSELL = 'https://pay.cakto.com.br/3ezykqi';
 
 type Phase = 'intro' | 'quiz' | 'diagnosis' | 'qualification' | 'offer';
 
@@ -327,9 +329,17 @@ export default function HomePage() {
     }, 100);
   }, []);
 
-  const handleCheckout = useCallback(() => {
+  const handleCheckoutComplete = useCallback(() => {
     trackFBStandard('InitiateCheckout', { content_name: 'Código do Toque', content_category: 'Infoproduto', value: 24.9, currency: 'BRL' });
-    window.open(CHECKOUT_URL, '_blank');
+    window.open(CHECKOUT_COMPLETE, '_blank');
+  }, []);
+  const handleCheckoutBasic = useCallback(() => {
+    trackFBStandard('InitiateCheckout', { content_name: 'Código do Toque', content_category: 'Infoproduto', value: 14.9, currency: 'BRL' });
+    window.open(CHECKOUT_BASIC, '_blank');
+  }, []);
+  const handleCheckoutDownsell = useCallback(() => {
+    trackFBStandard('InitiateCheckout', { content_name: 'Código do Toque', content_category: 'Infoproduto', value: 19.9, currency: 'BRL' });
+    window.open(CHECKOUT_DOWNSELL, '_blank');
   }, []);
 
   const progressPercent = ((currentQ + 1) / QUESTIONS.length) * 100;
@@ -523,7 +533,7 @@ export default function HomePage() {
             </div>
             <span className="stitch-hero-rating-text">2.847+ homens transformaram sua conexão</span>
           </div>
-          <button className="stitch-btn-hero" onClick={handleCheckout}>QUERO CONHECER O MÉTODO</button>
+          <button className="stitch-btn-hero" onClick={handleCheckoutComplete}>QUERO CONHECER O MÉTODO</button>
           <div className="stitch-hero-trust">
             <span>Compra Segura</span>
             <span className="stitch-hero-trust-sep">|</span>
@@ -657,7 +667,7 @@ export default function HomePage() {
           <h2 className="stitch-community-heading">Acesse a comunidade de homens que estão <span className="stitch-community-highlight">transformando sua conexão íntima</span></h2>
           <p className="stitch-community-text">Ao adquirir o Código do Toque, você também recebe acesso à comunidade exclusiva, onde pode trocar experiências e tirar dúvidas.</p>
           <p className="stitch-community-subtext">Um espaço privado para homens que querem evoluir sua presença e criar conexões mais reais e memoráveis.</p>
-          <button className="stitch-community-cta" onClick={handleCheckout}>QUERO FAZER PARTE</button>
+          <button className="stitch-community-cta" onClick={handleCheckoutComplete}>QUERO FAZER PARTE</button>
         </div>
       </section>
 
@@ -715,7 +725,7 @@ export default function HomePage() {
                   <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Acesso à comunidade exclusiva</li>
                   <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Garantia de 7 dias</li>
                 </ul>
-                <button className="stitch-plan-cta stitch-plan-cta-complete" onClick={handleCheckout}>QUERO ACESSAR AGORA</button>
+                <button className="stitch-plan-cta stitch-plan-cta-complete" onClick={handleCheckoutComplete}>QUERO ACESSAR AGORA</button>
                 <p className="stitch-plan-trust">Compra 100% segura • Acesso imediato</p>
               </div>
             </div>
@@ -756,8 +766,8 @@ export default function HomePage() {
                 <span className="stitch-downsell-arrow">→</span>
                 <span className="stitch-downsell-new">Plano completo: <strong>R$19,90</strong></span>
               </div>
-              <button className="stitch-downsell-cta" onClick={() => { setShowDownsell(false); handleCheckout(); }}>SIM, QUERO O COMPLETO POR R$19,90</button>
-              <button className="stitch-downsell-continue" onClick={() => { setShowDownsell(false); handleCheckout(); }}>Não obrigado, quero o básico</button>
+              <button className="stitch-downsell-cta" onClick={() => { setShowDownsell(false); handleCheckoutDownsell(); }}>SIM, QUERO O COMPLETO POR R$19,90</button>
+              <button className="stitch-downsell-continue" onClick={() => { setShowDownsell(false); handleCheckoutBasic(); }}>Não obrigado, quero o básico</button>
               <p className="stitch-downsell-note">Essa condição aparece apenas uma vez.</p>
             </motion.div>
           </motion.div>
@@ -779,7 +789,7 @@ export default function HomePage() {
         <div className="stitch-container">
           <h2 className="stitch-footer-cta-title">Não deixe para depois o que pode transformar sua conexão hoje</h2>
           <p className="stitch-footer-cta-text">A diferença entre ser inesquecível e ser mais um está nos detalhes. O Código do Toque te dá esses detalhes de forma simples e direta.</p>
-          <button className="stitch-btn-hero" onClick={handleCheckout}>QUERO TRANSFORMAR MINHA CONEXÃO</button>
+          <button className="stitch-btn-hero" onClick={handleCheckoutComplete}>QUERO TRANSFORMAR MINHA CONEXÃO</button>
           <div className="stitch-footer-cta-badges">
             <span>Compra Segura</span>
             <span>7 Dias de Garantia</span>
