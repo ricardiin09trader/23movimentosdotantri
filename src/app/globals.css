@@ -1150,42 +1150,150 @@ a { text-decoration: none; color: inherit; }
   text-align: center;
 }
 
-/* ═══ MICROFEEDBACK ═══ */
-.qz-microfeedback {
-  text-align: center;
-  font-size: clamp(13px, 2vw, 15px);
-  color: rgba(245,230,211,0.8);
-  line-height: 1.5;
-  margin-top: 20px;
-  min-height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ═══ ANSWER SELECTED STATE ═══ */
+.qz-answer-selected {
+  background: var(--red) !important;
+  border-color: var(--red) !important;
+  transform: scale(0.97);
+  color: #fff;
 }
+.qz-answer-selected .qz-answer-icon { filter: brightness(2); }
 
-/* ═══ PHASE 3 — DIAGNOSIS ═══ */
+/* ═══ PHASE 3 — DIAGNOSIS (CHART) ═══ */
 .qz-diagnosis {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  overflow-y: auto;
+  max-height: 100vh;
+  padding: 40px 0 32px;
+  scrollbar-width: none;
 }
+.qz-diagnosis::-webkit-scrollbar { display: none; }
 
 .qz-diagnosis-title {
-  font-size: clamp(18px, 4vw, 24px);
-  font-weight: 700;
-  color: #F5E6D3;
-  line-height: 1.25;
-  margin-bottom: 20px;
+  font-size: clamp(20px, 5vw, 28px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+.qz-diagnosis-subtitle {
+  font-size: clamp(12px, 1.8vw, 14px);
+  color: var(--text-muted);
+  margin-bottom: 28px;
 }
 
-.qz-diagnosis-text {
-  font-size: clamp(13px, 1.8vw, 15px);
-  color: rgba(245,230,211,0.65);
-  line-height: 1.75;
-  max-width: 480px;
+/* Ring Chart */
+.qz-chart-ring-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 28px;
+}
+.qz-chart-ring {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.qz-chart-ring-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.qz-chart-ring-pct {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--red);
+  line-height: 1;
+}
+.qz-chart-ring-text {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Comparison Bars */
+.qz-chart-bars {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+.qz-chart-bar-row {
+  text-align: left;
+}
+.qz-chart-bar-label {
+  font-size: 12px;
+  color: rgba(255,255,255,.7);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.qz-chart-bar-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255,255,255,.06);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+.qz-chart-bar-avg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(255,255,255,.12);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+.qz-chart-bar-user {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--red);
+  border-radius: 4px;
+  z-index: 1;
+}
+.qz-chart-bar-legend {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+.qz-chart-legend-user {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--red);
+}
+.qz-chart-legend-avg {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* Insight Box */
+.qz-chart-insight {
+  width: 100%;
+  max-width: 380px;
+  background: rgba(220,38,38,.08);
+  border: 1px solid rgba(220,38,38,.2);
+  border-radius: 12px;
+  padding: 16px 18px;
   margin-bottom: 8px;
+}
+.qz-chart-insight-text {
+  font-size: clamp(12px, 1.7vw, 14px);
+  color: rgba(255,255,255,.75);
+  line-height: 1.65;
 }
 
 /* ═══ PHASE 3.5 — QUALIFICATION ═══ */

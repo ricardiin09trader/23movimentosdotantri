@@ -83,10 +83,31 @@ const QUESTIONS: Question[] = [
 ];
 
 const MICROFEEDBACK: Record<string, string> = {
-  positive: 'Boa. Isso já mostra que você percebe a importância da conexão. 🔥',
-  neutral: 'Interessante... talvez falte apenas direção. 👀',
-  negative: 'Tudo bem. Vamos entender melhor seu perfil. 👌',
+  positive: '✓',
+  neutral: '✓',
+  negative: '✓',
 };
+
+const DIMENSIONS = [
+  { label: 'Consciência do Toque', avg: 42 },
+  { label: 'Habilidade de Condução', avg: 35 },
+  { label: 'Leitura Corporal', avg: 28 },
+  { label: 'Intenção & Presença', avg: 38 },
+];
+
+function getDimensionScores(answers: number[]): number[] {
+  // Map 7 questions into 4 dimensions
+  const dim1 = Math.round(((answers[0] + answers[1]) / 4) * 100);
+  const dim2 = Math.round(((answers[2] + answers[5]) / 4) * 100);
+  const dim3 = Math.round(((answers[3] + answers[6]) / 4) * 100);
+  const dim4 = Math.round(((answers[4] + answers[1]) / 4) * 100);
+  return [dim1, dim2, dim3, dim4];
+}
+
+function getOverallPercent(answers: number[]): number {
+  const total = answers.reduce((a, b) => a + b, 0);
+  return Math.round((total / 14) * 100);
+}
 
 const DIAGNOSIS: Record<string, { title: string; text: string }> = {
   high: {
@@ -231,7 +252,9 @@ export default function HomePage() {
   const [phase, setPhase] = useState<Phase>('intro');
   const [currentQ, setCurrentQ] = useState(0);
   const [score, setScore] = useState(0);
+  const [answers, setAnswers] = useState<number[]>([]);
   const [feedback, setFeedback] = useState<string | null>(null);
+  const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
   const [toastVisible, setToastVisible] = useState(false);
   const [showDownsell, setShowDownsell] = useState(false);
 
@@ -275,16 +298,17 @@ export default function HomePage() {
   const handleStart = useCallback(() => { trackFBQ('QuizStarted'); setPhase('quiz'); }, []);
 
   const handleAnswer = useCallback(
-    (option: AnswerOption) => {
+    (option: AnswerOption, idx: number) => {
       if (feedback) return;
       trackFBQ('QuizQuestionAnswered');
       setScore((s) => s + option.score);
-      setFeedback(MICROFEEDBACK[option.type]);
+      setAnswers((a) => [...a, option.score]);
+      setSelectedIdx(idx);
       setTimeout(() => {
-        setFeedback(null);
+        setSelectedIdx(null);
         if (currentQ < QUESTIONS.length - 1) setCurrentQ((q) => q + 1);
         else { trackFBQ('QuizCompleted'); setPhase('diagnosis'); }
-      }, 1000);
+      }, 450);
     },
     [feedback, currentQ],
   );
@@ -301,8 +325,6 @@ export default function HomePage() {
     window.open(CHECKOUT_URL, '_blank');
   }, []);
 
-  const diagnosisLevel = getDiagnosisLevel(score);
-  const diagnosis = DIAGNOSIS[diagnosisLevel];
   const progressPercent = ((currentQ + 1) / QUESTIONS.length) * 100;
 
   /* ═══════════════════════════════════════════════════════════
@@ -331,25 +353,87 @@ export default function HomePage() {
                 <h2 className="qz-question">{QUESTIONS[currentQ].text}</h2>
                 <div className="qz-answers">
                   {QUESTIONS[currentQ].options.map((option, i) => (
-                    <motion.button key={`${currentQ}-${i}`} className="qz-answer-btn" onClick={() => handleAnswer(option)} disabled={!!feedback} variants={staggerItem} initial="initial" animate="animate" transition={{ delay: 0.1 + i * 0.08 }} whileTap={{ scale: 0.97 }}>
+                    <motion.button
+                      key={`${currentQ}-${i}`}
+                      className={`qz-answer-btn${selectedIdx === i ? ' qz-answer-selected' : ''}`}
+                      onClick={() => handleAnswer(option, i)}
+                      disabled={!!feedback}
+                      variants={staggerItem}
+                      initial="initial"
+                      animate="animate"
+                      transition={{ delay: 0.08 + i * 0.06 }}
+                      whileTap={{ scale: 0.97 }}
+                    >
                       <span className="qz-answer-icon">{option.icon}</span>
                       <span>{option.text}</span>
                     </motion.button>
                   ))}
                 </div>
-                <AnimatePresence>
-                  {feedback && (
-                    <motion.p className="qz-microfeedback" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.3 }}>{feedback}</motion.p>
-                  )}
-                </AnimatePresence>
+
               </motion.div>
             )}
 
             {phase === 'diagnosis' && (
               <motion.div key="diagnosis" className="qz-diagnosis" variants={fadeVariants} initial="initial" animate="animate" exit="exit">
-                <h2 className="qz-diagnosis-title">{diagnosis.title}</h2>
-                <p className="qz-diagnosis-text">{diagnosis.text}</p>
-                <button className="qz-cta" style={{ marginTop: '28px' }} onClick={() => setPhase('qualification')}>VER RESULTADO COMPLETO 🔥</button>
+                <h2 className="qz-diagnosis-title">Seu perfil de conexão</h2>
+                <p className="qz-diagnosis-subtitle">Veja como você se compara com a maioria dos homens</p>
+
+                {/* Circular Score */}
+                <div className="qz-chart-ring-wrap">
+                  <svg className="qz-chart-ring" viewBox="0 0 120 120">
+                    <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.08)" strokeWidth="8" />
+                    <motion.circle
+                      cx="60" cy="60" r="52" fill="none" stroke="var(--red)" strokeWidth="8"
+                      strokeLinecap="round"
+                      strokeDasharray={`${2 * Math.PI * 52}`}
+                      initial={{ strokeDashoffset: 2 * Math.PI * 52 }}
+                      animate={{ strokeDashoffset: 2 * Math.PI * 52 * (1 - getOverallPercent(answers) / 100) }}
+                      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+                      transform="rotate(-90 60 60)"
+                    />
+                  </svg>
+                  <div className="qz-chart-ring-label">
+                    <motion.span className="qz-chart-ring-pct" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}>{getOverallPercent(answers)}%</motion.span>
+                    <span className="qz-chart-ring-text">seu nível</span>
+                  </div>
+                </div>
+
+                {/* Comparison Bars */}
+                <div className="qz-chart-bars">
+                  {DIMENSIONS.map((dim, i) => {
+                    const userVal = getDimensionScores(answers)[i];
+                    return (
+                      <div key={i} className="qz-chart-bar-row">
+                        <p className="qz-chart-bar-label">{dim.label}</p>
+                        <div className="qz-chart-bar-track">
+                          <div className="qz-chart-bar-avg" style={{ width: `${dim.avg}%` }} />
+                          <motion.div
+                            className="qz-chart-bar-user"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${userVal}%` }}
+                            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 + i * 0.15 }}
+                          />
+                        </div>
+                        <div className="qz-chart-bar-legend">
+                          <span className="qz-chart-legend-user">Você {userVal}%</span>
+                          <span className="qz-chart-legend-avg">Média {dim.avg}%</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div className="qz-chart-insight">
+                  <p className="qz-chart-insight-text">
+                    {getOverallPercent(answers) >= 70
+                      ? 'Você já percebe que o toque é uma ferramenta poderosa. Mas perceber não é o mesmo que dominar. A maioria dos homens para na teoria.'
+                      : getOverallPercent(answers) >= 40
+                        ? 'Você está no caminho, mas ainda falta direção prática. A diferença entre perceber e aplicar é onde a maioria dos homens fica presa.'
+                        : 'A maioria dos homens não sabe que o toque pode ser treinado. Esse é o primeiro passo para mudar sua conexão íntima.'}
+                  </p>
+                </div>
+
+                <button className="qz-cta" style={{ marginTop: '24px' }} onClick={() => setPhase('qualification')}>VER RESULTADO COMPLETO 🔥</button>
               </motion.div>
             )}
 
