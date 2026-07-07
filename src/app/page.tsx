@@ -313,11 +313,18 @@ export default function HomePage() {
     [feedback, currentQ],
   );
 
-  const handleGoToSales = useCallback(() => {
+  const handleGoToSales = useCallback((anchor?: string) => {
     trackFBStandard('InitiateCheckout', { content_name: 'Código do Toque', content_category: 'Infoproduto', value: 24.9, currency: 'BRL' });
     document.body.style.overflow = '';
     setScreen('sales');
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    setTimeout(() => {
+      if (anchor) {
+        const el = document.getElementById(anchor);
+        if (el) el.scrollIntoView({ behavior: 'instant', block: 'start' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+    }, 100);
   }, []);
 
   const handleCheckout = useCallback(() => {
@@ -433,7 +440,7 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                <button className="qz-cta" style={{ marginTop: '24px' }} onClick={() => setPhase('qualification')}>VER RESULTADO COMPLETO 🔥</button>
+                <button className="qz-cta" style={{ marginTop: '24px' }} onClick={() => handleGoToSales('oferta')}>VER MINHA OFERTA 🔥</button>
               </motion.div>
             )}
 
@@ -672,7 +679,7 @@ export default function HomePage() {
               </div>
               <div className="stitch-plan-price-block">
                 <p className="stitch-plan-from">De R$97,00</p>
-                <div className="stitch-plan-price-row"><span className="stitch-plan-currency">R$ </span><span className="stitch-plan-amount">19,90</span></div>
+                <div className="stitch-plan-price-row"><span className="stitch-plan-currency">R$ </span><span className="stitch-plan-amount">14,90</span></div>
                 <p className="stitch-plan-tags">Pagamento único • Acesso vitalício</p>
               </div>
               <ul className="stitch-plan-list">
@@ -685,30 +692,32 @@ export default function HomePage() {
               <p className="stitch-plan-trust">Compra 100% segura</p>
             </div>
             {/* PLANO COMPLETO */}
-            <div className="stitch-plan-card stitch-plan-complete">
-              <div className="stitch-plan-ribbon">MAIS ESCOLHIDO</div>
-              <p className="stitch-plan-label">PLANO COMPLETO</p>
-              <h3 className="stitch-plan-name">Código do Toque + Bônus</h3>
-              <div className="stitch-plan-image-wrap">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/lovable-uploads/mockup-hf.png" alt="Código do Toque Completo" className="stitch-plan-img" />
+            <div className="stitch-plan-glow-wrap">
+              <div className="stitch-plan-card stitch-plan-complete">
+                <div className="stitch-plan-ribbon">MAIS ESCOLHIDO</div>
+                <p className="stitch-plan-label">PLANO COMPLETO</p>
+                <h3 className="stitch-plan-name">Código do Toque + Bônus</h3>
+                <div className="stitch-plan-image-wrap">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/lovable-uploads/mockup-hf.png" alt="Código do Toque Completo" className="stitch-plan-img" />
+                </div>
+                <div className="stitch-plan-price-block">
+                  <p className="stitch-plan-from">De R$197,00</p>
+                  <div className="stitch-plan-price-row"><span className="stitch-plan-currency">R$ </span><span className="stitch-plan-amount">24,90</span></div>
+                  <p className="stitch-plan-tags">Pagamento único • Acesso vitalício • Suporte</p>
+                </div>
+                <ul className="stitch-plan-list">
+                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 23 movimentos guiados passo a passo</li>
+                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 4 módulos completos</li>
+                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Guia de Leitura Corporal (R$47)</li>
+                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Playlist de Atmosfera (R$27)</li>
+                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Protocolo de Primeira Vez (R$37)</li>
+                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Acesso à comunidade exclusiva</li>
+                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Garantia de 7 dias</li>
+                </ul>
+                <button className="stitch-plan-cta stitch-plan-cta-complete" onClick={handleCheckout}>QUERO ACESSAR AGORA</button>
+                <p className="stitch-plan-trust">Compra 100% segura • Acesso imediato</p>
               </div>
-              <div className="stitch-plan-price-block">
-                <p className="stitch-plan-from">De R$197,00</p>
-                <div className="stitch-plan-price-row"><span className="stitch-plan-currency">R$ </span><span className="stitch-plan-amount">24,90</span></div>
-                <p className="stitch-plan-tags">Pagamento único • Acesso vitalício • Suporte</p>
-              </div>
-              <ul className="stitch-plan-list">
-                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 23 movimentos guiados passo a passo</li>
-                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 4 módulos completos</li>
-                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Guia de Leitura Corporal (R$47)</li>
-                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Playlist de Atmosfera (R$27)</li>
-                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Protocolo de Primeira Vez (R$37)</li>
-                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Acesso à comunidade exclusiva</li>
-                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Garantia de 7 dias</li>
-              </ul>
-              <button className="stitch-plan-cta stitch-plan-cta-complete" onClick={handleCheckout}>QUERO ACESSAR AGORA</button>
-              <p className="stitch-plan-trust">Compra 100% segura • Acesso imediato</p>
             </div>
           </div>
         </div>
@@ -735,7 +744,7 @@ export default function HomePage() {
               <button className="stitch-downsell-close" onClick={() => setShowDownsell(false)} aria-label="Fechar">✕</button>
               <p className="stitch-downsell-tag">OFERTA ESPECIAL — SÓ AGORA</p>
               <h3 className="stitch-downsell-title">Antes de continuar…</h3>
-              <p className="stitch-downsell-text">Você está prestes a levar apenas o método. Mas por apenas <strong>R$5,00 a mais</strong>, você pode ter o <strong>plano completo</strong> com todos os bônus:</p>
+              <p className="stitch-downsell-text">Você está prestes a levar apenas o método. Mas por apenas <strong>R$5,00 a mais</strong>, você pode ter o <strong>plano completo</strong> com todos os bônus exclusivos:</p>
               <ul className="stitch-downsell-list">
                 <li><span className="stitch-downsell-check">✓</span> Guia de Leitura Corporal <span className="stitch-downsell-val">R$47</span></li>
                 <li><span className="stitch-downsell-check">✓</span> Playlist de Atmosfera <span className="stitch-downsell-val">R$27</span></li>
@@ -743,11 +752,11 @@ export default function HomePage() {
                 <li><span className="stitch-downsell-check">✓</span> Acesso à comunidade exclusiva</li>
               </ul>
               <div className="stitch-downsell-prices">
-                <span className="stitch-downsell-old">Plano básico: R$19,90</span>
+                <span className="stitch-downsell-old">Plano básico: R$14,90</span>
                 <span className="stitch-downsell-arrow">→</span>
-                <span className="stitch-downsell-new">Plano completo: <strong>R$24,90</strong></span>
+                <span className="stitch-downsell-new">Plano completo: <strong>R$19,90</strong></span>
               </div>
-              <button className="stitch-downsell-cta" onClick={() => { setShowDownsell(false); handleCheckout(); }}>SIM, QUERO O COMPLETO POR R$24,90</button>
+              <button className="stitch-downsell-cta" onClick={() => { setShowDownsell(false); handleCheckout(); }}>SIM, QUERO O COMPLETO POR R$19,90</button>
               <button className="stitch-downsell-continue" onClick={() => { setShowDownsell(false); handleCheckout(); }}>Não obrigado, quero o básico</button>
               <p className="stitch-downsell-note">Essa condição aparece apenas uma vez.</p>
             </motion.div>
