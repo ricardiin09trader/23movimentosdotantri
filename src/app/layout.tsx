@@ -11,9 +11,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Código do Toque — Por Que Alguns Homens São Inesquecíveis",
+  title: "Código do Toque — Guia digital ilustrado com 23 movimentos",
   description:
-    "Descubra os princípios que despertam conexão, criam impacto emocional e fazem sua presença ser lembrada. Método desenvolvido por terapeuta tântrica com 6 anos de experiência.",
+    "Antes dos 23 movimentos existe um detalhe que muitos homens ignoram: preparar o momento, perceber a resposta dela e ajustar ritmo, pausa e toque. Guia digital ilustrado em PDF, enviado por e-mail.",
   icons: {
     icon: "/logo.svg",
   },
