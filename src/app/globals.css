@@ -408,7 +408,10 @@ em.hl, .hl {
   display: flex; width: max-content;
   animation: carouselScroll 28s linear infinite;
 }
-.stitch-carousel-track:hover { animation-play-state: paused; }
+/* Pausa ao passar o mouse sobre o carrossel (wrapper inteiro = área visível) */
+.stitch-carousel-wrapper:hover .stitch-carousel-track,
+.stitch-carousel-track:hover,
+.stitch-carousel-track:focus-visible { animation-play-state: paused; }
 .stitch-carousel-card {
   flex-shrink: 0; width: clamp(280px, 36vw, 360px);
   background: var(--card); border-radius: 12px; padding: 20px;
@@ -1773,7 +1776,7 @@ em.hl, .hl {
   width: 100%; height: auto; max-height: 560px;
   object-fit: contain; border-radius: 12px;
   box-shadow: 0 12px 30px rgba(0,0,0,.5);
-  pointer-events: none;
+  pointer-events: auto;
 }
 .stitch-testimonials-note {
   text-align: center; font-size: 11px; color: var(--text-muted);

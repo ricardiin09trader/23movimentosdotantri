@@ -704,7 +704,69 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. CONVERSAS — substitui os slides de texto por 5 imagens de conversa */}
+      {/* 8. OFERTA — planos (logo abaixo das prévias) */}
+      <section className="stitch-offer fade-section" id="oferta">
+        <div className="stitch-container">
+          <div className="stitch-offer-section-header">
+            <h2 className="stitch-offer-section-title">Escolha o seu caminho</h2>
+            <p className="stitch-offer-section-sub">Dois planos. Um resultado. A diferença está no que você leva junto.</p>
+          </div>
+          <div className="stitch-plans-grid">
+            {/* PLANO BÁSICO */}
+            <div className="stitch-plan-card stitch-plan-basic">
+              <p className="stitch-plan-label">PLANO BÁSICO</p>
+              <h3 className="stitch-plan-name">Código do Toque</h3>
+              <div className="stitch-plan-image-wrap">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/lovable-uploads/mockup-hf.png" alt="Código do Toque" className="stitch-plan-img" />
+              </div>
+              <div className="stitch-plan-price-block">
+                <p className="stitch-plan-from">De R$97,00</p>
+                <div className="stitch-plan-price-row"><span className="stitch-plan-currency">R$ </span><span className="stitch-plan-amount">14,90</span></div>
+                <p className="stitch-plan-tags">Pagamento único • Acesso vitalício</p>
+              </div>
+              <ul className="stitch-plan-list">
+                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 23 movimentos guiados passo a passo</li>
+                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 4 módulos completos</li>
+                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Acesso imediato</li>
+                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Garantia de 7 dias</li>
+              </ul>
+              <button className="stitch-plan-cta stitch-plan-cta-basic" onClick={() => setShowDownsell(true)}>QUERO O BÁSICO</button>
+              <p className="stitch-plan-trust">Compra 100% segura</p>
+            </div>
+            {/* PLANO COMPLETO */}
+            <div className="stitch-plan-glow-wrap">
+              <div className="stitch-plan-card stitch-plan-complete">
+                <div className="stitch-plan-ribbon">MAIS ESCOLHIDO</div>
+                <p className="stitch-plan-label">PLANO COMPLETO</p>
+                <h3 className="stitch-plan-name">Código do Toque + Bônus</h3>
+                <div className="stitch-plan-image-wrap">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/lovable-uploads/mockup-hf.png" alt="Código do Toque Completo" className="stitch-plan-img" />
+                </div>
+                <div className="stitch-plan-price-block">
+                  <p className="stitch-plan-from">De R$197,00</p>
+                  <div className="stitch-plan-price-row"><span className="stitch-plan-currency">R$ </span><span className="stitch-plan-amount">24,90</span></div>
+                  <p className="stitch-plan-tags">Pagamento único • Acesso vitalício • Suporte</p>
+                </div>
+                <ul className="stitch-plan-list">
+                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 23 movimentos guiados passo a passo</li>
+                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 4 módulos completos</li>
+                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Guia de Leitura Corporal (R$47)</li>
+                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Playlist de Atmosfera (R$27)</li>
+                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Protocolo de Primeira Vez (R$37)</li>
+                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Acesso à comunidade exclusiva</li>
+                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Garantia de 7 dias</li>
+                </ul>
+                <button className="stitch-plan-cta stitch-plan-cta-complete" onClick={handleCheckoutComplete}>QUERO ACESSAR AGORA</button>
+                <p className="stitch-plan-trust">Compra 100% segura • Acesso imediato</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. CONVERSAS — prova social */}
       <section className="stitch-testimonials fade-section" id="depoimentos">
         <div className="stitch-container">
           <span className="stitch-kicker">O QUE DIZEM</span>
@@ -767,68 +829,6 @@ export default function HomePage() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/expert/luna-amaral.webp" alt="Luna Amaral, criadora do método Código do Toque" className="stitch-expert-photo" />
               <span className="stitch-expert-brand">CÓDIGO DO TOQUE</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 11. OFFER — TWO PLANS */}
-      <section className="stitch-offer fade-section" id="oferta">
-        <div className="stitch-container">
-          <div className="stitch-offer-section-header">
-            <h2 className="stitch-offer-section-title">Escolha o seu caminho</h2>
-            <p className="stitch-offer-section-sub">Dois planos. Um resultado. A diferença está no que você leva junto.</p>
-          </div>
-          <div className="stitch-plans-grid">
-            {/* PLANO BÁSICO */}
-            <div className="stitch-plan-card stitch-plan-basic">
-              <p className="stitch-plan-label">PLANO BÁSICO</p>
-              <h3 className="stitch-plan-name">Código do Toque</h3>
-              <div className="stitch-plan-image-wrap">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/lovable-uploads/mockup-hf.png" alt="Código do Toque" className="stitch-plan-img" />
-              </div>
-              <div className="stitch-plan-price-block">
-                <p className="stitch-plan-from">De R$97,00</p>
-                <div className="stitch-plan-price-row"><span className="stitch-plan-currency">R$ </span><span className="stitch-plan-amount">14,90</span></div>
-                <p className="stitch-plan-tags">Pagamento único • Acesso vitalício</p>
-              </div>
-              <ul className="stitch-plan-list">
-                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 23 movimentos guiados passo a passo</li>
-                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 4 módulos completos</li>
-                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Acesso imediato</li>
-                <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Garantia de 7 dias</li>
-              </ul>
-              <button className="stitch-plan-cta stitch-plan-cta-basic" onClick={() => setShowDownsell(true)}>QUERO O BÁSICO</button>
-              <p className="stitch-plan-trust">Compra 100% segura</p>
-            </div>
-            {/* PLANO COMPLETO */}
-            <div className="stitch-plan-glow-wrap">
-              <div className="stitch-plan-card stitch-plan-complete">
-                <div className="stitch-plan-ribbon">MAIS ESCOLHIDO</div>
-                <p className="stitch-plan-label">PLANO COMPLETO</p>
-                <h3 className="stitch-plan-name">Código do Toque + Bônus</h3>
-                <div className="stitch-plan-image-wrap">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/lovable-uploads/mockup-hf.png" alt="Código do Toque Completo" className="stitch-plan-img" />
-                </div>
-                <div className="stitch-plan-price-block">
-                  <p className="stitch-plan-from">De R$197,00</p>
-                  <div className="stitch-plan-price-row"><span className="stitch-plan-currency">R$ </span><span className="stitch-plan-amount">24,90</span></div>
-                  <p className="stitch-plan-tags">Pagamento único • Acesso vitalício • Suporte</p>
-                </div>
-                <ul className="stitch-plan-list">
-                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 23 movimentos guiados passo a passo</li>
-                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> 4 módulos completos</li>
-                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Guia de Leitura Corporal (R$47)</li>
-                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Playlist de Atmosfera (R$27)</li>
-                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Protocolo de Primeira Vez (R$37)</li>
-                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Acesso à comunidade exclusiva</li>
-                  <li><span className="stitch-offer-check"><SvgInline html={CHECK_RED_SVG} /></span> Garantia de 7 dias</li>
-                </ul>
-                <button className="stitch-plan-cta stitch-plan-cta-complete" onClick={handleCheckoutComplete}>QUERO ACESSAR AGORA</button>
-                <p className="stitch-plan-trust">Compra 100% segura • Acesso imediato</p>
-              </div>
             </div>
           </div>
         </div>
