@@ -160,12 +160,12 @@ const FAQ_ITEMS = [
 
 // 6 páginas internas do guia, na ordem do MD. Já contêm o tratamento de privacidade.
 const PREVIEW_PAGES = [
-  { src: '/guia-previews/01-preparo.png', alt: 'Página interna do guia, etapa 1 de 6 — preparo' },
-  { src: '/guia-previews/02-visao-do-conteudo.png', alt: 'Página interna do guia, etapa 2 de 6 — visão do conteúdo' },
-  { src: '/guia-previews/03-primeira-manobra.png', alt: 'Página interna do guia, etapa 3 de 6 — primeira manobra' },
-  { src: '/guia-previews/04-manobra-intermediaria.png', alt: 'Página interna do guia, etapa 4 de 6 — manobra intermediária' },
-  { src: '/guia-previews/05-ritmo.png', alt: 'Página interna do guia, etapa 5 de 6 — ritmo' },
-  { src: '/guia-previews/06-ultima-manobra.png', alt: 'Página interna do guia, etapa 6 de 6 — última manobra' },
+  { src: '/guia-previews/01-preparo.png', alt: 'Página interna do guia, etapa 1 de 6, preparo' },
+  { src: '/guia-previews/02-visao-do-conteudo.png', alt: 'Página interna do guia, etapa 2 de 6, visão do conteúdo' },
+  { src: '/guia-previews/03-primeira-manobra.png', alt: 'Página interna do guia, etapa 3 de 6, primeira manobra' },
+  { src: '/guia-previews/04-manobra-intermediaria.png', alt: 'Página interna do guia, etapa 4 de 6, manobra intermediária' },
+  { src: '/guia-previews/05-ritmo.png', alt: 'Página interna do guia, etapa 5 de 6, ritmo' },
+  { src: '/guia-previews/06-ultima-manobra.png', alt: 'Página interna do guia, etapa 6 de 6, última manobra' },
 ];
 
 // 5 telas de conversa sobre recebimento e primeiras impressões do material.
@@ -329,7 +329,6 @@ export default function HomePage() {
   const [answers, setAnswers] = useState<number[]>([]);
   const [feedback, setFeedback] = useState<string | null>(null);
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
-  const [toastVisible, setToastVisible] = useState(false);
   const [showDownsell, setShowDownsell] = useState(false);
 
   const salesRef = useRef<HTMLDivElement>(null);
@@ -360,13 +359,6 @@ export default function HomePage() {
     const sections = salesRef.current?.querySelectorAll('.fade-section');
     sections?.forEach((s) => observer.observe(s));
     return () => observer.disconnect();
-  }, [screen]);
-
-  useEffect(() => {
-    if (screen !== 'sales') return;
-    const show = () => { setToastVisible(true); setTimeout(() => setToastVisible(false), 4000); };
-    const timer = setInterval(show, 15000);
-    return () => clearInterval(timer);
   }, [screen]);
 
   const handleStart = useCallback(() => { trackFBQ('QuizStarted'); setPhase('quiz'); }, []);
@@ -571,12 +563,6 @@ export default function HomePage() {
      ═══════════════════════════════════════════════════════════ */
   return (
     <div ref={salesRef}>
-      {/* Toast */}
-      <div className={`stitch-toast${toastVisible ? ' show' : ''}`}>
-        <span className="stitch-toast-dot" />
-        <span className="stitch-toast-text">🔥 Alguém acabou de comprar — São Paulo</span>
-      </div>
-
       {/* 1. HEADER */}
       <header className="stitch-header" ref={headerRef}>
         <span className="stitch-header-logo-text">CÓDIGO DO TOQUE</span>
@@ -623,10 +609,10 @@ export default function HomePage() {
           <p className="stitch-problem-text">A intimidade se tornou automática. Toque sem intenção. Movimentos repetitivos. Nenhuma condução real. E o resultado? Um momento que passa sem deixar marca.</p>
           <p className="stitch-problem-text stitch-problem-text-highlight">E o pior: ela percebe.</p>
           <ul className="stitch-pain-list">
-            <li className="stitch-pain-item"><span className="stitch-pain-bullet">→</span><span>Falta de técnica — você repete os mesmos movimentos sem saber que existem formas mais impactantes de tocar</span></li>
-            <li className="stitch-pain-item"><span className="stitch-pain-bullet">→</span><span>Insegurança — a dúvida se ela está realmente sentindo algo ou apenas acompanhando</span></li>
-            <li className="stitch-pain-item"><span className="stitch-pain-bullet">→</span><span>Repetição — o momento vira rotina e perde a magia que poderia ter</span></li>
-            <li className="stitch-pain-item"><span className="stitch-pain-bullet">→</span><span>Desconexão — a oportunidade de criar uma experiência memorável é perdida todas as vezes</span></li>
+            <li className="stitch-pain-item"><span className="stitch-pain-bullet">→</span><span>Falta de técnica: você repete os mesmos movimentos sem saber que existem formas mais impactantes de tocar</span></li>
+            <li className="stitch-pain-item"><span className="stitch-pain-bullet">→</span><span>Insegurança: a dúvida se ela está realmente sentindo algo ou apenas acompanhando</span></li>
+            <li className="stitch-pain-item"><span className="stitch-pain-bullet">→</span><span>Repetição: o momento vira rotina e perde a magia que poderia ter</span></li>
+            <li className="stitch-pain-item"><span className="stitch-pain-bullet">→</span><span>Desconexão: a oportunidade de criar uma experiência memorável é perdida todas as vezes</span></li>
           </ul>
         </div>
       </section>
@@ -634,14 +620,14 @@ export default function HomePage() {
       {/* 4. TRANSITION */}
       <section className="stitch-transition fade-section">
         <p className="stitch-transition-quote">&ldquo;O toque não é apenas contato. É linguagem. E poucos homens sabem falar essa língua.&rdquo;</p>
-        <p className="stitch-transition-author">— Especialista em Tantra</p>
+        <p className="stitch-transition-author">Código do Toque</p>
       </section>
 
       {/* 5. SOLUTION */}
       <section className="stitch-solution fade-section" id="metodo">
         <div className="stitch-container">
           <p className="stitch-section-label">MÉTODO CRIADO POR TERAPEUTA TÂNTRICA</p>
-          <h2 className="stitch-solution-title">Código do Toque — 23 movimentos que transformam qualquer momento em uma experiência memorável</h2>
+          <h2 className="stitch-solution-title">Código do Toque, 23 movimentos que transformam qualquer momento em uma experiência memorável</h2>
           <p className="stitch-solution-text">Um método direto e aplicável, desenvolvido a partir de técnicas tântricas adaptadas para o contexto moderno. <span className="stitch-solution-highlight">Sem complicação. Sem teoria excessiva. Apenas movimentos que funcionam.</span></p>
           <div className="stitch-solution-grid">
             <div className="stitch-solution-card"><p className="stitch-solution-card-num">01</p><h3 className="stitch-solution-card-title">Presença Real</h3><p className="stitch-solution-card-desc">Movimentos que transmitem intenção sem precisar falar. Ela sente que você está ali, de verdade.</p></div>
@@ -657,52 +643,10 @@ export default function HomePage() {
         <div className="stitch-container">
           <h2 className="stitch-content-title">O que você vai descobrir</h2>
           <div className="stitch-modules-grid">
-            <div className="stitch-module-card"><div className="stitch-module-num">01</div><h3 className="stitch-module-title">Módulo 1 — Fundamentos do Toque Consciente</h3><p className="stitch-module-desc">Entenda os princípios que transformam um toque comum em uma experiência com intenção e presença real.</p></div>
-            <div className="stitch-module-card"><div className="stitch-module-num">02</div><h3 className="stitch-module-title">Módulo 2 — Os 23 Movimentos Tântricos</h3><p className="stitch-module-desc">Cada movimento explicado em detalhes, com foco em como e quando aplicar para máximo impacto.</p></div>
-            <div className="stitch-module-card"><div className="stitch-module-num">03</div><h3 className="stitch-module-title">Módulo 3 — Condução e Ritmo</h3><p className="stitch-module-desc">Aprenda a criar uma sequência natural que conduz o momento sem parecer ensaiado ou forçado.</p></div>
-            <div className="stitch-module-card"><div className="stitch-module-num">04</div><h3 className="stitch-module-title">Módulo 4 — Integração e Prática</h3><p className="stitch-module-desc">Como combinar os movimentos na prática e criar sua própria sequência personalizada.</p></div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6.5 EXPERT — Luna Amaral */}
-      <section className="stitch-expert fade-section" id="expert">
-        <div className="stitch-expert-grid">
-          <div className="stitch-expert-text">
-            <span className="stitch-kicker">QUEM CRIOU ESSE MÉTODO</span>
-            <p className="stitch-expert-guide">Sua guia</p>
-            <h2 className="stitch-expert-name">Luna Amaral.</h2>
-            <p className="stitch-expert-bio">
-              O método nasce da escuta de quem buscava mais presença e conexão a dois. São 23 movimentos
-              organizados em uma sequência que você começa a aplicar hoje, no seu ritmo — um guia digital
-              ilustrado para consultar e reaproveitar.
-            </p>
-            <div className="stitch-expert-divider" />
-            <div className="stitch-expert-stats">
-              <div>
-                <div className="stitch-expert-stat-num">23</div>
-                <div className="stitch-expert-stat-label">movimentos</div>
-              </div>
-              <div>
-                <div className="stitch-expert-stat-num">1</div>
-                <div className="stitch-expert-stat-label">guia ilustrado</div>
-              </div>
-              <div>
-                <div className="stitch-expert-stat-num">7</div>
-                <div className="stitch-expert-stat-label">dias de garantia</div>
-              </div>
-            </div>
-            <button className="stitch-btn-editorial" onClick={() => {
-              const el = document.getElementById('oferta');
-              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }}>Escolher meu guia</button>
-          </div>
-          <div className="stitch-expert-photo-wrap">
-            <div className="stitch-expert-photo-frame">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/expert/luna-amaral.webp" alt="Luna Amaral, criadora do método Código do Toque" className="stitch-expert-photo" />
-              <span className="stitch-expert-brand">CÓDIGO DO TOQUE</span>
-            </div>
+            <div className="stitch-module-card"><div className="stitch-module-num">01</div><h3 className="stitch-module-title">Módulo 1: Fundamentos do Toque Consciente</h3><p className="stitch-module-desc">Entenda os princípios que transformam um toque comum em uma experiência com intenção e presença real.</p></div>
+            <div className="stitch-module-card"><div className="stitch-module-num">02</div><h3 className="stitch-module-title">Módulo 2: Os 23 Movimentos Tântricos</h3><p className="stitch-module-desc">Cada movimento explicado em detalhes, com foco em como e quando aplicar para máximo impacto.</p></div>
+            <div className="stitch-module-card"><div className="stitch-module-num">03</div><h3 className="stitch-module-title">Módulo 3: Condução e Ritmo</h3><p className="stitch-module-desc">Aprenda a criar uma sequência natural que conduz o momento sem parecer ensaiado ou forçado.</p></div>
+            <div className="stitch-module-card"><div className="stitch-module-num">04</div><h3 className="stitch-module-title">Módulo 4: Integração e Prática</h3><p className="stitch-module-desc">Como combinar os movimentos na prática e criar sua própria sequência personalizada.</p></div>
           </div>
         </div>
       </section>
@@ -734,7 +678,7 @@ export default function HomePage() {
             <div className="stitch-bonus-card-bottom"><span className="stitch-bonus-value">De R$37</span><span className="stitch-bonus-free">GRÁTIS</span></div>
           </div>
         </div>
-        <p className="stitch-bonus-total">Valor total dos bônus: R$111,00 — Hoje totalmente grátis</p>
+        <p className="stitch-bonus-total">Valor total dos bônus: R$111,00. Hoje totalmente grátis.</p>
       </section>
 
       {/* 7.5 PRÉVIAS — páginas reais do guia */}
@@ -744,11 +688,20 @@ export default function HomePage() {
           <h2 className="stitch-previews-title">Prévias de páginas <em className="hl">reais</em> do guia.</h2>
           <p className="stitch-previews-text">
             Estas são páginas reais do guia que você vai receber. As áreas com bloco vermelho protegem trechos
-            com cenas íntimas — o conteúdo completo está no material que chega por e-mail após a compra.
+            com cenas íntimas. O conteúdo completo está no material que chega por e-mail após a compra.
           </p>
           <span className="stitch-previews-seal">Imagens 100% reais do guia completo</span>
         </div>
-        <PreviewsCarousel pages={PREVIEW_PAGES} />
+        <div className="stitch-carousel-wrapper">
+          <div className="stitch-carousel-track">
+            {[...PREVIEW_PAGES, ...PREVIEW_PAGES, ...PREVIEW_PAGES, ...PREVIEW_PAGES].map((p, i) => (
+              <div className="stitch-carousel-card stitch-carousel-img-card stitch-preview-slide" key={i}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={p.src} alt={p.alt} loading="lazy" draggable={false} />
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* 8. CONVERSAS — substitui os slides de texto por 5 imagens de conversa */}
@@ -774,24 +727,48 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* 10. GUARANTEE */}
-      <section className="stitch-guarantee fade-section" id="garantia">
-        <div className="stitch-guarantee-inner">
-          <div className="stitch-guarantee-icon"><SvgInline html={SHIELD_SVG} /></div>
-          <h2 className="stitch-guarantee-heading">Garantia Incondicional de 7 Dias</h2>
-          <p className="stitch-guarantee-text">Se por qualquer motivo você sentir que o método não é para você, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.</p>
-          <p className="stitch-guarantee-italic">O risco é zero. A oportunidade é real.</p>
-        </div>
-      </section>
-
-      {/* 10.5 COMMUNITY */}
-      <section className="stitch-community fade-section">
-        <div className="stitch-community-inner">
-          <span className="stitch-community-tag">COMUNIDADE EXCLUSIVA</span>
-          <h2 className="stitch-community-heading">Acesse a comunidade de homens que estão <span className="stitch-community-highlight">transformando sua conexão íntima</span></h2>
-          <p className="stitch-community-text">Ao adquirir o Código do Toque, você também recebe acesso à comunidade exclusiva, onde pode trocar experiências e tirar dúvidas.</p>
-          <p className="stitch-community-subtext">Um espaço privado para homens que querem evoluir sua presença e criar conexões mais reais e memoráveis.</p>
-          <button className="stitch-community-cta" onClick={handleCheckoutComplete}>QUERO FAZER PARTE</button>
+      {/* 8.5 EXPERT — Luna Amaral (logo abaixo da prova social, acima da garantia) */}
+      <section className="stitch-expert fade-section" id="expert">
+        <div className="stitch-expert-grid">
+          <div className="stitch-expert-text">
+            <span className="stitch-kicker">QUEM CRIOU ESSE MÉTODO</span>
+            <p className="stitch-expert-guide">Sua guia</p>
+            <h2 className="stitch-expert-name">Luna Amaral.</h2>
+            <p className="stitch-expert-role">Terapeuta Tântrica · 6 anos de prática clínica</p>
+            <p className="stitch-expert-bio">
+              Nos meus anos de atendimento, o que mais ouvi de mulheres foi: <em>&ldquo;Ele é bom, mas falta algo que não sei explicar.&rdquo;</em>
+              <br /><br />
+              E de homens: <em>&ldquo;Eu quero ser melhor pra ela. Só não sei o que fazer diferente.&rdquo;</em>
+              <br /><br />
+              Esse método nasceu dessa escuta. São 23 movimentos testados com casais reais, prática clínica organizada em um guia que você pode começar a aplicar hoje.
+            </p>
+            <div className="stitch-expert-divider" />
+            <div className="stitch-expert-stats">
+              <div>
+                <div className="stitch-expert-stat-num">6+</div>
+                <div className="stitch-expert-stat-label">anos de prática</div>
+              </div>
+              <div>
+                <div className="stitch-expert-stat-num">500+</div>
+                <div className="stitch-expert-stat-label">casais atendidos</div>
+              </div>
+              <div>
+                <div className="stitch-expert-stat-num">23</div>
+                <div className="stitch-expert-stat-label">movimentos</div>
+              </div>
+            </div>
+            <button className="stitch-btn-editorial" onClick={() => {
+              const el = document.getElementById('oferta');
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}>Escolher meu guia</button>
+          </div>
+          <div className="stitch-expert-photo-wrap">
+            <div className="stitch-expert-photo-frame">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/expert/luna-amaral.webp" alt="Luna Amaral, criadora do método Código do Toque" className="stitch-expert-photo" />
+              <span className="stitch-expert-brand">CÓDIGO DO TOQUE</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -857,6 +834,16 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 10. GARANTIA */}
+      <section className="stitch-guarantee fade-section" id="garantia">
+        <div className="stitch-guarantee-inner">
+          <div className="stitch-guarantee-icon"><SvgInline html={SHIELD_SVG} /></div>
+          <h2 className="stitch-guarantee-heading">Garantia de 7 Dias</h2>
+          <p className="stitch-guarantee-text">Se por qualquer motivo você sentir que o método não é para você, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.</p>
+          <p className="stitch-guarantee-italic">O risco é zero. A oportunidade é real.</p>
+        </div>
+      </section>
+
       {/* DOWNSELL POPUP */}
       <AnimatePresence>
         {showDownsell && (
@@ -876,7 +863,7 @@ export default function HomePage() {
               onClick={(e) => e.stopPropagation()}
             >
               <button className="stitch-downsell-close" onClick={() => setShowDownsell(false)} aria-label="Fechar">✕</button>
-              <p className="stitch-downsell-tag">OFERTA ESPECIAL — SÓ AGORA</p>
+              <p className="stitch-downsell-tag">OFERTA ESPECIAL, SÓ AGORA</p>
               <h3 className="stitch-downsell-title">Antes de continuar…</h3>
               <p className="stitch-downsell-text">Você está prestes a levar apenas o método. Mas por apenas <strong>R$5,00 a mais</strong>, você pode ter o <strong>plano completo</strong> com todos os bônus exclusivos:</p>
               <ul className="stitch-downsell-list">
