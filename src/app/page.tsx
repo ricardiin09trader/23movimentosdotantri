@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback, type PointerEvent as ReactPointerEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 /* ═══════════════════════════════════════════════════════════
@@ -154,8 +154,29 @@ const FAQ_ITEMS = [
 ];
 
 /* ═══════════════════════════════════════════════════════════
-   HELPERS
+   ASSETS LOCAIS — importados do Drive, copiados para /public
+   (nenhum carrega direto de um Drive privado)
    ═══════════════════════════════════════════════════════════ */
+
+// 6 páginas internas do guia, na ordem do MD. Já contêm o tratamento de privacidade.
+const PREVIEW_PAGES = [
+  { src: '/guia-previews/01-preparo.png', alt: 'Página interna do guia, etapa 1 de 6 — preparo' },
+  { src: '/guia-previews/02-visao-do-conteudo.png', alt: 'Página interna do guia, etapa 2 de 6 — visão do conteúdo' },
+  { src: '/guia-previews/03-primeira-manobra.png', alt: 'Página interna do guia, etapa 3 de 6 — primeira manobra' },
+  { src: '/guia-previews/04-manobra-intermediaria.png', alt: 'Página interna do guia, etapa 4 de 6 — manobra intermediária' },
+  { src: '/guia-previews/05-ritmo.png', alt: 'Página interna do guia, etapa 5 de 6 — ritmo' },
+  { src: '/guia-previews/06-ultima-manobra.png', alt: 'Página interna do guia, etapa 6 de 6 — última manobra' },
+];
+
+// 5 telas de conversa sobre recebimento e primeiras impressões do material.
+// Descrições objetivas — não afirmam ser depoimentos reais.
+const CONVERSAS = [
+  { src: '/conversas/01_acesso_email.png', alt: 'Tela de conversa sobre o acesso ao material por e-mail' },
+  { src: '/conversas/02_material.png', alt: 'Tela de conversa comentando o material recebido' },
+  { src: '/conversas/03_esposa.png', alt: 'Tela de conversa sobre a reação da parceira' },
+  { src: '/conversas/04_didatico.png', alt: 'Tela de conversa sobre o conteúdo didático' },
+  { src: '/conversas/05_preparacao.png', alt: 'Tela de conversa sobre a preparação' },
+];
 
 function trackFBQ(event: string, params?: Record<string, unknown>) {
   if (typeof window !== 'undefined' && typeof (window as unknown as Record<string, unknown>).fbq === 'function') {
@@ -241,6 +262,57 @@ function FAQAccordion({ question, answer }: { question: string; answer: string }
         <span className="faq-chevron"><SvgInline html={CHEVRON_SVG} /></span>
       </div>
       <div className="stitch-faq-answer"><p>{answer}</p></div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PREVIEWS CAROUSEL — carrossel horizontal arrastável (toque + mouse)
+   ═══════════════════════════════════════════════════════════ */
+function PreviewsCarousel({ pages }: { pages: { src: string; alt: string }[] }) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const dragState = useRef({ down: false, startX: 0, startScroll: 0, moved: false });
+
+  const onPointerDown = useCallback((e: ReactPointerEvent<HTMLDivElement>) => {
+    const el = trackRef.current;
+    if (!el) return;
+    dragState.current = { down: true, startX: e.clientX, startScroll: el.scrollLeft, moved: false };
+    el.classList.add('dragging');
+  }, []);
+
+  const onPointerMove = useCallback((e: ReactPointerEvent<HTMLDivElement>) => {
+    const el = trackRef.current;
+    if (!el || !dragState.current.down) return;
+    const dx = e.clientX - dragState.current.startX;
+    if (Math.abs(dx) > 4) dragState.current.moved = true;
+    el.scrollLeft = dragState.current.startScroll - dx;
+  }, []);
+
+  const endDrag = useCallback(() => {
+    const el = trackRef.current;
+    if (el) el.classList.remove('dragging');
+    dragState.current.down = false;
+    // impede clique acidental logo após arrastar
+    if (dragState.current.moved) {
+      window.setTimeout(() => { dragState.current.moved = false; }, 50);
+    }
+  }, []);
+
+  return (
+    <div
+      className="stitch-previews-track"
+      ref={trackRef}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={endDrag}
+      onPointerLeave={endDrag}
+    >
+      {pages.map((p, i) => (
+        <div className="stitch-preview-card" key={i}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={p.src} alt={p.alt} loading="lazy" draggable={false} />
+        </div>
+      ))}
     </div>
   );
 }
@@ -593,6 +665,48 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 6.5 EXPERT — Luna Amaral */}
+      <section className="stitch-expert fade-section" id="expert">
+        <div className="stitch-expert-grid">
+          <div className="stitch-expert-text">
+            <span className="stitch-kicker">QUEM CRIOU ESSE MÉTODO</span>
+            <p className="stitch-expert-guide">Sua guia</p>
+            <h2 className="stitch-expert-name">Luna Amaral.</h2>
+            <p className="stitch-expert-bio">
+              O método nasce da escuta de quem buscava mais presença e conexão a dois. São 23 movimentos
+              organizados em uma sequência que você começa a aplicar hoje, no seu ritmo — um guia digital
+              ilustrado para consultar e reaproveitar.
+            </p>
+            <div className="stitch-expert-divider" />
+            <div className="stitch-expert-stats">
+              <div>
+                <div className="stitch-expert-stat-num">23</div>
+                <div className="stitch-expert-stat-label">movimentos</div>
+              </div>
+              <div>
+                <div className="stitch-expert-stat-num">1</div>
+                <div className="stitch-expert-stat-label">guia ilustrado</div>
+              </div>
+              <div>
+                <div className="stitch-expert-stat-num">7</div>
+                <div className="stitch-expert-stat-label">dias de garantia</div>
+              </div>
+            </div>
+            <button className="stitch-btn-editorial" onClick={() => {
+              const el = document.getElementById('oferta');
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}>Escolher meu guia</button>
+          </div>
+          <div className="stitch-expert-photo-wrap">
+            <div className="stitch-expert-photo-frame">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/expert/luna-amaral.webp" alt="Luna Amaral, criadora do método Código do Toque" className="stitch-expert-photo" />
+              <span className="stitch-expert-brand">CÓDIGO DO TOQUE</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 7. BONUS */}
       <section className="stitch-bonus fade-section">
         <div className="stitch-bonus-header">
@@ -623,31 +737,41 @@ export default function HomePage() {
         <p className="stitch-bonus-total">Valor total dos bônus: R$111,00 — Hoje totalmente grátis</p>
       </section>
 
-      {/* 8. TESTIMONIALS */}
+      {/* 7.5 PRÉVIAS — páginas reais do guia */}
+      <section className="stitch-previews fade-section" id="previas">
+        <div className="stitch-previews-head">
+          <span className="stitch-kicker">VEJA POR DENTRO</span>
+          <h2 className="stitch-previews-title">Prévias de páginas <em className="hl">reais</em> do guia.</h2>
+          <p className="stitch-previews-text">
+            Estas são páginas reais do guia que você vai receber. As áreas com bloco vermelho protegem trechos
+            com cenas íntimas — o conteúdo completo está no material que chega por e-mail após a compra.
+          </p>
+          <span className="stitch-previews-seal">Imagens 100% reais do guia completo</span>
+        </div>
+        <PreviewsCarousel pages={PREVIEW_PAGES} />
+      </section>
+
+      {/* 8. CONVERSAS — substitui os slides de texto por 5 imagens de conversa */}
       <section className="stitch-testimonials fade-section" id="depoimentos">
         <div className="stitch-container">
-          <h2 className="stitch-testimonials-title">O que dizem quem já aplicou</h2>
-          <p className="stitch-testimonials-subtitle">Resultados reais de homens que transformaram sua conexão</p>
+          <span className="stitch-kicker">O QUE DIZEM</span>
+          <h2 className="stitch-testimonials-title">O que dizem ao <em className="hl">receber</em> o guia.</h2>
+          <p className="stitch-testimonials-subtitle">Telas de conversa sobre o recebimento e as primeiras impressões do material.</p>
         </div>
         <div className="stitch-carousel-wrapper">
           <div className="stitch-carousel-track">
-            {[...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
-              <div className="stitch-carousel-card" key={i}>
-                <div className="stitch-carousel-stars"><SvgInline html={RED_STAR_SVG} /><SvgInline html={RED_STAR_SVG} /><SvgInline html={RED_STAR_SVG} /><SvgInline html={RED_STAR_SVG} /><SvgInline html={RED_STAR_SVG} /></div>
-                <p className="stitch-carousel-quote">&ldquo;{t.quote}&rdquo;</p>
-                <div className="stitch-carousel-author">
-                  <span className="stitch-carousel-initials">{t.initials}</span>
-                  <div><p className="stitch-carousel-name">{t.name}</p><p className="stitch-carousel-city">{t.city}</p></div>
-                </div>
+            {[...CONVERSAS, ...CONVERSAS, ...CONVERSAS, ...CONVERSAS].map((c, i) => (
+              <div className="stitch-carousel-card stitch-carousel-img-card" key={i}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={c.src} alt={c.alt} loading="lazy" draggable={false} />
               </div>
             ))}
           </div>
         </div>
-      </section>
-
-      {/* 9. AUTHORITY */}
-      <section className="stitch-authority fade-section">
-        <p className="stitch-authority-text">O Código do Toque foi desenvolvido por uma terapeuta tântrica certificada com mais de 6 anos de experiência clínica. Cada movimento foi testado e refinado com casais reais antes de ser transformado em método. O resultado é um programa direto, sem enrolação, focado no que realmente funciona na prática.</p>
+        <p className="stitch-testimonials-note">
+          Prévias de conversas sobre o recebimento do material. Antes de apresentá-las publicamente como
+          depoimentos reais, substitua por conversas autênticas autorizadas.
+        </p>
       </section>
 
       {/* 10. GUARANTEE */}

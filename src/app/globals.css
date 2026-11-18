@@ -5,26 +5,48 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
-  font-family: var(--font-main), 'Poppins', system-ui, -apple-system, sans-serif;
-  background: #000; color: #fff;
+  font-family: var(--font-main), Manrope, system-ui, -apple-system, sans-serif;
+  background: #09090b; color: #f3efea;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
 }
-h1,h2,h3,h4 { font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
+h1,h2,h4 { font-family: var(--font-main), Manrope, sans-serif; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
+h3 { font-family: var(--font-serif), 'Bodoni Moda', Georgia, serif; font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; }
 img { max-width: 100%; display: block; height: auto; }
-button { cursor: pointer; font-family: var(--font-main), 'Poppins', sans-serif; border: none; outline: none; }
+button { cursor: pointer; font-family: var(--font-main), Manrope, sans-serif; border: none; outline: none; }
 a { text-decoration: none; color: inherit; }
 
+/* Palavra em serifada itálica vermelha nos títulos (destaque editorial) */
+em.hl, .hl {
+  font-family: var(--font-serif), 'Bodoni Moda', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--red-bright);
+  letter-spacing: -0.01em;
+}
+
+/* Tokens extraindo do CSS do site de referência codigo-do-toque.vercel.app */
 :root {
-  --red: #DC2626;
-  --red-dark: #991B1B;
-  --red-glow: rgba(220, 38, 38, .4);
-  --card: #111;
+  --red: #ca101e;          /* vermelho editorial (ref --pink) */
+  --red-bright: #f02835;   /* vermelho vivo para destaques (ref --red-bright) */
+  --red-dark: #8a0a14;     /* vinho-escuro para hover */
+  --red-glow: rgba(202, 16, 30, .4);
+  --pink: #ed2a70;         /* rosa editorial (ref --pink) */
+  --pink2: #fd4e8d;
+  --wine: #1a080c;         /* base de gradiente vinho (ref --wine2) */
+  --wine-deep: #2b0716;    /* vinho profundo (ref --wine light) */
+  --gold: #c9a66f;         /* dourado discreto (ref --gold) */
+  --gold-soft: #e5cfab;    /* dourado claro (ref --gold-soft) */
+  --bg: #09090b;           /* fundo quase preto (ref --wine dark) */
+  --surface: #101012;      /* superfície escura (ref --cream dark) */
+  --panel: #19191b;        /* painel/cartão (ref --panel) */
+  --line: #48413a;         /* filete sutil (ref --line) */
+  --card: #101012;
   --card-border: rgba(255,255,255,.08);
-  --text: #fff;
-  --text-secondary: rgba(255,255,255,.7);
-  --text-muted: rgba(255,255,255,.45);
+  --text: #f3efea;         /* branco quente (ref --ink dark) */
+  --text-secondary: rgba(243,239,234,.72);
+  --text-muted: rgba(243,239,234,.5);
   --pad: clamp(20px, 5vw, 48px);
   --sec: clamp(48px, 8vw, 96px);
   --hdr: 60px;
@@ -1575,4 +1597,195 @@ a { text-decoration: none; color: inherit; }
     padding: 14px 16px;
     font-size: 13px;
   }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   v13 — EDITORIAL UPDATE (alinhado a codigo-do-toque.vercel.app)
+   Paleta e tipologia aplicadas; novas seções: Expert, Prévias, Conversas.
+   ════════════════════════════════════════════════════════════════ */
+
+/* Hero title red vira serifada itálica vermelha */
+.stitch-hero-title-red {
+  font-family: var(--font-serif), 'Bodoni Moda', Georgia, serif !important;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--red-bright);
+  letter-spacing: -0.02em;
+}
+
+/* Etiqueta dourada padrão (kicker) */
+.stitch-kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 600; letter-spacing: .19em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 14px;
+}
+.stitch-kicker::before {
+  content: ''; width: 7px; height: 7px; background: var(--red);
+  transform: rotate(45deg); flex-shrink: 0;
+}
+
+/* Botão vermelho editorial (estilo pílula da ref, mantendo função) */
+.stitch-btn-editorial {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--red); color: #fff; font-weight: 600;
+  font-size: clamp(13px, 1.6vw, 15px); letter-spacing: .01em;
+  padding: 15px 30px; border-radius: 999px; border: none; cursor: pointer;
+  box-shadow: 0 8px 24px var(--red-glow);
+  transition: transform .25s, box-shadow .25s, background .2s;
+}
+.stitch-btn-editorial:hover { background: var(--red-dark); transform: translateY(-1px); box-shadow: 0 10px 28px var(--red-glow); }
+
+/* ═══ SEÇÃO EXPERT (Luna Amaral) ═══ */
+.stitch-expert {
+  position: relative;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 30%, rgba(43,7,22,.55) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 10% 90%, rgba(26,8,12,.6) 0%, transparent 55%),
+    #09090b;
+  padding: var(--sec) 0;
+  border-top: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+  overflow: hidden;
+}
+.stitch-expert-grid {
+  max-width: 1040px; margin: 0 auto; padding: 0 var(--pad);
+  display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;
+}
+.stitch-expert-text { max-width: 480px; }
+.stitch-expert-guide { font-size: 13px; color: var(--text-muted); letter-spacing: .04em; margin-bottom: 6px; }
+.stitch-expert-name {
+  font-family: var(--font-serif), 'Bodoni Moda', Georgia, serif;
+  font-style: italic; font-weight: 400;
+  font-size: clamp(40px, 8vw, 68px); line-height: 1; color: var(--red-bright);
+  margin-bottom: 22px; letter-spacing: -0.03em;
+}
+.stitch-expert-bio {
+  font-size: clamp(14px, 1.8vw, 16px); color: var(--text-secondary); line-height: 1.75;
+  margin-bottom: 28px; max-width: 460px;
+}
+.stitch-expert-divider {
+  height: 1px; background: linear-gradient(90deg, var(--line), transparent);
+  margin: 0 0 24px; max-width: 360px;
+}
+.stitch-expert-stats {
+  display: grid; grid-template-columns: repeat(3, auto); gap: clamp(18px, 4vw, 36px);
+  margin-bottom: 32px;
+}
+.stitch-expert-stat-num {
+  font-family: var(--font-main), Manrope, sans-serif;
+  font-size: clamp(28px, 4vw, 38px); font-weight: 700; color: var(--text);
+  line-height: 1;
+}
+.stitch-expert-stat-label {
+  font-size: 11px; color: var(--text-muted); letter-spacing: .06em;
+  text-transform: uppercase; margin-top: 6px;
+}
+.stitch-expert-photo-wrap {
+  position: relative; display: flex; justify-content: center; align-items: flex-end;
+}
+.stitch-expert-photo-frame {
+  position: relative;
+  max-width: 380px; width: 100%;
+  padding: 14px;
+  background: linear-gradient(160deg, #121214 0%, #0b0b0d 100%);
+  border-radius: 18px;
+  box-shadow: 0 30px 70px rgba(0,0,0,.7), inset 0 0 0 1px rgba(201,166,111,.18);
+}
+.stitch-expert-photo-frame::before {
+  content: ''; position: absolute; inset: 6px;
+  border: 1px solid rgba(201,166,111,.28); border-radius: 14px;
+  pointer-events: none;
+}
+.stitch-expert-photo {
+  width: 100%; border-radius: 10px; display: block;
+}
+.stitch-expert-brand {
+  position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold); white-space: nowrap;
+}
+
+/* ═══ SEÇÃO PRÉVIAS (páginas reais do guia) ═══ */
+.stitch-previews {
+  background: #09090b; padding: var(--sec) 0;
+  border-top: 1px solid var(--card-border);
+}
+.stitch-previews-head { text-align: center; max-width: 620px; margin: 0 auto 36px; padding: 0 var(--pad); }
+.stitch-previews-title {
+  font-size: clamp(24px, 4.5vw, 36px); color: var(--text); margin-bottom: 16px; line-height: 1.15;
+}
+.stitch-previews-text {
+  font-size: clamp(13px, 1.6vw, 15px); color: var(--text-secondary); line-height: 1.7;
+  max-width: 560px; margin: 0 auto;
+}
+.stitch-previews-seal {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 18px;
+  font-size: 12px; font-weight: 600; letter-spacing: .03em;
+  color: var(--gold);
+  padding: 8px 16px; border: 1px solid rgba(201,166,111,.25); border-radius: 999px;
+  background: rgba(201,166,111,.05);
+}
+.stitch-previews-seal::before { content: '◆'; color: var(--red); font-size: 10px; }
+
+/* Carrossel horizontal arrastável (toque + mouse) */
+.stitch-previews-track {
+  display: flex; gap: 16px;
+  overflow-x: auto; overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 8px var(--pad) 24px;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin; scrollbar-color: rgba(201,166,111,.3) transparent;
+}
+.stitch-previews-track::-webkit-scrollbar { height: 6px; }
+.stitch-previews-track::-webkit-scrollbar-thumb { background: rgba(201,166,111,.3); border-radius: 3px; }
+.stitch-previews-track.dragging { cursor: grabbing; scroll-behavior: auto; scroll-snap-type: none; }
+.stitch-preview-card {
+  flex: 0 0 auto;
+  width: clamp(240px, 78vw, 340px);
+  scroll-snap-align: center;
+  border-radius: 12px; overflow: hidden;
+  background: #0b0b0d; border: 1px solid var(--card-border);
+  box-shadow: 0 12px 30px rgba(0,0,0,.5);
+  user-select: none; pointer-events: auto;
+}
+.stitch-preview-card img { width: 100%; height: auto; display: block; pointer-events: none; }
+
+/* ═══ SEÇÃO CONVERSAS (substitui testimonials) ═══ */
+.stitch-testimonials { background: #09090b; }
+.stitch-testimonials-title {
+  font-size: clamp(22px, 4vw, 32px); color: var(--text); line-height: 1.15;
+}
+.stitch-testimonials-subtitle { color: var(--text-muted); }
+
+/* Slides de imagem das conversas — sem moldura de aparelho, sem texto sobreposto */
+.stitch-carousel-card.stitch-carousel-img-card {
+  background: transparent; border: none; box-shadow: none;
+  padding: 0; margin-right: 14px;
+  width: clamp(240px, 74vw, 320px);
+  display: flex; align-items: center; justify-content: center;
+}
+.stitch-carousel-img-card img {
+  width: 100%; height: auto; max-height: 560px;
+  object-fit: contain; border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.5);
+  pointer-events: none;
+}
+.stitch-testimonials-note {
+  text-align: center; font-size: 11px; color: var(--text-muted);
+  max-width: 520px; margin: 22px auto 0; padding: 0 var(--pad);
+  letter-spacing: .02em;
+}
+
+/* ═══ RESPONSIVE — EXPERT / PREVIEWS ═══ */
+@media (min-width: 768px) {
+  .stitch-expert-grid { grid-template-columns: 1.05fr 0.95fr; gap: 56px; }
+  .stitch-preview-card { width: clamp(280px, 26vw, 360px); }
+}
+@media (max-width: 767px) {
+  .stitch-expert-photo-frame { max-width: 300px; }
+  .stitch-expert-stats { gap: 18px; }
 }

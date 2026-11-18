@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Poppins } from "next/font/google";
+import { Manrope, Bodoni_Moda } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
+// Tipografia exata do site de referência (lida do CSS de codigo-do-toque.vercel.app):
+//   --sans: Manrope (corpo, UI, botões, h1/h2)
+//   --serif: "Bodoni Moda" (títulos de seção e palavra em itálico vermelho nos títulos)
+const manrope = Manrope({
   variable: "--font-main",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+const bodoni = Bodoni_Moda({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -27,8 +38,8 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body
-        className={`${poppins.variable} antialiased intro-loading`}
-        style={{ background: "#0a0a0a", color: "#fff" }}
+        className={`${manrope.variable} ${bodoni.variable} antialiased intro-loading`}
+        style={{ background: "#09090b", color: "#f3efea" }}
         suppressHydrationWarning
       >
         {/* ═══ FACEBOOK PIXEL — 900080772936894 ═══ */}
